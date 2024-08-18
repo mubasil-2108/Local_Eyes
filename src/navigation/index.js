@@ -18,7 +18,7 @@ export default function Navigation() {
     useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-        }, 1000);
+        }, 2700);
     })
 
     if (loading)
@@ -30,21 +30,21 @@ export default function Navigation() {
             >
                 <MainStack.Navigator
                     screenOptions={{ headerShown: false }}
-                    initialRouteName={routes.app}
+                    initialRouteName={routes.auth}
                 >
-                    {/* <MainStack.Screen
+                    <MainStack.Screen
                         name={routes.auth}
                         component={AuthNavigation}
                         
-                    /> */}
-                    <MainStack.Screen
+                    />
+                    {/* <MainStack.Screen
                         name={routes.app}
                         component={AppNavigation}
                     />
                     <MainStack.Screen
                         name={routes.common}
                         component={CommonNavigation}
-                    />
+                    /> */}
                 </MainStack.Navigator>
             </NavigationContainer>
         );

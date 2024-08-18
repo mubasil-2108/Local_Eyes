@@ -43,9 +43,9 @@ export const colors = {
   appGradiantColors: ['#4E20EA', 'rgba(214,48,49, 1)'],
 
   appColor1: '#FFFFFF',
-  
-  appColor2: '#234CB0',
-  appColor3: '#73A83980',
+  appColor2: 'rgba(185, 76, 99, 1)',
+  appColor3: 'rgba(113, 26, 45, 1)',
+
   appColor5: '#FFFFD0',
   appColor6: '#FFFF00',
   appColor7: '#FF9A9A',
@@ -56,11 +56,12 @@ export const colors = {
 
 
   appTextColor1: '#000000',
-  appTextColor2: 'rgba(84, 95, 113, 1)',
-  appTextColor3: 'rgba(0, 60, 140, 1)',
-  appTextColor4: '#FFFFFF',
-  appTextColor5: 'rgba(135, 135, 135, 1)',
+  appTextColor2: 'rgba(184, 75, 98, 1)',
+  appTextColor3: 'rgba(84, 95, 113, 1)',
+  appTextColor4: 'rgba(185, 76, 99, 1)',
+  appTextColor5: 'rgba(255, 255, 255, 1)',
   appTextColor6: 'rgba(16, 16, 16, 1)',
+
   appTextColor7: 'rgba(240, 20, 47, 1)',
   appTextColor8: 'rgba(91, 91, 91, 1)',
 
@@ -87,9 +88,9 @@ export const colors = {
   // icon Color
   iconColor1: 'rgba(84, 95, 113, 1)',
   iconColor2: 'rgba(0, 60, 140, 1)',
-
   iconColor3: '#FFFFFF',
-  iconColor4: '#ADADAD',
+  iconColor4: 'rgba(185, 76, 99, 1)',
+
   iconColor5: '#A81C3A',
   iconColor6: '#01CDFF',
   iconColor7: '#234CB0',
@@ -118,8 +119,8 @@ export const colors = {
   statusBarColor1: '#FFFFFF',
 
   // Button Color
-  buttonColor1: 'rgba(0, 60, 140, 1)',
-  buttonColor2: 'rgba(9, 181, 239, 1)',
+  buttonColor1: 'rgba(184, 75, 98, 1)',
+  buttonColor2: 'rgba(113, 26, 45, 1)',
 
   buttonColor3: '#FFFFFF',
   buttonColor4: '#F1F1F1',
@@ -128,9 +129,12 @@ export const colors = {
 
   // Button Border
 
-  buttonBorder1: 'rgba(214, 214, 214, 1)',
-
+  buttonBorder1: 'rgba(185, 76, 99, 1)',
+  buttonBorder3: 'rgba(214, 214, 214, 1)',
+  buttonBorder4: 'rgba(237, 237, 237, 1)',
+  
   buttonBorder2: 'rgba(197, 197, 197, 1)',
+  
 
   //Image Border
   imageBorder: '#C5C5C5',

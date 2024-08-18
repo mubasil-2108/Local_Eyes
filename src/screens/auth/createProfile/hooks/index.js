@@ -11,7 +11,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function useHooks() {
     const route = useRoute();
-    const formData = route.params.formData || {};
+    // const formData = route.params.formData || {};
+
     // const phoneNumber = route.params.phone || '';
     const [fullName, setFullName] = useState('');
     const [userID, setUserID] = useState('');
@@ -200,10 +201,10 @@ export function useHooks() {
         }
         return address;
     };
-    const address = `${formData.street_1 || ''}, ${formData.street_2 || ''}, ${formData.country?.label || ''}, ${formData.state?.label || ''}, ${formData.city?.label || ''}, ${formData.postalCode || ''}`;
-    console.log(formData)
-    const hasAddress = formData.street_1 || formData.street_2 || formData.country?.label || formData.state?.label || formData.city?.label || formData.postalCode;
-    const truncatedAddress = hasAddress ? truncateAddress(address, 30) : '';
+    // const address = `${formData.street_1 || ''}, ${formData.street_2 || ''}, ${formData.country?.label || ''}, ${formData.state?.label || ''}, ${formData.city?.label || ''}, ${formData.postalCode || ''}`;
+    // console.log(formData)
+    // const hasAddress = formData.street_1 || formData.street_2 || formData.country?.label || formData.state?.label || formData.city?.label || formData.postalCode;
+    // const truncatedAddress = hasAddress ? truncateAddress(address, 30) : '';
     const handleAdd = () => {
         if (preferences.trim()) {
             setAllPreferences([...allPreferences, preferences.trim()]);
@@ -265,9 +266,9 @@ export function useHooks() {
         preferencesChunks,
         selectImage,
         profileImage,
-        formData,
+        // formData,
         handleSubmit,
-        truncatedAddress,
+        // truncatedAddress,
         selectGender,
         setSelectGender,
         modalVisible

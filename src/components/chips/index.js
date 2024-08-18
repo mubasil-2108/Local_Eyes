@@ -15,6 +15,7 @@ export const Primary = ({ data, onPress, disabled, containerStyle, buttonStyle, 
                             disabled={!onPress || disabled}
                             iconName={onPress && "close"}
                             //iconType="ionicon"
+                            gradientColors={[colors.iconColor1, colors.iconColor2]}
                             iconSize={totalSize(2)}
                             iconColor={colors.appTextColor1}
                             onPress={() => onPress(item, index)}

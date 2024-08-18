@@ -13,14 +13,27 @@ export default function Index(props) {
   const { navigate } = props.navigation
 
 
-  const {Signin, toggleCheckbox, isChecked, email, setEmail, password, setPassword, togglePasswordVisibility, showPassword, modalVisibility, modalVisible } = useHooks()
+  const { Signin, email, setEmail, password, setPassword, togglePasswordVisibility, showPassword } = useHooks()
   return (
     // <Text>{t('welcome')}</Text>
-    <Wrapper isMain backgroundColor={colors.appBgColor2} style={[{}]}>
+    <Wrapper isMain backgroundColor={colors.appBgColor2} >
       <ScrollViews.KeyboardAvoiding>
         <StatusBars.Dark backgroundColor={colors.statusBarColor1} />
-        <Wrapper marginHorizontalBase style={{marginTop:width(10)}}>
-          <Wrapper justifyContentCenter style={{ marginTop: responsiveHeight(10) }}>
+        <Wrapper marginHorizontalBase style={{ marginTop: width(10) }}>
+          <Wrapper alignItemsFlexEnd marginVerticalBase>
+            <Buttons.BorderedSmall
+              buttonStyle={{ borderColor: colors.buttonBorder1 }}
+              rowReverse
+              gradientColors={[colors.appColor2, colors.appColor3]}
+              text={'Local'}
+              textStyle={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.regular, color: colors.appTextColor1 }}
+              customIconRight={appIcons.arrow_forward}
+              iconSize={totalSize(1.6)}
+              iconContainer={{ right: width(4.5) }}
+              tintColor={colors.iconColor3}
+            />
+          </Wrapper>
+          <Wrapper justifyContentCenter >
             <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.interSemiBold, fontSize: fontSizes.h3 }} >Login to your{'\n'}account.</Text>
           </Wrapper>
           <Wrapper marginVerticalBase>
@@ -49,7 +62,7 @@ export default function Index(props) {
                 fontSize: fontSizes.small,
                 fontFamily: appFonts.satoshiMedium,
 
-                color: colors.appTextColor2
+                color: colors.appTextColor3
               }} />
             <TextInputs.Colored
               title={'Password'}
@@ -66,7 +79,7 @@ export default function Index(props) {
               }}
               customIconLeft={appIcons.lock}
               customIconRight={appIcons.eye}
-              iconColorRight={colors.iconColor2}
+              iconColorRight={colors.iconColor4}
               iconSizeRight={sizes.icons.small}
               iconStyleRight={{
                 marginRight: width(4)
@@ -83,8 +96,7 @@ export default function Index(props) {
               titleStyle={{
                 fontSize: fontSizes.small,
                 fontFamily: appFonts.satoshiMedium,
-
-                color: colors.appTextColor2
+                color: colors.appTextColor3
               }} />
             <Buttons.ColoredSmall
               text={'Forgot Password?'}
@@ -93,26 +105,25 @@ export default function Index(props) {
                 backgroundColor: colors.transparent,
                 paddingHorizontal: 0,
                 alignItems: 'flex-end',
-                // justifyContent:'flex-end'
-
               }}
               textStyle={{
-                color: colors.appTextColor3,
+                color: colors.appTextColor4,
                 fontSize: fontSizes.small,
                 fontFamily: appFonts.interRegular
               }} />
           </Wrapper>
           <Wrapper marginVerticalMedium>
             <Buttons.Colored
-            onPress={()=> Signin(email,password)}
+              onPress={() => Signin(email, password)}
               buttonStyle={{ marginHorizontal: 0 }}
               iconSize={totalSize(2)}
               customIconRight={appIcons.arrow_forward}
+              tintColor={colors.iconColor4}
               text={'Login'}
-              iconContainer={{left: width(34)}}
-              gradientColors={[colors.buttonColor1, colors.buttonColor2]}
+              iconContainer={{ left: width(34) }}
+              gradientColors={[colors.buttonColor1,colors.buttonColor1, colors.buttonColor2]}
               textStyle={{
-                color: colors.appTextColor4,
+                color: colors.appTextColor5,
                 fontFamily: appFonts.interSemiBold,
                 fontSize: fontSizes.regular,
                 left: width(5)
@@ -131,13 +142,13 @@ export default function Index(props) {
             </Wrapper>
           </Wrapper>
           <Wrapper marginVerticalBase justifyContentSpaceEvenly style={{ paddingHorizontal: width(23) }} flexDirectionRow >
-            <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder1 }} customIcon={appIcons.google} iconSize={sizes.icons.medium} />
-            <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder1 }} customIcon={appIcons.facebook} iconSize={sizes.icons.medium} />
-            <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder1 }} customIcon={appIcons.apple} iconSize={sizes.icons.medium} />
+            <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder3 }} customIcon={appIcons.google} iconSize={sizes.icons.medium} />
+            <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder3 }} customIcon={appIcons.facebook} iconSize={sizes.icons.medium} />
+            <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder3 }} customIcon={appIcons.apple} iconSize={sizes.icons.medium} />
           </Wrapper>
           <Wrapper marginVerticalSmall justifyContentCenter alignItemsCenter>
-            <TouchableOpacity onPress={()=>navigate(routes.createAccount)}>
-              <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Don't have an account? <Text style={{ color: colors.appTextColor3, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Register</Text> </Text>
+            <TouchableOpacity onPress={() => navigate(routes.createAccount)}>
+              <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Don't have an account? <Text style={{ color: colors.appTextColor2, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Register</Text> </Text>
             </TouchableOpacity>
           </Wrapper>
         </Wrapper>

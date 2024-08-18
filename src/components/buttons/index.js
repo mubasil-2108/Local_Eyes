@@ -74,7 +74,7 @@ export const Colored = ({
     iconStyle,
     tintColor,
     direction,
-    gradientColors,iconContainer
+    gradientColors, iconContainer
 }) => {
     return (
         <TouchableOpacity onPress={onPress} disabled={isLoading ? true : disabled}>
@@ -112,9 +112,9 @@ export const Colored = ({
                             :
                             <Text isButtonMedium style={[{ color: tintColor ? tintColor : colors.appTextColor6, }, textStyle]}>{text}</Text>
                         }
-                        
+
                         {customIconRight &&
-                            <Wrapper justifyContentCenter alignItemsCenter backgroundColor={colors.appColor1} style={{...iconContainer, height: totalSize(4.5), width: totalSize(4.5), borderRadius: width(10) }}>
+                            <Wrapper justifyContentCenter alignItemsCenter backgroundColor={colors.appColor1} style={{ ...iconContainer, height: totalSize(4.5), width: totalSize(4.5), borderRadius: width(10) }}>
                                 <Icons.Custom
                                     icon={customIconRight}
                                     size={iconSize ? iconSize : totalSize(3)}
@@ -201,21 +201,31 @@ export const Bordered = ({ text, onPress, buttonStyle, textStyle, iconName, cust
     );
 }
 
-export const BorderedSmall = ({ text, onPress, buttonStyle, rowReverse, textStyle, iconName, iconType, iconSize, iconColor, iconStyle, tintColor }) => {
+export const BorderedSmall = ({ customIconRight,gradientColors, iconBackground, text, onPress, buttonStyle, rowReverse, textStyle, iconContainer, iconName, iconType, iconSize, iconColor, iconStyle, tintColor }) => {
     return (
-        <TouchableOpacity onPress={onPress} style={[{ borderRadius: 15, paddingHorizontal: width(5), paddingVertical: height(1), borderColor: tintColor ? tintColor : colors.appColor1, borderWidth: 1 }, buttonStyle]}>
+        <TouchableOpacity onPress={onPress} style={[{ borderRadius: 50, paddingHorizontal: width(5), paddingVertical: height(0.5), borderColor: tintColor ? tintColor : colors.appColor1, borderWidth: 1 }, buttonStyle]}>
             <Wrapper style={{ flexDirection: rowReverse ? 'row-reverse' : 'row', alignItems: 'center' }}>
-                {
-                    iconName ?
-                        <Icon
-                            name={iconName ? iconName : "email-outline"}
-                            type={iconType ? iconType : "material-community"}
-                            size={iconSize ? iconSize : totalSize(2)}
-                            color={tintColor ? tintColor : colors.appColor1}
-                            iconStyle={[{ marginHorizontal: width(2) }, iconStyle]}
-                        />
-                        :
-                        null
+                {customIconRight &&
+                    <LinearGradient
+                        start={{ x: 0, y: 0 }}  // start position of gradient
+                        end={{ x: 1, y: 0 }}    // End position of gradient
+                        colors={gradientColors} // Default gradient colors
+                        style={[{
+                            ...iconContainer,
+                            
+                            borderRadius: sizes.buttonRadius,
+                        }]}
+                    >
+                        <Wrapper justifyContentCenter alignItemsCenter style={{ height: totalSize(3.5), width: totalSize(3.5), borderRadius: width(10) }}>
+                            <Icons.Custom
+                                icon={customIconRight}
+                                size={iconSize ? iconSize : totalSize(3)}
+                                color={tintColor && tintColor}
+                                // containerStyle={[{ marginLeft: width(2.5) }, iconStyle]}
+                                containerStyle={[{ marginLeft: width(0) }, iconStyle]}
+                            />
+                        </Wrapper>
+                    </LinearGradient>
                 }
                 <Text isButtonRegular style={[{ color: tintColor ? tintColor : colors.appColor1, fontSize: fontSizes.regular }, textStyle]}>{text}</Text>
             </Wrapper>

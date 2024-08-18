@@ -42,8 +42,7 @@ export default function Index(props) {
                             titleStyle={{
                                 fontSize: fontSizes.small,
                                 fontFamily: appFonts.satoshiMedium,
-
-                                color: colors.appTextColor2
+                                color: colors.appTextColor3
                             }} />
                         <TextInputs.Phone
                             title={'Phone Number'}
@@ -67,12 +66,12 @@ export default function Index(props) {
                             titleStyle={{
                                 fontSize: fontSizes.small,
                                 fontFamily: appFonts.satoshiMedium,
-                                color: colors.appTextColor2
+                                color: colors.appTextColor3
                             }} />
                         <TextInputs.Colored
                             title={'Password'}
                             value={password}
-                            
+
                             onChangeText={(text) => setPassword(text)}
                             keyboardType={'default'}
                             secureTextEntry={!showPassword}
@@ -85,7 +84,7 @@ export default function Index(props) {
                             }}
                             customIconLeft={appIcons.lock}
                             customIconRight={appIcons.eye}
-                            iconColorRight={colors.iconColor2}
+                            iconColorRight={colors.iconColor4}
                             iconSizeRight={sizes.icons.small}
                             iconStyleRight={{
                                 marginRight: width(4)
@@ -102,8 +101,7 @@ export default function Index(props) {
                             titleStyle={{
                                 fontSize: fontSizes.small,
                                 fontFamily: appFonts.satoshiMedium,
-
-                                color: colors.appTextColor2
+                                color: colors.appTextColor3
                             }} />
                         <TextInputs.Colored
                             title={'Confirm Password'}
@@ -120,7 +118,7 @@ export default function Index(props) {
                             }}
                             customIconLeft={appIcons.lock}
                             customIconRight={appIcons.eye}
-                            iconColorRight={colors.iconColor2}
+                            iconColorRight={colors.iconColor4}
                             iconSizeRight={sizes.icons.small}
                             iconStyleRight={{
                                 marginRight: width(4)
@@ -137,31 +135,35 @@ export default function Index(props) {
                             titleStyle={{
                                 fontSize: fontSizes.small,
                                 fontFamily: appFonts.satoshiMedium,
-
-                                color: colors.appTextColor2
+                                color: colors.appTextColor3
                             }} />
                     </Wrapper>
                     <Wrapper flexDirectionRow marginVerticalZero marginHorizontalTiny>
-                        <CheckBoxes.Primary onPress={toggleCheckbox} checked={isChecked} containerStyle={{alignItems:'flex-start', top:height(0.5)}} checkIconsize={sizes.icons.xSmall} customCheckIcon={appIcons.checked} customUnCheckIcon={appIcons.blankCheck}/>
-                        <Text style={{ fontSize: fontSizes.mediumSmall, color: colors.appTextColor6, fontFamily: appFonts.interMedium }}>I Agree with{' '}
-                            <Text style={{ color: colors.appTextColor3 }}>Terms of Service</Text> and{' '}
-                            <Text style={{ color: colors.appTextColor3 }}>Privacy{'\n'}Policy</Text>
+                        <CheckBoxes.Primary onPress={toggleCheckbox} checked={isChecked} checkIconsize={sizes.icons.tiny} customCheckIcon={appIcons.checked} customUnCheckIcon={appIcons.blankCheck} />
+                        <Text style={{ fontSize: fontSizes.small, color: colors.appTextColor6, fontFamily: appFonts.interMedium }}>I Agree with{' '}
+                            <Text style={{ color: colors.appTextColor4 }}>Terms of Service</Text> and{' '}
+                            <Text style={{ color: colors.appTextColor4 }}>Privacy Policy</Text>
                         </Text>
                     </Wrapper>
                     <Wrapper marginVerticalMedium>
                         <Buttons.Colored
-                            onPress={()=> {phoneNumberRef(); Signup(email, password, setEmail, setPassword, confirmPassword, setConfirmPassword, phoneNumber, isChecked, routes.createProfile)}}
+                            onPress={() => {
+                                // phoneNumberRef();
+                                // Signup(email, password, setEmail, setPassword, confirmPassword, setConfirmPassword, phoneNumber, isChecked, routes.createProfile)
+                                navigate(routes.createProfile)
+                            }}
                             buttonStyle={{ marginHorizontal: 0 }}
                             iconSize={totalSize(2)}
                             customIconRight={appIcons.arrow_forward}
+                            tintColor={colors.iconColor4}
                             text={'Sign Up'}
-                            iconContainer={{left: width(33)}}
-                            gradientColors={[colors.buttonColor1, colors.buttonColor2]}
+                            iconContainer={{ left: width(32) }}
+                            gradientColors={[colors.buttonColor1,colors.buttonColor1, colors.buttonColor2]}
                             textStyle={{
-                                color: colors.appTextColor4,
+                                color: colors.appTextColor5,
                                 fontFamily: appFonts.interSemiBold,
                                 fontSize: fontSizes.regular,
-                                left: width(5)
+                                left: width(6)
                             }} />
 
                     </Wrapper>
@@ -177,13 +179,13 @@ export default function Index(props) {
                         </Wrapper>
                     </Wrapper>
                     <Wrapper marginVerticalBase justifyContentSpaceEvenly style={{ paddingHorizontal: width(23) }} flexDirectionRow >
-                        <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder1 }} customIcon={appIcons.google} iconSize={sizes.icons.medium} />
-                        <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder1 }} customIcon={appIcons.facebook} iconSize={sizes.icons.medium} />
-                        <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder1 }} customIcon={appIcons.apple} iconSize={sizes.icons.medium} />
+                        <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder3 }} customIcon={appIcons.google} iconSize={sizes.icons.medium} />
+                        <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder3 }} customIcon={appIcons.facebook} iconSize={sizes.icons.medium} />
+                        <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder3 }} customIcon={appIcons.apple} iconSize={sizes.icons.medium} />
                     </Wrapper>
                     <Wrapper marginVerticalSmall justifyContentCenter alignItemsCenter>
-                        <TouchableOpacity onPress={()=>navigate(routes.signin)}>
-                            <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Already have an account? <Text style={{ color: colors.appTextColor3, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Login</Text> </Text>
+                        <TouchableOpacity onPress={() => navigate(routes.signin)}>
+                            <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Already have an account? <Text style={{ color: colors.appTextColor4, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Login</Text> </Text>
                         </TouchableOpacity>
                     </Wrapper>
                 </Wrapper>

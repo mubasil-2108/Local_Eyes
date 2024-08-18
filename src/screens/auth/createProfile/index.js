@@ -21,9 +21,10 @@ export default function Index(props) {
                     <Headers.Primary
                         onBackPress={() => goBack()}
                         showBackArrow
+                        rightIconSource={appIcons.chevron_left}
                         allowText
                         textColor={colors.appTextColor9}
-                        iconColor={colors.iconColor1}
+                        // iconColor={colors.iconColor1}
                         title={'Complete Your Profile'}
                         titleStyle={{ fontFamily: appFonts.interBold, fontSize: fontSizes.medium }}
                         iconContainer={{ flexDirection: 'row' }}
@@ -65,8 +66,7 @@ export default function Index(props) {
                             titleStyle={{
                                 fontSize: fontSizes.small,
                                 fontFamily: appFonts.satoshiMedium,
-
-                                color: colors.appTextColor2
+                                color: colors.appTextColor3
                             }} />
                         <Wrapper flexDirectionRow justifyContentSpaceBetween>
 
@@ -95,7 +95,7 @@ export default function Index(props) {
                                 titleStyle={{
                                     fontSize: fontSizes.small,
                                     fontFamily: appFonts.satoshiMedium,
-                                    color: colors.appTextColor2
+                                    color: colors.appTextColor3
                                 }} />
 
                             <TextInputs.DropDown
@@ -116,7 +116,7 @@ export default function Index(props) {
                                 titleStyle={{
                                     fontSize: fontSizes.small,
                                     fontFamily: appFonts.satoshiMedium,
-                                    color: colors.appTextColor2
+                                    color: colors.appTextColor3
                                 }} />
                         </Wrapper>
                         <TextInputs.Colored
@@ -149,10 +149,10 @@ export default function Index(props) {
                                 fontSize: fontSizes.small,
                                 fontFamily: appFonts.satoshiMedium,
 
-                                color: colors.appTextColor2
+                                color: colors.appTextColor3
                             }} />
                     </Wrapper>
-                    <Wrapper marginVerticalSmall style={{ marginBottom: width(15) }}>
+                    {/* <Wrapper marginVerticalSmall style={{ marginBottom: width(15) }}>
                         <Text style={{
                             fontSize: fontSizes.small,
                             fontFamily: appFonts.satoshiMedium,
@@ -242,15 +242,15 @@ export default function Index(props) {
                                 </Wrapper>
                             </Wrapper>
                         )}
-                    </Wrapper>
-                    <Wrapper marginVerticalLarge>
+                    </Wrapper> */}
+                    <Wrapper style={{marginTop: responsiveHeight(30)}}>
                         <Buttons.Colored
                             onPress={handleSubmit}
                             buttonStyle={{ marginHorizontal: 0 }}
                             text={'Continue'}
-                            gradientColors={[colors.buttonColor1, colors.buttonColor2]}
+                            gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
                             textStyle={{
-                                color: colors.appTextColor4,
+                                color: colors.appTextColor5,
                                 fontFamily: appFonts.interSemiBold,
                                 fontSize: fontSizes.regular,
                             }} />

@@ -35,8 +35,8 @@ import * as StatusBars from '../statusBars';
 // }
 
 export const Primary = ({
-    onBackPress, search, title, right, searchPress,
-    left, titleContainerStyle, centerTitle, tintColor,
+    onBackPress, search, title, right, searchPress, rightIcon,
+    left, titleContainerStyle, centerTitle, tintColor, rightIconName, rightIconSource,
     containerStyle, headerTitle, alignTitleLeft, showBackArrow,
     invertColors, titleStyle, leftContainerStyle, iconContainer, iconColor, textColor,allowText, rightContainerStyle,textStyle, shadow, auth }) => {
 
@@ -68,7 +68,7 @@ export const Primary = ({
                             <Text isTinyTitle numberOfLines={1} style={{ color: tintColor ? tintColor : defaultTintColor }}>{title}</Text>
                     }
                 </Wrapper> */}
-                <Wrapper flex={1.5} style={[
+                <Wrapper flex={1.5} alignItemsCenter style={[
                     // { backgroundColor: 'red' },
                     
                     leftContainerStyle]}>
@@ -84,8 +84,8 @@ export const Primary = ({
                                          customIcon={rightIconSource}
                                             iconName={rightIconName}
                                             iconColor={iconColor}
-                                            iconSize={sizes.icons.medium}
-                                            buttonStyle={{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder1, borderWidth: width(0.4) }}
+                                            iconSize={sizes.icons.tiny}
+                                            buttonStyle={{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder4, borderWidth: width(0.4) }}
                                             buttonSize={width(9)}
                                             //onPress={onBackPress}
                                             //onPress={onBackPress ? onBackPress : goBack}

@@ -7,6 +7,7 @@ const appImages = {
     success: require('../../../assets/images/success.png'),
     fullLogo:require('../../../assets/images/fullLogo.png'),
     helpCenter: require('../../../assets/images/helpCenter.png'),
+    mainLogo: require('../../../assets/images/mainLogo.png'),
 
     logo: require('../../../assets/images/Logo.png'),
     confirm: require('../../../assets/images/confirm.png'),
@@ -63,6 +64,7 @@ const appIcons = {
     infoCircle: require('../../../assets/icons/infoCircle.png'),
     plus: require('../../../assets/icons/plus.png'),
     minus: require('../../../assets/icons/minus.png'),
+    chevron_left: require('../../../assets/icons/chevron_left.png'),
 
     drawer: require('../../../assets/icons/drawer.png'),
     products: require('../../../assets/icons/products.png'),

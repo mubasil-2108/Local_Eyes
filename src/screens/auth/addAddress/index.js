@@ -18,9 +18,10 @@ export default function Index(props) {
                     <Headers.Primary
                         onBackPress={() => goBack()}
                         showBackArrow
+                        rightIconSource={appIcons.chevron_left}
                         allowText
                         textColor={colors.appTextColor9}
-                        iconColor={colors.iconColor1}
+                        // iconColor={colors.iconColor1}
                         title={'Add Address'}
                         titleStyle={{ fontFamily: appFonts.interBold, fontSize: fontSizes.medium }}
                         iconContainer={{ flexDirection: 'row' }}
@@ -48,8 +49,7 @@ export default function Index(props) {
                             titleStyle={{
                                 fontSize: fontSizes.small,
                                 fontFamily: appFonts.satoshiMedium,
-
-                                color: colors.appTextColor2
+                                color: colors.appTextColor3
                             }} />
                         <TextInputs.Colored
                             title={'Street 2'}
@@ -72,8 +72,7 @@ export default function Index(props) {
                             titleStyle={{
                                 fontSize: fontSizes.small,
                                 fontFamily: appFonts.satoshiMedium,
-
-                                color: colors.appTextColor2
+                                color: colors.appTextColor3
                             }} />
                         <Wrapper flexDirectionRow justifyContentSpaceBetween>
                             {cityOptions && (
@@ -95,7 +94,7 @@ export default function Index(props) {
                                     titleStyle={{
                                         fontSize: fontSizes.small,
                                         fontFamily: appFonts.satoshiMedium,
-                                        color: colors.appTextColor2
+                                        color: colors.appTextColor3
                                     }} />
                             )}
                             {stateOptions && (
@@ -117,7 +116,7 @@ export default function Index(props) {
                                     titleStyle={{
                                         fontSize: fontSizes.small,
                                         fontFamily: appFonts.satoshiMedium,
-                                        color: colors.appTextColor2
+                                        color: colors.appTextColor3
                                     }} />
                             )}
                         </Wrapper>
@@ -145,7 +144,7 @@ export default function Index(props) {
                                 titleStyle={{
                                     fontSize: fontSizes.small,
                                     fontFamily: appFonts.satoshiMedium,
-                                    color: colors.appTextColor2
+                                    color: colors.appTextColor3
                                 }} />
 
                             <TextInputs.DropDown
@@ -166,7 +165,7 @@ export default function Index(props) {
                                 titleStyle={{
                                     fontSize: fontSizes.small,
                                     fontFamily: appFonts.satoshiMedium,
-                                    color: colors.appTextColor2
+                                    color: colors.appTextColor3
                                 }} />
                         </Wrapper>
                     </Wrapper>
@@ -175,9 +174,9 @@ export default function Index(props) {
                         onPress={()=>navigate(routes.createProfile, { formData })}
                             buttonStyle={{ marginHorizontal: 0 }}
                             text={'Add'}
-                            gradientColors={[colors.buttonColor1, colors.buttonColor2]}
+                            gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
                             textStyle={{
-                                color: colors.appTextColor4,
+                                color: colors.appTextColor5,
                                 fontFamily: appFonts.interSemiBold,
                                 fontSize: fontSizes.regular,
                             }} />
