@@ -141,9 +141,16 @@ export const Colored = ({
     );
 }
 
-export const ColoredSmall = ({ text, onPress, buttonStyle, customIcon, direction, textStyle, iconName, iconType, iconSize, iconColor, iconStyle }) => {
+export const ColoredSmall = ({ text, onPress,gradientColors, isLoading, buttonColor, buttonStyle, disabled, customIcon, direction, textStyle, iconName, iconType, iconSize, iconColor, iconStyle }) => {
     return (
-        <TouchableOpacity onPress={onPress} style={[{ borderRadius: 15, paddingHorizontal: width(5), paddingVertical: height(1), backgroundColor: colors.appColor1 }, buttonStyle]}>
+        <TouchableOpacity onPress={onPress} disabled={isLoading ? true : disabled} >
+           <LinearGradient
+                    start={{ x: 0, y: 0 }}  // start position of gradient
+                    end={{ x: 1, y: 0 }}    // End position of gradient
+                    colors={gradientColors} // Default gradient colors
+                    style={[ { marginHorizontal:0, borderRadius: sizes.buttonRadius, paddingHorizontal: width(5), paddingVertical: height(1), backgroundColor: disabled ? colors.appColor2 + '80' : buttonColor ? buttonColor : colors.appColor2 }, buttonStyle]}
+                    // style={[{ borderRadius: 50, paddingHorizontal: width(5), paddingVertical: height(1), backgroundColor: colors.appColor1 }, buttonStyle]}
+                >
             <Wrapper style={{ flexDirection: direction ? direction : 'row', alignItems: 'center' }}>
                 {
                     customIcon ?
@@ -166,6 +173,7 @@ export const ColoredSmall = ({ text, onPress, buttonStyle, customIcon, direction
                 }
                 <Text isButtonRegular style={[{ color: colors.appTextColor6, }, textStyle]}>  {text}  </Text>
             </Wrapper>
+            </LinearGradient>
         </TouchableOpacity>
     );
 }

@@ -10,11 +10,12 @@ export function useHooks() {
     const [modalVisible, setModalVisible] = useState(false);
 
     const handleResetPassword = async () => {
-        await ResetPassword(email, setEmail).then(()=>{
-            if(email){
-                setModalVisible(true);
-            }
-        }) // Call the ResetPassword function
+        setModalVisible(true);
+        // await ResetPassword(email, setEmail).then(()=>{
+        //     if(email){
+        //         setModalVisible(true);
+        //     }
+        // }) // Call the ResetPassword function
          // Show modal after successful reset
     };
 

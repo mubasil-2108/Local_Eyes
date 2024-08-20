@@ -18,9 +18,10 @@ export default function Index(props) {
                     <Headers.Primary
                         onBackPress={() => goBack()}
                         showBackArrow
+                        rightIconSource={appIcons.chevron_left}
                         allowText
                         textColor={colors.appTextColor9}
-                        iconColor={colors.iconColor1}
+                        // iconColor={colors.iconColor1}
                         title={'Password Reset'}
                         titleStyle={{ fontFamily: appFonts.interBold, fontSize: fontSizes.medium }}
                         iconContainer={{ flexDirection: 'row' }}
@@ -39,8 +40,8 @@ export default function Index(props) {
                         </Text>
                         <Text
                             style={{
-                                fontFamily: appFonts.interMedium,
-                                color: colors.appTextColor5,
+                                fontFamily: appFonts.interRegular,
+                                color: colors.appTextColor7,
                                 fontSize: fontSizes.mediumSmall
                             }}>
                             Enter your email address and we’ll send you{'\n'}confirmation code to reset your password                        </Text>
@@ -71,7 +72,7 @@ export default function Index(props) {
                                 fontSize: fontSizes.small,
                                 fontFamily: appFonts.satoshiMedium,
 
-                                color: colors.appTextColor2
+                                color: colors.appTextColor3
                             }} />
                         <Wrapper marginVerticalMedium>
                             <Buttons.Colored
@@ -79,9 +80,9 @@ export default function Index(props) {
                                 buttonStyle={{ marginHorizontal: 0 }}
                                 text={'Continue'}
                                 iconContainer={{ left: width(34) }}
-                                gradientColors={[colors.buttonColor1, colors.buttonColor2]}
+                                gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
                                 textStyle={{
-                                    color: colors.appTextColor4,
+                                    color: colors.appTextColor5,
                                     fontFamily: appFonts.interSemiBold,
                                     fontSize: fontSizes.regular,
                                 }} />
@@ -95,7 +96,7 @@ export default function Index(props) {
                         hideHeader
                         visible={modalVisible}
                         onPress={() => { navigate(routes.signin) }}
-                        data={'A password reset link has been sent to your\nemail successfully'}
+                        data={'A password reset link has been sent to your email\nsuccessfully'}
                         headerTitle={'Success'}
                         // colorsOpacity={[colors.transparent, colors.transparent]}
                         containerStyle={{

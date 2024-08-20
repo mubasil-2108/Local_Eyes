@@ -118,32 +118,34 @@ export function useHooks() {
     };
 
     const handleSubmit = async () => {
-        const profileData = {
-            userId: userID || '', // Ensure uid is defined
-            email: email || '', // Add email
-            phoneNumber: phoneNo || '',// Add phone number
-            fullName: fullName || '', // Provide default values if necessary
-            dateOfBirth: date || '',
-            gender: selectGender || '', // Ensure genderData is defined
-            address: address || '',
-            travelPreference: allPreferences || []
-        };
+        // const profileData = {
+        //     userId: userID || '', // Ensure uid is defined
+        //     email: email || '', // Add email
+        //     phoneNumber: phoneNo || '',// Add phone number
+        //     fullName: fullName || '', // Provide default values if necessary
+        //     dateOfBirth: date || '',
+        //     gender: selectGender || '', // Ensure genderData is defined
+        //     address: address || '',
+        //     travelPreference: allPreferences || []
+        // };
 
-        if (profileImage) {
-            await handleProfileUpdate(profileImage, profileData).then(() => {
-                if (profileData) {
-                    setModalVisible(true);
-                }
-            });
-        } else {
-            // If no profile image, just save the profile data
-            await saveProfileData(profileData).then(() => {
-                if (profileData) {
-                    setModalVisible(true);
-                }
-            })
+        // if (profileImage) {
+        //     await handleProfileUpdate(profileImage, profileData).then(() => {
+        //         if (profileData) {
+        //             setModalVisible(true);
+        //         }
+        //     });
+        // } else {
+        //     // If no profile image, just save the profile data
+        //     await saveProfileData(profileData).then(() => {
+        //         if (profileData) {
+        //             setModalVisible(true);
+        //         }
+        //     })
 
-        }
+        // }
+        setModalVisible(true);
+
     };
 
     const selectImage = async () => {

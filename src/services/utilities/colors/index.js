@@ -45,6 +45,7 @@ export const colors = {
   appColor1: '#FFFFFF',
   appColor2: 'rgba(185, 76, 99, 1)',
   appColor3: 'rgba(113, 26, 45, 1)',
+  appColor4: 'rgba(255, 255, 255, 0.4)',
 
   appColor5: '#FFFFD0',
   appColor6: '#FFFF00',
@@ -61,8 +62,8 @@ export const colors = {
   appTextColor4: 'rgba(185, 76, 99, 1)',
   appTextColor5: 'rgba(255, 255, 255, 1)',
   appTextColor6: 'rgba(16, 16, 16, 1)',
-
-  appTextColor7: 'rgba(240, 20, 47, 1)',
+  appTextColor7: 'rgba(135, 135, 135, 1)',
+  
   appTextColor8: 'rgba(91, 91, 91, 1)',
 
   appTextColor9: '#101623',
@@ -90,8 +91,8 @@ export const colors = {
   iconColor2: 'rgba(0, 60, 140, 1)',
   iconColor3: '#FFFFFF',
   iconColor4: 'rgba(185, 76, 99, 1)',
-
-  iconColor5: '#A81C3A',
+  iconColor5: 'rgba(255, 255, 255, 0.3)',
+  
   iconColor6: '#01CDFF',
   iconColor7: '#234CB0',
 
@@ -132,7 +133,7 @@ export const colors = {
   buttonBorder1: 'rgba(185, 76, 99, 1)',
   buttonBorder3: 'rgba(214, 214, 214, 1)',
   buttonBorder4: 'rgba(237, 237, 237, 1)',
-  
+
   buttonBorder2: 'rgba(197, 197, 197, 1)',
   
 

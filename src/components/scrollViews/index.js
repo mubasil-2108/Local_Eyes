@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, ActivityIndicator, Scr
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view'
 
 
-export const KeyboardAvoiding = ({children,pagingEnabled, showsHorizontalScrollIndicator, horizontal, style,onScroll, ref, scrollEventThrottle,animation, outerScrollEnabled, setOuterScrollEnabled }) => {
+export const KeyboardAvoiding = ({children,pagingEnabled, contentContainerStyle, showsHorizontalScrollIndicator, horizontal, style,onScroll, ref, scrollEventThrottle,animation, outerScrollEnabled, setOuterScrollEnabled }) => {
     return (
         <KeyboardAwareScrollView
         onScroll={onScroll} 
@@ -12,6 +12,7 @@ export const KeyboardAvoiding = ({children,pagingEnabled, showsHorizontalScrollI
         showsHorizontalScrollIndicator={false}
         scrollEnabled={outerScrollEnabled}
         onScrollEndDrag={setOuterScrollEnabled}
+        contentContainerStyle={contentContainerStyle}
         ref={ref}
         horizontal={horizontal}
         showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="always">

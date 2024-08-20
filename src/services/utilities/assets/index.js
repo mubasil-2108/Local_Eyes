@@ -8,6 +8,9 @@ const appImages = {
     fullLogo:require('../../../assets/images/fullLogo.png'),
     helpCenter: require('../../../assets/images/helpCenter.png'),
     mainLogo: require('../../../assets/images/mainLogo.png'),
+    imgBackground1: require('../../../assets/images/imgBackground1.png'),
+    imgBackground2: require('../../../assets/images/imgBackground2.png'),
+    imgBackground3: require('../../../assets/images/imgBackground3.png'),
 
     logo: require('../../../assets/images/Logo.png'),
     confirm: require('../../../assets/images/confirm.png'),

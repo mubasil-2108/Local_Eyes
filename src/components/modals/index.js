@@ -145,24 +145,24 @@ export const Swipable = ({
                         {!hideContent && (
                             <ScrollViews.KeyboardAvoiding>
                                 <Wrapper marginHorizontalMedium>
-                                    <Wrapper justifyContentCenter alignItemsCenter>
-                                        <Images.MainLogo size={sizes.images.logoWidth} source={appImages.success} style={{ resizeMode: 'contain' }} />
+                                    <Wrapper justifyContentCenter marginVerticalSmall alignItemsCenter>
+                                        <Images.MainLogo size={sizes.images.xLSmall} source={appImages.success} style={{ resizeMode: 'contain' }} />
                                     </Wrapper>
-                                    <Wrapper justifyContentCenter alignItemsCenter >
+                                    <Wrapper justifyContentCenter marginVerticalSmall alignItemsCenter >
                                         <Text style={{ fontFamily: appFonts.interBold, fontSize: fontSizes.h6, color: colors.appTextColor6 }}>{headerTitle}</Text>
                                     </Wrapper>
-                                    <Wrapper marginVerticalSmall>
-                                    <Text style={{ fontFamily: appFonts.interMedium, fontSize: fontSizes.mediumSmall, textAlign: 'center', color: colors.appTextColor5 }}>{data}</Text>
+                                    <Wrapper  >
+                                    <Text style={{ fontFamily: appFonts.interMedium, fontSize: fontSizes.small, textAlign: 'center', color: colors.appTextColor7 }}>{data}</Text>
                                     </Wrapper>
                                     <Wrapper marginVerticalMedium >
                                         <Buttons.Colored
                                             onPress={onPress}
                                             buttonStyle={{ marginHorizontal: 0 }}
                                             text={'Continue'}
-                                            iconContainer={{ left: width(34) }}
-                                            gradientColors={[colors.buttonColor1, colors.buttonColor2]}
+                                            // iconContainer={{ left: width(34) }}
+                                            gradientColors={[colors.buttonColor1,colors.buttonColor1, colors.buttonColor2]}
                                             textStyle={{
-                                                color: colors.appTextColor4,
+                                                color: colors.appTextColor5,
                                                 fontFamily: appFonts.interSemiBold,
                                                 fontSize: fontSizes.regular,
                                             }} />

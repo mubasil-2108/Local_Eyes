@@ -22,7 +22,7 @@ export default function Index(props) {
         <Wrapper marginHorizontalBase style={{ marginTop: width(10) }}>
           <Wrapper alignItemsFlexEnd marginVerticalBase>
             <Buttons.BorderedSmall
-              buttonStyle={{ borderColor: colors.buttonBorder1 }}
+              buttonStyle={{ borderColor: colors.buttonBorder1, paddingVertical:1 }}
               rowReverse
               gradientColors={[colors.appColor2, colors.appColor3]}
               text={'Local'}
@@ -106,6 +106,7 @@ export default function Index(props) {
                 paddingHorizontal: 0,
                 alignItems: 'flex-end',
               }}
+              gradientColors={[colors.transparent, colors.transparent]}
               textStyle={{
                 color: colors.appTextColor4,
                 fontSize: fontSizes.small,
@@ -114,13 +115,16 @@ export default function Index(props) {
           </Wrapper>
           <Wrapper marginVerticalMedium>
             <Buttons.Colored
-              onPress={() => Signin(email, password)}
+              onPress={() => 
+                // Signin(email, password)
+                navigate(routes.app)
+              }
               buttonStyle={{ marginHorizontal: 0 }}
               iconSize={totalSize(2)}
               customIconRight={appIcons.arrow_forward}
               tintColor={colors.iconColor4}
               text={'Login'}
-              iconContainer={{ left: width(34) }}
+              iconContainer={{ left: width(35) }}
               gradientColors={[colors.buttonColor1,colors.buttonColor1, colors.buttonColor2]}
               textStyle={{
                 color: colors.appTextColor5,
@@ -132,13 +136,13 @@ export default function Index(props) {
           </Wrapper>
           <Wrapper justifyContentCenter flexDirectionRow style={{ marginTop: width(30) }}>
             <Wrapper justifyContentCenter alignItemsCenter flex={1} >
-              <Image style={{ width: width(30), tintColor: colors.appTextColor5 }} source={appIcons.vector} />
+              <Image style={{ width: width(30), tintColor: colors.appTextColor7 }} source={appIcons.vector} />
             </Wrapper>
             <Wrapper flex={1} justifyContentCenter alignItemsCenter>
-              <Text style={{ color: colors.appTextColor5, fontFamily: appFonts.interRegular, fontSize: fontSizes.regular }}>Or sign in with</Text>
+              <Text style={{ color: colors.appTextColor7, fontFamily: appFonts.interRegular, fontSize: fontSizes.regular }}>Or sign in with</Text>
             </Wrapper>
             <Wrapper flex={1} justifyContentCenter alignItemsCenter>
-              <Image style={{ width: width(30), tintColor: colors.appTextColor5 }} source={appIcons.vector} />
+              <Image style={{ width: width(30), tintColor: colors.appTextColor7 }} source={appIcons.vector} />
             </Wrapper>
           </Wrapper>
           <Wrapper marginVerticalBase justifyContentSpaceEvenly style={{ paddingHorizontal: width(23) }} flexDirectionRow >

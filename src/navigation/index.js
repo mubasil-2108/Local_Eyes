@@ -35,16 +35,15 @@ export default function Navigation() {
                     <MainStack.Screen
                         name={routes.auth}
                         component={AuthNavigation}
-                        
                     />
-                    {/* <MainStack.Screen
+                    <MainStack.Screen
                         name={routes.app}
                         component={AppNavigation}
                     />
                     <MainStack.Screen
                         name={routes.common}
                         component={CommonNavigation}
-                    /> */}
+                    />
                 </MainStack.Navigator>
             </NavigationContainer>
         );

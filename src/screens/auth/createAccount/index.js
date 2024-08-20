@@ -140,7 +140,7 @@ export default function Index(props) {
                     </Wrapper>
                     <Wrapper flexDirectionRow marginVerticalZero marginHorizontalTiny>
                         <CheckBoxes.Primary onPress={toggleCheckbox} checked={isChecked} checkIconsize={sizes.icons.tiny} customCheckIcon={appIcons.checked} customUnCheckIcon={appIcons.blankCheck} />
-                        <Text style={{ fontSize: fontSizes.small, color: colors.appTextColor6, fontFamily: appFonts.interMedium }}>I Agree with{' '}
+                        <Text style={{ fontSize: fontSizes.mediumSmall, color: colors.appTextColor6, fontFamily: appFonts.interMedium }}>I Agree with{' '}
                             <Text style={{ color: colors.appTextColor4 }}>Terms of Service</Text> and{' '}
                             <Text style={{ color: colors.appTextColor4 }}>Privacy Policy</Text>
                         </Text>
@@ -157,7 +157,7 @@ export default function Index(props) {
                             customIconRight={appIcons.arrow_forward}
                             tintColor={colors.iconColor4}
                             text={'Sign Up'}
-                            iconContainer={{ left: width(32) }}
+                            iconContainer={{ left: width(33) }}
                             gradientColors={[colors.buttonColor1,colors.buttonColor1, colors.buttonColor2]}
                             textStyle={{
                                 color: colors.appTextColor5,
@@ -167,15 +167,16 @@ export default function Index(props) {
                             }} />
 
                     </Wrapper>
+                    <Spacer height={height(5)}/>
                     <Wrapper justifyContentCenter flexDirectionRow >
                         <Wrapper justifyContentCenter alignItemsCenter flex={1} >
-                            <Image style={{ width: width(30), tintColor: colors.appTextColor5 }} source={appIcons.vector} />
+                            <Image style={{ width: width(30), tintColor: colors.appTextColor7 }} source={appIcons.vector} />
                         </Wrapper>
                         <Wrapper flex={1} justifyContentCenter alignItemsCenter>
-                            <Text style={{ color: colors.appTextColor5, fontFamily: appFonts.interRegular, fontSize: fontSizes.regular }}>Or sign in with</Text>
+                            <Text style={{ color: colors.appTextColor7, fontFamily: appFonts.interRegular, fontSize: fontSizes.regular }}>Or sign in with</Text>
                         </Wrapper>
                         <Wrapper flex={1} justifyContentCenter alignItemsCenter>
-                            <Image style={{ width: width(30), tintColor: colors.appTextColor5 }} source={appIcons.vector} />
+                            <Image style={{ width: width(30), tintColor: colors.appTextColor7 }} source={appIcons.vector} />
                         </Wrapper>
                     </Wrapper>
                     <Wrapper marginVerticalBase justifyContentSpaceEvenly style={{ paddingHorizontal: width(23) }} flexDirectionRow >

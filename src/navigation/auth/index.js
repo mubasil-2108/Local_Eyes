@@ -10,10 +10,10 @@ const AuthNavigation = () => {
         <AuthStack.Navigator
             screenOptions={{ headerShown: false }}
             //screenOptions={{headerStyle:{backgroundColor:'gray',borderBottomWidth:5}}}
-            initialRouteName={routes.signin}
+            initialRouteName={routes.onBoarding}
         >
             {/* <AuthStack.Screen name={routes.splash} component={Auth.Splash}/> */}
-            {/* <AuthStack.Screen name={routes.onBoarding} component={Auth.OnBoarding} options={{animation:'fade'}}/> */}
+            <AuthStack.Screen name={routes.onBoarding} component={Auth.OnBoarding}/>
             <AuthStack.Screen name={routes.signin} component={Auth.Signin} />
             <AuthStack.Screen name={routes.createAccount} component={Auth.CreateAccount} />
             <AuthStack.Screen name={routes.createProfile} component={Auth.CreateProfile} />
