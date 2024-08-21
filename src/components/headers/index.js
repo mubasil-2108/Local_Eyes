@@ -35,7 +35,7 @@ import * as StatusBars from '../statusBars';
 // }
 
 export const Primary = ({
-    onBackPress, search, title, right, searchPress, rightIcon,
+    onBackPress, search, title, right, searchPress, rightIcon, leftIconSource, leftIconName,
     left, titleContainerStyle, centerTitle, tintColor, rightIconName, rightIconSource,
     containerStyle, headerTitle, alignTitleLeft, showBackArrow,
     invertColors, titleStyle, leftContainerStyle, iconContainer, iconColor, textColor,allowText, rightContainerStyle,textStyle, shadow, auth }) => {

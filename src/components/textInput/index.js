@@ -535,20 +535,25 @@ const Underlined = ({
 }
 
 
-const SearchBar = ({ value, placeholder, iconColorRight, inputContainerStyle, onChangeText, right, onPressCross, ...props }) => {
+const SearchBar = ({ value, placeholder, iconStyleLeft, iconSizeRight, iconStyleRight, iconNameRight, customIconRight, iconColorRight, inputContainerStyle, onChangeText, right, onPressCross, ...props }) => {
     return (
         <Colored
             value={value}
             onChangeText={onChangeText}
-            // iconNameLeft="search"
-            // iconTypeLeft="feather"
-            iconSizeLeft={sizes.icons.medium}
+            customIconLeft={appIcons.search}
+            // iconNameLeft='search'
+            // iconTypeLeft='Feather'
+            iconStyleLeft={iconStyleLeft}
+            iconSizeLeft={sizes.icons.mediumSmall}
             placeholder={placeholder ? placeholder : "Search"}
             inputContainerStyle={inputContainerStyle}
             // iconNameRight={(value && onPressCross) && 'close-circle'}
-            iconNameRight={'magnify'}
+            iconNameRight={iconNameRight}
+            customIconRight={customIconRight}
             iconColorRight={iconColorRight}
             iconTypeRight={'material-community'}
+            iconStyleRight={iconStyleRight}
+            iconSizeRight={iconSizeRight}
             onPressIconRight={onPressCross}
             right={right}
             inputStyle={{ height: responsiveHeight(6), paddingHorizontal: sizes.marginHorizontal / 2 }}

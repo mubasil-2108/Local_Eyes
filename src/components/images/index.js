@@ -10,7 +10,7 @@ export const Round = ({ style, size, source }) => {
     return (
         <Image
             source={source}
-            style={[{ height: size ? size : defaultSize, width: size ? size : defaultSize, borderRadius: 150 }, style]}
+            style={[{ height: size ? size : defaultSize, width: size ? size : defaultSize, borderRadius: 150, }, style]}
         />
     );
 }

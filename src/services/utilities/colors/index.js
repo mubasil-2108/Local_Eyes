@@ -46,8 +46,8 @@ export const colors = {
   appColor2: 'rgba(185, 76, 99, 1)',
   appColor3: 'rgba(113, 26, 45, 1)',
   appColor4: 'rgba(255, 255, 255, 0.4)',
-
-  appColor5: '#FFFFD0',
+  appColor5: 'rgba(184, 75, 98, 1)',
+  
   appColor6: '#FFFF00',
   appColor7: '#FF9A9A',
   appColor8: '#FB7979',
@@ -92,14 +92,15 @@ export const colors = {
   iconColor3: '#FFFFFF',
   iconColor4: 'rgba(185, 76, 99, 1)',
   iconColor5: 'rgba(255, 255, 255, 0.3)',
+  iconColor6: 'rgba(184, 75, 98, 1)',
   
-  iconColor6: '#01CDFF',
   iconColor7: '#234CB0',
 
   //BorderColor
   borderColor1:'#ADADAD',
   borderColor2:'#234CB029',
   borderColor3:'rgba(35, 76, 176, 0.3)',
+  borderColor4:'rgba(215, 215, 215, 1)',
 
   // Shadow Color
   shadowColor1: '#000000',
@@ -113,8 +114,7 @@ export const colors = {
 
   // PlaceHolder Color
   placeHolderColor: 'rgba(155, 165, 183, 1)',
-
-  placeHolderColor2: 'rgba(55, 71, 79, 0.72)',
+  placeHolderColor2: 'rgba(135, 135, 135, 1)',
 
   //StatusBar Color
   statusBarColor1: '#FFFFFF',
@@ -155,7 +155,8 @@ export const colors = {
 
   // Spacer Color
   spacerColor1: 'rgba(30, 94, 255, 0.28)',
-  spacerColor2: 'rgba(212, 212, 212, 1)'
+  spacerColor2: 'rgba(212, 212, 212, 1)',
+  spacerColor3: 'rgba(135, 135, 135, 0.24)',
 
 }
 

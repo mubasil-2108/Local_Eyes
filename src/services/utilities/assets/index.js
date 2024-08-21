@@ -11,6 +11,11 @@ const appImages = {
     imgBackground1: require('../../../assets/images/imgBackground1.png'),
     imgBackground2: require('../../../assets/images/imgBackground2.png'),
     imgBackground3: require('../../../assets/images/imgBackground3.png'),
+    Location1: require('../../../assets/images/Location1.png'),
+    Location2: require('../../../assets/images/Location2.png'),
+    Location3: require('../../../assets/images/Location3.png'),
+    Location4: require('../../../assets/images/Location4.png'),
+    profile1: require('../../../assets/images/profile1.png'),
 
     logo: require('../../../assets/images/Logo.png'),
     confirm: require('../../../assets/images/confirm.png'),
@@ -68,15 +73,19 @@ const appIcons = {
     plus: require('../../../assets/icons/plus.png'),
     minus: require('../../../assets/icons/minus.png'),
     chevron_left: require('../../../assets/icons/chevron_left.png'),
-
+    notification: require('../../../assets/icons/notification.png'),
     drawer: require('../../../assets/icons/drawer.png'),
+    search:require('../../../assets/icons/search.png'),
+    equalizer: require('../../../assets/icons/equalizer.png'),
+    nearBy: require('../../../assets/icons/nearBy.png'),
+    star:require('../../../assets/icons/star.png'),
+    
     products: require('../../../assets/icons/products.png'),
     cart: require('../../../assets/icons/cart.png'),
     add:require('../../../assets/icons/add.png'),
 
     security: require('../../../assets/icons/security.png'),
     logIn: require('../../../assets/icons/logIn.png'),
-    notification: require('../../../assets/icons/notificationBell.png'),
     edit: require('../../../assets/icons/edit.png'),
     format_size: require('../../../assets/icons/format_size.png'),
     info: require('../../../assets/icons/info.png'),

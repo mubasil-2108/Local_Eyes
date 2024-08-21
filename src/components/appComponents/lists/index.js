@@ -10,7 +10,7 @@ import { FlatList, Pressable, StyleSheet } from 'react-native';
 import { Icon } from '@rneui/base';
 import * as Icons from '../../icons';
 import NotificationItem from '../notificationItems';
-import { CategoryItems } from '../category';
+import { LocationItems } from '../locationItems';
 import { ProductItems, SubCategory } from '../productItems';
 
 export const UsersListVerticalPrimary = ({ data, onPressItem, ...props }) => {
@@ -282,39 +282,23 @@ export const ChatMessagesListVertical = ({ data }) => {
     );
 };
 
-export const CategoryList = ({ handlePressItem, selectedStyle, selectedText, unSelectedText, unSelectedStyle, textStyle, clickedItems, data, onPressItem, ...props }) => {
+export const LocationLists = ({ data, ...props }) => {
 
 
     return (
         <FlatList
-            data={data}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            // ListFooterComponent={() => <Spacer height={sizes.marginVertical} />}
-            // ListHeaderComponent={() => <Spacer width={sizes.marginVertical} />}
-            // ItemSeparatorComponent={() => <Spacer width={sizes.marginVertical} />}
-            renderItem={({ item, index }) => {
-                const { name, userImage, timeStamp, notificationText } = item;
-                const isSelect = !!clickedItems[name];
-                // console.log(clickedItems);
+              data={data}
+              renderItem={({item})=>{
                 return (
-                    <CategoryItems
-                        onPress={() => handlePressItem(item)}
-                        clicked={isSelect}
-                        isSelect={isSelect}
-                        userName={name}
-                        textStyle={textStyle}
-                        selectedStyle={selectedStyle}
-                        unSelectedStyle={unSelectedStyle}
-                        unSelectedText={unSelectedText}
-                        selectedText={selectedText}
-                        {...item}
-                    />
-                );
-            }}
-            keyExtractor={(item) => item.name}
-            {...props}
-        />
+                    <LocationItems  item={item} />
+
+                )
+              }}
+              contentContainerStyle={{flex:1, justifyContent:'space-between'}}
+              keyExtractor={(item) => item.id}
+              horizontal={true} // Makes the list horizontal
+              showsHorizontalScrollIndicator={false} // Hide the horizontal scroll bar
+            />
     );
 };
 
