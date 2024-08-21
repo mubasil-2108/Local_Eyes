@@ -16,6 +16,7 @@ const appImages = {
     Location3: require('../../../assets/images/Location3.png'),
     Location4: require('../../../assets/images/Location4.png'),
     profile1: require('../../../assets/images/profile1.png'),
+    profile2: require('../../../assets/images/profile2.png'),
 
     logo: require('../../../assets/images/Logo.png'),
     confirm: require('../../../assets/images/confirm.png'),
