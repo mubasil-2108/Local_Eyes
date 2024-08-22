@@ -14,6 +14,7 @@ import GuideLines from './guideLines'
 import Terms from './Terms'
 import Privacy from './privacy'
 import AboutUs from './aboutUs'
+import LocalPreview from './localPreview'
 
 export {
     Home,
@@ -31,5 +32,6 @@ export {
     GuideLines,
     Privacy,
     AboutUs,
-    Terms
+    Terms,
+    LocalPreview
 }

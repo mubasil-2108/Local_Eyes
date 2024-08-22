@@ -17,6 +17,8 @@ const appImages = {
     Location4: require('../../../assets/images/Location4.png'),
     profile1: require('../../../assets/images/profile1.png'),
     profile2: require('../../../assets/images/profile2.png'),
+    profile3: require('../../../assets/images/profile3.png'),
+
 
     logo: require('../../../assets/images/Logo.png'),
     confirm: require('../../../assets/images/confirm.png'),
@@ -61,7 +63,6 @@ const appIcons = {
     blankCheck: require('../../../assets/icons/blankCheck.png'),
     checked:require('../../../assets/icons/checked.png'),
     camera:require('../../../assets/icons/camera.png'),
-    user:require('../../../assets/icons/user.png'),
     calendar:require('../../../assets/icons/calendar.png'),
     dropDown:require('../../../assets/icons/dropDown.png'),
     location:require('../../../assets/icons/location.png'),
@@ -80,9 +81,15 @@ const appIcons = {
     equalizer: require('../../../assets/icons/equalizer.png'),
     nearBy: require('../../../assets/icons/nearBy.png'),
     star:require('../../../assets/icons/star.png'),
-    
-    products: require('../../../assets/icons/products.png'),
-    cart: require('../../../assets/icons/cart.png'),
+    map: require('../../../assets/icons/map.png'),
+    chats: require('../../../assets/icons/chats.png'),
+    profile: require('../../../assets/icons/profile.png'),
+    messages: require('../../../assets/icons/messages.png'),
+    book: require('../../../assets/icons/book.png'),
+    car: require('../../../assets/icons/car.png'),
+    people: require('../../../assets/icons/people.png'),
+    experience: require('../../../assets/icons/experience.png'),
+
     add:require('../../../assets/icons/add.png'),
 
     security: require('../../../assets/icons/security.png'),

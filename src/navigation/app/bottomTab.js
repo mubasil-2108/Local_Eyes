@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet } from 'react-native';
 import { width, height } from 'react-native-dimension';
 import { appFonts, appIcons, colors, fontSizes, responsiveFontSize, responsiveHeight, responsiveWidth, routes, tabs } from "../../services";
-import { Images, Wrapper } from "../../components";
+import { Images, Spacer, Wrapper } from "../../components";
 import { Icon } from "@rneui/base";
 import * as App from '../../screens/app';
 import Text from "../../components/text";
@@ -21,7 +21,7 @@ const HomeStackScreen = () => (
         initialRouteName={routes.home}
     >
         <HomeStack.Screen name={routes.home} component={App.Home} />
-        <HomeStack.Screen name={routes.dummyScreen} component={App.DummyScreen}/>
+        {/* <HomeStack.Screen name={routes.localPreview} component={App.LocalPreview}/> */}
         {/* <HomeStack.Screen name={routes.allCategory} component={App.AllCategory} /> */}
         {/* <HomeStack.Screen name={routes.subCategories} component={App.SubCategories} /> */}
         
@@ -29,11 +29,11 @@ const HomeStackScreen = () => (
 );
 
 const TabIcon = ({ color, iconName, iconType, focused, image, tabBarLabel, customStyle }) => {
-    const activeColor = colors.iconColor3;  // define active color
-    const inactiveColor = colors.iconColor4;  // define inactive color
+    const activeColor = colors.iconColor6;  // define active color
+    const inactiveColor = colors.iconColor7;  // define inactive color
 
     return (
-        <Wrapper justifyContentCenter alignItemsCenter style={styles.iconWrapper(focused)}>
+        <Wrapper justifyContentCenter alignItemsCenter >
             {
                 !image ?
                     <Icon
@@ -50,7 +50,9 @@ const TabIcon = ({ color, iconName, iconType, focused, image, tabBarLabel, custo
                         style={{ tintColor: focused ? activeColor : inactiveColor, resizeMode: 'contain', opacity: focused ? 1 : 0.5, ...customStyle }}
                     />
             }
-            <Text isTiny style={{ textAlign: 'center', backgroundColor: colors.transparent, color: focused ? activeColor : inactiveColor, fontFamily: appFonts.interRegular }}>{tabBarLabel}</Text>
+            <Spacer height={height(1)}/>
+            <Wrapper  style={{borderRadius:10, borderWidth:2.5, borderColor:focused ? activeColor : colors.iconColor3}} />
+            {/* <Text isTiny style={{ textAlign: 'center', backgroundColor: colors.transparent, color: focused ? activeColor : inactiveColor, fontFamily: appFonts.interRegular }}>{tabBarLabel}</Text> */}
         </Wrapper>
     );
 }
@@ -91,7 +93,7 @@ export default function BottomTabNavigation() {
                         <TabIcon
                             // iconName='globe' 
                             // iconType='feather' 
-                            image={appIcons.products}
+                            image={appIcons.map}
                             customStyle={{ borderRadius: 0 }}
                             color={color}
                             focused={focused}
@@ -106,7 +108,7 @@ export default function BottomTabNavigation() {
                 options={{
                     tabBarIcon: ({ color, size, focused }) => (
                         <TabIcon
-                            image={appIcons.cart}
+                            image={appIcons.chats}
                             customStyle={{ borderRadius: 0 }}
                             color={color}
                             focused={focused}
@@ -121,8 +123,8 @@ export default function BottomTabNavigation() {
                 options={{
                     tabBarIcon: ({ color, size, focused }) => (
                         <TabIcon
-                            iconName='user'
-                            iconType='feather'
+                        image={appIcons.profile}
+                        customStyle={{ borderRadius: 0 }}
                             color={color}
                             focused={focused}
                             tabBarLabel='Account'

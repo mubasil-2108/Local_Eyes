@@ -11,7 +11,7 @@ import { Icon } from '@rneui/base';
 import * as Icons from '../../icons';
 import NotificationItem from '../notificationItems';
 import { LocationItems } from '../locationItems';
-import { LocalsItems, ProductItems, SubCategory } from '../productItems';
+import { LocalsItems, ProductItems, SubCategory } from '../localsItems';
 
 export const UsersListVerticalPrimary = ({ data, onPressItem, ...props }) => {
     return (
@@ -308,8 +308,7 @@ export const LocalsList = ({ data, ...props }) => {
               data={data}
               renderItem={({item})=>{
                 return (
-                    <LocalsItems  item={item} />
-
+                    <LocalsItems item={item} />
                 )
               }}
             //   contentContainerStyle={{flex:1, justifyContent:'space-between'}}

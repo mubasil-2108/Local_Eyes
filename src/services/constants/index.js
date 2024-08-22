@@ -38,6 +38,7 @@ export const routes = {
     terms: 'terms',
     privacy: 'privacy',
     aboutUs: 'aboutUs',
+    localPreview: 'localPreview',
 
     dummyScreen:'DummyScreen',
     homeStackScreen: 'HomeStackScreen',

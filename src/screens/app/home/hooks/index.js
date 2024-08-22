@@ -61,7 +61,7 @@ export function useHooks() {
       {
         id: '3',
         name: 'John Doe',
-        image: appImages.profile1,
+        image: appImages.profile3,
         rating: '5.0',
         rate: 13,
         description: 'Lorem ipsum dolor sit amet. Vel facilis sint aut sunt voluptatem.',

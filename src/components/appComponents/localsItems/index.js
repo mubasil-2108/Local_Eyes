@@ -3,13 +3,14 @@ import { height, width } from 'react-native-dimension'
 import { TouchableOpacity, View, Image, StyleSheet } from 'react-native';
 import Wrapper from '../../wrapper';
 import Text from '../../text';
-import { appFonts, appIcons, appImages, colors, fontSizes, responsiveHeight, responsiveWidth, sizes } from '../../../services';
+import { appFonts, appIcons, appImages, colors, fontSizes, responsiveHeight, responsiveWidth, routes, sizes } from '../../../services';
 import Spacer from '../../spacer';
 import { Buttons, Icons, Images } from '../..';
 import LinearGradient from 'react-native-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
-export const LocalsItems = ({item}) => {
-   
+export const LocalsItems = ({item} ) => {
+  const navigation = useNavigation();
     return (
         <Wrapper marginVerticalSmall marginHorizontalSmall paddingHorizontalSmall isBorderedWrapper style={{ borderColor: colors.borderColor4, flexWrap: 'wrap' }}>
         <Wrapper justifyContentSpaceBetween flexDirectionRow>
@@ -20,6 +21,7 @@ export const LocalsItems = ({item}) => {
             <Wrapper flex={1} justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
               <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor1, fontSize: fontSizes.mediumSmall }}>{item.name}</Text>
               <Buttons.ColoredSmall
+              onPress={()=> navigation.navigate(routes.localPreview, {item})}
                 gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
                 textStyle={{ fontFamily: appFonts.baloo2_Regular, color: colors.appTextColor5, fontSize: fontSizes.small }}
                 buttonStyle={{ justifyContent: 'center', alignItems: 'center', paddingVertical: width(1), paddingHorizontal: width(1.5) }}

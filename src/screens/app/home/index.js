@@ -31,7 +31,6 @@ export default function Home(props) {
     DrawerActions,
     clickedProductItems
   } = useHooks() || {};
-  console.log(data)
   
   return (
     <>
