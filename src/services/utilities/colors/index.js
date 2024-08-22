@@ -104,6 +104,7 @@ export const colors = {
   // Shadow Color
   shadowColor1: '#000000',
   shadowColor2: 'rgba(0, 0, 0, 0.05)',
+  shadowColor3: 'rgba(0, 0, 0, 0.12)',
 
   // InputField Color
   inputfieldColor1: '#FFFFFF',

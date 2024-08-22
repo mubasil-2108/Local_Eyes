@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { width, height, totalSize } from 'react-native-dimension';
-import { Wrapper, Icons, Headers, Modals, Text, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Spacer, LocationLists, Images, Buttons, LocalsList } from '../../../components';
+import { Wrapper, Icons, Headers, Modals, Text, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Spacer, LocationLists, Images, Buttons, LocalsList, PlacesList } from '../../../components';
 import { useHooks } from './hooks'
 import { appImages, colors, routes, sizes, fontSizes, appFonts, appIcons, responsiveWidth, responsiveHeight } from '../../../services';
 import { GiftedChat, Bubble, InputToolbar, Message } from 'react-native-gifted-chat';
@@ -23,6 +23,7 @@ export default function Index(props) {
     search,
     pressed,
     setPressed,
+    images,
     setSearch,
     handleProductPressItem,
     dummyProductData,
@@ -36,9 +37,7 @@ export default function Index(props) {
 
   return (
     <>
-      <Wrapper
-        isMain
-        backgroundColor={colors.appColor1}>
+      <Wrapper isMain backgroundColor={colors.appColor1}>
         <StatusBars.Dark backgroundColor={colors.appColor1} />
         <Spacer />
         <Wrapper
@@ -56,7 +55,7 @@ export default function Index(props) {
             iconContainer={{ flexDirection: 'row' }}
             containerStyle={{ backgroundColor: colors.appColor1 }} />
         </Wrapper>
-        <ScrollViews.KeyboardAvoiding>
+        <ScrollViews.KeyboardAvoiding contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1 }}>
           <Wrapper marginHorizontalMedium>
             <Wrapper marginHorizontalZero paddingHorizontalSmall isBorderedWrapper style={{ borderColor: colors.borderColor4 }}>
               <Wrapper justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
@@ -146,45 +145,62 @@ export default function Index(props) {
             <Wrapper>
               <Text style={{ color: colors.appBgColor6, fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium }}>Unique Local Place</Text>
               <Spacer height={height(1)} />
+              <PlacesList data={images} />
+              <Spacer height={height(1)} />
+              <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter style={{ flexWrap: 'wrap' }}>
+                <Icons.Custom icon={appIcons.location} color={colors.iconColor1} size={sizes.icons.xSmall} />
+                <Spacer width={width(1)} />
+                <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.small }}>Bali, Indonesia</Text>
+              </Wrapper>
+
             </Wrapper>
           </Wrapper>
-
         </ScrollViews.KeyboardAvoiding>
-        <Wrapper background1 paddingVerticalBase paddingHorizontalBase justifyContentSpaceBetween flexDirectionRow>
-          {/* <TouchableOpacity
-           > */}
 
-          
-          <LinearGradient
-            // colors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
-            colors={pressed ? [colors.transparent, colors.transparent] : [colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={{
-              borderRadius: 28,
-              padding: 1,
-            }}
-          >
-            <Buttons.ColoredSmall
-              
-              onPressIn={() => setPressed(true)}
-              onPressOut={() => setPressed(false)}
-              gradientColors={[colors.buttonColor3, colors.buttonColor3]}
-              textStyle={{ textAlign: 'center', fontFamily: appFonts.interSemiBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}
-              buttonStyle={{ width: width(40), paddingHorizontal: width(3), paddingVertical: height(1.45), justifyContent: 'center', alignItems: 'center' }}
-              text={'Check Availability'} />
-          </LinearGradient>
-          {/* </TouchableOpacity> */}
-
-          <Buttons.ColoredSmall
-            // onPress={()=> navigation.navigate(routes.localPreview, {item})}
-            gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
-            textStyle={{ textAlign: 'justify', fontFamily: appFonts.interSemiBold, color: colors.appTextColor5, fontSize: fontSizes.regular }}
-            buttonStyle={{ width: width(40), paddingHorizontal: width(3), paddingVertical: height(1.6), justifyContent: 'center', alignItems: 'center' }}
-            text={'Book Now'} />
-        </Wrapper>
 
       </Wrapper>
+      <Wrapper
+        alignItemsCenter
+        backgroundColor={colors.appColor1}
+        paddingVerticalBase
+        paddingHorizontalBase
+        justifyContentSpaceBetween
+        flexDirectionRow
+        style={{
+          shadowColor: colors.shadowColor1,
+          shadowOffset: { width: 0, height: -5.93 },
+          shadowOpacity: 0.12,
+          shadowRadius: 30,
+          elevation: 50,
+        }}>
+
+        <LinearGradient
+          // colors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+          colors={pressed ? [colors.transparent, colors.transparent] : [colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={{
+            borderRadius: 28,
+            padding: 1,
+          }}
+        >
+          <Buttons.ColoredSmall
+
+            onPressIn={() => setPressed(true)}
+            onPressOut={() => setPressed(false)}
+            gradientColors={[colors.buttonColor3, colors.buttonColor3]}
+            textStyle={{ textAlign: 'center', fontFamily: appFonts.interSemiBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}
+            buttonStyle={{ width: width(40), paddingHorizontal: width(3), paddingVertical: height(1.45), justifyContent: 'center', alignItems: 'center' }}
+            text={'Check Availability'} />
+        </LinearGradient>
+        <Buttons.ColoredSmall
+          // onPress={()=> navigation.navigate(routes.localPreview, {item})}
+          gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+          textStyle={{ textAlign: 'justify', fontFamily: appFonts.interSemiBold, color: colors.appTextColor5, fontSize: fontSizes.regular }}
+          buttonStyle={{ width: width(40), paddingHorizontal: width(3), paddingVertical: height(1.6), justifyContent: 'center', alignItems: 'center' }}
+          text={'Book Now'} />
+      </Wrapper>
+
 
     </>
   );

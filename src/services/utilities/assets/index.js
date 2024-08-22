@@ -18,7 +18,10 @@ const appImages = {
     profile1: require('../../../assets/images/profile1.png'),
     profile2: require('../../../assets/images/profile2.png'),
     profile3: require('../../../assets/images/profile3.png'),
-
+    place1: require('../../../assets/images/place1.png'),
+    place2: require('../../../assets/images/place2.png'),
+    place3: require('../../../assets/images/place3.png'),
+    place4: require('../../../assets/images/place4.png'),
 
     logo: require('../../../assets/images/Logo.png'),
     confirm: require('../../../assets/images/confirm.png'),

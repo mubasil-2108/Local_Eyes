@@ -12,6 +12,7 @@ import * as Icons from '../../icons';
 import NotificationItem from '../notificationItems';
 import { LocationItems } from '../locationItems';
 import { LocalsItems, ProductItems, SubCategory } from '../localsItems';
+import { Places } from '../places';
 
 export const UsersListVerticalPrimary = ({ data, onPressItem, ...props }) => {
     return (
@@ -287,33 +288,50 @@ export const LocationLists = ({ data, ...props }) => {
 
     return (
         <FlatList
-              data={data}
-              renderItem={({item})=>{
+            data={data}
+            renderItem={({ item }) => {
                 return (
-                    <LocationItems  item={item} />
+                    <LocationItems item={item} />
 
                 )
-              }}
-              contentContainerStyle={{flex:1, justifyContent:'space-between'}}
-              keyExtractor={(item) => item.id}
-              horizontal={true} // Makes the list horizontal
-              showsHorizontalScrollIndicator={false} // Hide the horizontal scroll bar
-            />
+            }}
+            contentContainerStyle={{ flex: 1, justifyContent: 'space-between' }}
+            keyExtractor={(item) => item.id}
+            horizontal={true} // Makes the list horizontal
+            showsHorizontalScrollIndicator={false} // Hide the horizontal scroll bar
+        />
     );
 };
 
 export const LocalsList = ({ data, ...props }) => {
     return (
         <FlatList
-              data={data}
-              renderItem={({item})=>{
+            data={data}
+            renderItem={({ item }) => {
                 return (
                     <LocalsItems item={item} />
                 )
-              }}
+            }}
             //   contentContainerStyle={{flex:1, justifyContent:'space-between'}}
-              keyExtractor={(item) => item.id}
-            />
+            keyExtractor={(item) => item.id}
+        />
+    );
+};
+
+export const PlacesList = ({ data, ...props }) => {
+    return (
+        <FlatList
+            data={data}
+            horizontal
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => {
+                return (
+                    <Places item={item} />
+                )
+            }}
+            // contentContainerStyle={styles.imageContainer}
+            showsHorizontalScrollIndicator={false}
+        />
     );
 };
 
