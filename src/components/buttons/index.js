@@ -141,9 +141,9 @@ export const Colored = ({
     );
 }
 
-export const ColoredSmall = ({ text, onPress,gradientColors, isLoading, buttonColor, buttonStyle, disabled, customIcon, direction, textStyle, iconName, iconType, iconSize, iconColor, iconStyle }) => {
+export const ColoredSmall = ({ text, onPress,gradientColors, isLoading, onPressIn, onPressOut, buttonColor, buttonStyle, disabled, customIcon, direction, textStyle, iconName, iconType, iconSize, iconColor, iconStyle }) => {
     return (
-        <TouchableOpacity onPress={onPress} disabled={isLoading ? true : disabled} >
+        <TouchableOpacity onPress={onPress} onPressIn={onPressIn} onPressOut={onPressOut} disabled={isLoading ? true : disabled} >
            <LinearGradient
                     start={{ x: 0, y: 0 }}  // start position of gradient
                     end={{ x: 1, y: 0 }}    // End position of gradient

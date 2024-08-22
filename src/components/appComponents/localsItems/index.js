@@ -56,7 +56,7 @@ export const LocalsItems = ({item} ) => {
               padding: 0.5, // Border width
               borderRadius: 30,
               margin: width(0.1),
-              marginEnd:width(3),
+              marginEnd:width(2.3),
               marginBottom: height(0.5)
             }}
           >
@@ -70,7 +70,7 @@ export const LocalsItems = ({item} ) => {
               }}
             >
               <Wrapper backgroundColor={colors.appColor1} paddingVerticalTiny paddingHorizontalTiny justifyContentCenter alignItemsCenter style={{ borderWidth: 1, borderColor: 'transparent', borderRadius: 30 }}>
-                <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regularSmall }} >{badge}</Text>
+                <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.small, }} >{badge}</Text>
               </Wrapper>
             </LinearGradient>
           </LinearGradient>

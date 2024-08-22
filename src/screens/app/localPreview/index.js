@@ -21,6 +21,8 @@ export default function Index(props) {
     handlePressItem,
     data,
     search,
+    pressed,
+    setPressed,
     setSearch,
     handleProductPressItem,
     dummyProductData,
@@ -149,18 +151,37 @@ export default function Index(props) {
 
         </ScrollViews.KeyboardAvoiding>
         <Wrapper background1 paddingVerticalBase paddingHorizontalBase justifyContentSpaceBetween flexDirectionRow>
+          {/* <TouchableOpacity
+           > */}
+
+          
+          <LinearGradient
+            // colors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+            colors={pressed ? [colors.transparent, colors.transparent] : [colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={{
+              borderRadius: 28,
+              padding: 1,
+            }}
+          >
+            <Buttons.ColoredSmall
+              
+              onPressIn={() => setPressed(true)}
+              onPressOut={() => setPressed(false)}
+              gradientColors={[colors.buttonColor3, colors.buttonColor3]}
+              textStyle={{ textAlign: 'center', fontFamily: appFonts.interSemiBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}
+              buttonStyle={{ width: width(40), paddingHorizontal: width(3), paddingVertical: height(1.45), justifyContent: 'center', alignItems: 'center' }}
+              text={'Check Availability'} />
+          </LinearGradient>
+          {/* </TouchableOpacity> */}
+
           <Buttons.ColoredSmall
             // onPress={()=> navigation.navigate(routes.localPreview, {item})}
             gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
-            textStyle={{textAlign: 'center', fontFamily: appFonts.interSemiBold, color: colors.appTextColor5, fontSize: fontSizes.regular }}
-            buttonStyle={{width:width(40), paddingHorizontal:width(3), paddingVertical:height(1.6), justifyContent: 'center', alignItems: 'center' }}
-            text={'Check Availability'} />
-             <Buttons.ColoredSmall
-              // onPress={()=> navigation.navigate(routes.localPreview, {item})}
-                gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
-                textStyle={{textAlign: 'justify', fontFamily: appFonts.interSemiBold, color: colors.appTextColor5, fontSize: fontSizes.regular }}
-                buttonStyle={{width:width(40), paddingHorizontal:width(3),  paddingVertical:height(1.6), justifyContent: 'center', alignItems: 'center' }}
-                text={'Book Now'} />
+            textStyle={{ textAlign: 'justify', fontFamily: appFonts.interSemiBold, color: colors.appTextColor5, fontSize: fontSizes.regular }}
+            buttonStyle={{ width: width(40), paddingHorizontal: width(3), paddingVertical: height(1.6), justifyContent: 'center', alignItems: 'center' }}
+            text={'Book Now'} />
         </Wrapper>
 
       </Wrapper>
