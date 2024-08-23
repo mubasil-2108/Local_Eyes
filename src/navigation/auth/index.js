@@ -19,6 +19,8 @@ const AuthNavigation = () => {
             <AuthStack.Screen name={routes.createProfile} component={Auth.CreateProfile} />
             <AuthStack.Screen name={routes.addAddress} component={Auth.AddAddress} />
             <AuthStack.Screen name={routes.forgetPassword} component={Auth.ForgetPassword}/>
+            <AuthStack.Screen name={routes.localSignin} component={Auth.LocalSignin} />
+            <AuthStack.Screen name={routes.localProfile} component={Auth.LocalProfile} />
         </AuthStack.Navigator>
     )
 }

@@ -10,7 +10,7 @@ import { Screen } from 'react-native-screens';
 
 
 export default function Index(props) {
-  const { navigate } = props.navigation
+  const { navigate, goBack } = props.navigation
 
 
   const { Signin, email, setEmail, password, setPassword, togglePasswordVisibility, showPassword } = useHooks()
@@ -25,8 +25,8 @@ export default function Index(props) {
               buttonStyle={{ borderColor: colors.buttonBorder1, paddingVertical:1 }}
               rowReverse
               gradientColors={[colors.appColor2, colors.appColor3]}
-              onPress={()=>navigate(routes.localSignin)}
-              text={'Local'}
+              onPress={()=>navigate(routes.signin)}
+              text={'User'}
               textStyle={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.regular, color: colors.appTextColor1 }}
               customIconRight={appIcons.arrow_forward}
               iconSize={totalSize(1.6)}
@@ -152,7 +152,7 @@ export default function Index(props) {
             <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder3 }} customIcon={appIcons.apple} iconSize={sizes.icons.medium} />
           </Wrapper>
           <Wrapper marginVerticalSmall justifyContentCenter alignItemsCenter>
-            <TouchableOpacity onPress={() => navigate(routes.createAccount, { fromSignin: 'user' })}>
+            <TouchableOpacity onPress={() => navigate(routes.createAccount,{ fromSignin: 'local' })}>
               <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Don't have an account? <Text style={{ color: colors.appTextColor2, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Register</Text> </Text>
             </TouchableOpacity>
           </Wrapper>

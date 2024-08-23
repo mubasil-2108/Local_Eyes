@@ -147,12 +147,28 @@ export default function Index(props) {
               <Spacer height={height(1)} />
               <PlacesList data={images} />
               <Spacer height={height(1)} />
-              <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter style={{ flexWrap: 'wrap' }}>
-                <Icons.Custom icon={appIcons.location} color={colors.iconColor1} size={sizes.icons.xSmall} />
-                <Spacer width={width(1)} />
-                <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.small }}>Bali, Indonesia</Text>
+              <Wrapper justifyContentFlexstart flexDirectionRow style={{ flexWrap: 'wrap' }}>
+                <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter style={{ marginRight: width(6) }}>
+                  <Icons.Custom icon={appIcons.location} color={colors.iconColor1} size={sizes.icons.xSmall} />
+                  <Spacer width={width(1)} />
+                  <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.small }}>Bali, Indonesia</Text>
+                </Wrapper>
+                <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter style={{ marginRight: width(6) }}>
+                  <Icons.Custom icon={appIcons.location} color={colors.iconColor1} size={sizes.icons.xSmall} />
+                  <Spacer width={width(1)} />
+                  <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.small }}>Phuket, Thiland</Text>
+                </Wrapper>
+                <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter style={{ marginRight: width(6) }}>
+                  <Icons.Custom icon={appIcons.location} color={colors.iconColor1} size={sizes.icons.xSmall} />
+                  <Spacer width={width(1)} />
+                  <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.small }}>Italy</Text>
+                </Wrapper>
+                <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter style={{ marginRight: width(6) }}>
+                  <Icons.Custom icon={appIcons.location} color={colors.iconColor1} size={sizes.icons.xSmall} />
+                  <Spacer width={width(1)} />
+                  <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.small }}>Jumerah, Dubai</Text>
+                </Wrapper>
               </Wrapper>
-
             </Wrapper>
           </Wrapper>
         </ScrollViews.KeyboardAvoiding>

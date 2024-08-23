@@ -7,7 +7,7 @@ import { useHooks } from './hooks';
 import { Signup } from '../../../services/utilities/firebaseUtil/firebaseAuth';
 export default function Index(props) {
     const { navigate, } = props.navigation
-    const { phoneNumberRef, phoneInputRef, handleButtonPress, toggleCheckbox, phoneNumber, setPhone, isChecked, email, setEmail, password, setPassword, togglePasswordVisibility, showPassword, name, setName, confirmPassword, setConfirmPassword, toggleConfirmPasswordVisibility, showConfirmPassword } = useHooks()
+    const { phoneNumberRef, phoneInputRef, handleSigninPress, handleProfilePress, handleButtonPress, toggleCheckbox, phoneNumber, setPhone, isChecked, email, setEmail, password, setPassword, togglePasswordVisibility, showPassword, name, setName, confirmPassword, setConfirmPassword, toggleConfirmPasswordVisibility, showConfirmPassword } = useHooks()
     // console.log("phone #: ",phoneNumber)
     return (
         <Wrapper isMain backgroundColor={colors.appBgColor2} style={[{}]}>
@@ -150,7 +150,8 @@ export default function Index(props) {
                             onPress={() => {
                                 // phoneNumberRef();
                                 // Signup(email, password, setEmail, setPassword, confirmPassword, setConfirmPassword, phoneNumber, isChecked, routes.createProfile)
-                                navigate(routes.createProfile)
+                                // navigate(routes.createProfile)
+                                handleProfilePress();
                             }}
                             buttonStyle={{ marginHorizontal: 0 }}
                             iconSize={totalSize(2)}
@@ -185,7 +186,7 @@ export default function Index(props) {
                         <Icons.Button isRound buttonSize={width(9)} buttonColor={colors.appColor1} buttonStyle={{ borderWidth: width(0.4), borderColor: colors.buttonBorder3 }} customIcon={appIcons.apple} iconSize={sizes.icons.medium} />
                     </Wrapper>
                     <Wrapper marginVerticalSmall justifyContentCenter alignItemsCenter>
-                        <TouchableOpacity onPress={() => navigate(routes.signin)}>
+                        <TouchableOpacity onPress={()=>handleSigninPress()}>
                             <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Already have an account? <Text style={{ color: colors.appTextColor4, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Login</Text> </Text>
                         </TouchableOpacity>
                     </Wrapper>

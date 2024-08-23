@@ -19,6 +19,7 @@ export const routes = {
 
     //profile
     createProfile: 'createProfile',
+    localProfile: 'localProfile',
     addAddress: 'addAddress',
 
     //auth
@@ -26,6 +27,7 @@ export const routes = {
     signin: 'signin',
     createAccount: 'createAccount',
     forgetPassword: 'forgetPassword',
+    localSignin: 'localSignin',
 
     //app
     bottomTab: 'bottomTab',

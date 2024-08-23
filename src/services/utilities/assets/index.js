@@ -69,6 +69,8 @@ const appIcons = {
     calendar:require('../../../assets/icons/calendar.png'),
     dropDown:require('../../../assets/icons/dropDown.png'),
     location:require('../../../assets/icons/location.png'),
+    pin: require('../../../assets/icons/pin.png'),
+    time: require('../../../assets/icons/time.png'),
     home: require('../../../assets/icons/home.png'),
     log_out: require('../../../assets/icons/log_out.png'),
     headphone: require('../../../assets/icons/headphone.png'),
@@ -92,6 +94,7 @@ const appIcons = {
     car: require('../../../assets/icons/car.png'),
     people: require('../../../assets/icons/people.png'),
     experience: require('../../../assets/icons/experience.png'),
+    user: require('../../../assets/icons/user.png'),
 
     add:require('../../../assets/icons/add.png'),
 

@@ -5,6 +5,8 @@ import ForgetPassword from './forgetPassword'
 import OnBoarding from './onBoarding'
 import CreateProfile from './createProfile'
 import AddAddress from './addAddress'
+import LocalSignin from './localSignin'
+import LocalProfile from './localProfile'
 
 export {
     Splash,
@@ -13,5 +15,7 @@ export {
     ForgetPassword,
     OnBoarding,
     CreateProfile,
-    AddAddress
+    AddAddress,
+    LocalSignin,
+    LocalProfile,
 }
