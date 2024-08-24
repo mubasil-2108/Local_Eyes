@@ -157,7 +157,7 @@ export const ColoredSmall = ({ text, onPress,gradientColors, isLoading, onPressI
                         <Icons.Custom
                             icon={customIcon}
                             size={iconSize ? iconSize : totalSize(2)}
-                            color={iconColor ? iconColor : colors.appTextColor6}
+                            color={iconColor ? iconColor : null}
                         />
                         :
                         iconName ?

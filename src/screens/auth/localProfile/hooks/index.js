@@ -7,6 +7,7 @@ import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import { useRoute } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { colors } from "../../../../services";
 
 
 export function useHooks() {
@@ -14,6 +15,14 @@ export function useHooks() {
     // const formData = route.params.formData || {};
 
     // const phoneNumber = route.params.phone || '';
+    const [counter, setCounter] = useState({
+        adults: 0,
+        toddler: 0,
+        infant: 0,
+      });
+      const [pressed, setPressed] = useState(false);
+      const [cameraPressed, setCameraPressed] = useState(false);
+
     const [fullName, setFullName] = useState('');
     const [userID, setUserID] = useState('');
     const [email, setEmail] = useState('');
@@ -25,6 +34,15 @@ export function useHooks() {
     const [modalVisible, setModalVisible] = useState(false);
     console.log("Route params:", route.params);
     const [profileImage, setProfileImage] = useState('');
+    const [idCard, setIdCard] = useState('');
+    const [currentWrapper, setCurrentWrapper] = useState(0);
+    const handleNext = () => {
+        if (currentWrapper < 2) { // Stop incrementing after index 2
+            setCurrentWrapper(prev => prev + 1);
+        }
+    };
+
+
     console.log("UIDD", userID);
     // console.log("UIDDD", phoneNumber);
 
@@ -47,8 +65,30 @@ export function useHooks() {
         fetchPhoneNumber();
     }, []);
 
+    
 
+     // Function to handle increment
+  const increment = (type) => {
+    setCounter(prevCounters => ({
+      ...prevCounters,
+      [type]: prevCounters[type] + 1,
+    }));
+  };
 
+  // Function to handle decrement
+  const decrement = (type) => {
+    setCounter(prevCounters => ({
+      ...prevCounters,
+      [type]: Math.max(prevCounters[type] - 1, 0), // Ensure value doesn't go below 0
+    }));
+  };
+
+  const getGradiantColors = (index) => {
+    if (currentWrapper >= index) {
+        return [colors.appColor3, colors.appColor3, colors.appColor3]; // Filled color for active and previous wrappers
+    }
+    return [colors.appColor7, colors.appColor7]; // Default color
+};
     const uploadImage = async (imageUri, imageName) => {
         if (typeof imageUri !== 'string' || !imageUri) {
             throw new Error('Image URI must be a non-empty string.');
@@ -254,6 +294,22 @@ export function useHooks() {
         setDate(formattedText);
     };
 
+    const handleIDCard = ()=>{
+        ImagePicker.openPicker({
+            cropping: true,
+            mediaType: 'photo',
+            // width: 700,
+            // height: 700,
+        }).then(image => {
+            console.log('Selected Gallery Image:', image); // Check the image object
+            if (image && image.path) {
+                setIdCard(image.path);
+            }
+        }).catch(error => {
+            console.log('Gallery Error: ', error);
+        });
+    }
+
     return {
         fullName,
         setFullName,
@@ -273,6 +329,18 @@ export function useHooks() {
         // truncatedAddress,
         selectGender,
         setSelectGender,
-        modalVisible
+        modalVisible,
+        increment,
+        decrement,
+        counter,
+        pressed,
+        setPressed,
+        idCard,
+        handleIDCard,
+        cameraPressed,
+        setCameraPressed,
+        currentWrapper,
+        handleNext,
+        getGradiantColors
     }
 }

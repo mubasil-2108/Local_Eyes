@@ -32,6 +32,7 @@
     "react": "^18.2.0",
     "react-native": "^0.74.4",
     "react-native-animatable": "^1.4.0",
+    "react-native-country-flag": "^2.0.2",
     "react-native-device-info": "^11.1.0",
     "react-native-dimension": "^1.0.6",
     "react-native-element-dropdown": "^2.12.1",

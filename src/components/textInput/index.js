@@ -4,6 +4,7 @@ import { Icon } from '@rneui/base';
 import { height, totalSize, width } from 'react-native-dimension';
 import { Dropdown } from 'react-native-element-dropdown';
 import PhoneInput from 'react-native-phone-input';
+import CountryFlag from 'react-native-country-flag';
 import { colors, appStyles, sizes, fontSizes, responsiveHeight, appFonts, appIcons } from '../../services';
 import * as Icons from '../icons';
 import Wrapper from '../wrapper';
@@ -21,6 +22,8 @@ const Colored = ({
     right, keyboardType, iconStyleRight, customIconRight, error,
     left, customIconLeft, iconNameLeft, iconTypeLeft, iconSizeLeft,
     iconColorLeft, iconStyleLeft, onPressIconLeft,
+    flagCode,
+    flageSize,
     placeholderTextColor
 }) => {
     return (
@@ -48,17 +51,22 @@ const Colored = ({
                     left ?
                         left
                         :
-                        customIconLeft ?
+                        flagCode ? // Replace icon with CountryFlag if flagCode is provided
                             <Wrapper style={{ alignItems: 'center', marginLeft: sizes.marginHorizontal / 2 }}>
-                                <Icons.Custom icon={customIconLeft} size={iconSizeLeft ? iconSizeLeft : sizes.icons.medium} color={iconColorLeft ? iconColorLeft : colors.appTextColor1} containerStyle={iconStyleLeft} />
+                                <CountryFlag isoCode={flagCode} size={flageSize} style={iconStyleLeft} />
                             </Wrapper>
                             :
-                            iconNameLeft ?
+                            customIconLeft ?
                                 <Wrapper style={{ alignItems: 'center', marginLeft: sizes.marginHorizontal / 2 }}>
-                                    <Icon name={iconNameLeft} type={iconTypeLeft} size={iconSizeLeft ? iconSizeLeft : sizes.icons.medium} color={iconColorLeft ? iconColorLeft : colors.appTextColor4} iconStyle={iconStyleLeft} onPress={onPressIconLeft} />
+                                    <Icons.Custom icon={customIconLeft} size={iconSizeLeft ? iconSizeLeft : sizes.icons.medium} color={iconColorLeft ? iconColorLeft : colors.appTextColor1} containerStyle={iconStyleLeft} />
                                 </Wrapper>
                                 :
-                                null
+                                iconNameLeft ?
+                                    <Wrapper style={{ alignItems: 'center', marginLeft: sizes.marginHorizontal / 2 }}>
+                                        <Icon name={iconNameLeft} type={iconTypeLeft} size={iconSizeLeft ? iconSizeLeft : sizes.icons.medium} color={iconColorLeft ? iconColorLeft : colors.appTextColor4} iconStyle={iconStyleLeft} onPress={onPressIconLeft} />
+                                    </Wrapper>
+                                    :
+                                    null
                 }
                 <View style={{ flex: 1 }}>
                     {
@@ -120,6 +128,107 @@ const Colored = ({
     );
 }
 
+const Counter = ({
+    iconNameRight, inputRef, iconTypeRight, returnKeyLabel,
+    returnKeyType, onSubmitEditing, onPress,
+    maxLength, autoFocus, title, isButton,
+    duration, titleStyle, placeholder, editable,
+    animation, multiline, onFocus, onBlur,
+    onChangeText, secureTextEntry, value,
+    iconColorRight, iconSizeRight, containerStyle,
+    inputContainerStyle, onPressIconRight, inputStyle,
+    right, keyboardType, iconStyleRight, customIconRight, error,
+    left, customIconLeft, iconNameLeft, iconTypeLeft, iconSizeLeft,
+    iconColorLeft, iconStyleLeft, onPressIconLeft,
+    flagCode, increment, decrement, counter,
+    flageSize,
+    placeholderTextColor
+}) => {
+    return (
+        <TouchableOpacity
+            activeOpacity={1}
+            onPress={onPress}
+            disabled={!onPress}
+            style={[{ marginHorizontal: sizes.marginHorizontal }, containerStyle]}>
+            {
+                title ?
+                    <Wrapper style={{ marginHorizontal: 0 }}>
+                        <Text isInputTitle style={[{}, titleStyle]}>{title}</Text>
+                        <Spacer isTiny />
+                    </Wrapper>
+                    :
+                    null
+            }
+            <Wrapper style={[appStyles.inputContainerColored, {
+                borderRadius: sizes.inputRadius,
+                borderWidth: responsiveHeight(0.1),
+                backgroundColor: colors.inputfieldColor1,
+                marginHorizontal: 0
+            }, inputContainerStyle]}>
+                {
+                    left ?
+                        left
+                        :
+                        flagCode ? // Replace icon with CountryFlag if flagCode is provided
+                            <Wrapper style={{ alignItems: 'center', marginLeft: sizes.marginHorizontal / 2 }}>
+                                <CountryFlag isoCode={flagCode} size={flageSize} style={iconStyleLeft} />
+                            </Wrapper>
+                            :
+                            customIconLeft ?
+                                <Wrapper style={{ alignItems: 'center', marginLeft: sizes.marginHorizontal / 2 }}>
+                                    <Icons.Custom icon={customIconLeft} size={iconSizeLeft ? iconSizeLeft : sizes.icons.medium} color={iconColorLeft ? iconColorLeft : colors.appTextColor1} containerStyle={iconStyleLeft} />
+                                </Wrapper>
+                                :
+                                iconNameLeft ?
+                                    <Wrapper style={{ alignItems: 'center', marginLeft: sizes.marginHorizontal / 2 }}>
+                                        <Icon name={iconNameLeft} type={iconTypeLeft} size={iconSizeLeft ? iconSizeLeft : sizes.icons.medium} color={iconColorLeft ? iconColorLeft : colors.appTextColor4} iconStyle={iconStyleLeft} onPress={onPressIconLeft} />
+                                    </Wrapper>
+                                    :
+                                    null
+                }
+                <View style={{ flex: 1 }}>
+                    {
+                        onPress ?
+                            <Wrapper marginHorizontalBase style={{ height: sizes.inputHeight, justifyContent: 'center', }}>
+                                <Text isMedium style={value ? null : appStyles.textGray}>{value ? value : placeholder}</Text>
+                            </Wrapper>
+                            :
+                            null
+                    }
+                </View>
+                <View style={{ flex: 0.5 }}>
+                    {
+                        right ?
+                            right
+                            :
+                            customIconRight ?
+                                <Wrapper style={{ marginLeft: sizes.marginHorizontal / 2, marginRight: sizes.marginHorizontal / 2 }}>
+                                    <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
+                                        <Icons.CounterButton isRound buttonColor={colors.transparent} buttonSize={sizes.icons.mediumLarge} customIcon={appIcons.minus_1} iconSize={iconSizeRight ? iconSizeRight : sizes.icons.medium} iconColor={iconColorRight ? iconColorRight : colors.appTextColor1} buttonStyle={iconStyleRight} onPress={decrement} />
+                                        <Text style={{ fontFamily: appFonts.satoshiRegular, color: colors.appTextColor3, fontSize: fontSizes.medium }}>{counter}</Text>
+                                        <Icons.CounterButton isRound buttonColor={colors.transparent} buttonSize={sizes.icons.mediumLarge} customIcon={appIcons.plus_1} iconSize={iconSizeRight ? iconSizeRight : sizes.icons.medium} iconColor={iconColorRight ? iconColorRight : colors.appTextColor1} buttonStyle={iconStyleRight} onPress={increment} />
+                                    </Wrapper>
+
+                                </Wrapper>
+                                :
+                                null
+                    }
+                </View>
+            </Wrapper>
+            {
+                error ?
+                    <Wrapper animation="shake">
+                        <Spacer isTiny />
+                        <Text isSmall style={[{ color: colors.error, textAlign: 'right' }]}>{error}</Text>
+                    </Wrapper>
+                    :
+                    null
+            }
+        </TouchableOpacity>
+    );
+}
+
+
 export const Phone = ({
     iconNameRight, inputRef, iconTypeRight, returnKeyLabel,
     returnKeyType, onSubmitEditing, onPress,
@@ -165,8 +274,8 @@ export const Phone = ({
                         <PhoneInput
 
                             ref={inputRef}
-                            
-                            
+
+
                             onChangeFormattedText={onChangeText}
                             textProps={{
                                 placeholder: placeholder || '(###) ###-####',
@@ -206,8 +315,8 @@ export const Phone = ({
 }
 export const DropDown = ({
     onPress, titleStyle, placeholder, containerStyles, onChange,
-    inputContainerStyle, inputStyle, error, data, title,customIconLeft,iconSizeLeft,
-    iconColorLeft,iconNameLeft,iconTypeLeft,iconStyleLeft ,onPressIconLeft, left, values
+    inputContainerStyle, inputStyle, error, data, title, customIconLeft, iconSizeLeft,
+    iconColorLeft, iconNameLeft, iconTypeLeft, iconStyleLeft, onPressIconLeft, left, values
 }) => {
     const [value, setValue] = useState(values || null);
     const [isFocus, setIsFocus] = useState(false);
@@ -256,7 +365,7 @@ export const DropDown = ({
                         data={data}
                         labelField="label"
                         valueField="value"
-                        placeholderStyle={{ color: colors.placeHolderColor, fontFamily: appFonts.satoshiRegular, fontSize: fontSizes.regular}}
+                        placeholderStyle={{ color: colors.placeHolderColor, fontFamily: appFonts.satoshiRegular, fontSize: fontSizes.regular }}
                         placeholder={!isFocus ? placeholder : '...'}
                         value={value}
                         onFocus={() => setIsFocus(true)}
@@ -273,7 +382,7 @@ export const DropDown = ({
                         itemTextStyle={{ color: colors.appTextColor1, fontFamily: appFonts.satoshiRegular, fontSize: fontSizes.regular }}
                         itemContainerStyle={{ marginVertical: width(1), borderRadius: width(2), }}
                         renderRightIcon={() => (
-                            <Icons.Custom size={sizes.icons.tiny}   icon={appIcons.dropDown}/>
+                            <Icons.Custom size={sizes.icons.tiny} icon={appIcons.dropDown} />
                         )}
                     />
                 }
@@ -562,4 +671,4 @@ const SearchBar = ({ value, placeholder, iconStyleLeft, iconSizeRight, iconStyle
     )
 }
 
-export { Colored, Bordered, Underlined, SearchBar }
+export { Colored, Bordered, Underlined, SearchBar, Counter }

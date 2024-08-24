@@ -22,6 +22,7 @@ const appImages = {
     place2: require('../../../assets/images/place2.png'),
     place3: require('../../../assets/images/place3.png'),
     place4: require('../../../assets/images/place4.png'),
+    picker:require('../../../assets/images/picker.png'),
 
     logo: require('../../../assets/images/Logo.png'),
     confirm: require('../../../assets/images/confirm.png'),
@@ -79,6 +80,8 @@ const appIcons = {
     infoCircle: require('../../../assets/icons/infoCircle.png'),
     plus: require('../../../assets/icons/plus.png'),
     minus: require('../../../assets/icons/minus.png'),
+    plus_1: require('../../../assets/icons/plus_1.png'),
+    minus_1: require('../../../assets/icons/minus_1.png'),
     chevron_left: require('../../../assets/icons/chevron_left.png'),
     notification: require('../../../assets/icons/notification.png'),
     drawer: require('../../../assets/icons/drawer.png'),
@@ -95,6 +98,10 @@ const appIcons = {
     people: require('../../../assets/icons/people.png'),
     experience: require('../../../assets/icons/experience.png'),
     user: require('../../../assets/icons/user.png'),
+    adults: require('../../../assets/icons/adults.png'),
+    young: require('../../../assets/icons/young.png'),
+    baby: require('../../../assets/icons/baby.png'),
+    picker:require('../../../assets/icons/picker.png'),
 
     add:require('../../../assets/icons/add.png'),
 

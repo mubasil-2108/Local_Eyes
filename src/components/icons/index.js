@@ -93,7 +93,7 @@ export const Button = ({
                             containerStyle={{}}
                             value={badgeValue}
                             textStyle={[appStyles.textTiny, appStyles.textWhite, appStyles.fontBold]}
-                            badgeStyle={[{  backgroundColor: colors.error, borderWidth: 0, borderRadius: 100 }, badgeStyle]}
+                            badgeStyle={[{ backgroundColor: colors.error, borderWidth: 0, borderRadius: 100 }, badgeStyle]}
                         />
                     </Wrapper>
                     :
@@ -102,7 +102,99 @@ export const Button = ({
         </TouchableOpacity>
     );
 }
-export const Custom = ({ icon, size, animation, duration, color, onPress,imageBGColor, containerStyle }) => {
+export const CounterButton = ({
+    buttonStyle, onPress, shadow, shadowColored, iconSize, iconColor,
+    iconName, iconType, buttonColor, buttonSize,
+    customIcon, svgIcon, iconStyle, disabled, isRound, showBadge,
+    badgeValue,
+    //text props
+    text, textStyle, textColor, badgeStyle
+}) => {
+    const SvgIcon = svgIcon
+    const defaultButtonsize = totalSize(5)
+    const _buttonSize = buttonSize ? buttonSize : defaultButtonsize
+    const defaulIconSize = iconSize ? iconSize : sizes.icons.large
+    return (
+        <TouchableOpacity
+            onPress={onPress}
+            disabled={!onPress || disabled}
+            style={
+                [styles.IconButtonContainer,
+                isRound && { borderRadius: 100 },
+                {
+                    height: _buttonSize,
+                    width: _buttonSize,
+                    backgroundColor: buttonColor ? buttonColor : colors.appBgColor1
+                },
+                shadow ? appStyles.shadow : null,
+                shadowColored ? appStyles.shadowColored : null,
+                    buttonStyle]
+            }
+        >
+            {
+                svgIcon ?
+                    <Wrapper style={iconStyle}>
+                        <SvgIcon
+                            height={defaulIconSize}
+                            width={defaulIconSize}
+                        />
+                    </Wrapper>
+                    :
+                    customIcon ?
+                        <Wrapper
+                            style={
+                                [styles.IconButtonContainer,
+                                isRound && { borderRadius: 100 },
+                                {
+                                    height: _buttonSize,
+                                    width: _buttonSize,
+                                    backgroundColor: buttonColor ? buttonColor : colors.appBgColor1
+                                },
+                                shadow ? appStyles.shadow : null,
+                                shadowColored ? appStyles.shadowColored : null,
+                                    buttonStyle]
+                            }
+                            isGradient
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+
+                            gradiantColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}>
+                            <Custom
+                                icon={customIcon}
+                                size={defaulIconSize}
+                                color={iconColor}
+                                containerStyle={iconStyle}
+                            />
+                        </Wrapper>
+                        :
+                        text ?
+                            <Text isRegular isMediumFont style={[{ color: textColor || colors.appColor1 }, textStyle]}>{text}</Text>
+                            :
+                            <Icon
+                                name={iconName ? iconName : "heart"}
+                                type={iconType ? iconType : "material-community"}
+                                size={defaulIconSize}
+                                color={iconColor ? iconColor : colors.appColor1}
+                                style={iconStyle}
+                            />
+            }
+            {
+                showBadge ?
+                    <Wrapper isAbsolute style={{ top: 2.5, right: 2.5 }}>
+                        <Badge
+                            containerStyle={{}}
+                            value={badgeValue}
+                            textStyle={[appStyles.textTiny, appStyles.textWhite, appStyles.fontBold]}
+                            badgeStyle={[{ backgroundColor: colors.error, borderWidth: 0, borderRadius: 100 }, badgeStyle]}
+                        />
+                    </Wrapper>
+                    :
+                    null
+            }
+        </TouchableOpacity>
+    );
+}
+export const Custom = ({ icon, size, animation, duration, color, onPress, imageBGColor, containerStyle }) => {
     const defaulSize = totalSize(5)
     return (
         <Wrapper animation={animation} duration={duration} style={containerStyle}>
@@ -133,7 +225,7 @@ export const WithText = ({ text, containerStyle, title, customIcon, onPress, tin
                     </Wrapper>
                     :
                     customIcon ?
-                        <Custom icon={customIcon? customIcon:null} size={defaulIconSize} color={tintColor && tintColor} />
+                        <Custom icon={customIcon ? customIcon : null} size={defaulIconSize} color={tintColor && tintColor} />
                         :
                         <Icon name={iconName ? iconName : 'email'} type={iconType ? iconType : 'material-community'} size={defaulIconSize} color={tintColor ? tintColor : colors.appTextColor1} iconStyle={iconStyle} />
             }

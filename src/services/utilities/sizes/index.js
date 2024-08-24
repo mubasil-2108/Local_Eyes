@@ -81,6 +81,7 @@ export const sizes = {
     logo: 80,
     logoHeight: responsiveHeight(15),
     placeHeight: responsiveHeight(17),
+    logoHeightLarge: responsiveWidth(50),
     logoButtonHeight: responsiveHeight(4),
     logoWidth: responsiveWidth(35),
     placeWidth: responsiveWidth(40),
