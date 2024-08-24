@@ -3,6 +3,8 @@ import { appImages } from "../../../../services";
 
 export function useHooks() {
     const [pressed, setPressed] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+
     const images = [
       { id: '1', source: appImages.place1 },
       { id: '2', source: appImages.place2 },
@@ -13,6 +15,8 @@ export function useHooks() {
     return { 
        pressed,
        setPressed,
-       images
+       images,
+       setModalVisible,
+       modalVisible
      }
 }

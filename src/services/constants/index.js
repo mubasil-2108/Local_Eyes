@@ -41,6 +41,7 @@ export const routes = {
     privacy: 'privacy',
     aboutUs: 'aboutUs',
     localPreview: 'localPreview',
+    chatScreen:'chatScreen',
 
     dummyScreen:'DummyScreen',
     homeStackScreen: 'HomeStackScreen',

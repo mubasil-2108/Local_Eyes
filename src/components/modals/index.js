@@ -13,6 +13,7 @@ import * as Buttons from '../buttons';
 import * as ScrollViews from '../scrollViews';
 import * as TextInputs from '../textInput'
 import { useHooks } from './hooks'
+import { Calendar } from 'react-native-calendars';
 import LinearGradient from 'react-native-linear-gradient';
 import CommonNavigation from '../../navigation/common';
 import { screensEnabled } from 'react-native-screens';
@@ -152,7 +153,7 @@ export const Swipable = ({
                                         <Text style={{ fontFamily: appFonts.interBold, fontSize: fontSizes.h6, color: colors.appTextColor6 }}>{headerTitle}</Text>
                                     </Wrapper>
                                     <Wrapper  >
-                                    <Text style={{ fontFamily: appFonts.interMedium, fontSize: fontSizes.small, textAlign: 'center', color: colors.appTextColor7 }}>{data}</Text>
+                                        <Text style={{ fontFamily: appFonts.interMedium, fontSize: fontSizes.small, textAlign: 'center', color: colors.appTextColor7 }}>{data}</Text>
                                     </Wrapper>
                                     <Wrapper marginVerticalMedium >
                                         <Buttons.Colored
@@ -160,7 +161,7 @@ export const Swipable = ({
                                             buttonStyle={{ marginHorizontal: 0 }}
                                             text={'Continue'}
                                             // iconContainer={{ left: width(34) }}
-                                            gradientColors={[colors.buttonColor1,colors.buttonColor1, colors.buttonColor2]}
+                                            gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
                                             textStyle={{
                                                 color: colors.appTextColor5,
                                                 fontFamily: appFonts.interSemiBold,
@@ -209,19 +210,87 @@ export const PopupPrimary = ({
     headerTitleStyle, preBottom, headerStyle, closeIconSize, rightContainerStyle, closeIconContainerSize,
     buttonWrapperShadow, headerBottom, titleStyle, buttonText1Style, buttonText2Style, headerSubtitleStyle, headerSubtitle,
     buttonsDirection, buttonsContainerStyle, mainContainerStyle, containerStyle,
-
+    calender,
     //loaders
     loadingButton1, loadingButton2,
     // New prop
 }) => {
 
-
+    const { selectedDate, pressed, togglePressed, buttonData, handleDateChange, onDatePress, setSelectedDate } = useHooks();
     // manage keyboard
     const keyboardVisible = useKeyboardStatus()
 
     const defaultTopMargin = Platform.OS === 'ios' ? height(50) : height(40)
     const customTopMargin = keyboardVisible ? height(10) : topMargin ? Platform.OS === 'ios' ? topMargin : topMargin - height(10) : defaultTopMargin
     const isRowButtons = buttonsDirection === 'row' || buttonsDirection === 'row-reverse'
+
+    const CustomHeader = ({ date, onPrevious, onNext }) => {
+        const month = date.toLocaleString('default', { month: 'long' });
+        const year = date.getFullYear();
+        return (
+            <Wrapper justifyContentCenter alignItemsCenter flexDirectionRow>
+                <Text style={{ color: colors.appTextColor11, fontFamily: appFonts.appTextRegular, fontSize: fontSizes.regular }}>{`${month} ${year}`}</Text>
+            </Wrapper>
+        )
+    };
+    const CustomArrow = (direction) => {
+        const icon = direction === 'left' ? appIcons.calendarLeft : appIcons.calendarRight;
+        // const previous = subtractMonth => subtractMonth();
+        // const month = direction === 'left' ? previous : null;
+        return (
+            <Icons.Button
+                customIcon={icon}
+                iconColor={colors.iconColor9}
+                buttonColor={colors.transparent}
+                iconSize={sizes.icons.tiny}
+            />
+        );
+    };
+    const CustomDay = ({ date, state }) => {
+        const isSelected = selectedDate === date.dateString;
+        return (
+            <TouchableOpacity onPress={() => onDatePress(date)} style={{ flex: 1 }}>
+                {isSelected ? (
+                    <Wrapper
+                        isGradient
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        gradiantColors={isSelected ? [colors.appColor5, colors.appColor5, colors.appColor3,] : [colors.transparent, colors.transparent]}
+                        style={
+                            {
+                                width: 33,
+                                height: 33,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: 50,
+                            }}>
+                        <Wrapper alignItemsCenter>
+                            <Text style={[{ color: colors.appTextColor11, fontSize: fontSizes.medium }, { color: colors.appTextColor5 }]}>
+                                {date.day}
+                            </Text>
+                        </Wrapper>
+                    </Wrapper>
+                ) : (
+
+                    <Wrapper isGradient
+                        gradiantColors={[colors.transparent, colors.transparent]}
+                        style={{
+                            width: 33,
+                            height: 33,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: 50,
+                            // Non-selected background color
+                        }}>
+                        <Text style={{ fontSize: fontSizes.medium, color: colors.appTextColor11 }}>
+                            {date.day}
+                        </Text>
+                    </Wrapper>
+                )}
+            </TouchableOpacity>
+
+        );
+    };
     return (
         <Swipable
             visible={visible}
@@ -320,6 +389,64 @@ export const PopupPrimary = ({
                                     <Text isRegular style={[appStyles.textCenter]}>{info}</Text>
                                 </Wrapper>
                                 <Spacer isBasic />
+                            </>
+                            :
+                            null
+                    }
+                    {
+                        calender ?
+                            <>
+                                <Wrapper paddingHorizontalTiny paddingVerticalTiny isBorderedWrapper justifyContentCenter>
+                                    <Calendar
+                                        dayComponent={CustomDay}
+                                        style={{ flex: 1, width: '100%' }}
+                                        hideExtraDays={true}
+                                        renderArrow={(direction) => CustomArrow(direction)}
+                                        onDayPress={day => onDatePress(day)}
+                                        onPressArrowLeft={subtractMonth => subtractMonth()}
+                                        onPressArrowRight={addMonth => addMonth()}
+                                        renderHeader={(date) => (
+                                            <CustomHeader
+                                                date={new Date(date)}
+                                                onPrevious={() => console.log('Previous Month')}
+                                                onNext={() => console.log('Next Month')}
+                                            />
+                                        )}
+                                    />
+                                </Wrapper>
+                                <Spacer isBasic />
+                                <Wrapper marginHorizontalBase >
+                                    <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium, color: colors.appTextColor6 }}>Time Slots</Text>
+                                    <Spacer isSmall />
+                                    <Wrapper alignItemsCenter flex={1}  flexDirectionRow style={{flexWrap:'wrap'}}>
+                                    {buttonData.map((text, index) => (
+                                        <TouchableOpacity key={index} onPress={() => togglePressed(index)}>
+                                            <LinearGradient
+                                                // colors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                                colors={pressed[index] ? [colors.transparent, colors.transparent] : [colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                                start={{ x: 0, y: 0 }}
+                                                end={{ x: 1, y: 0 }}
+                                                style={{
+                                                    borderRadius: 28,
+                                                    padding: 1,
+                                                    marginBottom:height(1),
+                                                    marginRight:width(1)
+                                                }}
+                                            >
+                                                <Wrapper 
+                                                isGradient
+                                                start={{ x: 0, y: 0 }}
+                                                end={{ x: 1, y: 0 }}
+                                                 style={{  justifyContent: 'center', borderRadius: 50, paddingVertical:sizes.TinyMargin, paddingHorizontal:sizes.marginHorizontal2 }} 
+                                                 gradiantColors={pressed[index] ? [colors.buttonColor1, colors.buttonColor1, colors.buttonColor2] : [colors.appColor1, colors.appColor1]}>
+                                                    <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.small, color: pressed[index] ? colors.appTextColor5 : colors.appTextColor3 }}>{text}</Text>
+                                                </Wrapper>
+                                            </LinearGradient>
+                                        </TouchableOpacity>
+                                        ))}
+                                    </Wrapper>
+                                </Wrapper>
+
                             </>
                             :
                             null
@@ -774,4 +901,22 @@ export const ImageModal = ({
         </Modal>
     );
 };
+
+const styles = StyleSheet.create({
+    selectedDay: {
+        backgroundColor: 'red',
+        borderRadius: 20,
+    },
+    todayDay: {
+        borderColor: 'blue',
+        borderWidth: 2,
+        borderRadius: 20,
+    },
+    dayText: {
+        color: 'black',
+    },
+    selectedDayText: {
+        color: 'white',
+    },
+})
 

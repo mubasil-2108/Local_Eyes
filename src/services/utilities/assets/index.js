@@ -102,8 +102,10 @@ const appIcons = {
     young: require('../../../assets/icons/young.png'),
     baby: require('../../../assets/icons/baby.png'),
     picker:require('../../../assets/icons/picker.png'),
+    calendarLeft: require('../../../assets/icons/calenderLeft.png'),
+    calendarRight: require('../../../assets/icons/calenderRight.png'),
 
-    add:require('../../../assets/icons/add.png'),
+    // add:require('../../../assets/icons/add.png'),
 
     security: require('../../../assets/icons/security.png'),
     logIn: require('../../../assets/icons/logIn.png'),

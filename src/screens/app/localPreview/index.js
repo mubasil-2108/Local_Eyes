@@ -18,6 +18,8 @@ export default function Index(props) {
   const { navigate, goBack, dispatch } = props.navigation
   const {
     clickedItems,
+    modalVisible,
+    setModalVisible,
     handlePressItem,
     data,
     search,
@@ -65,7 +67,7 @@ export default function Index(props) {
                 <Wrapper flex={0.97}>
                   <Wrapper justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
                     <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor8, fontSize: fontSizes.large }}>John Doe</Text>
-                    <Icons.Button isRound buttonColor={colors.buttonColor4} buttonStyle={{ borderColor: colors.buttonBorder5, borderWidth: width(0.3) }} iconColor={colors.iconColor8} buttonSize={sizes.icons.largeXLarge} customIcon={appIcons.messages} iconSize={sizes.icons.mediumSmall} />
+                    <Icons.Button isRound onPress={()=> navigate(routes.chatScreen)} buttonColor={colors.buttonColor4} buttonStyle={{ borderColor: colors.buttonBorder5, borderWidth: width(0.3) }} iconColor={colors.iconColor8} buttonSize={sizes.icons.largeXLarge} customIcon={appIcons.messages} iconSize={sizes.icons.mediumSmall} />
                   </Wrapper>
                   <Wrapper alignItemsCenter flexDirectionRow>
                     <Icons.Custom icon={appIcons.star} size={sizes.icons.small} />
@@ -202,7 +204,7 @@ export default function Index(props) {
         >
           <Buttons.ColoredSmall
 
-            onPressIn={() => setPressed(true)}
+            onPressIn={() => {setPressed(true); setModalVisible(true)}}
             onPressOut={() => setPressed(false)}
             gradientColors={[colors.buttonColor3, colors.buttonColor3]}
             textStyle={{ textAlign: 'center', fontFamily: appFonts.interSemiBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}
@@ -217,7 +219,7 @@ export default function Index(props) {
           text={'Book Now'} />
       </Wrapper>
 
-
+        <Modals.PopupPrimary toggle={()=>setModalVisible(!modalVisible)} calender topMargin titleStyle={{fontFamily:appFonts.appTextBold,fontSize:fontSizes.medium,color:colors.appTextColor6}} title={'Availability'} visible={modalVisible} />
     </>
   );
 }

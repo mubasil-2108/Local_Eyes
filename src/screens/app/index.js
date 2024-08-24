@@ -15,6 +15,7 @@ import Terms from './Terms'
 import Privacy from './privacy'
 import AboutUs from './aboutUs'
 import LocalPreview from './localPreview'
+import ChatScreen from './chatScreen'
 
 export {
     Home,
@@ -33,5 +34,6 @@ export {
     Privacy,
     AboutUs,
     Terms,
-    LocalPreview
+    LocalPreview,
+    ChatScreen
 }
