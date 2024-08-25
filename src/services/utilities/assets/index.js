@@ -23,6 +23,7 @@ const appImages = {
     place3: require('../../../assets/images/place3.png'),
     place4: require('../../../assets/images/place4.png'),
     picker:require('../../../assets/images/picker.png'),
+    review: require('../../../assets/images/review.png'),
 
     logo: require('../../../assets/images/Logo.png'),
     confirm: require('../../../assets/images/confirm.png'),
@@ -104,6 +105,8 @@ const appIcons = {
     picker:require('../../../assets/icons/picker.png'),
     calendarLeft: require('../../../assets/icons/calenderLeft.png'),
     calendarRight: require('../../../assets/icons/calenderRight.png'),
+    send: require('../../../assets/icons/sendButton.png'),
+    attach: require('../../../assets/icons/attach.png'),
 
     // add:require('../../../assets/icons/add.png'),
 
@@ -115,7 +118,6 @@ const appIcons = {
     file_text: require('../../../assets/icons/file_text.png'),
     chevron_right: require('../../../assets/icons/chevron_right.png'),
     arrow_back: require('../../../assets/icons/arrow_back.png'),
-    send: require('../../../assets/icons/send.png'),
 }
 
 const appFonts = {
@@ -145,7 +147,14 @@ const appFonts = {
     baloo2_ExtraBold: 'Baloo2-ExtraBold',
     baloo2_Medium: 'Baloo2-Medium',
     baloo2_Regular: 'Baloo2-Regular',
-    baloo2_SemiBold: 'Baloo2-SemiBold'
+    baloo2_SemiBold: 'Baloo2-SemiBold',
+
+    plusJakartaSans_Bold: 'PlusJakartaSans-Bold',
+    plusJakartaSans_ExtraBold:'PlusJakartaSans-ExtraBold',
+    plusJakartaSans_Light: 'PlusJakartaSans-Light',
+    plusJakartaSans_Medium: 'PlusJakartaSans-Medium',
+    plusJakartaSans_Regular: 'PlusJakartaSans-Regular',
+    plusJakartaSans_SemiBold: 'PlusJakartaSans-SemiBold',
 }
 
 export { appImages, appIcons, appSvgs, appFonts }

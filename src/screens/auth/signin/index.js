@@ -35,7 +35,7 @@ export default function Index(props) {
             />
           </Wrapper>
           <Wrapper justifyContentCenter >
-            <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.interSemiBold, fontSize: fontSizes.h3 }} >Login to your{'\n'}account.</Text>
+            <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.appTextMedium, fontSize: fontSizes.h3 }} >Login to your account.</Text>
           </Wrapper>
           <Wrapper marginVerticalBase>
             <TextInputs.Colored
@@ -51,8 +51,8 @@ export default function Index(props) {
               }}
               customIconLeft={appIcons.mail}
               inputStyle={{
-                fontSize: fontSizes.regular,
-                fontFamily: appFonts.satoshiRegular,
+                fontSize: fontSizes.medium,
+                fontFamily: appFonts.appTextRegular,
                 color: colors.appTextColor1
               }}
               iconColorLeft={colors.iconColor1}
@@ -60,8 +60,8 @@ export default function Index(props) {
               placeholder={'example@email.com'}
               placeholderTextColor={colors.placeHolderColor}
               titleStyle={{
-                fontSize: fontSizes.small,
-                fontFamily: appFonts.satoshiMedium,
+                fontSize: fontSizes.regular,
+                fontFamily: appFonts.appTextBold,
 
                 color: colors.appTextColor3
               }} />
@@ -86,8 +86,8 @@ export default function Index(props) {
                 marginRight: width(4)
               }}
               inputStyle={{
-                fontSize: fontSizes.regular,
-                fontFamily: appFonts.satoshiRegular,
+                fontSize: fontSizes.medium,
+                fontFamily: appFonts.appTextRegular,
                 color: colors.appTextColor1
               }}
               iconColorLeft={colors.iconColor1}
@@ -95,8 +95,8 @@ export default function Index(props) {
               placeholder={'Minimum 8 characters'}
               placeholderTextColor={colors.placeHolderColor}
               titleStyle={{
-                fontSize: fontSizes.small,
-                fontFamily: appFonts.satoshiMedium,
+                fontSize: fontSizes.regular,
+                fontFamily: appFonts.appTextBold,
                 color: colors.appTextColor3
               }} />
             <Buttons.ColoredSmall
@@ -110,8 +110,8 @@ export default function Index(props) {
               gradientColors={[colors.transparent, colors.transparent]}
               textStyle={{
                 color: colors.appTextColor4,
-                fontSize: fontSizes.small,
-                fontFamily: appFonts.interRegular
+                fontSize: fontSizes.regular,
+                fontFamily: appFonts.appTextLight
               }} />
           </Wrapper>
           <Wrapper marginVerticalMedium>
@@ -129,7 +129,7 @@ export default function Index(props) {
               gradientColors={[colors.buttonColor1,colors.buttonColor1, colors.buttonColor2]}
               textStyle={{
                 color: colors.appTextColor5,
-                fontFamily: appFonts.interSemiBold,
+                fontFamily: appFonts.appTextBold,
                 fontSize: fontSizes.regular,
                 left: width(5)
               }} />
@@ -140,7 +140,7 @@ export default function Index(props) {
               <Image style={{ width: width(30), tintColor: colors.appTextColor7 }} source={appIcons.vector} />
             </Wrapper>
             <Wrapper flex={1} justifyContentCenter alignItemsCenter>
-              <Text style={{ color: colors.appTextColor7, fontFamily: appFonts.interRegular, fontSize: fontSizes.regular }}>Or sign in with</Text>
+              <Text style={{ color: colors.appTextColor7, fontFamily: appFonts.appTextRegular, fontSize: fontSizes.regular }}>Or sign in with</Text>
             </Wrapper>
             <Wrapper flex={1} justifyContentCenter alignItemsCenter>
               <Image style={{ width: width(30), tintColor: colors.appTextColor7 }} source={appIcons.vector} />
@@ -153,7 +153,7 @@ export default function Index(props) {
           </Wrapper>
           <Wrapper marginVerticalSmall justifyContentCenter alignItemsCenter>
             <TouchableOpacity onPress={() => navigate(routes.createAccount, { fromSignin: 'user' })}>
-              <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Don't have an account? <Text style={{ color: colors.appTextColor2, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Register</Text> </Text>
+              <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular }}>Don't have an account? <Text style={{ color: colors.appTextColor2, fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular }}>Register</Text> </Text>
             </TouchableOpacity>
           </Wrapper>
         </Wrapper>

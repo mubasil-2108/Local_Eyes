@@ -12,11 +12,47 @@ export function useHooks() {
       { id: '4', source: appImages.place4 },
     ];
 
+    const data = [
+      {
+        id: '1',
+        name: 'Van Nga',
+        date: '2 weeks ago',
+        review: 'Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim.',
+        rating: 4,
+        image: appImages.review,
+      },
+      {
+        id: '2',
+        name: 'Van Nga',
+        date: '2 weeks ago',
+        review: 'Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim.',
+        rating: 3.9,
+        image: appImages.review,
+      },
+      {
+        id: '3',
+        name: 'Van Nga',
+        date: '2 weeks ago',
+        review: 'Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim.',
+        rating: 4.5,
+        image: appImages.review,
+      },
+      {
+        id: '4',
+        name: 'Van Nga',
+        date: '2 weeks ago',
+        review: 'Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim.',
+        rating: 2,
+        image: appImages.review,
+      },
+    ];
+
     return { 
        pressed,
        setPressed,
        images,
        setModalVisible,
-       modalVisible
+       modalVisible,
+       data
      }
 }

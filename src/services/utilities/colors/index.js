@@ -49,8 +49,8 @@ export const colors = {
   appColor5: 'rgba(184, 75, 98, 1)',
   appColor6: 'rgba(250, 250, 250, 1)',
   appColor7: 'rgba(238, 238, 238, 1)',
+  appColor8: 'rgba(242, 242, 242, 1)',
   
-  appColor8: '#FB7979',
   appColor9: '#003162',
   appColor10: '#FFDD00',
   appColor11: '#FFFFFF',
@@ -67,6 +67,9 @@ export const colors = {
   appTextColor9: 'rgba(33, 33, 33, 1)',
   appTextColor10: 'rgba(158, 158, 158, 1))',
   appTextColor11: 'rgba(74, 86, 96, 1)',
+  appTextColor12: 'rgba(139, 147, 159, 1)',
+  appTextColor13: 'rgba(51, 51, 51, 1)',
+  appTextColor14: 'rgba(38, 49, 98, 1)',
 
   appBgColor1: '#234CB0',
   appBgColor2: '#FFFFFF',
@@ -113,10 +116,12 @@ export const colors = {
 
   inputfieldColor2: '#F9FAFA',
   inputfieldColor3: 'rgba(249, 250, 250, 1)',
+  inputfieldColor4: 'rgba(184, 75, 98, 0.11)',
 
   // PlaceHolder Color
   placeHolderColor: 'rgba(155, 165, 183, 1)',
   placeHolderColor2: 'rgba(135, 135, 135, 1)',
+  placeHolderColor3: 'rgba(84, 95, 113, 1)',
 
   //StatusBar Color
   statusBarColor1: '#FFFFFF',

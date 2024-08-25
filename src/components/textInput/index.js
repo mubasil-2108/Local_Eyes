@@ -21,8 +21,8 @@ const Colored = ({
     inputContainerStyle, onPressIconRight, inputStyle,
     right, keyboardType, iconStyleRight, customIconRight, error,
     left, customIconLeft, iconNameLeft, iconTypeLeft, iconSizeLeft,
-    iconColorLeft, iconStyleLeft, onPressIconLeft,
-    flagCode,
+    iconColorLeft, iconStyleLeft, onPressIconLeft, isGradient,
+    flagCode, end, start, gradiantColors,
     flageSize,
     placeholderTextColor
 }) => {
@@ -103,7 +103,7 @@ const Colored = ({
                             :
                             customIconRight ?
                                 <Wrapper style={{ alignItems: 'center', marginLeft: sizes.marginHorizontal / 2 }}>
-                                    <Icons.Custom icon={customIconRight} size={iconSizeRight ? iconSizeRight : sizes.icons.medium} color={iconColorRight ? iconColorRight : colors.appTextColor1} containerStyle={iconStyleRight} onPress={onPressIconRight} />
+                                    <Icons.Custom end={end}  start={start} gradiantColors={gradiantColors} isGradient={isGradient} icon={customIconRight} size={iconSizeRight ? iconSizeRight : sizes.icons.medium} color={iconColorRight ? iconColorRight : null} containerStyle={iconStyleRight} onPress={onPressIconRight} />
                                 </Wrapper>
                                 :
                                 iconNameRight ?

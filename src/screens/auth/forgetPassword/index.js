@@ -23,7 +23,7 @@ export default function Index(props) {
                         textColor={colors.appTextColor9}
                         // iconColor={colors.iconColor1}
                         title={'Password Reset'}
-                        titleStyle={{ fontFamily: appFonts.interBold, fontSize: fontSizes.medium }}
+                        titleStyle={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.medium }}
                         iconContainer={{ flexDirection: 'row' }}
                         containerStyle={{ backgroundColor: colors.appColor1 }} />
                     <Wrapper
@@ -32,17 +32,18 @@ export default function Index(props) {
                         marginVerticalSmall>
                         <Text
                             style={{
-                                fontFamily: appFonts.interBold,
+                                fontFamily: appFonts.appTextBold,
                                 color: colors.appTextColor1,
                                 fontSize: fontSizes.h3
                             }}>
                             Forgot Password?
                         </Text>
+                        <Spacer isTiny/>
                         <Text
                             style={{
                                 fontFamily: appFonts.interRegular,
                                 color: colors.appTextColor7,
-                                fontSize: fontSizes.mediumSmall
+                                fontSize: fontSizes.regular
                             }}>
                             Enter your email address and we’ll send you{'\n'}confirmation code to reset your password                        </Text>
                     </Wrapper>
@@ -60,8 +61,8 @@ export default function Index(props) {
                             }}
                             customIconLeft={appIcons.mail}
                             inputStyle={{
-                                fontSize: fontSizes.regular,
-                                fontFamily: appFonts.satoshiRegular,
+                                fontSize: fontSizes.medium,
+                                fontFamily: appFonts.appTextRegular,
                                 color: colors.appTextColor1
                             }}
                             iconColorLeft={colors.iconColor1}
@@ -69,8 +70,8 @@ export default function Index(props) {
                             placeholder={'example@email.com'}
                             placeholderTextColor={colors.placeHolderColor}
                             titleStyle={{
-                                fontSize: fontSizes.small,
-                                fontFamily: appFonts.satoshiMedium,
+                                fontSize: fontSizes.regular,
+                                fontFamily: appFonts.appTextBold,
 
                                 color: colors.appTextColor3
                             }} />
@@ -83,7 +84,7 @@ export default function Index(props) {
                                 gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
                                 textStyle={{
                                     color: colors.appTextColor5,
-                                    fontFamily: appFonts.interSemiBold,
+                                    fontFamily: appFonts.appTextBold,
                                     fontSize: fontSizes.regular,
                                 }} />
 

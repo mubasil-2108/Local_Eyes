@@ -9,6 +9,7 @@ import { height, totalSize, width } from 'react-native-dimension'
 import { Pressable } from 'react-native';
 import Spacer from '../spacer';
 import * as StatusBars from '../statusBars';
+import { Images } from '..';
 
 
 // export const Primary = ({ onBackPress, title, right, left, showBackArrow,shadow,titleStyle,titleContainerStyle,containerStyle }) => {
@@ -35,10 +36,10 @@ import * as StatusBars from '../statusBars';
 // }
 
 export const Primary = ({
-    onBackPress, search, title, right, searchPress, rightIcon, leftIconSource, leftIconName,
+    onBackPress, search, title, profilePic, right, searchPress, rightIcon, leftIconSource, leftIconName,
     left, titleContainerStyle, centerTitle, tintColor, rightIconName, rightIconSource,
     containerStyle, headerTitle, alignTitleLeft, showBackArrow,
-    invertColors, titleStyle, leftContainerStyle, iconContainer, iconColor, textColor,allowText, rightContainerStyle,textStyle, shadow, auth }) => {
+    invertColors, titleStyle, leftContainerStyle, iconContainer, iconColor, textColor, allowText, rightContainerStyle, textStyle, shadow, auth }) => {
 
     const { statusBarHeight, headerHeight, } = useSizes()
     const defaultTintColor = !invertColors ? colors.appTextColor6 : colors.appColor1
@@ -70,7 +71,7 @@ export const Primary = ({
                 </Wrapper> */}
                 <Wrapper flex={1.5} alignItemsCenter style={[
                     // { backgroundColor: 'red' },
-                    
+
                     leftContainerStyle]}>
                     {
                         left ? left :
@@ -80,19 +81,19 @@ export const Primary = ({
                                     onPress={onBackPress ? onBackPress : goBack}
                                 >
                                     {/* <Wrapper > */}
-                                        <Icons.Button
-                                         customIcon={rightIconSource}
-                                            iconName={rightIconName}
-                                            iconColor={iconColor}
-                                            iconSize={sizes.icons.tiny}
-                                            buttonStyle={{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder4, borderWidth: width(0.4) }}
-                                            buttonSize={width(9)}
-                                            //onPress={onBackPress}
-                                            //onPress={onBackPress ? onBackPress : goBack}
-                                            // style={{ marginLeft: sizes.marginHorizontal }}
-                                            color={tintColor ? tintColor : defaultTintColor}
-                                        />
-                                        
+                                    <Icons.Button
+                                        customIcon={rightIconSource}
+                                        iconName={rightIconName}
+                                        iconColor={iconColor}
+                                        iconSize={sizes.icons.tiny}
+                                        buttonStyle={{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder4, borderWidth: width(0.4) }}
+                                        buttonSize={width(9)}
+                                        //onPress={onBackPress}
+                                        //onPress={onBackPress ? onBackPress : goBack}
+                                        // style={{ marginLeft: sizes.marginHorizontal }}
+                                        color={tintColor ? tintColor : defaultTintColor}
+                                    />
+
                                     {/* </Wrapper> */}
 
 
@@ -101,8 +102,11 @@ export const Primary = ({
                                 null
                     }
                 </Wrapper>
+
                 <Wrapper flex={7}
                     justifyContentCenter
+                    flexDirectionRow
+                    alignItemsCenter
                     style={[
                         // { backgroundColor: 'green', },
                         alignTitleLeft ?
@@ -110,6 +114,14 @@ export const Primary = ({
                             :
                             appStyles.alignItemsCenter,
                         titleContainerStyle]}>
+                    {
+                        profilePic ?
+                            <Wrapper justifyContentCenter alignItemsCenter marginHorizontalSmall>
+                                <Images.SqareRound source={profilePic} size={sizes.images.mediumLarge} style={{borderRadius:10}}/>
+                            </Wrapper>
+                            :
+                            null
+                    }
                     {
                         headerTitle ? headerTitle :
                             <Text alignTextCenter style={[appStyles.headerTitleStyle, { color: tintColor ? tintColor : defaultTintColor, fontSize: !auth ? responsiveFontSize(18) : responsiveFontSize(18) }, titleStyle]}>{title}</Text>
@@ -124,22 +136,22 @@ export const Primary = ({
                 <Wrapper flex={1.5} style={rightContainerStyle}>
                     {
                         rightIcon ?
-                        <Pressable
-                            style={[{ flex: 1 }, appStyles.center]}
-                            onPress={rightIcon.onPress}
-                        >
-                            <Icons.Button
-                            customIcon={leftIconSource}
-                                iconName={leftIconName}
-                                iconColor={iconColor}
-                                iconSize={sizes.icons.medium}
-                                buttonStyle={{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder1, borderWidth: width(0.4) }}
-                                buttonSize={width(9)}
-                                color={tintColor ? tintColor : defaultTintColor}
-                            />
-                        </Pressable>
-                        :
-                        null
+                            <Pressable
+                                style={[{ flex: 1 }, appStyles.center]}
+                                onPress={rightIcon.onPress}
+                            >
+                                <Icons.Button
+                                    customIcon={leftIconSource}
+                                    iconName={leftIconName}
+                                    iconColor={iconColor}
+                                    iconSize={sizes.icons.medium}
+                                    buttonStyle={{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder1, borderWidth: width(0.4) }}
+                                    buttonSize={width(9)}
+                                    color={tintColor ? tintColor : defaultTintColor}
+                                />
+                            </Pressable>
+                            :
+                            null
                     }
                 </Wrapper>
 

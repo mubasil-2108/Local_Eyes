@@ -13,6 +13,7 @@ import NotificationItem from '../notificationItems';
 import { LocationItems } from '../locationItems';
 import { LocalsItems, ProductItems, SubCategory } from '../localsItems';
 import { Places } from '../places';
+import { RatingItems } from '../ratingItems';
 
 export const UsersListVerticalPrimary = ({ data, onPressItem, ...props }) => {
     return (
@@ -317,6 +318,22 @@ export const LocalsList = ({ data, ...props }) => {
         />
     );
 };
+
+export const ReviewList = ({ data, ...props }) => {
+    return (
+      <FlatList
+        data={data}
+        renderItem={({ item }) => {
+            return (
+                <RatingItems item={item} />
+            )
+        }}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+      />
+    );
+  };
 
 export const PlacesList = ({ data, ...props }) => {
     return (

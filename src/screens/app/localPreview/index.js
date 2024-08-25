@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { width, height, totalSize } from 'react-native-dimension';
-import { Wrapper, Icons, Headers, Modals, Text, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Spacer, LocationLists, Images, Buttons, LocalsList, PlacesList } from '../../../components';
+import { Wrapper, Icons, Headers, Modals, Text, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Spacer, LocationLists, Images, Buttons, LocalsList, PlacesList, Rating, ReviewList } from '../../../components';
 import { useHooks } from './hooks'
 import { appImages, colors, routes, sizes, fontSizes, appFonts, appIcons, responsiveWidth, responsiveHeight } from '../../../services';
 import { GiftedChat, Bubble, InputToolbar, Message } from 'react-native-gifted-chat';
@@ -49,11 +49,10 @@ export default function Index(props) {
             onBackPress={() => goBack()}
             showBackArrow
             rightIconSource={appIcons.chevron_left}
-            allowText
-            textColor={colors.appTextColor9}
+            // allowText
             // iconColor={colors.iconColor1}
             title={'Local Profile'}
-            titleStyle={{ fontFamily: appFonts.interSemiBold, fontSize: fontSizes.medium }}
+            titleStyle={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor6, fontSize: fontSizes.medium }}
             iconContainer={{ flexDirection: 'row' }}
             containerStyle={{ backgroundColor: colors.appColor1 }} />
         </Wrapper>
@@ -67,7 +66,7 @@ export default function Index(props) {
                 <Wrapper flex={0.97}>
                   <Wrapper justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
                     <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor8, fontSize: fontSizes.large }}>John Doe</Text>
-                    <Icons.Button isRound onPress={()=> navigate(routes.chatScreen)} buttonColor={colors.buttonColor4} buttonStyle={{ borderColor: colors.buttonBorder5, borderWidth: width(0.3) }} iconColor={colors.iconColor8} buttonSize={sizes.icons.largeXLarge} customIcon={appIcons.messages} iconSize={sizes.icons.mediumSmall} />
+                    <Icons.Button isRound onPress={() => navigate(routes.chatScreen)} buttonColor={colors.buttonColor4} buttonStyle={{ borderColor: colors.buttonBorder5, borderWidth: width(0.3) }} iconColor={colors.iconColor8} buttonSize={sizes.icons.largeXLarge} customIcon={appIcons.messages} iconSize={sizes.icons.mediumSmall} />
                   </Wrapper>
                   <Wrapper alignItemsCenter flexDirectionRow>
                     <Icons.Custom icon={appIcons.star} size={sizes.icons.small} />
@@ -172,6 +171,16 @@ export default function Index(props) {
                 </Wrapper>
               </Wrapper>
             </Wrapper>
+            <Spacer />
+            <Wrapper>
+              <Text style={{ color: colors.appBgColor6, fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium }}>Ratings & Reviews</Text>
+              <Spacer height={height(1)} />
+              <ReviewList data={data}/>
+            </Wrapper>
+            <Wrapper>
+              <Text style={{ color: colors.appBgColor6, fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium }}>License/ Certificate</Text>
+              <Spacer height={height(1)} />
+              </Wrapper>
           </Wrapper>
         </ScrollViews.KeyboardAvoiding>
 
@@ -204,7 +213,7 @@ export default function Index(props) {
         >
           <Buttons.ColoredSmall
 
-            onPressIn={() => {setPressed(true); setModalVisible(true)}}
+            onPressIn={() => { setPressed(true); setModalVisible(true) }}
             onPressOut={() => setPressed(false)}
             gradientColors={[colors.buttonColor3, colors.buttonColor3]}
             textStyle={{ textAlign: 'center', fontFamily: appFonts.interSemiBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}
@@ -219,7 +228,7 @@ export default function Index(props) {
           text={'Book Now'} />
       </Wrapper>
 
-        <Modals.PopupPrimary toggle={()=>setModalVisible(!modalVisible)} calender topMargin titleStyle={{fontFamily:appFonts.appTextBold,fontSize:fontSizes.medium,color:colors.appTextColor6}} title={'Availability'} visible={modalVisible} />
+      <Modals.PopupPrimary toggle={() => setModalVisible(!modalVisible)} calender topMargin titleStyle={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium, color: colors.appTextColor6 }} title={'Availability'} visible={modalVisible} />
     </>
   );
 }

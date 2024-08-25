@@ -2,6 +2,7 @@ import Wrapper from './wrapper'
 import Text from './text'
 import Spacer from './spacer'
 import GradientText from './gradientText';
+import * as Chats from './chat';
 import * as Buttons from './buttons';
 import * as Icons from './icons'
 import * as TextInputs from './textInput'
@@ -32,7 +33,7 @@ export {
     CheckBoxes, ScrollViews, Loaders,
     Modals, Toasts, Headers, Pickers,
     Switches,
-    Chips, StatusBars,Rating, GradientText
+    Chips, StatusBars,Rating, GradientText, Chats
 
 }
 

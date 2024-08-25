@@ -194,10 +194,10 @@ export const CounterButton = ({
         </TouchableOpacity>
     );
 }
-export const Custom = ({ icon, size, animation, duration, color, onPress, imageBGColor, containerStyle }) => {
+export const Custom = ({ icon, size, gradiantColors, start, end, isGradient, animation, duration, color, onPress, imageBGColor, containerStyle }) => {
     const defaulSize = totalSize(5)
     return (
-        <Wrapper animation={animation} duration={duration} style={containerStyle}>
+        <Wrapper animation={animation} start={start} end={end} gradiantColors={gradiantColors} isGradient={isGradient} duration={duration} style={containerStyle}>
             <TouchableOpacity disabled={!onPress} onPress={onPress}>
                 <Image
                     source={icon}
