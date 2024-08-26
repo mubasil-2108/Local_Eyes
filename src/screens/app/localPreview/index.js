@@ -175,12 +175,30 @@ export default function Index(props) {
             <Wrapper>
               <Text style={{ color: colors.appBgColor6, fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium }}>Ratings & Reviews</Text>
               <Spacer height={height(1)} />
-              <ReviewList data={data}/>
+              <ReviewList data={data} />
             </Wrapper>
+            <Spacer />
             <Wrapper>
               <Text style={{ color: colors.appBgColor6, fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium }}>License/ Certificate</Text>
               <Spacer height={height(1)} />
+              <Wrapper isBorderedWrapper paddingHorizontalZero marginHorizontalZero paddingVerticalZero style={{ borderRadius: totalSize(3), borderColor: colors.buttonBorder5 }}>
+                <Images.MainLogo
+                  style={{ borderRadius: totalSize(3), height: sizes.images.logoHeight, width: '100%' }}
+                  source={appImages.liscense}
+                />
               </Wrapper>
+              <Wrapper isAbsoluteFill  alignItemsFlexEnd style={{top:height(5), right: width(3)}}>
+                <Icons.Button isRound buttonSize={sizes.icons.large} buttonColor={colors.buttonColor3} iconSize={sizes.icons.small} customIcon={appIcons.download} />
+              </Wrapper>
+            </Wrapper>
+            <Spacer />
+            <Wrapper>
+              <Text style={{ color: colors.appBgColor6, fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium }}>Cancelation Policy</Text>
+              <Spacer height={height(1)} />
+              <Wrapper isBorderedWrapper paddingHorizontalSmall paddingVerticalBase marginHorizontalZero style={{ borderRadius: totalSize(3), borderColor: colors.buttonBorder5 }}>
+                <Text style={{textAlign:'justify', fontFamily:appFonts.appTextRegular, fontSize:fontSizes.small, color:colors.appTextColor3}}>Lorem ipsum dolor sit amet. Ut esse repellat ut illo nesciunt et consequatur autem ut ipsa omnis qui officia expedita non deserunt voluptatem. Sed Quis itaque a dolores necessitatibus quo internos tempora. A fugit debitis ab blanditiis nulla et pariatur officiis ut nemo dolore eum dolorem quas qui inventore vitae aut autem cupiditate.</Text>
+              </Wrapper>
+            </Wrapper>
           </Wrapper>
         </ScrollViews.KeyboardAvoiding>
 
@@ -221,7 +239,7 @@ export default function Index(props) {
             text={'Check Availability'} />
         </LinearGradient>
         <Buttons.ColoredSmall
-          // onPress={()=> navigation.navigate(routes.localPreview, {item})}
+          onPress={()=> navigate(routes.booking)}
           gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
           textStyle={{ textAlign: 'justify', fontFamily: appFonts.interSemiBold, color: colors.appTextColor5, fontSize: fontSizes.regular }}
           buttonStyle={{ width: width(40), paddingHorizontal: width(3), paddingVertical: height(1.6), justifyContent: 'center', alignItems: 'center' }}

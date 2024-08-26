@@ -33,6 +33,8 @@ const StackNavigation = () => {
             <AppStack.Screen name={routes.aboutUs} component={App.AboutUs} />
             <AppStack.Screen name={routes.localPreview} component={App.LocalPreview} />
             <AppStack.Screen name={routes.chatScreen} component={App.ChatScreen}/>
+            <AppStack.Screen name={routes.booking} component={App.Booking} />
+            <AppStack.Screen name={routes.payment} component={App.Payment} />
 
         </AppStack.Navigator>
     )

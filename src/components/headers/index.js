@@ -38,7 +38,7 @@ import { Images } from '..';
 export const Primary = ({
     onBackPress, search, title, profilePic, right, searchPress, rightIcon, leftIconSource, leftIconName,
     left, titleContainerStyle, centerTitle, tintColor, rightIconName, rightIconSource,
-    containerStyle, headerTitle, alignTitleLeft, showBackArrow,
+    containerStyle, headerTitle, alignTitleLeft, showBackArrow,leftButtonStyle, leftIconTintColor, leftIconSize,
     invertColors, titleStyle, leftContainerStyle, iconContainer, iconColor, textColor, allowText, rightContainerStyle, textStyle, shadow, auth }) => {
 
     const { statusBarHeight, headerHeight, } = useSizes()
@@ -144,10 +144,10 @@ export const Primary = ({
                                     customIcon={leftIconSource}
                                     iconName={leftIconName}
                                     iconColor={iconColor}
-                                    iconSize={sizes.icons.medium}
-                                    buttonStyle={{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder1, borderWidth: width(0.4) }}
+                                    iconSize={leftIconSize ? leftIconSize : sizes.icons.medium}
+                                    buttonStyle={[{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder1, borderWidth: width(0.4) }, leftButtonStyle]}
                                     buttonSize={width(9)}
-                                    color={tintColor ? tintColor : defaultTintColor}
+                                    color={leftIconTintColor ? leftIconTintColor : defaultTintColor}
                                 />
                             </Pressable>
                             :
