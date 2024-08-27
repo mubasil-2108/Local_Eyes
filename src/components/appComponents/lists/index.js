@@ -14,6 +14,7 @@ import { LocationItems } from '../locationItems';
 import { LocalsItems, ProductItems, SubCategory } from '../localsItems';
 import { Places } from '../places';
 import { RatingItems } from '../ratingItems';
+import PaymentCard from '../paymentCard';
 
 export const UsersListVerticalPrimary = ({ data, onPressItem, ...props }) => {
     return (
@@ -330,6 +331,21 @@ export const ReviewList = ({ data, ...props }) => {
         }}
         horizontal
         showsHorizontalScrollIndicator={false}
+        keyExtractor={item => item.id}
+      />
+    );
+  };
+
+  export const CardList = ({toggle, editCard, selected, data, ...props  }) => {
+    return (
+      <FlatList
+        data={data}
+        renderItem={({ item }) => {
+            return (
+                <PaymentCard editCard={()=>editCard(item.id)} toggle={toggle} selected={selected} item={item} />
+            )
+        }}
+        showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id}
       />
     );

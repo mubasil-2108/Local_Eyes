@@ -210,13 +210,13 @@ export const PopupPrimary = ({
     headerTitleStyle, preBottom, headerStyle, closeIconSize, rightContainerStyle, closeIconContainerSize,
     buttonWrapperShadow, headerBottom, titleStyle, buttonText1Style, buttonText2Style, headerSubtitleStyle, headerSubtitle,
     buttonsDirection, buttonsContainerStyle, mainContainerStyle, containerStyle,
-    calender,
+    calender, payNow,
     //loaders
     loadingButton1, loadingButton2,
     // New prop
 }) => {
 
-    const { selectedDate, pressed, togglePressed, buttonData, handleDateChange, onDatePress, setSelectedDate } = useHooks();
+    const { selectedDate, pressed, setPressed, togglePressed, buttonData, handleDateChange, onDatePress, setSelectedDate } = useHooks();
     // manage keyboard
     const keyboardVisible = useKeyboardStatus()
 
@@ -227,7 +227,7 @@ export const PopupPrimary = ({
     const CustomHeader = ({ date, onPrevious, onNext }) => {
         const month = date.toLocaleString('default', { month: 'long' });
         const year = date.getFullYear();
-        
+
         return (
             <Wrapper justifyContentCenter alignItemsCenter flexDirectionRow>
                 <Text style={{ color: colors.appTextColor11, fontFamily: appFonts.appTextRegular, fontSize: fontSizes.regular }}>{`${month} ${year}`}</Text>
@@ -252,48 +252,45 @@ export const PopupPrimary = ({
         const dayName = customDayNames[new Date(date.dateString).getDay()];
         return (
             <>
-            
+                <TouchableOpacity onPress={() => onDatePress(date)} style={{ flex: 1 }}>
+                    {isSelected ? (
+                        <Wrapper
+                            isGradient
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                            gradiantColors={isSelected ? [colors.appColor5, colors.appColor5, colors.appColor3,] : [colors.transparent, colors.transparent]}
+                            style={
+                                {
+                                    width: 30,
+                                    height: 30,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    borderRadius: 50,
+                                }}>
+                            <Wrapper alignItemsCenter>
+                                <Text style={[{ color: colors.appTextColor11, fontFamily: appFonts.avenirNextLTPro_Medium, fontSize: fontSizes.medium }, { color: colors.appTextColor5 }]}>
+                                    {date.day}
+                                </Text>
+                            </Wrapper>
+                        </Wrapper>
+                    ) : (
 
-            
-            <TouchableOpacity onPress={() => onDatePress(date)} style={{ flex: 1 }}>
-                {isSelected ? (
-                    <Wrapper
-                        isGradient
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 1, y: 0 }}
-                        gradiantColors={isSelected ? [colors.appColor5, colors.appColor5, colors.appColor3,] : [colors.transparent, colors.transparent]}
-                        style={
-                            {
+                        <Wrapper isGradient
+                            gradiantColors={[colors.transparent, colors.transparent]}
+                            style={{
                                 width: 30,
                                 height: 30,
                                 justifyContent: 'center',
                                 alignItems: 'center',
                                 borderRadius: 50,
+                                // Non-selected background color
                             }}>
-                        <Wrapper alignItemsCenter>
-                            <Text style={[{ color: colors.appTextColor11, fontFamily: appFonts.avenirNextLTPro_Medium, fontSize: fontSizes.medium }, { color: colors.appTextColor5 }]}>
+                            <Text style={{ fontSize: fontSizes.medium, fontFamily: appFonts.avenirNextLTPro_Medium, color: colors.appTextColor11 }}>
                                 {date.day}
                             </Text>
                         </Wrapper>
-                    </Wrapper>
-                ) : (
-
-                    <Wrapper isGradient
-                        gradiantColors={[colors.transparent, colors.transparent]}
-                        style={{
-                            width: 30,
-                            height: 30,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            borderRadius: 50,
-                            // Non-selected background color
-                        }}>
-                        <Text style={{ fontSize: fontSizes.medium, fontFamily: appFonts.avenirNextLTPro_Medium, color: colors.appTextColor11 }}>
-                            {date.day}
-                        </Text>
-                    </Wrapper>
-                )}
-            </TouchableOpacity>
+                    )}
+                </TouchableOpacity>
             </>
         );
     };
@@ -406,9 +403,9 @@ export const PopupPrimary = ({
                             <>
                                 <Wrapper paddingHorizontalTiny paddingVerticalTiny isBorderedWrapper justifyContentCenter>
                                     <Calendar
-                                       dayComponent={({ date, state }) => (
-                                        <CustomDay date={date} state={state} customDayNames={customDayNames} />
-                                    )}
+                                        dayComponent={({ date, state }) => (
+                                            <CustomDay date={date} state={state} customDayNames={customDayNames} />
+                                        )}
                                         style={{ flex: 1, width: '100%' }}
                                         hideExtraDays={true}
                                         renderArrow={(direction) => CustomArrow(direction)}
@@ -431,9 +428,9 @@ export const PopupPrimary = ({
                                 <Wrapper marginHorizontalBase >
                                     <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium, color: colors.appTextColor6 }}>Time Slots</Text>
                                     <Spacer isSmall />
-                                    <Wrapper alignItemsCenter  flexDirectionRow style={{ flexWrap: 'wrap' }}>
+                                    <Wrapper alignItemsCenter flexDirectionRow style={{ flexWrap: 'wrap' }}>
                                         {buttonData.map((text, index) => (
-                                            <TouchableOpacity key={index} style={{marginRight: width(0.3)}} onPress={() => togglePressed(index)}>
+                                            <TouchableOpacity key={index} style={{ marginRight: width(0.3) }} onPress={() => togglePressed(index)}>
                                                 <LinearGradient
                                                     // colors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
                                                     colors={pressed[index] ? [colors.transparent, colors.transparent] : [colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
@@ -443,7 +440,7 @@ export const PopupPrimary = ({
                                                         borderRadius: 28,
                                                         padding: 1,
                                                         marginBottom: height(1),
-                                                        
+
                                                     }}
                                                 >
                                                     <Wrapper
@@ -461,6 +458,99 @@ export const PopupPrimary = ({
                                 </Wrapper>
 
                             </>
+                            :
+                            null
+                    }
+                    {
+                        payNow ?
+                            <Wrapper marginHorizontalBase >
+                                <Wrapper alignItemsCenter>
+                                    <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.regular, color: colors.appTextColor7 }}>Booking confirmed successfully</Text>
+                                </Wrapper>
+                                <Spacer isMedium />
+                                <Spacer isSmall />
+
+                                <Wrapper flexDirectionRow alignItemsCenter>
+                                    <Images.SqareRound style={{ borderRadius: 10, height: sizes.images.logoHeight, width: sizes.images.logoWidth }} source={appImages.profile1} />
+                                    <Spacer horizontal isSmall />
+                                    <Wrapper>
+                                        <Wrapper justifyContentSpaceEvenly flex={1}>
+                                            <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium, color: colors.appTextColor1 }}>John Doe</Text>
+                                            {/* <Spacer isTiny/> */}
+                                            <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}>$165,3{' '}
+                                                <Text style={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor7, fontSize: fontSizes.regular }}>/night</Text></Text>
+                                        </Wrapper>
+                                        {/* <Spacer isTiny/> */}
+                                        <Wrapper flex={1} alignItemsCenter flexDirectionRow >
+                                            <Icons.Custom icon={appIcons.calendar} color={colors.iconColor6} size={sizes.icons.small} />
+                                            <Spacer horizontal isSmall />
+                                            <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>Feb 17-20 | 4 Days | 4 hours</Text>
+                                        </Wrapper>
+                                    </Wrapper>
+                                </Wrapper>
+                                <Spacer />
+                                <Wrapper alignItemsCenter>
+                                    <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium, color: colors.appTextColor6 }}>Share Your Travel Plan</Text>
+                                    <Spacer isSmall />
+                                    <Text style={{ textAlign: 'center', fontFamily: appFonts.appTextRegular, fontSize: fontSizes.regular, color: colors.appTextColor16 }}>Share your itinerary with anyone who might want to know your plan.</Text>
+                                </Wrapper>
+                                <Spacer isSmall />
+                                <TextInputs.Colored
+                                    title={'Email'}
+                                    //   value={email}
+                                    //   onChangeText={(text) => setEmail(text)}
+                                    keyboardType={'email-address'}
+                                    containerStyle={{ marginHorizontal: 0 }}
+                                    inputContainerStyle={{
+                                        backgroundColor: colors.inputfieldColor1,
+                                        borderColor: colors.inputTextBorder,
+                                        borderRadius: totalSize(2)
+                                    }}
+                                    customIconLeft={appIcons.mail}
+                                    inputStyle={{
+                                        fontSize: fontSizes.medium,
+                                        fontFamily: appFonts.appTextRegular,
+                                        color: colors.appTextColor1
+                                    }}
+                                    iconColorLeft={colors.iconColor1}
+                                    // iconStyleLeft={{  }}
+                                    placeholder={'example@email.com'}
+                                    placeholderTextColor={colors.placeHolderColor}
+                                    titleStyle={{
+                                        fontSize: fontSizes.regular,
+                                        fontFamily: appFonts.appTextBold,
+
+                                        color: colors.appTextColor3
+                                    }} />
+                                    <Spacer />
+                                <Wrapper flexDirectionRow paddingVerticalTiny alignItemsCenter justifyContentSpaceBetween>
+                                    <LinearGradient
+                                        // colors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                        colors={pressed ? [colors.transparent, colors.transparent] : [colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                        start={{ x: 0, y: 0 }}
+                                        end={{ x: 1, y: 0 }}
+                                        style={{
+                                            borderRadius: 28,
+                                            padding: 1,
+                                        }}
+                                    >
+                                        <Buttons.ColoredSmall
+
+                                            onPressIn={() => { setPressed(true); }}
+                                            onPressOut={() => setPressed(false)}
+                                            gradientColors={[colors.buttonColor3, colors.buttonColor3]}
+                                            textStyle={{ textAlign: 'center', fontFamily: appFonts.appTextRegular, color: colors.appTextColor2, fontSize: fontSizes.medium }}
+                                            buttonStyle={{ width: width(42), paddingHorizontal: width(3), paddingVertical: height(1.45), justifyContent: 'center', alignItems: 'center' }}
+                                            text={'Skip'} />
+                                    </LinearGradient>
+                                    <Buttons.ColoredSmall
+                                        // onPress={() => navigate(routes.booking)}
+                                        gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                        textStyle={{ textAlign: 'justify', fontFamily: appFonts.appTextMedium, color: colors.appTextColor5, fontSize: fontSizes.medium }}
+                                        buttonStyle={{ width: width(42), paddingHorizontal: width(3), paddingVertical: height(1.6), justifyContent: 'center', alignItems: 'center' }}
+                                        text={'Book Now'} />
+                                </Wrapper>
+                            </Wrapper>
                             :
                             null
                     }

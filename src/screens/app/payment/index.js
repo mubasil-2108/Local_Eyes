@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { width, height, totalSize } from 'react-native-dimension';
-import { Wrapper, Icons, Headers, Modals, Text, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Spacer, LocationLists, Images, Buttons, LocalsList, PlacesList, Rating, ReviewList } from '../../../components';
+import { Wrapper, Icons, Headers, Modals, Text, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Spacer, LocationLists, Images, Buttons, LocalsList, PlacesList, Rating, ReviewList, CardList } from '../../../components';
 import { useHooks } from './hooks'
 import { appImages, colors, routes, sizes, fontSizes, appFonts, appIcons, responsiveWidth, responsiveHeight } from '../../../services';
 import { GiftedChat, Bubble, InputToolbar, Message } from 'react-native-gifted-chat';
@@ -17,24 +17,14 @@ export default function Index(props) {
 
     const { navigate, goBack, dispatch } = props.navigation
     const {
-        clickedItems,
+        selected,
+        handleRadioButtonPress,
+        data,
+        pressed,
+        handlePayNow,
+        setPressed,
         modalVisible,
         setModalVisible,
-        handlePressItem,
-        data,
-        search,
-        pressed,
-        setPressed,
-        images,
-        setSearch,
-        handleProductPressItem,
-        dummyProductData,
-        categories,
-        isDrawerOpen,
-        imageData,
-        statusBarVisible,
-        DrawerActions,
-        clickedProductItems
     } = useHooks() || {};
 
     return (
@@ -55,68 +45,81 @@ export default function Index(props) {
                         iconContainer={{ flexDirection: 'row' }}
                         containerStyle={{ backgroundColor: colors.appColor1 }} />
                 </Wrapper>
-                <ScrollViews.KeyboardAvoiding contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1 }}>
-                    <Wrapper marginHorizontalBase alignItemsCenter>
-                        <Images.Simple style={{resizeMode:'contain', height:'100%', width:'100%', bottom:height(25)}} source={appImages.paymentCard}>
-                            <Spacer />
-                            <Wrapper marginVerticalLarge marginHorizontalLarge>
-                                <Wrapper>
-                                    <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.h5, color: colors.appTextColor5 }}>3822  8293  8292  2356</Text>
-                                </Wrapper>
-                                <Spacer />
-                                <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
-                                    <Wrapper flex={4}>
-                                        <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.tiny, color: colors.appTextColor15 }}>Card holder name</Text>
-                                    </Wrapper>
-                                    <Wrapper alignItemsFlexStart flex={1}>
-                                        <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.tiny, color: colors.appTextColor15 }}>Expiry Date</Text>
-                                    </Wrapper>
-                                </Wrapper>
-                                <Spacer isTiny />
-                                <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
-                                    <Wrapper flex={4}>
-                                        <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular, color: colors.appTextColor5 }}>Alexser verguson</Text>
-                                    </Wrapper>
-                                    <Wrapper alignItemsFlexStart flex={1}>
-                                        <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular, color: colors.appTextColor5 }}>03/30</Text>
-                                    </Wrapper>
-                                </Wrapper>
+                <Wrapper flex={0.6} marginHorizontalBase alignItemsCenter>
+                    <Images.Simple style={{ resizeMode: 'contain', height: '100%', width: '100%', }} source={appImages.paymentCard} />
+                    <Wrapper isAbsolute alignItemsFlexStart style={{ width: '85%', top: height(10) }}>
+                        <Spacer isTiny />
+                        <Wrapper >
+                            <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.h5, color: colors.appTextColor5 }}>3822  8293  8292  2356</Text>
+                        </Wrapper>
+                        <Spacer isMedium />
+                        <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
+                            <Wrapper flex={4}>
+                                <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.tiny, color: colors.appTextColor15 }}>Card holder name</Text>
                             </Wrapper>
-                        </Images.Simple>
-
+                            <Wrapper alignItemsFlexStart flex={1}>
+                                <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.tiny, color: colors.appTextColor15 }}>Expiry Date</Text>
+                            </Wrapper>
+                        </Wrapper>
+                        <Spacer isSmall />
+                        <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
+                            <Wrapper flex={4}>
+                                <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular, color: colors.appTextColor5 }}>Alexser verguson</Text>
+                            </Wrapper>
+                            <Wrapper alignItemsFlexStart flex={1}>
+                                <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular, color: colors.appTextColor5 }}>03/30</Text>
+                            </Wrapper>
+                        </Wrapper>
                     </Wrapper>
-
-                </ScrollViews.KeyboardAvoiding>
-
-
+                </Wrapper>
+                {/* <ScrollViews.KeyboardAvoiding contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1 }}> */}
+                <Wrapper flex={1} style={{ flexGrow: 1 }}>
+                    <Wrapper flex={1} marginHorizontalBase paddingVerticalSmall >
+                        <Spacer isMedium />
+                        <CardList editCard={()=>navigate(routes.cardManagement,{ editCard: 'editCard' })} toggle={handleRadioButtonPress} selected={selected} data={data} />
+                    </Wrapper >
+                    {/* </ScrollViews.KeyboardAvoiding> */}
+                </Wrapper>
             </Wrapper>
             <Wrapper
-                // alignItemsCenter
                 backgroundColor={colors.appColor1}
-                paddingVerticalBase
-                // justifyContentSpaceBetween
-                style={{
-                    shadowColor: colors.shadowColor1,
-                    shadowOffset: { width: 0, height: -5.93 },
-                    shadowOpacity: 0.12,
-                    shadowRadius: 30,
-                    elevation: 50,
-                }}>
+                paddingVerticalBase>
+                <Wrapper marginHorizontalBase>
+                <LinearGradient
+                    colors={pressed ? [colors.transparent, colors.transparent] : [colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={{
+                        borderRadius: 28,
+                        padding: 1,
+                    }}>
+                    <Buttons.Colored
+                        buttonStyle={{marginHorizontal: 0}}
+                        onPressIn={() => { setPressed(true); navigate(routes.cardManagement)}}
+                        onPressOut={() => setPressed(false)}
+                        text={'+Add New Card'}
+                        gradientColors={[colors.buttonColor3, colors.buttonColor3]}
+                        textStyle={{
+                            color: colors.appTextColor2,
+                            fontFamily: appFonts.appTextBold,
+                            fontSize: fontSizes.regular,
+                        }} />
+                </LinearGradient>
+                </Wrapper>
+                
+                <Spacer isSmall />
                 <Buttons.Colored
-                    //   onPress={() => 
-                    //     // Signin(email, password)
-                    //     navigate(routes.app)
-                    //   }
-                    text={'Confirm Booking'}
+                      onPress={() => handlePayNow()}
+                    text={'Pay Now'}
                     gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
                     textStyle={{
                         color: colors.appTextColor5,
-                        fontFamily: appFonts.appTextBold,
+                        fontFamily: appFonts.appTextMedium,
                         fontSize: fontSizes.regular,
                     }} />
             </Wrapper>
 
-            <Modals.PopupPrimary toggle={() => setModalVisible(!modalVisible)} calender topMargin titleStyle={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium, color: colors.appTextColor6 }} title={'Availability'} visible={modalVisible} />
+            <Modals.PopupPrimary toggle={() => setModalVisible(!modalVisible)} topMargin payNow titleStyle={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.h5, color: colors.appTextColor6 }} title={'Success'} visible={modalVisible} />
         </>
     );
 }

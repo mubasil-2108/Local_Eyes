@@ -74,10 +74,10 @@ export const Colored = ({
     iconStyle,
     tintColor,
     direction,
-    gradientColors, iconContainer
+    gradientColors, iconContainer, onPressIn, onPressOut
 }) => {
     return (
-        <TouchableOpacity onPress={onPress} disabled={isLoading ? true : disabled}>
+        <TouchableOpacity onPress={onPress} onPressIn={onPressIn} onPressOut={onPressOut} disabled={isLoading ? true : disabled}>
 
             <Wrapper animation={animation} >
                 <LinearGradient

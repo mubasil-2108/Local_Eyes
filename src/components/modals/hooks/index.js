@@ -54,6 +54,7 @@ export function useHooks() {
         setSelectedDate,
         pressed,
         togglePressed,
-        buttonData
+        buttonData,
+        setPressed,
     }
 }

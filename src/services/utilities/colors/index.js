@@ -71,6 +71,7 @@ export const colors = {
   appTextColor13: 'rgba(51, 51, 51, 1)',
   appTextColor14: 'rgba(38, 49, 98, 1)',
   appTextColor15: 'rgba(237, 237, 237, 1)',
+  appTextColor16: 'rgba(96, 96, 96, 1)',
 
   appBgColor1: '#234CB0',
   appBgColor2: '#FFFFFF',

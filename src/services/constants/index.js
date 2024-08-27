@@ -44,6 +44,7 @@ export const routes = {
     chatScreen:'chatScreen',
     booking: 'booking',
     payment: 'payment',
+    cardManagement: 'cardManagement',
 
     dummyScreen:'DummyScreen',
     homeStackScreen: 'HomeStackScreen',

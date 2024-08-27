@@ -112,6 +112,8 @@ const appIcons = {
     download: require('../../../assets/icons/download.png'),
     edit: require('../../../assets/icons/edit.png'),
     location_2: require('../../../assets/icons/location_2.png'),
+    card: require('../../../assets/icons/card.png'),
+    delete: require('../../../assets/icons/delete.png'),
     // add:require('../../../assets/icons/add.png'),
 
     security: require('../../../assets/icons/security.png'),

@@ -18,6 +18,7 @@ import LocalPreview from './localPreview'
 import ChatScreen from './chatScreen'
 import Booking from './booking'
 import Payment from './payment'
+import CardManagement from './cardManagement'
 
 export {
     Home,
@@ -39,5 +40,6 @@ export {
     LocalPreview,
     ChatScreen,
     Booking,
-    Payment
+    Payment,
+    CardManagement
 }
