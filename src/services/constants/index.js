@@ -47,6 +47,7 @@ export const routes = {
     cardManagement: 'cardManagement',
     tripPlan: 'tripPlan',
     schedule: 'schedule',
+    preference: 'preference',
 
     dummyScreen:'DummyScreen',
     homeStackScreen: 'HomeStackScreen',

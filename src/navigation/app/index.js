@@ -38,6 +38,7 @@ const StackNavigation = () => {
             <AppStack.Screen name={routes.cardManagement} component={App.CardManagement} />
             <AppStack.Screen name={routes.tripPlan} component={App.TripPlan} />
             <AppStack.Screen name={routes.schedule} component={App.Schedule} />
+            <AppStack.Screen name={routes.preference} component={App.Preference} />
 
         </AppStack.Navigator>
     )

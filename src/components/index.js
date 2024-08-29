@@ -2,6 +2,7 @@ import Wrapper from './wrapper'
 import Text from './text'
 import Spacer from './spacer'
 import GradientText from './gradientText';
+import TimePicker from './timePicker'
 import * as Chats from './chat';
 import * as Buttons from './buttons';
 import * as Icons from './icons'
@@ -33,7 +34,7 @@ export {
     CheckBoxes, ScrollViews, Loaders,
     Modals, Toasts, Headers, Pickers,
     Switches,
-    Chips, StatusBars,Rating, GradientText, Chats
+    Chips, StatusBars,Rating, GradientText, Chats, TimePicker,
 
 }
 

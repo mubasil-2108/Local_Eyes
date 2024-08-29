@@ -21,6 +21,7 @@ import Payment from './payment'
 import CardManagement from './cardManagement'
 import TripPlan from './tripPlan'
 import Schedule from './schedule'
+import Preference from './preference'
 
 export {
     Home,
@@ -45,5 +46,6 @@ export {
     Payment,
     CardManagement,
     TripPlan,
-    Schedule
+    Schedule,
+    Preference
 }

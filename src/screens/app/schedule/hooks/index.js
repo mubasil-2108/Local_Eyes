@@ -5,6 +5,7 @@ import { LocaleConfig } from 'react-native-calendars';
 
 export function useHooks() {
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
+    const [isChecked, setIsChecked] = useState(false);
     const customDayNames = ['SAN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
     LocaleConfig.locales['en'] = {
@@ -20,14 +21,15 @@ export function useHooks() {
 
     LocaleConfig.defaultLocale = 'en';
 
-    
-
     const onDatePress = (date) => {
         setSelectedDate(date.dateString); // Use dateString for comparison
         handleDateChange(date.dateString); // Existing functionality to handle date change
     };
     const handleDateChange = (date) => {
         setSelectedDate(date);
+    };
+    const toggleCheckbox = () => {
+        setIsChecked(!isChecked);
     };
     return {
         customDayNames,
@@ -36,6 +38,8 @@ export function useHooks() {
         onDatePress,
         handleDateChange,
         LocaleConfig,
+        isChecked,
+        toggleCheckbox
         // hour,
         // hours,
         // setHour

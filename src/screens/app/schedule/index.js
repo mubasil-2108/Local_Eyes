@@ -1,8 +1,9 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Image, TouchableOpacity, FlatList, StyleSheet, Button } from 'react-native';
-import DatePicker from 'react-native-date-picker'
+import ScrollPicker from "react-native-wheel-scrollview-picker";
+
 import { width, height, totalSize } from 'react-native-dimension';
-import { Wrapper, Icons, Headers, Modals, Text, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Spacer, LocationLists, Images, Buttons, LocalsList, PlacesList, Rating, ReviewList, CheckBoxes } from '../../../components';
+import { Wrapper, Icons, Headers, Modals, Text, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Spacer, LocationLists, Images, Buttons, LocalsList, PlacesList, Rating, ReviewList, CheckBoxes, TimePicker } from '../../../components';
 import { useHooks } from './hooks'
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { appImages, colors, routes, sizes, fontSizes, appFonts, appIcons, responsiveWidth, responsiveHeight } from '../../../services';
@@ -13,52 +14,28 @@ export default function Index(props) {
 
     const { navigate, goBack, dispatch } = props.navigation
     const {
-        clickedItems,
         modalVisible,
         setModalVisible,
         customDayNames,
         selectedDate,
-        // hour,
-        // hours,
-        // setHour,
-        setSelectedDate,
-        // LocaleConfig,
-        onDatePress,
-        handlePressItem,
-        data,
-        search,
-        pressed,
-        setPressed,
-        isChecked,
-        setIsChecked,
         toggleCheckbox,
-        increment,
-        decrement,
-        counter,
-        images,
-        setSearch,
-        handleProductPressItem,
-        dummyProductData,
-        categories,
-        isDrawerOpen,
-        imageData,
-        statusBarVisible,
-        DrawerActions,
-        clickedProductItems
-    } = useHooks() || {};
-    const [date, setDate] = useState(new Date());
+        isChecked,
+        onDatePress,
 
-    const handleConfirm = (time) => {
-        setDate(time || date);
+    } = useHooks() || {};
+
+    const [selectedHour, setSelectedHour] = useState('1');
+    const hours = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
+    const periods = ['PM', 'AM'];
+    const handleHourChange = (data, selectedIndex) => {
+        setSelectedHour(data);
     };
 
-    const [selectedHour, setSelectedHour] = useState(0);
-    const [selectedMinute, setSelectedMinute] = useState(0);
-    const [selectedPeriod, setSelectedPeriod] = useState('AM');
-
-    const hours = Array.from({ length: 12 }, (_, i) => i + 1);
-    const minutes = Array.from({ length: 60 }, (_, i) => i < 10 ? `0${i}` : i.toString());
-    const periods = ['AM', 'PM'];
+    const getItemTextStyle = (item, selectedValue) => {
+        return item === selectedValue
+            ? styles.selectedText
+            : styles.unSelectedText;
+    };
 
     const CustomHeader = ({ date, onPrevious, onNext }) => {
         const month = date.toLocaleString('default', { month: 'long' });
@@ -120,6 +97,7 @@ export default function Index(props) {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                                 borderRadius: 50,
+
                                 // Non-selected background color
                             }}>
 
@@ -138,7 +116,7 @@ export default function Index(props) {
                 <StatusBars.Dark backgroundColor={colors.appColor1} />
                 <Spacer />
                 <Wrapper
-                    marginHorizontalBase
+                    marginHorizontalTiny
                     backgroundColor={colors.appColor1}>
                     <Headers.Primary
                         onBackPress={() => goBack()}
@@ -183,51 +161,69 @@ export default function Index(props) {
                         </Wrapper>
                         <Spacer />
                         <Text style={{ fontFamily: appFonts.baloo2_Bold, fontSize: fontSizes.medium, color: colors.appTextColor9 }}>Starting Time</Text>
-                        <Wrapper justifyContentCenter isBorderedWrapper>
-                            <Wrapper>
-                            <DatePicker
-                                date={date}
-                                mode="time"
-                                onConfirm={handleConfirm}
-                                onCancel={() => {}}
-                                style={styles.datePicker}
-                            />
+                        <Wrapper paddingHorizontalBase paddingVerticalZero isBorderedWrapper>
+                            <TimePicker />
+                        </Wrapper>
+                        <Spacer />
+                        <Text style={{ fontFamily: appFonts.baloo2_Bold, fontSize: fontSizes.medium, color: colors.appTextColor9 }}>How many hours?</Text>
+                        <Wrapper paddingHorizontalBase paddingVerticalZero isBorderedWrapper>
+                            <Wrapper alignItemsCenter marginHorizontalSmall flexDirectionRow>
+                                <ScrollPicker
+                                    dataSource={hours}
+                                    selectedIndex={periods.indexOf(selectedHour)}
+                                    onValueChange={handleHourChange}
+                                    wrapperHeight={180}
+                                    wrapperBackground={colors.appColor1}
+                                    itemHeight={60}
+                                    renderItem={(item) => (
+                                        <Text style={getItemTextStyle(item, selectedHour)}>
+                                            {item}
+                                        </Text>
+                                    )}
+                                    highlightColor={colors.borderColor5}
+                                    highlightBorderWidth={width(0.2)}
+                                />
+                                <Wrapper isAbsolute style={{ left: width(30) }}>
+                                    <Text style={{ fontFamily: appFonts.interMedium, fontSize: fontSizes.h6, color: colors.appTextColor18 }}>hours</Text>
+                                </Wrapper>
                             </Wrapper>
+                        </Wrapper>
+                        <Spacer isMedium />
+                        <Wrapper marginVerticalSmall>
+                            <CheckBoxes.Primary text={'Select Multiple Days'} textStyle={{ fontFamily: appFonts.baloo2_Medium, fontSize: fontSizes.regular, color: colors.appTextColor3 }} checkIconsize={sizes.icons.small} uncheckedIconColor={colors.iconColor6} checkedIconColor={colors.iconColor6} onPress={toggleCheckbox} checked={isChecked} uncheckIconType={'fontisto'} checkIconType={'fontisto'} uncheckedIconName={'radio-btn-passive'} checkedIconName={'radio-btn-active'} />
+                        </Wrapper>
+                        <Wrapper marginVerticalMedium>
+                            <Buttons.Colored
+                                onPress={() => navigate(routes.preference)}
+                                buttonStyle={{ marginHorizontal: 0 }}
+                                text={'Next'}
+                                iconContainer={{ left: width(34) }}
+                                gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                textStyle={{
+                                    color: colors.appTextColor5,
+                                    fontFamily: appFonts.appTextBold,
+                                    fontSize: fontSizes.regular,
+                                }} />
+
                         </Wrapper>
                     </Wrapper>
                 </ScrollViews.KeyboardAvoiding>
             </Wrapper>
-
-            <Modals.PopupPrimary toggle={() => setModalVisible(!modalVisible)} calender topMargin titleStyle={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium, color: colors.appTextColor6 }} title={'Availability'} visible={modalVisible} />
         </>
     );
 }
 
 const styles = StyleSheet.create({
-    selected: {
-        borderRadius: 50,
-        backgroundColor: colors.appBgColor2,
-    },
-    unSelected: {
-        borderRadius: 50,
-        backgroundColor: colors.transparent,
-        borderWidth: responsiveWidth(0.1),
-        borderColor: colors.borderColor1
-    },
     selectedText: {
-        color: colors.appTextColor3,
-        fontFamily: appFonts.appTextMedium,
-        fontSize: fontSizes.regular
+        right: width(8),
+        color: colors.appTextColor18,
+        fontFamily: appFonts.interMedium,
+        fontSize: fontSizes.h6
     },
     unSelectedText: {
-        color: colors.appTextColor6,
-        fontFamily: appFonts.appTextRegular,
-        fontSize: fontSizes.regular
-    },
-    datePicker: {
-        width: 300, // Use a fixed width here
-        alignSelf: 'center',
+        color: colors.appTextColor19,
+        fontFamily: appFonts.interMedium,
+        fontSize: fontSizes.h6
     },
 })
-
 

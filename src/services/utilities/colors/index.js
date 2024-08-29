@@ -73,6 +73,9 @@ export const colors = {
   appTextColor15: 'rgba(237, 237, 237, 1)',
   appTextColor16: 'rgba(96, 96, 96, 1)',
   appTextColor17: 'rgba(239, 9, 9, 1)',
+  appTextColor18: 'rgba(69, 69, 69, 1)',
+  appTextColor19: 'rgba(60, 60, 60, 0.5)',
+  appTextColor20: 'rgba(166, 166, 166, 1)',
 
   appBgColor1: '#234CB0',
   appBgColor2: '#FFFFFF',
@@ -108,6 +111,7 @@ export const colors = {
   borderColor2:'#234CB029',
   borderColor3:'rgba(35, 76, 176, 0.3)',
   borderColor4:'rgba(215, 215, 215, 1)',
+  borderColor5:'rgba(139, 139, 139, 1)',
 
   // Shadow Color
   shadowColor1: '#000000',
