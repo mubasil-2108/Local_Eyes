@@ -81,13 +81,13 @@ export default function Home(props) {
           <LocationLists data={imageData} />
             <Spacer />
             <Buttons.Colored
-              // onPress={() => handleResetPassword()}
+              onPress={() => navigate(routes.tripPlan)}
               buttonStyle={{ marginHorizontal: 0 }}
               text={'Plan My Trip'}
               gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
               textStyle={{
                 color: colors.appTextColor5,
-                fontFamily: appFonts.interSemiBold,
+                fontFamily: appFonts.appTextMedium,
                 fontSize: fontSizes.regular,
               }} />
             <Spacer />

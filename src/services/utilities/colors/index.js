@@ -72,6 +72,7 @@ export const colors = {
   appTextColor14: 'rgba(38, 49, 98, 1)',
   appTextColor15: 'rgba(237, 237, 237, 1)',
   appTextColor16: 'rgba(96, 96, 96, 1)',
+  appTextColor17: 'rgba(239, 9, 9, 1)',
 
   appBgColor1: '#234CB0',
   appBgColor2: '#FFFFFF',
@@ -143,6 +144,7 @@ export const colors = {
   buttonBorder3: 'rgba(214, 214, 214, 1)',
   buttonBorder4: 'rgba(237, 237, 237, 1)',
   buttonBorder5: 'rgba(140, 140, 140, 0.15)',
+  buttonBorder6: 'rgba(239, 9, 9, 1)',
 
   buttonBorder2: 'rgba(197, 197, 197, 1)',
   

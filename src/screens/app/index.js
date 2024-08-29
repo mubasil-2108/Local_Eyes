@@ -19,6 +19,8 @@ import ChatScreen from './chatScreen'
 import Booking from './booking'
 import Payment from './payment'
 import CardManagement from './cardManagement'
+import TripPlan from './tripPlan'
+import Schedule from './schedule'
 
 export {
     Home,
@@ -41,5 +43,7 @@ export {
     ChatScreen,
     Booking,
     Payment,
-    CardManagement
+    CardManagement,
+    TripPlan,
+    Schedule
 }

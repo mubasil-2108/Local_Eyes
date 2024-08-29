@@ -2,13 +2,14 @@ import { Bubble, GiftedChat, InputToolbar, Message } from "react-native-gifted-c
 import Wrapper from "../wrapper"
 import React, { useState, forwardRef, useEffect, useCallback } from "react";
 import { totalSize, width, height } from 'react-native-dimension';
-import { appFonts, appIcons, appImages, colors, fontSizes, sizes } from "../../services";
+import { appFonts, appIcons, appImages, colors, fontSizes, routes, sizes } from "../../services";
 import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
-import { Icons, Images, Spacer, Text, TextInputs } from "..";
+import { Buttons, Icons, Images, Spacer, Text, TextInputs } from "..";
 import { FlatList } from "react-native";
 import { formatDistanceToNow, differenceInSeconds, differenceInMinutes, differenceInHours, differenceInDays, differenceInMonths, differenceInYears } from 'date-fns';
+import LinearGradient from "react-native-linear-gradient";
 
-export const Chat = () => {
+export const Chat = ({booking}) => {
     const [messages, setMessages] = useState([]);
     const [text, setText] = useState('');
 
@@ -120,10 +121,10 @@ export const Chat = () => {
                         </Wrapper>
                     </>
                 )}
-                <Wrapper  flexDirectionRow style={[styles.bubbleContainer, isSender ? { justifyContent: 'flex-end' } : { justifyContent: 'flex-start' }]}>
+                <Wrapper flexDirectionRow style={[styles.bubbleContainer, isSender ? { justifyContent: 'flex-end' } : { justifyContent: 'flex-start' }]}>
 
                     <Wrapper>
-                            <Text style={[{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.small, color: colors.appTextColor1 }, isSender ? { textAlign: 'right' } : { textAlign: 'left' }]}>{username}</Text>
+                        <Text style={[{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.small, color: colors.appTextColor1 }, isSender ? { textAlign: 'right' } : { textAlign: 'left' }]}>{username}</Text>
 
                         <Bubble
                             {...props}
@@ -157,23 +158,23 @@ export const Chat = () => {
                         <Spacer isSmall />
                         <CustomTime time={props.currentMessage.createdAt} isLeft={isSender} />
                     </Wrapper>
-                    
+
                 </Wrapper>
                 {isSender && (
-                        <>
-                            {/* <Spacer horizontal isTiny /> */}
-                            <Wrapper marginVerticalTiny flexDirectionRow alignItemsFlexStart >
-                                {/* <Text style={[{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.small, color: colors.appTextColor1 }, isSender ? { textAlign: 'right' } : { textAlign: 'left' }]}>{username}</Text> */}
-                                <Spacer horizontal isTiny />
+                    <>
+                        {/* <Spacer horizontal isTiny /> */}
+                        <Wrapper marginVerticalTiny flexDirectionRow alignItemsFlexStart >
+                            {/* <Text style={[{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.small, color: colors.appTextColor1 }, isSender ? { textAlign: 'right' } : { textAlign: 'left' }]}>{username}</Text> */}
+                            <Spacer horizontal isTiny />
 
-                                <Avatar
-                                    currentMessage={currentMessage}
-                                    {...props}
-                                />
+                            <Avatar
+                                currentMessage={currentMessage}
+                                {...props}
+                            />
 
-                            </Wrapper>
-                        </>
-                    )}
+                        </Wrapper>
+                    </>
+                )}
             </Wrapper>
         );
     };
@@ -251,6 +252,60 @@ export const Chat = () => {
             />
         );
     };
+    const LocalOffer = () => {
+        return (
+            <>
+                <Wrapper >
+                    <Text style={{ textAlign: 'center', fontFamily: appFonts.appTextRegular, opacity: 0.3, fontSize: fontSizes.small, color: colors.appTextColor1 }}>Local sent you an offer, waiting for response</Text>
+                    <Spacer isSmall />
+                    <Wrapper isBorderedWrapper>
+                        <Wrapper flexDirectionRow>
+                            <Images.SqareRound style={{ borderRadius: 10, height: sizes.images.logoHeight, width: sizes.images.logoWidth }} source={appImages.profile1} />
+                            <Spacer horizontal isSmall />
+                            <Wrapper flex={1}  >
+                                <Wrapper flex={1} justifyContentCenter>
+                                    <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium, color: colors.appTextColor1 }}>John Doe</Text>
+                                </Wrapper>
+                                <Wrapper flex={1} justifyContentCenter>
+                                    <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.small, color: colors.appTextColor6 }}>Travel City</Text>
+                                </Wrapper>
+                                <Wrapper flex={1} justifyContentCenter >
+                                    <Text style={{ textAlign: 'justify', fontFamily: appFonts.appTextRegular, fontSize: fontSizes.small, color: colors.appTextColor3 }}>Lorem ipsum dolor sit amet. Vel facilis sint aut sunt voluptatem.</Text>
+                                </Wrapper>
+                            </Wrapper>
+                        </Wrapper>
+                        <Spacer isBasic />
+                        <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
+                            <Wrapper >
+                                <Text style={{ fontFamily: appFonts.appTextLight, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>Total USD</Text>
+                            </Wrapper>
+                            <Wrapper >
+                                <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>$74.63</Text>
+                            </Wrapper>
+                        </Wrapper>
+                        <Spacer isBasic />
+                        <Wrapper flexDirectionRow alignItemsCenter justifyContentSpaceBetween>
+
+                            <Buttons.BorderedSmall
+                                gradientColors={[colors.buttonColor3, colors.buttonColor3]}
+                                textStyle={{ textAlign: 'center', fontFamily: appFonts.appTextRegular, color: colors.appTextColor17, fontSize: fontSizes.medium }}
+                                buttonStyle={{ width: width(35), paddingHorizontal: width(3), paddingVertical: height(1.45), justifyContent: 'center', alignItems: 'center' }}
+                                text={'Reject'}
+                                tintColor={colors.buttonBorder6} />
+                            <Buttons.ColoredSmall
+                                onPress={booking}
+                                gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                textStyle={{ textAlign: 'justify', fontFamily: appFonts.appTextMedium, color: colors.appTextColor5, fontSize: fontSizes.medium }}
+                                buttonStyle={{ width: width(35), paddingHorizontal: width(3), paddingVertical: height(1.6), justifyContent: 'center', alignItems: 'center' }}
+                                text={'Accept'} />
+                        </Wrapper>
+                    </Wrapper>
+                </Wrapper>
+                <Spacer isDoubleBase />
+                <Spacer isSmall/>
+            </>
+        )
+    }
     return (
         <Wrapper flex={1}>
             <GiftedChat
@@ -261,7 +316,7 @@ export const Chat = () => {
                     _id: 1,
                 }}
                 renderFooter={() => <Spacer isMedium />}
-                renderChatFooter={() => <Spacer />}
+                renderChatFooter={LocalOffer}
                 renderBubble={renderBubble}
                 renderTime={() => null}
                 renderAvatar={() => null}

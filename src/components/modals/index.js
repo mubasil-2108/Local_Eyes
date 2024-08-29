@@ -294,7 +294,7 @@ export const PopupPrimary = ({
             </>
         );
     };
-    const customDayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const customDayNames = ['SAN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
     return (
         <Swipable

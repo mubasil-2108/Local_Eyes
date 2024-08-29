@@ -31,7 +31,7 @@ export default function Index(props) {
                     containerStyle={{ backgroundColor: colors.appColor1 }} />
 
             </Wrapper>
-            <Chats.Chat />
+            <Chats.Chat booking={()=> navigate(routes.booking)}/>
         </Wrapper>
     );
 }
