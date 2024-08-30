@@ -76,6 +76,8 @@ export const colors = {
   appTextColor18: 'rgba(69, 69, 69, 1)',
   appTextColor19: 'rgba(60, 60, 60, 0.5)',
   appTextColor20: 'rgba(166, 166, 166, 1)',
+  appTextColor21: 'rgba(128, 128, 137, 1)',
+  appTextColor22: 'rgba(39, 39, 42, 1)',
 
   appBgColor1: '#234CB0',
   appBgColor2: '#FFFFFF',
@@ -105,6 +107,7 @@ export const colors = {
   iconColor7: 'rgba(79, 79, 79, 1)',
   iconColor8: 'rgba(41, 45, 50, 1)',
   iconColor9: 'rgba(181, 190, 198, 1)',
+  iconColor10:'rgba(166, 166, 166, 1)',
 
   //BorderColor
   borderColor1:'#ADADAD',
@@ -124,6 +127,7 @@ export const colors = {
   inputfieldColor2: '#F9FAFA',
   inputfieldColor3: 'rgba(249, 250, 250, 1)',
   inputfieldColor4: 'rgba(184, 75, 98, 0.11)',
+  inputfieldColor5: 'rgba(255, 255, 255, 1)',
 
   // PlaceHolder Color
   placeHolderColor: 'rgba(155, 165, 183, 1)',
@@ -138,8 +142,8 @@ export const colors = {
   buttonColor2: 'rgba(113, 26, 45, 1)',
   buttonColor3: '#FFFFFF',
   buttonColor4: 'rgba(193, 193, 193, 0.15)',
+  buttonColor5: 'rgba(243, 246, 251, 1)',
   
-  buttonColor5: 'rgba(255, 255, 255, 1)',
   buttonColor6: '#E74C3C',
 
   // Button Border

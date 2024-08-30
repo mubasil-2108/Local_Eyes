@@ -5,7 +5,7 @@ export function useHooks() {
     const [modalHomeVisible, setModalHomeVisible] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
     const [pressed, setPressed] = useState({});
-
+    
   // Function to toggle the pressed state for a specific index
   const togglePressed = (index) => {
     setPressed((prev) => ({

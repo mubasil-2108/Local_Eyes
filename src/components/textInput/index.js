@@ -644,7 +644,7 @@ const Underlined = ({
 }
 
 
-const SearchBar = ({ value, placeholder, iconStyleLeft, iconSizeRight, iconStyleRight, iconNameRight, customIconRight, iconColorRight, inputContainerStyle, onChangeText, right, onPressCross, ...props }) => {
+const SearchBar = ({ value, placeholder, iconColorLeft, iconStyleLeft, iconSizeRight, iconStyleRight, iconNameRight, customIconRight, iconColorRight, inputContainerStyle, onChangeText, right, onPressCross, ...props }) => {
     return (
         <Colored
             value={value}
@@ -653,6 +653,7 @@ const SearchBar = ({ value, placeholder, iconStyleLeft, iconSizeRight, iconStyle
             // iconNameLeft='search'
             // iconTypeLeft='Feather'
             iconStyleLeft={iconStyleLeft}
+            iconColorLeft={iconColorLeft}
             iconSizeLeft={sizes.icons.mediumSmall}
             placeholder={placeholder ? placeholder : "Search"}
             inputContainerStyle={inputContainerStyle}

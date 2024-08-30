@@ -210,13 +210,13 @@ export const PopupPrimary = ({
     headerTitleStyle, preBottom, headerStyle, closeIconSize, rightContainerStyle, closeIconContainerSize,
     buttonWrapperShadow, headerBottom, titleStyle, buttonText1Style, buttonText2Style, headerSubtitleStyle, headerSubtitle,
     buttonsDirection, buttonsContainerStyle, mainContainerStyle, containerStyle,
-    calender, payNow,
-    //loaders
+    calender, payNow, language, selectedLanguages, handleLanguageSelection, setSelectedLanguages,
+    //loaders 
     loadingButton1, loadingButton2,
     // New prop
 }) => {
 
-    const { selectedDate, pressed, setPressed, togglePressed, buttonData, handleDateChange, onDatePress, setSelectedDate } = useHooks();
+    const {  selectedDate, pressed, setPressed, togglePressed, buttonData, handleDateChange, onDatePress, setSelectedDate } = useHooks();
     // manage keyboard
     const keyboardVisible = useKeyboardStatus()
 
@@ -522,7 +522,7 @@ export const PopupPrimary = ({
 
                                         color: colors.appTextColor3
                                     }} />
-                                    <Spacer />
+                                <Spacer />
                                 <Wrapper flexDirectionRow paddingVerticalTiny alignItemsCenter justifyContentSpaceBetween>
                                     <LinearGradient
                                         // colors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
@@ -549,6 +549,60 @@ export const PopupPrimary = ({
                                         textStyle={{ textAlign: 'justify', fontFamily: appFonts.appTextMedium, color: colors.appTextColor5, fontSize: fontSizes.medium }}
                                         buttonStyle={{ width: width(42), paddingHorizontal: width(3), paddingVertical: height(1.6), justifyContent: 'center', alignItems: 'center' }}
                                         text={'Book Now'} />
+                                </Wrapper>
+                            </Wrapper>
+                            :
+                            null
+                    }
+                    {
+                        language ?
+                            <Wrapper marginHorizontalBase>
+                                <Spacer isSmall/>
+                                <Wrapper marginHorizontalBase alignItemsCenter flexDirectionRow>
+                                    <Icons.Button onPress={() => handleLanguageSelection(1)} iconName={selectedLanguages.includes(1) ? 'radio-btn-active' : 'radio-btn-passive'} isRound buttonColor={colors.transparent} iconColor={colors.iconColor6} buttonSize={sizes.icons.medium} iconSize={sizes.icons.small} iconType={'fontisto'} />
+                                    <Spacer horizontal isTiny />
+                                    <Icons.Button isRound disabled buttonSize={sizes.icons.largeTiny} buttonColor={colors.buttonColor5} iconSize={sizes.icons.medium} customIcon={appIcons.english} />
+                                    <Spacer horizontal isSmall />
+                                    <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular, color: colors.appTextColor3 }}>English (US)</Text>
+                                </Wrapper>
+                                <Spacer isMedium />
+                                <Wrapper marginHorizontalBase alignItemsCenter flexDirectionRow>
+                                    <Icons.Button onPress={() => handleLanguageSelection(2)} iconName={selectedLanguages.includes(2) ? 'radio-btn-active' : 'radio-btn-passive'} isRound buttonColor={colors.transparent} iconColor={colors.iconColor6} buttonSize={sizes.icons.medium} iconSize={sizes.icons.small} iconType={'fontisto'} />
+                                    <Spacer horizontal isTiny />
+                                    <Icons.Button isRound disabled buttonSize={sizes.icons.largeTiny} buttonColor={colors.buttonColor5} iconSize={sizes.icons.medium} customIcon={appIcons.indonesia} />
+                                    <Spacer horizontal isSmall />
+                                    <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular, color: colors.appTextColor3 }}>Indonesia</Text>
+                                </Wrapper>
+                                <Spacer isMedium />
+                                <Wrapper marginHorizontalBase alignItemsCenter flexDirectionRow>
+                                    <Icons.Button onPress={() => handleLanguageSelection(3)} iconName={selectedLanguages.includes(3) ? 'radio-btn-active' : 'radio-btn-passive'} isRound buttonColor={colors.transparent} iconColor={colors.iconColor6} buttonSize={sizes.icons.medium} iconSize={sizes.icons.small} iconType={'fontisto'} />
+                                    <Spacer horizontal isTiny />
+                                    <Icons.Button isRound disabled buttonSize={sizes.icons.largeTiny} buttonColor={colors.buttonColor5} iconSize={sizes.icons.medium} customIcon={appIcons.thailand} />
+                                    <Spacer horizontal isSmall />
+                                    <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular, color: colors.appTextColor3 }}>Thailand</Text>
+                                </Wrapper>
+                                <Spacer isMedium />
+                                <Wrapper marginHorizontalBase alignItemsCenter flexDirectionRow>
+                                    <Icons.Button onPress={() => handleLanguageSelection(4)} iconName={selectedLanguages.includes(4) ? 'radio-btn-active' : 'radio-btn-passive'} isRound buttonColor={colors.transparent} iconColor={colors.iconColor6} buttonSize={sizes.icons.medium} iconSize={sizes.icons.small} iconType={'fontisto'} />
+                                    <Spacer horizontal isTiny />
+                                    <Icons.Button isRound disabled buttonSize={sizes.icons.largeTiny} buttonColor={colors.buttonColor5} iconSize={sizes.icons.medium} customIcon={appIcons.china} />
+                                    <Spacer horizontal isSmall />
+                                    <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular, color: colors.appTextColor3 }}>Chinese  </Text>
+                                </Wrapper>
+                                <Spacer isMedium/>
+                                <Wrapper>
+                                    <Buttons.Colored
+                                        onPress={toggle}
+                                        buttonStyle={{ marginHorizontal: 0 }}
+                                        text={'Select'}
+                                        iconContainer={{ left: width(34) }}
+                                        gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                        textStyle={{
+                                            color: colors.appTextColor5,
+                                            fontFamily: appFonts.appTextMedium,
+                                            fontSize: fontSizes.regular,
+                                        }} />
+
                                 </Wrapper>
                             </Wrapper>
                             :
