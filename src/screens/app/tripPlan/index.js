@@ -57,7 +57,7 @@ export default function Index(props) {
                         rightIconSource={appIcons.chevron_left}
                         // allowText
                         // iconColor={colors.iconColor1}
-                        title={'Local Profile'}
+                        title={'Add Trip Details'}
                         titleStyle={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor6, fontSize: fontSizes.medium }}
                         iconContainer={{ flexDirection: 'row' }}
                         containerStyle={{ backgroundColor: colors.appColor1 }} />

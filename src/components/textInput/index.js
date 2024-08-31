@@ -10,6 +10,7 @@ import * as Icons from '../icons';
 import Wrapper from '../wrapper';
 import Text from '../text';
 import Spacer from '../spacer';
+import { ScrollViews } from '..';
 const Colored = ({
     iconNameRight, inputRef, iconTypeRight, returnKeyLabel,
     returnKeyType, onSubmitEditing, onPress,
@@ -103,7 +104,7 @@ const Colored = ({
                             :
                             customIconRight ?
                                 <Wrapper style={{ alignItems: 'center', marginLeft: sizes.marginHorizontal / 2 }}>
-                                    <Icons.Custom end={end}  start={start} gradiantColors={gradiantColors} isGradient={isGradient} icon={customIconRight} size={iconSizeRight ? iconSizeRight : sizes.icons.medium} color={iconColorRight ? iconColorRight : null} containerStyle={iconStyleRight} onPress={onPressIconRight} />
+                                    <Icons.Custom end={end} start={start} gradiantColors={gradiantColors} isGradient={isGradient} icon={customIconRight} size={iconSizeRight ? iconSizeRight : sizes.icons.medium} color={iconColorRight ? iconColorRight : null} containerStyle={iconStyleRight} onPress={onPressIconRight} />
                                 </Wrapper>
                                 :
                                 iconNameRight ?
@@ -135,11 +136,11 @@ const Counter = ({
     duration, titleStyle, placeholder, editable,
     animation, multiline, onFocus, onBlur,
     onChangeText, secureTextEntry, value,
-    iconColorRight, iconSizeRight, containerStyle,
+    iconColorRight, iconSizeRight, containerStyle, right1, iconNameRight1, customIconRight1, Language,
     inputContainerStyle, onPressIconRight, inputStyle,
     right, keyboardType, iconStyleRight, customIconRight, error,
-    left, customIconLeft, iconNameLeft, iconTypeLeft, iconSizeLeft,
-    iconColorLeft, iconStyleLeft, onPressIconLeft,
+    left, customIconLeft, iconNameLeft, iconTypeLeft, iconSizeLeft, textStyle,
+    iconColorLeft, iconStyleLeft, onPressIconLeft, end, start, gradiantColors, isGradient,
     flagCode, increment, decrement, counter,
     flageSize,
     placeholderTextColor
@@ -164,6 +165,7 @@ const Counter = ({
                 borderWidth: responsiveHeight(0.1),
                 backgroundColor: colors.inputfieldColor1,
                 marginHorizontal: 0
+
             }, inputContainerStyle]}>
                 {
                     left ?
@@ -171,7 +173,7 @@ const Counter = ({
                         :
                         flagCode ? // Replace icon with CountryFlag if flagCode is provided
                             <Wrapper style={{ alignItems: 'center', marginLeft: sizes.marginHorizontal / 2 }}>
-                                <CountryFlag isoCode={flagCode} size={flageSize} style={iconStyleLeft} />
+                                <CountryFlag isoCode={flagCode ? flagCode : 'US'} size={flageSize} style={iconStyleLeft} />
                             </Wrapper>
                             :
                             customIconLeft ?
@@ -186,22 +188,53 @@ const Counter = ({
                                     :
                                     null
                 }
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 1, }}>
                     {
                         onPress ?
                             <Wrapper marginHorizontalBase style={{ height: sizes.inputHeight, justifyContent: 'center', }}>
-                                <Text isMedium style={value ? null : appStyles.textGray}>{value ? value : placeholder}</Text>
+                                <Text style={textStyle}>{value ? value : placeholder}</Text>
                             </Wrapper>
                             :
-                            null
+                            <ScrollViews.KeyboardAvoiding horizontal contentContainerStyle={{ height: height(4), top: height(1.4) }} style={{ justifyContent: 'center', alignItems: 'center' }} >
+                                <Wrapper alignItemsCenter flexDirectionRow marginHorizontalTiny>
+
+                                    {Language && Language.length > 0 ? (
+                                        Language.map((lang, index) => (
+                                            <Wrapper key={index} style={{ flex: 0, paddingHorizontal: width(4), marginRight: width(2), paddingVertical: height(0.5), borderRadius: sizes.cardRadius }} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} isGradient gradiantColors={[colors.appColor2, colors.appColor2, colors.appColor3]}>
+                                                <Text style={{ fontFamily: appFonts.interMedium, fontSize: fontSizes.small, color: colors.appTextColor5 }}>{lang}</Text>
+                                            </Wrapper>
+                                        ))
+                                    ) : (
+                                        <Text style={textStyle}>{placeholder}</Text>
+                                    )}
+                                </Wrapper>
+                            </ScrollViews.KeyboardAvoiding>
                     }
                 </View>
-                <View style={{ flex: 0.5 }}>
+                <View style={{ alignItems: 'flex-start', justifyContent: 'center' }}>
                     {
-                        right ?
-                            right
+                        right1 ?
+                            right1
                             :
-                            customIconRight ?
+                            customIconRight1 ?
+                                <Wrapper style={{ alignItems: 'center', marginLeft: sizes.marginHorizontal / 2 }}>
+                                    <Icons.Custom end={end} start={start} gradiantColors={gradiantColors} isGradient={isGradient} icon={customIconRight1} size={iconSizeRight ? iconSizeRight : sizes.icons.medium} color={iconColorRight ? iconColorRight : null} containerStyle={iconStyleRight} onPress={onPressIconRight} />
+                                </Wrapper>
+                                :
+                                iconNameRight1 ?
+                                    <Wrapper style={{ alignItems: 'center', marginRight: sizes.marginHorizontal }}>
+                                        <Icon name={iconNameRight1} type={iconTypeRight} size={iconSizeRight ? iconSizeRight : sizes.icons.medium} color={iconColorRight ? iconColorRight : colors.appTextColor5} iconStyle={iconStyleRight} onPress={onPressIconRight} />
+                                    </Wrapper>
+                                    :
+                                    null
+                    }
+                </View>
+                {
+                    right ?
+                        right
+                        :
+                        customIconRight ?
+                            <View style={{ flex: 0.5 }}>
                                 <Wrapper style={{ marginLeft: sizes.marginHorizontal / 2, marginRight: sizes.marginHorizontal / 2 }}>
                                     <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
                                         <Icons.CounterButton isRound buttonColor={colors.transparent} buttonSize={sizes.icons.mediumLarge} customIcon={appIcons.minus_1} iconSize={iconSizeRight ? iconSizeRight : sizes.icons.medium} iconColor={iconColorRight ? iconColorRight : colors.appTextColor1} buttonStyle={iconStyleRight} onPress={decrement} />
@@ -210,10 +243,12 @@ const Counter = ({
                                     </Wrapper>
 
                                 </Wrapper>
-                                :
-                                null
-                    }
-                </View>
+                            </View>
+                            :
+                            null
+
+                }
+
             </Wrapper>
             {
                 error ?

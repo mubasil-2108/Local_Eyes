@@ -132,7 +132,7 @@ const appIcons = {
     china: require('../../../assets/icons/china.png'),
     thailand: require('../../../assets/icons/thailand.png'),
     indonesia: require('../../../assets/icons/indonesia.png'),
-
+    dummyFlag: require('../../../assets/icons/dummyFlag.png'),
     
     // add:require('../../../assets/icons/add.png'),
 

@@ -19,6 +19,7 @@ export default function Index(props) {
         selectedLanguages,
         handleLanguageSelection,
         selectedLanguageNames,
+        languageToIsoCodeMap,
         handleModalToggle,
         customDayNames,
         selectedDate,
@@ -32,7 +33,9 @@ export default function Index(props) {
         handleSelection,
         isItemSelected
     } = useHooks() || {};
-
+    const firstLanguageIsoCode = selectedLanguageNames.length > 0
+    ? languageToIsoCodeMap[selectedLanguageNames[0]]
+    : null;
     function renderPreference(label, icon) {
         const selected = isItemSelected(label);
         return (
@@ -118,8 +121,8 @@ export default function Index(props) {
                             <Spacer horizontal isTiny />
                             <Text style={{ fontFamily: appFonts.baloo2_Medium, fontSize: fontSizes.h3, color: colors.appTextColor6 }}>Filters</Text>
                         </Wrapper>
-                        <TouchableOpacity onPress={()=>setModalVisible(true)}>
-                            <TextInputs.Colored
+                        <TouchableOpacity onPress={() => setModalVisible(true)}>
+                            {/* <TextInputs.Counter
                                 editable={false}
                                 title={'Language'}
                                 value={selectedLanguageNames.join(', ')}
@@ -150,6 +153,43 @@ export default function Index(props) {
                                 titleStyle={{
                                     fontSize: fontSizes.regular,
                                     fontFamily: appFonts.appTextBold,
+                                    color: colors.appTextColor3
+                                }} /> */}
+                            <TextInputs.Counter
+                                title={'Language'}
+                                containerStyle={{ marginHorizontal: 0, marginTop: height(1), }}
+                                inputContainerStyle={{
+                                    backgroundColor: colors.inputfieldColor1,
+                                    borderColor: colors.inputTextBorder,
+                                    borderRadius: totalSize(2),
+                                    height: sizes.inputHeight
+                                }}
+                                placeholder={'Select...'}
+                                Language={selectedLanguageNames}
+                                // onPress
+                                textStyle={{
+                                    fontSize: fontSizes.regular,
+                                    fontFamily: appFonts.satoshiRegular,
+                                    color: colors.appTextColor1
+                                }}
+                                flagCode={firstLanguageIsoCode}
+                                flageSize={sizes.icons.medium}
+                                iconStyleLeft={{ width: width(7), borderRadius: 4 }}
+                                customIconRight1={appIcons.dropDown}
+                                iconColorRight={colors.iconColor1}
+                                iconSizeRight={sizes.icons.tiny}
+                                inputStyle={{
+                                    fontSize: fontSizes.regular,
+                                    fontFamily: appFonts.satoshiRegular,
+                                    color: colors.appTextColor1
+                                }}
+                                iconColorLeft={colors.iconColor1}
+                                iconStyleRight={{
+                                    marginRight: width(5)
+                                }}
+                                titleStyle={{
+                                    fontSize: fontSizes.regular,
+                                    fontFamily: appFonts.satoshiBold,
                                     color: colors.appTextColor3
                                 }} />
                         </TouchableOpacity>
@@ -363,7 +403,7 @@ export default function Index(props) {
                     </Wrapper>
                 </ScrollViews.KeyboardAvoiding>
             </Wrapper>
-            <Modals.PopupPrimary  handleLanguageSelection={handleLanguageSelection} selectedLanguages={selectedLanguages} toggle={() => setModalVisible(!modalVisible)} disableSwipe language topMargin titleStyle={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.h5, color: colors.appTextColor6 }} title={'Language'} visible={modalVisible} />
+            <Modals.PopupPrimary handleLanguageSelection={handleLanguageSelection} selectedLanguages={selectedLanguages} toggle={() => setModalVisible(!modalVisible)} disableSwipe language topMargin titleStyle={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.h5, color: colors.appTextColor6 }} title={'Language'} visible={modalVisible} />
 
         </>
     );
