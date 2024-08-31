@@ -9,7 +9,6 @@ const TimePicker = () => {
     // Helper function to format hours and minutes
     const formatTimeUnit = (unit) => (unit < 10 ? `0${unit}` : unit.toString());
 
-    // Get current time
     const now = new Date();
     const currentHour = formatTimeUnit(now.getHours() % 12 || 12);
     const currentMinute = formatTimeUnit(now.getMinutes());
@@ -23,7 +22,6 @@ const TimePicker = () => {
     const hours = Array.from({ length: 12 }, (_, i) => formatTimeUnit(i + 1));
     const minutes = Array.from({ length: 60 }, (_, i) => formatTimeUnit(i));
     const periods = ['PM', 'AM'];
-    
     const handleHourChange = (data) => {
         setSelectedHour(data);
     };

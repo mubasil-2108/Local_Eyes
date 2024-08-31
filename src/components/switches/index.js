@@ -1,15 +1,15 @@
 import React from 'react'
-import { totalSize } from 'react-native-dimension'
+import { width, height, totalSize } from 'react-native-dimension'
 // import { Wrapper, Icons, Text } from '..'
-import  Wrapper from '../wrapper'
-import * as Icons  from '../icons'
-import Text  from '../text'
+import Wrapper from '../wrapper'
+import * as Icons from '../icons'
+import Text from '../text'
 import { colors, handleAnimation, HelpingMethods, sizes } from '../../services'
 import { TouchableOpacity } from 'react-native'
 
 
-export const Primary = ({ value, onPress,tintColor }) => {
-    const defaultTintColor=tintColor||value?colors.appColor1:colors.appBgColor5
+export const Primary = ({ value, onPress, tintColor }) => {
+    const defaultTintColor = tintColor || value ? colors.appColor1 : colors.appBgColor5
     return (
         <Wrapper style={{}} isCenter>
             <Icons.Button
@@ -80,7 +80,7 @@ export const Secondary = ({ value, onPress }) => {
                 iconColor={value ? colors.appColor2 : colors.error}
                 buttonRadius={100}
                 onPress={onPress ? () => {
-                   handleAnimation()
+                    handleAnimation()
                     onPress()
                 } : null}
             />
@@ -91,7 +91,7 @@ export const Secondary = ({ value, onPress }) => {
     )
 }
 
-export const Custom = ({ value, onPress, tintColor }) => {
+export const Custom = ({ value,leftText, rightText, onPress, tintColor }) => {
     const defaultTintColor = tintColor || value ? colors.appColor1 : colors.appBgColor5;
 
     return (
@@ -100,8 +100,9 @@ export const Custom = ({ value, onPress, tintColor }) => {
                 activeOpacity={1}
                 style={{
                     flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
+                    // alignItems: 'center',
+                    justifyContent:'flex-end',
+                    // justifyContent: 'space-between',
                     width: totalSize(10),
                 }}
                 onPress={onPress ? () => {
@@ -109,31 +110,45 @@ export const Custom = ({ value, onPress, tintColor }) => {
                     onPress();
                 } : null}
             >
-                <Text style={{ color: defaultTintColor }}>KJV</Text>
+                {
+                    leftText ?
+                        <Text style={{ color: defaultTintColor }}>KJV</Text>
+                        :
+                        null
+                }
                 <Wrapper style={{
-                    width: totalSize(5),
-                    height: totalSize(2.5),
+                    width: totalSize(6.5),
+                    // height: totalSize(2.5),
                     borderRadius: totalSize(1.25),
                     borderWidth: 1,
-                    borderColor: defaultTintColor,
-                    paddingHorizontal: 1.75,
-                    paddingVertical: 0.1,
-                    backgroundColor: colors.transparent,
+                    // borderColor: defaultTintColor,
+                    borderColor: colors.transparent,
+                    // paddingHorizontal: 1.75,
+                    // paddingVertical: 0.1,
+                    borderRadius: width(16),
+                    backgroundColor: colors.switchColor,
+                    
                 }}>
-                    <Wrapper style={{
+                    <Wrapper paddingVerticalTiny paddingHorizontalTiny style={{
                         flex: 1,
                         flexDirection: 'row',
                         justifyContent: value ? 'flex-end' : 'flex-start',
                     }}>
-                        <Wrapper style={{
-                            width: totalSize(2.5),
-                            height: totalSize(2.5),
-                            borderRadius: totalSize(1.25),
+                        <Wrapper isGradient start={{x:0,y:0}} end={{x:1,y:0}} gradiantColors={[colors.appColor2,colors.appColor2,colors.appColor3]} style={{
+                            flex:0,
+                            width: totalSize(3),
+                            height: totalSize(3),
+                            borderRadius: totalSize(10),
                             backgroundColor: defaultTintColor,
                         }} />
                     </Wrapper>
                 </Wrapper>
-                <Text style={{ color: defaultTintColor }}>NIV</Text>
+                {
+                    rightText ?
+                        <Text style={{ color: defaultTintColor }}>NIV</Text>
+                        :
+                        null
+                }
             </TouchableOpacity>
         </Wrapper>
     );

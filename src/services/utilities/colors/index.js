@@ -78,6 +78,7 @@ export const colors = {
   appTextColor20: 'rgba(166, 166, 166, 1)',
   appTextColor21: 'rgba(128, 128, 137, 1)',
   appTextColor22: 'rgba(39, 39, 42, 1)',
+  appTextColor23: 'rgba(19, 21, 35, 1)',
 
   appBgColor1: '#234CB0',
   appBgColor2: '#FFFFFF',
@@ -177,6 +178,8 @@ export const colors = {
   spacerColor1: 'rgba(30, 94, 255, 0.28)',
   spacerColor2: 'rgba(212, 212, 212, 1)',
   spacerColor3: 'rgba(135, 135, 135, 0.24)',
+
+  switchColor: 'rgba(184, 75, 98, 0.21)'
 
 }
 

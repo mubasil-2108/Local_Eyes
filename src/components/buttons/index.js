@@ -74,6 +74,10 @@ export const Colored = ({
     iconStyle,
     tintColor,
     direction,
+    iconGradient,
+    iconGradientColors,
+    iconStart,
+    iconEnd,
     gradientColors, iconContainer, onPressIn, onPressOut
 }) => {
     return (
@@ -114,7 +118,7 @@ export const Colored = ({
                         }
 
                         {customIconRight &&
-                            <Wrapper justifyContentCenter alignItemsCenter backgroundColor={colors.appColor1} style={{ ...iconContainer, height: totalSize(4.5), width: totalSize(4.5), borderRadius: width(10) }}>
+                            <Wrapper isGradient={iconGradient} gradiantColors={iconGradientColors} start={iconStart} end={iconEnd} justifyContentCenter alignItemsCenter backgroundColor={colors.appColor1} style={{ ...iconContainer, height: totalSize(4.5), width: totalSize(4.5), borderRadius: width(10), justifyContent: iconGradient ? 'center': null, alignItems: iconGradient ? 'center': null }}>
                                 <Icons.Custom
                                     icon={customIconRight}
                                     size={iconSize ? iconSize : totalSize(3)}

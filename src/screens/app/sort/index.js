@@ -224,7 +224,7 @@ export default function Index(props) {
                         <Buttons.Colored
                             onPress={() => navigate(routes.matchingResult)}
                             buttonStyle={{ marginHorizontal: 0 }}
-                            text={'Next'}
+                            text={'Save'}
                             iconContainer={{ left: width(34) }}
                             gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
                             textStyle={{
