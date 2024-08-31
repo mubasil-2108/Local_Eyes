@@ -48,6 +48,9 @@ export const routes = {
     tripPlan: 'tripPlan',
     schedule: 'schedule',
     preference: 'preference',
+    matchingResult: 'matchingResult',
+    filters: 'filters',
+    sort: 'sort',
 
     dummyScreen:'DummyScreen',
     homeStackScreen: 'HomeStackScreen',

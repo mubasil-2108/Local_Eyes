@@ -316,6 +316,7 @@ export const LocalsList = ({ data, ...props }) => {
             }}
             //   contentContainerStyle={{flex:1, justifyContent:'space-between'}}
             keyExtractor={(item) => item.id}
+            showsVerticalScrollIndicator={false}
         />
     );
 };

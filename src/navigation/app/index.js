@@ -39,7 +39,10 @@ const StackNavigation = () => {
             <AppStack.Screen name={routes.tripPlan} component={App.TripPlan} />
             <AppStack.Screen name={routes.schedule} component={App.Schedule} />
             <AppStack.Screen name={routes.preference} component={App.Preference} />
-
+            <AppStack.Screen name={routes.matchingResult} component={App.MatchingResult} />
+            <AppStack.Screen name={routes.filters} component={App.Filters} />
+            <AppStack.Screen name={routes.sort} component={App.Sort} />
+        
         </AppStack.Navigator>
     )
 

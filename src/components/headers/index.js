@@ -36,16 +36,16 @@ import { Images } from '..';
 // }
 
 export const Primary = ({
-    onBackPress, search, title, profilePic, right, searchPress, rightIcon, leftIconSource, leftIconName,
+    onBackPress, search, title, profilePic, right, searchPress,rightIconOnPress2,rightIconOnPress, rightIcon, leftIconSource, leftIconName,
     left, titleContainerStyle, centerTitle, tintColor, rightIconName, rightIconSource,
-    containerStyle, headerTitle, alignTitleLeft, showBackArrow,leftButtonStyle, leftIconTintColor, leftIconSize,
-    invertColors, titleStyle, leftContainerStyle, iconContainer, iconColor, textColor, allowText, rightContainerStyle, textStyle, shadow, auth }) => {
+    containerStyle, headerTitle, alignTitleLeft, showBackArrow, leftButtonStyle, leftIconTintColor, leftIconSize,
+    invertColors, titleStyle, leftContainerStyle, rightIcon2, leftIconSource2, leftIconSize2, leftButtonStyle2, leftIconTintColor2, leftIconName2, iconColor2, iconContainer, iconColor, textColor, allowText, rightContainerStyle, textStyle, shadow, auth }) => {
 
     const { statusBarHeight, headerHeight, } = useSizes()
     const defaultTintColor = !invertColors ? colors.appTextColor6 : colors.appColor1
     const defaultBackgroundColor = !invertColors ? colors.appColor1 : colors.appBgColor1
     return (
-        <Wrapper style={[
+        <Wrapper  style={[
             appStyles.headerStyle,
             {
                 height: headerHeight,
@@ -117,7 +117,7 @@ export const Primary = ({
                     {
                         profilePic ?
                             <Wrapper justifyContentCenter alignItemsCenter marginHorizontalSmall>
-                                <Images.SqareRound source={profilePic} size={sizes.images.mediumLarge} style={{borderRadius:10}}/>
+                                <Images.SqareRound source={profilePic} size={sizes.images.mediumLarge} style={{ borderRadius: 10 }} />
                             </Wrapper>
                             :
                             null
@@ -133,12 +133,12 @@ export const Primary = ({
                     :
                     <Wrapper flex={1.5}></Wrapper>
                 } */}
-                <Wrapper flex={1.5} style={rightContainerStyle}>
+                <Wrapper flex={1.5} flexDirectionRow style={rightContainerStyle}>
                     {
                         rightIcon ?
                             <Pressable
                                 style={[{ flex: 1 }, appStyles.center]}
-                                onPress={rightIcon.onPress}
+                                onPress={rightIconOnPress}
                             >
                                 <Icons.Button
                                     customIcon={leftIconSource}
@@ -148,6 +148,26 @@ export const Primary = ({
                                     buttonStyle={[{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder1, borderWidth: width(0.4) }, leftButtonStyle]}
                                     buttonSize={width(9)}
                                     color={leftIconTintColor ? leftIconTintColor : defaultTintColor}
+                                />
+                            </Pressable>
+                            :
+                            null
+                    }
+                    
+                    {
+                        rightIcon2 ?
+                            <Pressable
+                                style={[{ flex: 1 }, appStyles.center]}
+                                onPress={rightIconOnPress2}
+                            >
+                                <Icons.Button
+                                    customIcon={leftIconSource2}
+                                    iconName={leftIconName2}
+                                    iconColor={iconColor2}
+                                    iconSize={leftIconSize2 ? leftIconSize : sizes.icons.medium}
+                                    buttonStyle={[{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder1, borderWidth: width(0.4) }, leftButtonStyle2]}
+                                    buttonSize={width(9)}
+                                    color={leftIconTintColor2 ? leftIconTintColor : defaultTintColor}
                                 />
                             </Pressable>
                             :

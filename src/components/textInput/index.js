@@ -195,9 +195,8 @@ const Counter = ({
                                 <Text style={textStyle}>{value ? value : placeholder}</Text>
                             </Wrapper>
                             :
-                            <ScrollViews.KeyboardAvoiding horizontal contentContainerStyle={{ height: height(4), top: height(1.4) }} style={{ justifyContent: 'center', alignItems: 'center' }} >
+                            <ScrollViews.KeyboardAvoiding horizontal  contentContainerStyle={{ height: height(4), top: height(1.4) }} style={{ justifyContent: 'center', alignItems: 'center' }} >
                                 <Wrapper alignItemsCenter flexDirectionRow marginHorizontalTiny>
-
                                     {Language && Language.length > 0 ? (
                                         Language.map((lang, index) => (
                                             <Wrapper key={index} style={{ flex: 0, paddingHorizontal: width(4), marginRight: width(2), paddingVertical: height(0.5), borderRadius: sizes.cardRadius }} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} isGradient gradiantColors={[colors.appColor2, colors.appColor2, colors.appColor3]}>
@@ -205,7 +204,7 @@ const Counter = ({
                                             </Wrapper>
                                         ))
                                     ) : (
-                                        <Text style={textStyle}>{placeholder}</Text>
+                                        <Text style={{ fontSize: fontSizes.regular, fontFamily:appFonts.interRegular, color:colors.appTextColor1, marginLeft:width(5)}}>{placeholder}</Text>
                                     )}
                                 </Wrapper>
                             </ScrollViews.KeyboardAvoiding>

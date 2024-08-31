@@ -22,6 +22,9 @@ import CardManagement from './cardManagement'
 import TripPlan from './tripPlan'
 import Schedule from './schedule'
 import Preference from './preference'
+import MatchingResult from './matchingResults'
+import Filters from './filters'
+import Sort from './sort'
 
 export {
     Home,
@@ -47,5 +50,8 @@ export {
     CardManagement,
     TripPlan,
     Schedule,
-    Preference
+    Preference,
+    MatchingResult,
+    Filters,
+    Sort,
 }
