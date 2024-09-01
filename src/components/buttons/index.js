@@ -118,7 +118,7 @@ export const Colored = ({
                         }
 
                         {customIconRight &&
-                            <Wrapper isGradient={iconGradient} gradiantColors={iconGradientColors} start={iconStart} end={iconEnd} justifyContentCenter alignItemsCenter backgroundColor={colors.appColor1} style={{ ...iconContainer, height: totalSize(4.5), width: totalSize(4.5), borderRadius: width(10), justifyContent: iconGradient ? 'center': null, alignItems: iconGradient ? 'center': null }}>
+                            <Wrapper isGradient={iconGradient} gradiantColors={iconGradientColors} start={iconStart} end={iconEnd} justifyContentCenter alignItemsCenter backgroundColor={colors.appColor1} style={{ ...iconContainer, height: totalSize(4.5), width: totalSize(4.5), borderRadius: width(10), justifyContent: iconGradient ? 'center': 'center', alignItems: iconGradient ? 'center': 'center' }}>
                                 <Icons.Custom
                                     icon={customIconRight}
                                     size={iconSize ? iconSize : totalSize(3)}

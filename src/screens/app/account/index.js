@@ -80,6 +80,7 @@ export default function Home(props) {
                 fontFamily: appFonts.appTextRegular,
                 color: colors.appTextColor1
               }}
+              onPressIconRight={()=>navigate(routes.editProfile)}
               iconColorLeft={colors.iconColor1}
               customIconRight={appIcons.calendarRight}
               iconColorRight={colors.iconColor1}
@@ -103,6 +104,7 @@ export default function Home(props) {
                 fontFamily: appFonts.appTextRegular,
                 color: colors.appTextColor1
               }}
+              onPressIconRight={()=> navigate(routes.changePassword)}
               iconColorLeft={colors.iconColor1}
               customIconRight={appIcons.calendarRight}
               iconColorRight={colors.iconColor1}
@@ -126,6 +128,7 @@ export default function Home(props) {
                 fontFamily: appFonts.appTextRegular,
                 color: colors.appTextColor1
               }}
+              onPressIconRight={()=> navigate(routes.payment, { payment: 'payment' })}
               iconColorLeft={colors.iconColor1}
               customIconRight={appIcons.calendarRight}
               iconColorRight={colors.iconColor1}

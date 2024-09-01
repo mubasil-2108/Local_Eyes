@@ -25,6 +25,7 @@ import Preference from './preference'
 import MatchingResult from './matchingResults'
 import Filters from './filters'
 import Sort from './sort'
+import ChangePassword from './changePassword'
 
 export {
     Home,
@@ -54,4 +55,5 @@ export {
     MatchingResult,
     Filters,
     Sort,
+    ChangePassword
 }

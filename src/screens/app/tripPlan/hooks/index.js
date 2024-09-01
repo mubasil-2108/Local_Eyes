@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { appImages } from "../../../../services";
+import { useRoute } from "@react-navigation/native";
 
 export function useHooks() {
+  const route = useRoute();
+    const { editBooking } = route.params || {};
     const [isChecked, setIsChecked] = useState(false);
     const [counter, setCounter] = useState({
         adults: 0,
@@ -34,6 +37,7 @@ export function useHooks() {
        setIsChecked,
        increment,
        decrement,
-       counter
+       counter,
+       editBooking
     }
 }

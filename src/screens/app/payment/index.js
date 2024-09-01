@@ -25,6 +25,7 @@ export default function Index(props) {
         setPressed,
         modalVisible,
         setModalVisible,
+        payment
     } = useHooks() || {};
 
     return (
@@ -76,47 +77,54 @@ export default function Index(props) {
                 <Wrapper flex={1} style={{ flexGrow: 1 }}>
                     <Wrapper flex={1} marginHorizontalBase paddingVerticalSmall >
                         <Spacer isMedium />
-                        <CardList editCard={()=>navigate(routes.cardManagement,{ editCard: 'editCard' })} toggle={handleRadioButtonPress} selected={selected} data={data} />
+                        <CardList editCard={() => navigate(routes.cardManagement, { editCard: 'editCard' })} toggle={handleRadioButtonPress} selected={selected} data={data} />
                     </Wrapper >
                     {/* </ScrollViews.KeyboardAvoiding> */}
                 </Wrapper>
             </Wrapper>
             <Wrapper
                 backgroundColor={colors.appColor1}
-                paddingVerticalBase>
+                paddingVerticalSmall>
                 <Wrapper marginHorizontalBase>
-                <LinearGradient
-                    colors={pressed ? [colors.transparent, colors.transparent] : [colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 0 }}
-                    style={{
-                        borderRadius: 28,
-                        padding: 1,
-                    }}>
-                    <Buttons.Colored
-                        buttonStyle={{marginHorizontal: 0}}
-                        onPressIn={() => { setPressed(true); navigate(routes.cardManagement)}}
-                        onPressOut={() => setPressed(false)}
-                        text={'+Add New Card'}
-                        gradientColors={[colors.buttonColor3, colors.buttonColor3]}
-                        textStyle={{
-                            color: colors.appTextColor2,
-                            fontFamily: appFonts.appTextBold,
-                            fontSize: fontSizes.regular,
-                        }} />
-                </LinearGradient>
+                    <LinearGradient
+                        colors={pressed ? [colors.transparent, colors.transparent] : [colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={{
+                            borderRadius: 28,
+                            padding: 1,
+                        }}>
+                        <Buttons.Colored
+                            buttonStyle={{ marginHorizontal: 0 }}
+                            onPressIn={() => { setPressed(true); navigate(routes.cardManagement) }}
+                            onPressOut={() => setPressed(false)}
+                            text={'+Add New Card'}
+                            gradientColors={[colors.buttonColor3, colors.buttonColor3]}
+                            textStyle={{
+                                color: colors.appTextColor2,
+                                fontFamily: appFonts.appTextBold,
+                                fontSize: fontSizes.regular,
+                            }} />
+                    </LinearGradient>
                 </Wrapper>
-                
-                <Spacer isSmall />
-                <Buttons.Colored
-                      onPress={() => handlePayNow()}
-                    text={'Pay Now'}
-                    gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
-                    textStyle={{
-                        color: colors.appTextColor5,
-                        fontFamily: appFonts.appTextMedium,
-                        fontSize: fontSizes.regular,
-                    }} />
+                {
+                    payment ?
+                        null
+                        :
+                        <>
+                            <Spacer isSmall />
+                            <Buttons.Colored
+                                onPress={() => handlePayNow()}
+                                text={'Pay Now'}
+                                gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                textStyle={{
+                                    color: colors.appTextColor5,
+                                    fontFamily: appFonts.appTextMedium,
+                                    fontSize: fontSizes.regular,
+                                }} />
+                        </>
+                }
+
             </Wrapper>
 
             <Modals.PopupPrimary toggle={() => setModalVisible(!modalVisible)} topMargin payNow titleStyle={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.h5, color: colors.appTextColor6 }} title={'Success'} visible={modalVisible} />

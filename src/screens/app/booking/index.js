@@ -20,6 +20,7 @@ export default function Index(props) {
         clickedItems,
         modalVisible,
         setModalVisible,
+        editBooking,
         handlePressItem,
         data,
         search,
@@ -51,6 +52,7 @@ export default function Index(props) {
                         rightIconSource={appIcons.chevron_left}
                         // allowText
                         rightIcon
+                        rightIconOnPress={() => navigate(routes.tripPlan, {editBooking: 'editBooking'})}
                         iconColor={colors.iconColor8}
                         leftButtonStyle={{ borderColor: colors.transparent }}
                         leftIconSource={appIcons.edit}
@@ -66,7 +68,7 @@ export default function Index(props) {
                                 <Wrapper >
                                     <Images.SqareRound size={sizes.images.xLSmall} style={{ borderRadius: 10, }} source={appImages.profile1} />
                                 </Wrapper>
-                                <Spacer horizontal isTiny />
+                                <Spacer horizontal isSmall />
                                 <Wrapper justifyContentSpaceBetween flex={0.8} style={{ flexWrap: 'wrap' }}>
                                     <Wrapper >
                                         <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor8, fontSize: fontSizes.medium }}>John Doe</Text>
@@ -151,7 +153,7 @@ export default function Index(props) {
                             <Text style={{ color: colors.appBgColor6, fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium }}>Cancelation Policy</Text>
                             <Spacer height={height(1)} />
                             <Wrapper>
-                                <Text style={{ textAlign:'justify', fontFamily: appFonts.appTextRegular, fontSize: fontSizes.small, color: colors.appTextColor3 }}>Lorem ipsum dolor sit amet. Ut esse repellat ut illo nesciunt et consequatur autem ut ipsa omnis qui officia expedita non deserunt voluptatem. Sed Quis itaque a dolores necessitatibus quo internos tempora. A fugit debitis ab blanditiis nulla et pariatur officiis ut nemo dolore eum dolorem quas qui inventore vitae aut autem cupiditate.</Text>
+                                <Text style={{ textAlign: 'justify', fontFamily: appFonts.appTextRegular, fontSize: fontSizes.small, color: colors.appTextColor3 }}>Lorem ipsum dolor sit amet. Ut esse repellat ut illo nesciunt et consequatur autem ut ipsa omnis qui officia expedita non deserunt voluptatem. Sed Quis itaque a dolores necessitatibus quo internos tempora. A fugit debitis ab blanditiis nulla et pariatur officiis ut nemo dolore eum dolorem quas qui inventore vitae aut autem cupiditate.</Text>
                             </Wrapper>
                         </Wrapper>
                     </Wrapper>
@@ -173,14 +175,14 @@ export default function Index(props) {
                     elevation: 50,
                 }}>
                 <Buttons.Colored
-              onPress={() => navigate(routes.payment)}
-              text={'Confirm Booking'}
-              gradientColors={[colors.buttonColor1,colors.buttonColor1, colors.buttonColor2]}
-              textStyle={{
-                color: colors.appTextColor5,
-                fontFamily: appFonts.appTextBold,
-                fontSize: fontSizes.regular,
-              }} />
+                    onPress={() => navigate(routes.payment)}
+                    text={'Confirm Booking'}
+                    gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                    textStyle={{
+                        color: colors.appTextColor5,
+                        fontFamily: appFonts.appTextBold,
+                        fontSize: fontSizes.regular,
+                    }} />
             </Wrapper>
 
             <Modals.PopupPrimary toggle={() => setModalVisible(!modalVisible)} calender topMargin titleStyle={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium, color: colors.appTextColor6 }} title={'Availability'} visible={modalVisible} />

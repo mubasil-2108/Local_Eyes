@@ -24,30 +24,30 @@ export function useHooks() {
     const handleSigninPress = () => {
         if (fromSignin === 'local') {
             // Prevent navigating back to SigninScreen2
-           navigation.replace(routes.localSignin);
-        } else{
+            navigation.replace(routes.localSignin);
+        } else {
             navigation.replace(routes.signin);
         }
     };
     const handleProfilePress = () => {
         if (fromSignin === 'local') {
             // Prevent navigating back to SigninScreen2
-           navigation.replace(routes.localProfile);
-        } else{
+            navigation.replace(routes.localProfile);
+        } else {
             navigation.replace(routes.createProfile);
         }
-        
+
 
     };
-  // Function to handle button press
-    
-        const phoneNumberRef = ()=>{
+    // Function to handle button press
+
+    const phoneNumberRef = () => {
         if (phoneInputRef.current) {
             // Get the phone number
             const phoneNumber = phoneInputRef.current.getValue();
             setPhoneNumber(phoneNumber);
-            
-          }
+
+        }
     };
     // console.log("Phone Number: ",phoneNumber)
     const togglePasswordVisibility = () => {
@@ -71,7 +71,7 @@ export function useHooks() {
     }, []);
     const handleBackPress = () => {
         navigation.replace(routes.signin);
-            return true;
+        return true;
     };
 
     return {
@@ -85,7 +85,6 @@ export function useHooks() {
         email,
         handleSigninPress,
         setName,
-        phoneNumber,
         name,
         showPassword,
         showConfirmPassword,

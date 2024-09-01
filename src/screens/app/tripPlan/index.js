@@ -31,6 +31,7 @@ export default function Index(props) {
         increment,
         decrement,
         counter,
+        editBooking,
         images,
         setSearch,
         handleProductPressItem,
@@ -254,9 +255,9 @@ export default function Index(props) {
                             <Wrapper justifyContentFlexstart flex={1}>
                             <Spacer isSmall/>
                             <Buttons.Colored
-                                onPress={() => navigate(routes.schedule)}
+                                onPress={editBooking ? ()=>navigate(routes.booking) : () => navigate(routes.schedule)}
                                 buttonStyle={{ marginHorizontal: 0 }}
-                                text={'Next'}
+                                text={editBooking ? 'Save Changes' : 'Next'}
                                 // iconContainer={{ left: width(34) }}
                                 gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
                                 textStyle={{

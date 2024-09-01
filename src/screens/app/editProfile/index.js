@@ -1,93 +1,234 @@
-import React, { Component } from 'react';
-import { Wrapper, Text, Headers, ScrollViews, StatusBars, Images, TextInputs, Buttons } from '../../../components';
+import React, { Component, useState } from 'react';
+import { Image, TouchableOpacity, View, } from 'react-native';
 import { totalSize, width, height } from 'react-native-dimension';
-import { useHooks } from './hooks'
-import { appFonts, appIcons, appImages, colors, fontSizes, routes, sizes } from '../../../services';
+import { Logos, Toasts, Icons, Text, TextInputs, Buttons, ScrollViews, Wrapper, Spacer, Headers, CheckBoxes, StatusBars, Images, Modals } from '../../../components';
+import { appStyles, colors, responsiveFontSize, responsiveHeight, routes, appSvgs, responsiveWidth, sizes, appFonts, fontSizes, appIcons, appImages } from '../../../services';
+import { useHooks } from './hooks';
+
 
 export default function Index(props) {
   const { navigate, goBack } = props.navigation
 
 
 
-  const { email, setEmail, password, setPassword, togglePasswordVisibility, showPassword, name, setName, confirmPassword, setConfirmPassword, toggleConfirmPasswordVisibility, showConfirmPassword } = useHooks()
-
+  const { modalVisible, email, setEmail, phoneNumber, phoneNumberRef, phoneInputRef, selectGender, setSelectGender, truncatedAddress, handleSubmit, profileImage, selectImage, preferencesChunks, displayText, handleAdd, isInputVisible, setIsInputVisible, genderData, preferences, setPreferences, date, handleChangeText, fullName, setFullName } = useHooks()
   return (
-    <Wrapper isMain >
-      <ScrollViews.KeyboardAvoiding>
-        <StatusBars.Dark />
-        <Headers.Primary showBackArrow iconContainer={{ flexDirection: 'row' }} title={'Edit Profile'} tintColor={'black'} containerStyle={{ marginTop: height(5), height: height(10), backgroundColor: 'white' }} />
-        <Wrapper isCenter paddingVerticalLarge>
-          <Images.Profile source={appImages.uploadPhoto} imageStyle={{ height: sizes.images.xL, width: sizes.images.xL }} />
-        </Wrapper>
-        <Wrapper marginVerticalSmall paddingHorizontalSmall>
-          <TextInputs.Colored title={'Full Name'}
-            value={name}
-            onChangeText={(text) => setName(text)}
-            keyboardType={'email-address'}
-            inputContainerStyle={{ borderColor: colors.inputTextBorder, borderRadius: width(10) }}
-            containerStyle={{ marginTop: height(2) }}
-            inputStyle={{ fontSize: fontSizes.regular, fontFamily: appFonts.appTextRegular, color: colors.appTextColor1 }}
-            placeholder={'Type your name here...'}
-            placeholderTextColor={colors.placeHolderColor}
-            titleStyle={{ fontSize: fontSizes.tiny, fontFamily: appFonts.appTextRegular, marginLeft: width(4), color: colors.appTextColor1 }} />
-          <TextInputs.Colored title={'Email Address'}
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-            keyboardType={'email-address'}
-            inputContainerStyle={{ borderColor: colors.inputTextBorder, borderRadius: width(10) }}
-            containerStyle={{ marginTop: height(2) }}
-            customIconLeft={appIcons.mail}
-            iconSizeLeft={sizes.icons.mediumTiny}
-            inputStyle={{ fontSize: fontSizes.regular, fontFamily: appFonts.appTextRegular, color: colors.appTextColor1 }}
-            iconColorLeft={colors.iconColor}
-            iconStyleLeft={{ marginLeft: width(0.7) }}
-            placeholder={'example@email.com'}
-            placeholderTextColor={colors.placeHolderColor}
-            titleStyle={{ fontSize: fontSizes.tiny, fontFamily: appFonts.appTextRegular, marginLeft: width(4), color: colors.appTextColor1 }} />
+    <Wrapper isMain backgroundColor={colors.appBgColor2} style={[{}]}>
+      <StatusBars.Dark backgroundColor={colors.statusBarColor1} />
+      <Spacer isStatusBarHeigt />
+      <Wrapper
+        marginHorizontalTiny
+        backgroundColor={colors.appColor1}>
+        <Headers.Primary
+          onBackPress={() => goBack()}
+          showBackArrow
+          rightIconSource={appIcons.chevron_left}
+          // allowText
+          // iconColor={colors.iconColor1}
+          title={'Edit Profile Data'}
+          titleStyle={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor6, fontSize: fontSizes.medium }}
+          iconContainer={{ flexDirection: 'row' }}
+          containerStyle={{ backgroundColor: colors.appColor1, height: height(7) }} />
+      </Wrapper>
+      <ScrollViews.KeyboardAvoiding contentContainerStyle={{ flexGrow: 1 }}>
+        <Spacer isMedium />
+        {/* <Wrapper > */}
+          <Wrapper  marginHorizontalBase>
+            <TextInputs.Colored
+              title={'Full Name'}
+              value={fullName}
+              onChangeText={(text) => setFullName(text)}
+              keyboardType={'default'}
+              containerStyle={{ marginHorizontal: 0 }}
+              inputContainerStyle={{
+                backgroundColor: colors.inputfieldColor1,
+                borderColor: colors.inputTextBorder,
+                borderRadius: totalSize(2)
+              }}
+              customIconLeft={appIcons.user}
+              inputStyle={{
+                fontSize: fontSizes.medium,
+                fontFamily: appFonts.appTextRegular,
+                color: colors.appTextColor1
+              }}
+              iconColorLeft={colors.iconColor1}
+              // iconStyleLeft={{  }}
+              placeholder={'John Doe'}
+              placeholderTextColor={colors.placeHolderColor}
+              titleStyle={{
+                fontSize: fontSizes.regular,
+                fontFamily: appFonts.appTextBold,
+                color: colors.appTextColor3
+              }} />
+            <Spacer isSmall />
+            <TextInputs.Colored
+              title={'Email'}
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              keyboardType={'default'}
+              containerStyle={{ marginHorizontal: 0 }}
+              inputContainerStyle={{
+                backgroundColor: colors.inputfieldColor1,
+                borderColor: colors.inputTextBorder,
+                borderRadius: totalSize(2)
+              }}
+              customIconLeft={appIcons.mail}
+              inputStyle={{
+                fontSize: fontSizes.medium,
+                fontFamily: appFonts.appTextRegular,
+                color: colors.appTextColor1
+              }}
+              iconColorLeft={colors.iconColor1}
+              // iconStyleLeft={{  }}
+              placeholder={'example@email.com'}
+              placeholderTextColor={colors.placeHolderColor}
+              titleStyle={{
+                fontSize: fontSizes.regular,
+                fontFamily: appFonts.appTextBold,
+                color: colors.appTextColor3
+              }} />
 
-          <TextInputs.Colored title={'Password'}
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            keyboardType={'default'}
-            secureTextEntry={!showPassword}
-            onPressIconRight={togglePasswordVisibility}
-            inputContainerStyle={{ borderColor: colors.inputTextBorder, borderRadius: width(10) }}
-            containerStyle={{ marginTop: height(2) }}
-            customIconLeft={appIcons.lock}
-            iconSizeLeft={sizes.icons.mediumTiny}
-            inputStyle={{ fontSize: fontSizes.regular, fontFamily: appFonts.appTextRegular, color: colors.appTextColor1 }}
-            iconColorLeft={colors.iconColor}
-            iconStyleLeft={{ marginLeft: width(0.7) }}
-            placeholder={'Minimum 8 charachers'}
-            placeholderTextColor={colors.placeHolderColor}
-            customIconRight={appIcons.eye} iconSizeRight={sizes.icons.mediumTiny}
-            iconStyleRight={{ marginRight: width(4) }} titleStyle={{ fontSize: fontSizes.tiny, fontFamily: appFonts.appTextRegular, marginLeft: width(4), color: colors.appTextColor1 }} />
+            <TextInputs.Phone
+              title={'Phone Number'}
+              inputRef={phoneInputRef}
+              // onChangeText={(value)=>setPhone(value)}
+              keyboardType={'numeric'}
+              containerStyle={{ marginHorizontal: 0, marginTop: height(1), }}
+              inputContainerStyle={{
+                backgroundColor: colors.inputfieldColor1,
+                borderColor: colors.inputTextBorder,
+                borderRadius: totalSize(2),
+                flexDirection: 'column'
+              }}
+              inputStyle={{ paddingHorizontal: sizes.marginHorizontal2 }}
+              textStyle={{
+                fontSize: fontSizes.medium,
+                fontFamily: appFonts.appTextRegular,
+                color: colors.appTextColor1,
+                paddingLeft: width(1.5)
+              }}
+              titleStyle={{
+                fontSize: fontSizes.regular,
+                fontFamily: appFonts.appTextBold,
+                color: colors.appTextColor3
+              }} />
+            <Wrapper flexDirectionRow justifyContentSpaceBetween>
 
-          <TextInputs.Colored title={'Confirm Password'}
-            value={confirmPassword}
-            onChangeText={(text) => setConfirmPassword(text)}
-            keyboardType={'default'}
-            secureTextEntry={!showConfirmPassword}
-            onPressIconRight={toggleConfirmPasswordVisibility}
-            inputContainerStyle={{ borderColor: colors.inputTextBorder, borderRadius: width(10) }}
-            containerStyle={{ marginTop: height(2) }}
-            customIconLeft={appIcons.lock}
-            iconSizeLeft={sizes.icons.mediumTiny}
-            inputStyle={{ fontSize: fontSizes.regular, fontFamily: appFonts.appTextRegular, color: colors.appTextColor1 }}
-            iconColorLeft={colors.iconColor}
-            iconStyleLeft={{ marginLeft: width(0.7) }}
-            placeholder={'Minimum 8 charachers'}
-            placeholderTextColor={colors.placeHolderColor}
-            customIconRight={appIcons.eye} iconSizeRight={sizes.icons.mediumTiny}
-            iconStyleRight={{ marginRight: width(4) }} titleStyle={{ fontSize: fontSizes.tiny, fontFamily: appFonts.appTextRegular, marginLeft: width(4), color: colors.appTextColor1 }} />
-        </Wrapper>
-        <Wrapper isCenter marginVerticalMedium>
-          <Wrapper marginVerticalSmall flexDirectionRow alignItemsCenter justifyContentCenter >
-            <Buttons.Colored buttonColor={colors.buttonColor2} buttonStyle={{ height: height(8), width: width(40), marginHorizontal: width(1.5), borderColor: colors.buttonBorder1 }} text={'Cancel'} iconName={'google'} iconType={'material-community'} textStyle={{ color: colors.appTextColor1, fontFamily: appFonts.appTextBold, fontSize: fontSizes.small }} />
-            <Buttons.Colored buttonColor={colors.buttonColor1} buttonStyle={{ height: height(8), width: width(40), marginHorizontal: width(1.5), borderColor: colors.buttonBorder1 }} text={'Update'} iconName={'facebook'} iconType={'material-community'} textStyle={{ color: colors.appTextColor6, fontFamily: appFonts.appTextBold, fontSize: fontSizes.small }} />
+              <TextInputs.Colored
+                title={'Date of Birth'}
+                value={date}
+                onChangeText={(text) => handleChangeText(text)}
+                keyboardType={'numeric'}
+                maxLength={10}
+                containerStyle={{ width: width(40), marginHorizontal: 0, marginTop: height(1), }}
+                inputContainerStyle={{
+                  backgroundColor: colors.inputfieldColor1,
+                  borderColor: colors.inputTextBorder,
+                  borderRadius: totalSize(2)
+                }}
+                customIconLeft={appIcons.calendar}
+                inputStyle={{
+                  fontSize: fontSizes.medium,
+                  fontFamily: appFonts.appTextRegular,
+                  color: colors.appTextColor1
+                }}
+                iconColorLeft={colors.iconColor1}
+                // iconStyleLeft={{  }}
+                placeholder={'1990/01/31'}
+                placeholderTextColor={colors.placeHolderColor}
+                titleStyle={{
+                  fontSize: fontSizes.regular,
+                  fontFamily: appFonts.appTextBold,
+                  color: colors.appTextColor3
+                }} />
+
+              <TextInputs.DropDown
+                title={'Gender'}
+                data={genderData}
+                values={selectGender}
+                onChange={(text) => setSelectGender(text)}
+                keyboardType={'numeric'}
+                containerStyles={{ width: width(40), marginHorizontal: 0, marginTop: height(1), }}
+                inputContainerStyle={{
+                  borderColor: colors.inputTextBorder,
+                  borderRadius: totalSize(2)
+                }}
+                itemText={{
+                  fontSize: fontSizes.medium,
+                  fontFamily: appFonts.appTextRegular,
+                }}
+                placeholder={'Select--'}
+                inputStyle={{
+                  width: width(40),
+                }}
+                titleStyle={{
+                  fontSize: fontSizes.regular,
+                  fontFamily: appFonts.appTextBold,
+                  color: colors.appTextColor3
+                }} />
+            </Wrapper>
+            <TextInputs.Colored
+              editable={false}
+              title={'Home - Address'}
+              value={truncatedAddress}
+              containerStyle={{ marginHorizontal: 0, marginTop: height(1), }}
+              inputContainerStyle={{
+                backgroundColor: colors.inputfieldColor1,
+                borderColor: colors.inputTextBorder,
+                borderRadius: totalSize(2)
+              }}
+              customIconLeft={appIcons.location}
+              customIconRight={appIcons.dropDown}
+              iconColorRight={colors.iconColor1}
+              iconSizeRight={sizes.icons.tiny}
+              iconStyleRight={{
+                marginRight: width(5)
+              }}
+              inputStyle={{
+                fontSize: fontSizes.medium,
+                fontFamily: appFonts.appTextRegular,
+                color: colors.appTextColor1
+              }}
+              iconColorLeft={colors.iconColor1}
+              onPressIconRight={() => navigate(routes.addAddress)}
+              placeholder={'Add here...'}
+              placeholderTextColor={colors.placeHolderColor}
+              titleStyle={{
+                fontSize: fontSizes.regular,
+                fontFamily: appFonts.appTextBold,
+                color: colors.appTextColor3
+              }} />
           </Wrapper>
-        </Wrapper>
+          <Wrapper flex={1} marginHorizontalBase justifyContentFlexend marginVerticalSmall>
+            <Buttons.Colored
+              onPress={()=> navigate(routes.account)}
+              buttonStyle={{ marginHorizontal: 0 }}
+              text={'Save Changes'}
+              gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+              textStyle={{
+                color: colors.appTextColor5,
+                fontFamily: appFonts.appTextMedium,
+                fontSize: fontSizes.regular,
+              }} />
+          </Wrapper>
+        {/* </Wrapper> */}
+
       </ScrollViews.KeyboardAvoiding>
+      <Modals.Swipable
+        hideHeader
+        visible={modalVisible}
+        onPress={() => { navigate(routes.signin) }}
+        data={'Account created successfully'}
+        headerTitle={'Success'}
+        // colorsOpacity={[colors.transparent, colors.transparent]}
+        containerStyle={{
+          shadowColor: '#000000',
+          shadowOffset: { width: 4, height: 4 },
+          shadowOpacity: 0.1,
+          shadowRadius: 20,
+          elevation: 4,
+        }}
+      />
     </Wrapper>
   );
 }

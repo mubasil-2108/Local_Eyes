@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { appImages } from "../../../../services";
+import { useRoute } from "@react-navigation/native";
 
 export function useHooks() {
+    const route = useRoute();
+    const { payment } = route.params || {};
     const [pressed, setPressed] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     const [selected, setSelected] = useState([]);
@@ -46,5 +49,6 @@ export function useHooks() {
        modalVisible,
        setModalVisible,
        handlePayNow,
+       payment
     }
 }

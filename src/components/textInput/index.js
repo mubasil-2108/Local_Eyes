@@ -350,7 +350,7 @@ export const Phone = ({
 export const DropDown = ({
     onPress, titleStyle, placeholder, containerStyles, onChange,
     inputContainerStyle, inputStyle, error, data, title, customIconLeft, iconSizeLeft,
-    iconColorLeft, iconNameLeft, iconTypeLeft, iconStyleLeft, onPressIconLeft, left, values
+    iconColorLeft, iconNameLeft, iconTypeLeft,itemText, iconStyleLeft, onPressIconLeft, left, values
 }) => {
     const [value, setValue] = useState(values || null);
     const [isFocus, setIsFocus] = useState(false);
@@ -413,7 +413,7 @@ export const DropDown = ({
                         // placeholderStyle={{color:colors.placeHolderColor}}
                         style={[appStyles.inputField, { width: null, height: sizes.inputHeight, paddingHorizontal: sizes.marginHorizontal }, inputStyle]}
                         containerStyle={{ borderRadius: width(2), backgroundColor: colors.inputfieldColor1 }}
-                        itemTextStyle={{ color: colors.appTextColor1, fontFamily: appFonts.satoshiRegular, fontSize: fontSizes.regular }}
+                        itemTextStyle={[{ color: colors.appTextColor1 }, itemText]}
                         itemContainerStyle={{ marginVertical: width(1), borderRadius: width(2), }}
                         renderRightIcon={() => (
                             <Icons.Custom size={sizes.icons.tiny} icon={appIcons.dropDown} />

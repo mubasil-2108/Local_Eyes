@@ -4,11 +4,11 @@ import { appStyles } from "../utilities/appStyles"
 
 export const baseURL = 'https://localserver/v1/'
 export const endPoints = {
-    register:{
-        url_1:'register'
+    register: {
+        url_1: 'register'
     },
-    login:{
-        url_1:'login'
+    login: {
+        url_1: 'login'
     }
 }
 export const routes = {
@@ -41,7 +41,7 @@ export const routes = {
     privacy: 'privacy',
     aboutUs: 'aboutUs',
     localPreview: 'localPreview',
-    chatScreen:'chatScreen',
+    chatScreen: 'chatScreen',
     booking: 'booking',
     payment: 'payment',
     cardManagement: 'cardManagement',
@@ -51,17 +51,18 @@ export const routes = {
     matchingResult: 'matchingResult',
     filters: 'filters',
     sort: 'sort',
+    editProfile: 'editProfile',
+    changePassword: 'changePassword',
 
-    dummyScreen:'DummyScreen',
+    dummyScreen: 'DummyScreen',
     homeStackScreen: 'HomeStackScreen',
     allCategory: 'allCategory',
     subCategories: 'subCategories',
 
-    editProfile: 'editProfile',
     notifications: 'notifications',
     account: 'account',
-    cart:'cart',
-    products:'products',
+    cart: 'cart',
+    products: 'products',
 
     //common
     termsOfService: 'termsOfService',
