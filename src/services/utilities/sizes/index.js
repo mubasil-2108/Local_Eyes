@@ -103,6 +103,7 @@ export const fontSizes = {
   h3_small: responsiveFontSize(30),
   h4: responsiveFontSize(28),
   h5: responsiveFontSize(24),
+  h5_small: responsiveFontSize(22),
   h6: responsiveFontSize(20),
   input: responsiveFontSize(1.6),
   large: responsiveFontSize(18),

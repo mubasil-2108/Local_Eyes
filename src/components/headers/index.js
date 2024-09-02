@@ -39,7 +39,7 @@ export const Primary = ({
     onBackPress, search, title, profilePic, right, searchPress,rightIconOnPress2,rightIconOnPress, rightIcon, leftIconSource, leftIconName,
     left, titleContainerStyle, centerTitle, tintColor, rightIconName, rightIconSource,
     containerStyle, headerTitle, alignTitleLeft, showBackArrow, leftButtonStyle, leftIconTintColor, leftIconSize,
-    invertColors, titleStyle, leftContainerStyle, rightIcon2, leftIconSource2, leftIconSize2, leftButtonStyle2, leftIconTintColor2, leftIconName2, iconColor2, iconContainer, iconColor, textColor, allowText, rightContainerStyle, textStyle, shadow, auth }) => {
+    invertColors, titleStyle, leftContainerStyle,rightButtonStyle, rightIcon2, leftIconSource2, leftIconSize2, leftButtonStyle2, leftIconTintColor2, leftIconName2, iconColor2, iconContainer, iconColor, textColor, allowText, rightContainerStyle, textStyle, shadow, auth }) => {
 
     const { statusBarHeight, headerHeight, } = useSizes()
     const defaultTintColor = !invertColors ? colors.appTextColor6 : colors.appColor1
@@ -86,7 +86,8 @@ export const Primary = ({
                                         iconName={rightIconName}
                                         iconColor={iconColor}
                                         iconSize={sizes.icons.tiny}
-                                        buttonStyle={{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder4, borderWidth: width(0.4) }}
+                                        buttonStyle={[{ backgroundColor: colors.buttonColor3, borderRadius: width(50), borderColor: colors.buttonBorder4, borderWidth: width(0.4) },  rightButtonStyle]}
+
                                         buttonSize={width(9)}
                                         //onPress={onBackPress}
                                         //onPress={onBackPress ? onBackPress : goBack}

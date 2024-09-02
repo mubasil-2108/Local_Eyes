@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { width, height, totalSize } from 'react-native-dimension';
-import { Wrapper, Text, Icons, Headers, Modals, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Images } from '../../../components';
+import { Wrapper, Text, Icons, Headers, Modals, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Images, Spacer } from '../../../components';
 import { useHooks } from './hooks'
 import { appImages, colors, routes, sizes, fontSizes, appFonts, appIcons, responsiveWidth, responsiveHeight } from '../../../services';
 import { GiftedChat, Bubble, InputToolbar, Message } from 'react-native-gifted-chat';
@@ -16,55 +16,58 @@ export default function Faqs(props) {
     const { navigate, goBack, reset, dispatch } = props.navigation
     const {
         statusBarVisible,
-        DrawerActions, 
+        DrawerActions,
         expanded,
         handleExpand,
         faqsData
     } = useHooks() || {};
-   
+
     return (
         <>
+            <StatusBars.Dark backgroundColor={colors.appColor1} />
+            <Spacer isStatusBarHeigt />
             <Wrapper isMain backgroundColor={colors.appColor1}>
                 <ScrollViews.KeyboardAvoiding>
-                    <StatusBars.Dark hidden={!statusBarVisible} backgroundColor={colors.appBgColor1} />
-                    <Wrapper style={{ marginTop: width(5) }}>
+                    <Wrapper>
                         <Wrapper marginHorizontalBase>
                             <Headers.Primary
                                 onBackPress={() => navigate(routes.helpCenter)}
+                                rightIconSource={appIcons.chevron_left}
                                 showBackArrow
                                 allowText
                                 textColor={colors.appTextColor9}
                                 iconColor={colors.iconColor1}
                                 title={'FAQ'}
-                                titleStyle={{ fontFamily: appFonts.interSemiBold, fontSize: fontSizes.medium }}
+                                titleStyle={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.medium }}
                                 iconContainer={{ flexDirection: 'row' }}
-                                containerStyle={{ backgroundColor: colors.appColor1 }} />
+                                containerStyle={{ backgroundColor: colors.appColor1, height: height(7) }} />
+                            <Spacer isMedium />
                             <Wrapper marginHorizontalSmall>
-                                <Text style={{ fontSize: fontSizes.medium, fontFamily: appFonts.baloo2_Bold, color: colors.appTextColor1 }}>We’re here to help you with anything and{'\n'}everyting on Local Eyes</Text>
+                                <Text style={{ textAlign: 'justify', fontSize: fontSizes.medium, fontFamily: appFonts.appTextBold, color: colors.appTextColor1 }}>We’re here to help you with anything and{'\n'}everyting on Local Eyes</Text>
                             </Wrapper>
                             <Wrapper marginVerticalTiny marginHorizontalSmall>
-                                <Text style={{ fontSize: fontSizes.h6, fontFamily: appFonts.baloo2_SemiBold, color: colors.appTextColor1 }}>FAQ</Text>
+                                <Text style={{ fontSize: fontSizes.h6, fontFamily: appFonts.appTextBold, color: colors.appTextColor1 }}>FAQ</Text>
                             </Wrapper>
                         </Wrapper>
                         <Wrapper marginVerticalLarge>
                             <Wrapper marginVerticalSmall style={{ borderWidth: 0.4, borderColor: colors.spacerColor2 }} />
                             {faqsData.map((item, index) => (
                                 <React.Fragment key={index}>
-                            <TouchableOpacity onPress={() => handleExpand(index)}>
-                                <Wrapper flexDirectionRow marginHorizontalMedium alignItemsCenter justifyContentSpaceBetween>
-                                    <Text style={{ fontSize: fontSizes.medium, fontFamily: appFonts.baloo2_Regular, color: colors.appTextColor8 }}>{item.title}</Text>
-                                    <Icons.Custom size={sizes.icons.small} icon={expanded === index? appIcons.minus : appIcons.plus} />
-                                </Wrapper>
-                            </TouchableOpacity>
-                            {expanded === index && (
-                            <Wrapper marginVerticalSmall marginHorizontalMedium justifyContentCenter >
-                                <Text style={{ fontSize: fontSizes.small, fontFamily: appFonts.baloo2_Regular, color: colors.appTextColor5 }}>{item.detail}</Text>
-                            </Wrapper>
-                            )}
-                            <Wrapper marginVerticalSmall style={{ borderWidth: 0.4, borderColor: colors.spacerColor2 }} />
-                            </React.Fragment>
+                                    <TouchableOpacity onPress={() => handleExpand(index)}>
+                                        <Wrapper flexDirectionRow marginHorizontalMedium alignItemsCenter justifyContentSpaceBetween>
+                                            <Text style={{ fontSize: fontSizes.medium, fontFamily: appFonts.appTextMedium, color: colors.appTextColor25 }}>{item.title}</Text>
+                                            <Icons.Custom size={sizes.icons.small} icon={expanded === index ? appIcons.minus : appIcons.plus} />
+                                        </Wrapper>
+                                    </TouchableOpacity>
+                                    {expanded === index && (
+                                        <Wrapper marginVerticalSmall marginHorizontalMedium justifyContentCenter >
+                                            <Text style={{ fontSize: fontSizes.small, fontFamily: appFonts.appTextRegular, color: colors.appTextColor7 }}>{item.detail}</Text>
+                                        </Wrapper>
+                                    )}
+                                    <Wrapper marginVerticalSmall style={{ borderWidth: 0.4, borderColor: colors.spacerColor2 }} />
+                                </React.Fragment>
                             ))}
-                            </Wrapper>
+                        </Wrapper>
                     </Wrapper>
                 </ScrollViews.KeyboardAvoiding>
             </Wrapper>

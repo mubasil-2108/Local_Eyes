@@ -31,21 +31,21 @@ export default function Home(props) {
     DrawerActions,
     clickedProductItems
   } = useHooks() || {};
-  
+
   return (
     <>
+      <StatusBars.Dark backgroundColor={colors.appColor1} />
+      <Spacer isStatusBarHeigt/>
       <Wrapper
         flex={0.915}
         backgroundColor={colors.appColor1}>
-        <StatusBars.Dark hidden={!statusBarVisible} backgroundColor={colors.appColor1} />
-        <Spacer />
         <Wrapper
           backgroundColor={colors.appColor1}>
           <Wrapper flexDirectionRow
             justifyContentSpaceBetween
             marginHorizontalMedium
             alignItemsCenter
-            style={{ marginTop: responsiveHeight(7) }}>
+            style={{ marginTop: responsiveHeight(4) }}>
             <Icons.Custom icon={appIcons.drawer} size={sizes.icons.mediumLarge} onPress={() => dispatch(DrawerActions.openDrawer())} />
             <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.appTextMedium, fontSize: fontSizes.large }}>Home</Text>
             <Icons.Custom icon={appIcons.notification} size={sizes.icons.mediumLarge} />
@@ -76,9 +76,9 @@ export default function Home(props) {
           />
         </Wrapper>
         <ScrollViews.KeyboardAvoiding>
-          <Spacer/>
+          <Spacer />
           <Wrapper marginHorizontalMedium>
-          <LocationLists data={imageData} />
+            <LocationLists data={imageData} />
             <Spacer />
             <Buttons.Colored
               onPress={() => navigate(routes.tripPlan)}
@@ -94,7 +94,7 @@ export default function Home(props) {
             <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.large, color: colors.appTextColor6 }}>Top- Rated Locals</Text>
             <Spacer height={height(1)} />
           </Wrapper>
-          <LocalsList data={data}/> 
+          <LocalsList data={data} />
 
         </ScrollViews.KeyboardAvoiding>
       </Wrapper>

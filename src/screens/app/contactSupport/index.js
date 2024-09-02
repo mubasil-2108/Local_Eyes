@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { width, height, totalSize } from 'react-native-dimension';
-import { Wrapper, Text, Icons, Headers, Modals, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Images, Buttons } from '../../../components';
+import { Wrapper, Text, Icons, Headers, Modals, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Images, Buttons, Spacer } from '../../../components';
 import { useHooks } from './hooks'
 import { appImages, colors, routes, sizes, fontSizes, appFonts, appIcons, responsiveWidth, responsiveHeight } from '../../../services';
 import { GiftedChat, Bubble, InputToolbar, Message } from 'react-native-gifted-chat';
@@ -24,23 +24,26 @@ export default function ContactSupport(props) {
 
     return (
         <>
+            <StatusBars.Dark backgroundColor={colors.appColor1} />
+            <Spacer isStatusBarHeigt />
             <Wrapper isMain backgroundColor={colors.appColor1}>
                 <ScrollViews.KeyboardAvoiding>
-                    <StatusBars.Dark hidden={!statusBarVisible} backgroundColor={colors.appBgColor1} />
-                    <Wrapper style={{ marginTop: width(5) }}>
+                    <Wrapper >
                         <Wrapper marginHorizontalBase>
                             <Headers.Primary
                                 onBackPress={() => navigate(routes.helpCenter)}
+                                rightIconSource={appIcons.chevron_left}
                                 showBackArrow
                                 allowText
                                 textColor={colors.appTextColor9}
                                 iconColor={colors.iconColor1}
                                 title={'Contact Support'}
-                                titleStyle={{ fontFamily: appFonts.interSemiBold, fontSize: fontSizes.medium }}
+                                titleStyle={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.medium }}
                                 iconContainer={{ flexDirection: 'row' }}
-                                containerStyle={{ backgroundColor: colors.appColor1 }} />
+                                containerStyle={{ backgroundColor: colors.appColor1, height:height(7) }} />
+                            <Spacer isMedium/>
                             <Wrapper marginHorizontalTiny>
-                                <Text style={{ fontSize: fontSizes.medium, fontFamily: appFonts.baloo2_Bold, color: colors.appTextColor1 }}>Write us a message and we’ll reach back to{'\n'}you</Text>
+                                <Text style={{ fontSize: fontSizes.medium, fontFamily: appFonts.appTextBold, color: colors.appTextColor1 }}>Write us a message and we’ll reach back to{'\n'}you</Text>
                             </Wrapper>
                             <Wrapper marginVerticalMedium>
                                 <TextInputs.Colored
@@ -50,40 +53,39 @@ export default function ContactSupport(props) {
                                     keyboardType={'default'}
                                     containerStyle={{ marginHorizontal: 0 }}
                                     inputContainerStyle={{
-                                        height: responsiveHeight(15),
+                                        
                                         backgroundColor: colors.inputfieldColor1,
                                         borderColor: colors.inputTextBorder,
                                         borderRadius: totalSize(2)
                                     }}
                                     inputStyle={{
-                                        height: responsiveHeight(10),
-                                        bottom: responsiveHeight(4),
-                                        fontSize: fontSizes.regular,
-                                        fontFamily: appFonts.satoshiRegular,
+                                        height: responsiveHeight(15),
+                                        textAlignVertical:'top',
+                                        fontSize: fontSizes.medium,
+                                        fontFamily: appFonts.appTextRegular,
                                         color: colors.appTextColor1
                                     }}
                                     placeholder={'Type here...'}
                                     multiline
                                     placeholderTextColor={colors.placeHolderColor}
                                     titleStyle={{
-                                        fontSize: fontSizes.small,
-                                        fontFamily: appFonts.satoshiMedium,
-
-                                        color: colors.appTextColor2
+                                        fontSize: fontSizes.regular,
+                                        fontFamily: appFonts.appTextBold,
+                                        color: colors.appTextColor3
                                     }} />
                             </Wrapper>
-                            <Wrapper style={{marginTop: responsiveHeight(10)}}>
-                            <Buttons.Colored
-                                onPress={() => handleResetPassword()}
-                                buttonStyle={{ marginHorizontal: 0 }}
-                                text={'Send Message'}
-                                iconContainer={{ left: width(34) }}
-                                gradientColors={[colors.buttonColor1, colors.buttonColor2]}
-                                textStyle={{
-                                    color: colors.appTextColor4,
-                                    fontFamily: appFonts.interSemiBold,
-                                    fontSize: fontSizes.regular,
-                                }} />
+                            <Wrapper style={{ marginTop: responsiveHeight(10) }}>
+                                <Buttons.Colored
+                                    onPress={() => handleResetPassword()}
+                                    buttonStyle={{ marginHorizontal: 0 }}
+                                    text={'Send Message'}
+                                    iconContainer={{ left: width(34) }}
+                                    gradientColors={[colors.buttonColor1, colors.buttonColor2]}
+                                    textStyle={{
+                                        color: colors.appTextColor5,
+                                        fontFamily: appFonts.appTextMedium,
+                                        fontSize: fontSizes.regular,
+                                    }} />
 
                             </Wrapper>
                         </Wrapper>

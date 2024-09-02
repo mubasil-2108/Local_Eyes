@@ -79,6 +79,8 @@ export const colors = {
   appTextColor21: 'rgba(128, 128, 137, 1)',
   appTextColor22: 'rgba(39, 39, 42, 1)',
   appTextColor23: 'rgba(19, 21, 35, 1)',
+  appTextColor24: 'rgba(240, 20, 47, 1)',
+  appTextColor25: 'rgba(91, 91, 91, 1)',
 
   appBgColor1: '#234CB0',
   appBgColor2: '#FFFFFF',
@@ -109,6 +111,7 @@ export const colors = {
   iconColor8: 'rgba(41, 45, 50, 1)',
   iconColor9: 'rgba(181, 190, 198, 1)',
   iconColor10:'rgba(166, 166, 166, 1)',
+  iconColor11: 'rgba(0, 0, 0, 1)',
 
   //BorderColor
   borderColor1:'#ADADAD',

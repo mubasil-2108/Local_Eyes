@@ -32,7 +32,7 @@ export default function Index(props) {
                         marginVerticalSmall>
                         <Text
                             style={{
-                                fontFamily: appFonts.appTextBold,
+                                fontFamily: appFonts.appTextMedium,
                                 color: colors.appTextColor1,
                                 fontSize: fontSizes.h3
                             }}>
@@ -41,7 +41,7 @@ export default function Index(props) {
                         <Spacer isTiny/>
                         <Text
                             style={{
-                                fontFamily: appFonts.interRegular,
+                                fontFamily: appFonts.appTextMedium,
                                 color: colors.appTextColor7,
                                 fontSize: fontSizes.regular
                             }}>
@@ -72,7 +72,6 @@ export default function Index(props) {
                             titleStyle={{
                                 fontSize: fontSizes.regular,
                                 fontFamily: appFonts.appTextBold,
-
                                 color: colors.appTextColor3
                             }} />
                         <Wrapper marginVerticalMedium>
@@ -84,7 +83,7 @@ export default function Index(props) {
                                 gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
                                 textStyle={{
                                     color: colors.appTextColor5,
-                                    fontFamily: appFonts.appTextBold,
+                                    fontFamily: appFonts.appTextMedium,
                                     fontSize: fontSizes.regular,
                                 }} />
 

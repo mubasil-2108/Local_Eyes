@@ -31,8 +31,8 @@ export default function Index(props) {
                             }}
                             customIconLeft={appIcons.mail}
                             inputStyle={{
-                                fontSize: fontSizes.regular,
-                                fontFamily: appFonts.satoshiRegular,
+                                fontSize: fontSizes.medium,
+                                fontFamily: appFonts.appTextRegular,
                                 color: colors.appTextColor1
                             }}
                             iconColorLeft={colors.iconColor1}
@@ -40,8 +40,8 @@ export default function Index(props) {
                             placeholder={'example@email.com'}
                             placeholderTextColor={colors.placeHolderColor}
                             titleStyle={{
-                                fontSize: fontSizes.small,
-                                fontFamily: appFonts.satoshiMedium,
+                                fontSize: fontSizes.regular,
+                                fontFamily: appFonts.appTextBold,
                                 color: colors.appTextColor3
                             }} />
                         <TextInputs.Phone
@@ -58,14 +58,14 @@ export default function Index(props) {
                             }}
                             inputStyle={{ paddingHorizontal: sizes.marginHorizontal2 }}
                             textStyle={{
-                                fontSize: fontSizes.regular,
-                                fontFamily: appFonts.satoshiRegular,
+                                fontSize: fontSizes.medium,
+                                fontFamily: appFonts.appTextRegular,
                                 color: colors.appTextColor1,
                                 paddingLeft: width(1.5)
                             }}
                             titleStyle={{
-                                fontSize: fontSizes.small,
-                                fontFamily: appFonts.satoshiMedium,
+                                fontSize: fontSizes.regular,
+                                fontFamily: appFonts.appTextBold,
                                 color: colors.appTextColor3
                             }} />
                         <TextInputs.Colored
@@ -90,8 +90,8 @@ export default function Index(props) {
                                 marginRight: width(4)
                             }}
                             inputStyle={{
-                                fontSize: fontSizes.regular,
-                                fontFamily: appFonts.satoshiRegular,
+                                fontSize: fontSizes.medium,
+                                fontFamily: appFonts.appTextRegular,
                                 color: colors.appTextColor1
                             }}
                             iconColorLeft={colors.iconColor1}
@@ -99,8 +99,8 @@ export default function Index(props) {
                             placeholder={'Minimum 8 characters'}
                             placeholderTextColor={colors.placeHolderColor}
                             titleStyle={{
-                                fontSize: fontSizes.small,
-                                fontFamily: appFonts.satoshiMedium,
+                                fontSize: fontSizes.regular,
+                                fontFamily: appFonts.appTextBold,
                                 color: colors.appTextColor3
                             }} />
                         <TextInputs.Colored
@@ -124,8 +124,8 @@ export default function Index(props) {
                                 marginRight: width(4)
                             }}
                             inputStyle={{
-                                fontSize: fontSizes.regular,
-                                fontFamily: appFonts.satoshiRegular,
+                                fontSize: fontSizes.medium,
+                                fontFamily: appFonts.appTextRegular,
                                 color: colors.appTextColor1
                             }}
                             iconColorLeft={colors.iconColor1}
@@ -133,15 +133,15 @@ export default function Index(props) {
                             placeholder={'Minimum 8 characters'}
                             placeholderTextColor={colors.placeHolderColor}
                             titleStyle={{
-                                fontSize: fontSizes.small,
-                                fontFamily: appFonts.satoshiMedium,
+                                fontSize: fontSizes.regular,
+                                fontFamily: appFonts.appTextBold,
                                 color: colors.appTextColor3
                             }} />
                     </Wrapper>
                     <Wrapper flexDirectionRow marginVerticalZero marginHorizontalTiny>
-                        <CheckBoxes.Primary onPress={toggleCheckbox} checked={isChecked} checkIconsize={sizes.icons.tiny} customCheckIcon={appIcons.checked} customUnCheckIcon={appIcons.blankCheck} />
-                        <Text style={{ fontSize: fontSizes.mediumSmall, color: colors.appTextColor6, fontFamily: appFonts.interMedium }}>I Agree with{' '}
-                            <Text style={{ color: colors.appTextColor4 }}>Terms of Service</Text> and{' '}
+                        <CheckBoxes.Primary onPress={toggleCheckbox} checked={isChecked} checkIconsize={sizes.icons.xSmall} customCheckIcon={appIcons.checked} customUnCheckIcon={appIcons.blankCheck} />
+                        <Text style={{ fontSize: fontSizes.medium, color: colors.appTextColor6, fontFamily: appFonts.appTextMedium }}>I Agree with{' '}
+                            <Text style={{textAlign:'justify', color: colors.appTextColor4 }}>Terms of Service</Text> and{' '}
                             <Text style={{ color: colors.appTextColor4 }}>Privacy Policy</Text>
                         </Text>
                     </Wrapper>
@@ -162,7 +162,7 @@ export default function Index(props) {
                             gradientColors={[colors.buttonColor1,colors.buttonColor1, colors.buttonColor2]}
                             textStyle={{
                                 color: colors.appTextColor5,
-                                fontFamily: appFonts.interSemiBold,
+                                fontFamily: appFonts.appTextMedium,
                                 fontSize: fontSizes.regular,
                                 left: width(6)
                             }} />
@@ -174,7 +174,7 @@ export default function Index(props) {
                             <Image style={{ width: width(30), tintColor: colors.appTextColor7 }} source={appIcons.vector} />
                         </Wrapper>
                         <Wrapper flex={1} justifyContentCenter alignItemsCenter>
-                            <Text style={{ color: colors.appTextColor7, fontFamily: appFonts.interRegular, fontSize: fontSizes.regular }}>Or sign in with</Text>
+                            <Text style={{ color: colors.appTextColor7, fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular }}>Or sign in with</Text>
                         </Wrapper>
                         <Wrapper flex={1} justifyContentCenter alignItemsCenter>
                             <Image style={{ width: width(30), tintColor: colors.appTextColor7 }} source={appIcons.vector} />
@@ -187,7 +187,7 @@ export default function Index(props) {
                     </Wrapper>
                     <Wrapper marginVerticalSmall justifyContentCenter alignItemsCenter>
                         <TouchableOpacity onPress={()=>handleSigninPress()}>
-                            <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Already have an account? <Text style={{ color: colors.appTextColor4, fontFamily: appFonts.interMedium, fontSize: fontSizes.regular }}>Login</Text> </Text>
+                            <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular }}>Already have an account? <Text style={{ color: colors.appTextColor4, fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular }}>Login</Text> </Text>
                         </TouchableOpacity>
                     </Wrapper>
                 </Wrapper>

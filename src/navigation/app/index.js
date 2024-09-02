@@ -54,18 +54,18 @@ const DrawerDesign = () => {
     return (
         <>
             <Wrapper isMain backgroundColor={colors.appColor1}>
-                <Wrapper style={{ marginTop: responsiveHeight(10) }} alignItemsCenter >
-                    <Images.Simple size={sizes.images.xLSmall} source={appImages.fullLogo} style={{ resizeMode: 'contain' }} />
+                <Wrapper  alignItemsCenter >
+                    <Images.Simple size={sizes.images.xL} source={appImages.fullLogo} style={{ resizeMode: 'contain' }} />
                 </Wrapper>
-                <Wrapper flex={1} style={{ marginTop: responsiveHeight(10) }}>
+                <Wrapper flex={1} >
                     {/* <Wrapper> */}
                     {menuItems.map((item, index) => (
                         <TouchableOpacity key={index} onPress={() => navigate(item.route)}>
                             <Wrapper flexDirectionRow paddingVerticalBase>
                                 <Wrapper flexDirectionRow alignItemsCenter marginHorizontalLarge justifyContentFlexstart>
-                                    <Icons.Custom size={sizes.icons.mediumSmall} icon={item.icon} />
+                                    <Icons.Custom size={sizes.icons.mediumSmall} color={colors.iconColor11} icon={item.icon} />
                                     <Wrapper marginHorizontalBase >
-                                        <GradientText text={item.text} textStyle={{ color: colors.appTextColor1, fontSize: fontSizes.medium, fontFamily: appFonts.appTextRegular }} color={[colors.buttonColor2, colors.buttonColor1]} />
+                                        <GradientText text={item.text} textStyle={{ color: colors.appTextColor1, fontSize: fontSizes.medium, fontFamily: appFonts.appTextMedium }} color={[colors.appTextColor1, colors.appTextColor1]} />
                                     </Wrapper>
                                     {/* <Icons.Custom icon={}/> */}
                                 </Wrapper>
@@ -83,7 +83,7 @@ const DrawerDesign = () => {
                             <Wrapper flexDirectionRow alignItemsCenter justifyContentFlexstart>
                                 <Icons.Custom size={sizes.icons.mediumSmall} icon={appIcons.log_out} />
                                 <Wrapper marginHorizontalTiny >
-                                    <Text style={{ color: colors.appTextColor7, opacity: 0.4, fontSize: fontSizes.medium, fontFamily: appFonts.appTextRegular }}>Logout</Text>
+                                    <Text style={{ color: colors.appTextColor24, opacity: 0.4, fontSize: fontSizes.medium, fontFamily: appFonts.interMedium }}>Logout</Text>
                                 </Wrapper>
                             </Wrapper>
                         </Wrapper>
@@ -101,6 +101,7 @@ const AppNavigation = () => {
             screenOptions={{
                 drawerStyle: {
                     width: responsiveWidth(69),
+                    marginTop:sizes.statusBarHeight,
                     borderTopRightRadius: totalSize(2),
                     borderBottomRightRadius: totalSize(2),
                     overflow: 'hidden', // Ensure content doesn't overflow the border radius

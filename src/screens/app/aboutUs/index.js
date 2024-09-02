@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { width, height, totalSize } from 'react-native-dimension';
-import { Wrapper, Text, Icons, Headers, Modals, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Images, Buttons } from '../../../components';
+import { Wrapper, Text, Icons, Headers, Modals, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Images, Buttons, Spacer } from '../../../components';
 import { useHooks } from './hooks'
 import { appImages, colors, routes, sizes, fontSizes, appFonts, appIcons, responsiveWidth, responsiveHeight } from '../../../services';
 import { GiftedChat, Bubble, InputToolbar, Message } from 'react-native-gifted-chat';
@@ -25,27 +25,30 @@ export default function AboutUs(props) {
 
     return (
         <>
+            <StatusBars.Dark backgroundColor={colors.appColor1} />
+            <Spacer isStatusBarHeigt />
             <Wrapper isMain backgroundColor={colors.appColor1}>
                 <ScrollViews.KeyboardAvoiding>
-                    <StatusBars.Dark hidden={!statusBarVisible} backgroundColor={colors.appBgColor1} />
-                    <Wrapper style={{ marginTop: width(5) }}>
+                    <Wrapper >
                         <Wrapper marginHorizontalBase>
                             <Headers.Primary
                                 onBackPress={() => goBack()}
                                 showBackArrow
+                                rightIconSource={appIcons.chevron_left}
                                 allowText
                                 textColor={colors.appTextColor9}
                                 iconColor={colors.iconColor1}
-                                title={'Guidelines'}
-                                titleStyle={{ fontFamily: appFonts.interSemiBold, fontSize: fontSizes.medium }}
+                                title={'About Us'}
+                                titleStyle={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.medium }}
                                 iconContainer={{ flexDirection: 'row' }}
-                                containerStyle={{ backgroundColor: colors.appColor1 }} />
+                                containerStyle={{ backgroundColor: colors.appColor1, height: height(7) }} />
+                            <Spacer isMedium />
                             <Wrapper marginHorizontalTiny>
-                                <Text style={{ fontSize: fontSizes.medium, fontFamily: appFonts.baloo2_Bold, color: colors.appTextColor1 }}>Local Eyes Local Eyes</Text>
+                                <Text style={{ fontSize: fontSizes.medium, fontFamily: appFonts.appTextBold, color: colors.appTextColor1 }}>Local Eyes Local Eyes</Text>
                             </Wrapper>
                             <Wrapper marginVerticalSmall marginHorizontalTiny>
-                            <Text style={{ fontSize: fontSizes.mediumSmall, fontFamily: appFonts.baloo2_Regular, color: colors.appTextColor5 }}>{guideLines}</Text>
-                                
+                                <Text style={{ fontSize: fontSizes.medium, fontFamily: appFonts.appTextRegular, color: colors.appTextColor7 }}>{guideLines}</Text>
+
                             </Wrapper>
                         </Wrapper>
                     </Wrapper>

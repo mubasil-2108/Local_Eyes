@@ -27,7 +27,7 @@ export default function Index(props) {
               gradientColors={[colors.appColor2, colors.appColor3]}
               onPress={()=>navigate(routes.localSignin)}
               text={'Local'}
-              textStyle={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.regular, color: colors.appTextColor1 }}
+              textStyle={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular, color: colors.appTextColor1 }}
               customIconRight={appIcons.arrow_forward}
               iconSize={totalSize(1.6)}
               iconContainer={{ right: width(4.5) }}
@@ -129,7 +129,7 @@ export default function Index(props) {
               gradientColors={[colors.buttonColor1,colors.buttonColor1, colors.buttonColor2]}
               textStyle={{
                 color: colors.appTextColor5,
-                fontFamily: appFonts.appTextBold,
+                fontFamily: appFonts.appTextMedium,
                 fontSize: fontSizes.regular,
                 left: width(5)
               }} />

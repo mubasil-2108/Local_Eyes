@@ -9,22 +9,22 @@ import { useDrawerStatus } from '@react-navigation/drawer';
 
 export function useHooks() {
     const [search, setSearch] = useState('');
-    const [statusBarVisible, setStatusBarVisible] = useState(true);
+    // const [statusBarVisible, setStatusBarVisible] = useState(true);
     const isDrawerOpen = useDrawerStatus(); // Get the drawer status
 
-    useEffect(() => {
-      // Show the status bar initially and then update based on drawer status
-      StatusBar.setHidden(!statusBarVisible);
-    }, [statusBarVisible]);
+    // useEffect(() => {
+    //   // Show the status bar initially and then update based on drawer status
+    //   StatusBar.setHidden(!statusBarVisible);
+    // }, [statusBarVisible]);
   
-    useEffect(() => {
-      // Update status bar visibility based on drawer state
-      if (isDrawerOpen === 'open') {
-        setStatusBarVisible(false);
-      } else {
-        setStatusBarVisible(true);
-      }
-    }, [isDrawerOpen]);
+    // useEffect(() => {
+    //   // Update status bar visibility based on drawer state
+    //   if (isDrawerOpen === 'open') {
+    //     setStatusBarVisible(false);
+    //   } else {
+    //     setStatusBarVisible(true);
+    //   }
+    // }, [isDrawerOpen]);
 
     useEffect(() => {
         const backHandler = BackHandler.addEventListener('hardwareBackPress', handleBackPress);
@@ -81,8 +81,8 @@ export function useHooks() {
         search,
         imageData,
         setSearch,
-        isDrawerOpen,
-        statusBarVisible,
+        // isDrawerOpen,
+        // statusBarVisible,
         DrawerActions
     }
 }

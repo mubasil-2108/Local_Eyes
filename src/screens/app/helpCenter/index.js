@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { width, height, totalSize } from 'react-native-dimension';
-import { Wrapper, Text, Icons, Headers, Modals, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Images } from '../../../components';
+import { Wrapper, Text, Icons, Headers, Modals, ScrollViews, StatusBars, CategoryList, TextInputs, ProductList, Images, Spacer } from '../../../components';
 import { useHooks } from './hooks'
 import { appImages, colors, routes, sizes, fontSizes, appFonts, appIcons, responsiveWidth, responsiveHeight } from '../../../services';
 import { GiftedChat, Bubble, InputToolbar, Message } from 'react-native-gifted-chat';
@@ -19,20 +19,22 @@ export default function HelpCenter(props) {
         DrawerActions, } = useHooks() || {};
     return (
         <>
+            <StatusBars.Dark backgroundColor={colors.appColor1} />
+            <Spacer isStatusBarHeigt />
             <Wrapper isMain backgroundColor={colors.appColor1}>
                 <ScrollViews.KeyboardAvoiding>
-                    <StatusBars.Dark hidden={!statusBarVisible} backgroundColor={colors.appBgColor1} />
-                    <Wrapper marginHorizontalBase style={{ marginTop: width(5) }}>
+                    <Wrapper marginHorizontalBase >
                         <Headers.Primary
                             onBackPress={() => goBack()}
                             showBackArrow
+                            rightIconSource={appIcons.chevron_left}
                             allowText
                             textColor={colors.appTextColor9}
                             iconColor={colors.iconColor1}
                             title={'Help Center'}
-                            titleStyle={{ fontFamily: appFonts.interSemiBold, fontSize: fontSizes.medium }}
+                            titleStyle={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.medium }}
                             iconContainer={{ flexDirection: 'row' }}
-                            containerStyle={{ backgroundColor: colors.appColor1 }} />
+                            containerStyle={{ backgroundColor: colors.appColor1, height: height(7) }} />
                         <Wrapper alignItemsCenter>
                             <Images.MainLogo size={sizes.images.logoWidthLarge} source={appImages.helpCenter} style={{ resizeMode: 'contain' }} />
                         </Wrapper>
@@ -55,8 +57,8 @@ export default function HelpCenter(props) {
                                             resizeMode: 'contain'
                                         }}
                                         inputStyle={{
-                                            fontSize: fontSizes.regular,
-                                            fontFamily: appFonts.satoshiRegular,
+                                            fontSize: fontSizes.medium,
+                                            fontFamily: appFonts.appTextRegular,
                                             color: colors.appTextColor1
                                         }}
                                         placeholder={'FAQ'}
@@ -82,8 +84,8 @@ export default function HelpCenter(props) {
                                             resizeMode: 'contain'
                                         }}
                                         inputStyle={{
-                                            fontSize: fontSizes.regular,
-                                            fontFamily: appFonts.satoshiRegular,
+                                            fontSize: fontSizes.medium,
+                                            fontFamily: appFonts.appTextRegular,
                                             color: colors.appTextColor1
                                         }}
                                         placeholder={'Contact Support'}
@@ -92,7 +94,7 @@ export default function HelpCenter(props) {
                                 </TouchableOpacity>
                             </Wrapper>
                             <Wrapper marginVerticalTiny marginHorizontalSmall>
-                                <TouchableOpacity onPress={()=>navigate(routes.common)}>
+                                <TouchableOpacity onPress={() => navigate(routes.common)}>
                                     <TextInputs.Colored
                                         editable={false}
                                         containerStyle={{ marginHorizontal: 0, marginTop: height(1), }}
@@ -109,8 +111,8 @@ export default function HelpCenter(props) {
                                             resizeMode: 'contain'
                                         }}
                                         inputStyle={{
-                                            fontSize: fontSizes.regular,
-                                            fontFamily: appFonts.satoshiRegular,
+                                            fontSize: fontSizes.medium,
+                                            fontFamily: appFonts.appTextRegular,
                                             color: colors.appTextColor1
                                         }}
                                         placeholder={'Guidelines'}
