@@ -96,12 +96,14 @@ export const sizes = {
 
 
 export const fontSizes = {
+  xL:responsiveFontSize(50),
   h1: responsiveFontSize(42),
   h2: responsiveFontSize(38),
   h2_small: responsiveFontSize(36),
   h3: responsiveFontSize(32),
   h3_small: responsiveFontSize(30),
   h4: responsiveFontSize(28),
+  h4_small: responsiveFontSize(25),
   h5: responsiveFontSize(24),
   h5_small: responsiveFontSize(22),
   h6: responsiveFontSize(20),

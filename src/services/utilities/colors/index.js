@@ -50,10 +50,9 @@ export const colors = {
   appColor6: 'rgba(250, 250, 250, 1)',
   appColor7: 'rgba(238, 238, 238, 1)',
   appColor8: 'rgba(242, 242, 242, 1)',
-  
-  appColor9: '#003162',
-  appColor10: '#FFDD00',
-  appColor11: '#FFFFFF',
+  appColor9: 'rgba(247, 105, 135, 1)',
+  appColor10: 'rgba(124, 225, 22, 1)',
+  appColor11: 'rgba(124, 225, 22, 0.11)',
 
 
   appTextColor1: '#000000',
@@ -81,6 +80,8 @@ export const colors = {
   appTextColor23: 'rgba(19, 21, 35, 1)',
   appTextColor24: 'rgba(240, 20, 47, 1)',
   appTextColor25: 'rgba(91, 91, 91, 1)',
+  appTextColor26: 'rgba(242, 242, 242, 1)',
+  appTextColor27: 'rgba(239, 9, 9, 1)',
 
   appBgColor1: '#234CB0',
   appBgColor2: '#FFFFFF',

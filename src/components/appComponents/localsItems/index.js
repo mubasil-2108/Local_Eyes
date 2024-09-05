@@ -9,54 +9,54 @@ import { Buttons, Icons, Images } from '../..';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
-export const LocalsItems = ({item} ) => {
+export const LocalsItems = ({ item }) => {
   const navigation = useNavigation();
-    return (
-        <Wrapper marginVerticalSmall marginHorizontalSmall paddingHorizontalSmall isBorderedWrapper style={{ borderColor: colors.borderColor4, flexWrap: 'wrap' }}>
-        <Wrapper justifyContentSpaceBetween flexDirectionRow>
-          <Wrapper >
-            <Images.SqareRound style={{ borderRadius: 10, height: sizes.images.logoHeight, width: sizes.images.logoWidth }} source={item.image} />
-          </Wrapper>
-          <Wrapper style={{ width: responsiveWidth(51) }}>
-            <Wrapper flex={1} justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
-              <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor1, fontSize: fontSizes.mediumSmall }}>{item.name}</Text>
-              <Buttons.ColoredSmall
-              onPress={()=> navigation.navigate(routes.localPreview, {item})}
-                gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
-                textStyle={{ fontFamily: appFonts.baloo2_Regular, color: colors.appTextColor5, fontSize: fontSizes.small }}
-                buttonStyle={{ justifyContent: 'center', alignItems: 'center', paddingVertical: width(1), paddingHorizontal: width(1.5) }}
-                text={'View Profile'} />
-            </Wrapper>
-            <Wrapper flex={1} alignItemsCenter flexDirectionRow>
-              <Icons.Custom icon={appIcons.star} size={sizes.icons.small} />
-              <Spacer width={width(1)} />
-              <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor6, fontSize: fontSizes.regular }}>{item.rating}</Text>
-            </Wrapper>
-            <Wrapper flex={1} justifyContentCenter >
-              <Text style={{ fontFamily: appFonts.baloo2_ExtraBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}>${item.rate}{' '}
-                <Text style={{ fontFamily: appFonts.baloo2_Medium, color: colors.appTextColor7, fontSize: fontSizes.regular }}>/hour</Text></Text>
-            </Wrapper>
-
-            <Wrapper justifyContentFlexend>
-              <Wrapper flexDirectionRow style={{ flexWrap: 'wrap' }}>
-                <Text style={{ flex: 1, fontFamily: appFonts.appTextRegular, textAlign: 'justify', color: colors.appTextColor3, fontSize: 14 }}>{item.description}</Text>
-              </Wrapper>
-            </Wrapper>
-          </Wrapper>
-
+  return (
+    <Wrapper marginVerticalSmall marginHorizontalSmall paddingHorizontalSmall isBorderedWrapper style={{ borderColor: colors.borderColor4, flexWrap: 'wrap' }}>
+      <Wrapper justifyContentSpaceBetween flexDirectionRow>
+        <Wrapper >
+          <Images.SqareRound style={{ borderRadius: 10, height: sizes.images.logoHeight, width: sizes.images.logoWidth }} source={item.image} />
         </Wrapper>
-        {/* <Spacer/> */}
-        <Wrapper marginVerticalSmall style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
-        <Wrapper  flexDirectionRow style={{ flexWrap: 'wrap' }}>
+        <Wrapper style={{ width: responsiveWidth(51) }}>
+          <Wrapper flex={1} justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
+            <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor1, fontSize: fontSizes.mediumSmall }}>{item.name}</Text>
+            <Buttons.ColoredSmall
+              onPress={() => navigation.navigate(routes.localPreview, { item })}
+              gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+              textStyle={{ fontFamily: appFonts.baloo2_Regular, color: colors.appTextColor5, fontSize: fontSizes.small }}
+              buttonStyle={{ justifyContent: 'center', alignItems: 'center', paddingVertical: width(1), paddingHorizontal: width(1.5) }}
+              text={'View Profile'} />
+          </Wrapper>
+          <Wrapper flex={1} alignItemsCenter flexDirectionRow>
+            <Icons.Custom icon={appIcons.star} size={sizes.icons.small} />
+            <Spacer width={width(1)} />
+            <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor6, fontSize: fontSizes.regular }}>{item.rating}</Text>
+          </Wrapper>
+          <Wrapper flex={1} justifyContentCenter >
+            <Text style={{ fontFamily: appFonts.baloo2_ExtraBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}>${item.rate}{' '}
+              <Text style={{ fontFamily: appFonts.baloo2_Medium, color: colors.appTextColor7, fontSize: fontSizes.regular }}>/hour</Text></Text>
+          </Wrapper>
+
+          <Wrapper justifyContentFlexend>
+            <Wrapper flexDirectionRow style={{ flexWrap: 'wrap' }}>
+              <Text style={{ flex: 1, fontFamily: appFonts.appTextRegular, textAlign: 'justify', color: colors.appTextColor3, fontSize: 14 }}>{item.description}</Text>
+            </Wrapper>
+          </Wrapper>
+        </Wrapper>
+
+      </Wrapper>
+      {/* <Spacer/> */}
+      <Wrapper marginVerticalSmall style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
+      <Wrapper flexDirectionRow style={{ flexWrap: 'wrap' }}>
         {item.badges.map((badge, index) => (
           <LinearGradient
-          key={index}
+            key={index}
             colors={['rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.2)']}
             style={{
               padding: 0.5, // Border width
               borderRadius: 30,
               margin: width(0.1),
-              marginEnd:width(2.3),
+              marginEnd: width(2.3),
               marginBottom: height(0.5)
             }}
           >
@@ -74,8 +74,8 @@ export const LocalsItems = ({item} ) => {
               </Wrapper>
             </LinearGradient>
           </LinearGradient>
-          ))}
-        </Wrapper>
+        ))}
       </Wrapper>
-    );
+    </Wrapper>
+  );
 };
