@@ -53,7 +53,13 @@ export const colors = {
   appColor9: 'rgba(247, 105, 135, 1)',
   appColor10: 'rgba(124, 225, 22, 1)',
   appColor11: 'rgba(124, 225, 22, 0.11)',
-
+  appColor12: 'rgba(184, 75, 98, 0.11)',
+  appColor13: 'rgba(239, 202, 9, 0.11)',
+  appColor14: 'rgba(254, 198, 46, 1)',
+  appColor15: 'rgba(9, 181, 239, 0.11)',
+  appColor16: 'rgba(9, 181, 239, 1)',
+  appColor17: 'rgba(239, 23, 9, 0.11)',
+  appColor18: 'rgba(239, 9, 9, 1)',
 
   appTextColor1: '#000000',
   appTextColor2: 'rgba(184, 75, 98, 1)',
@@ -85,7 +91,7 @@ export const colors = {
 
   appBgColor1: '#234CB0',
   appBgColor2: '#FFFFFF',
-  
+
 
   appBgColor3: '#E9E9E9',
   appBgColor4: '#AAAAAA',
@@ -111,15 +117,15 @@ export const colors = {
   iconColor7: 'rgba(79, 79, 79, 1)',
   iconColor8: 'rgba(41, 45, 50, 1)',
   iconColor9: 'rgba(181, 190, 198, 1)',
-  iconColor10:'rgba(166, 166, 166, 1)',
+  iconColor10: 'rgba(166, 166, 166, 1)',
   iconColor11: 'rgba(0, 0, 0, 1)',
 
   //BorderColor
-  borderColor1:'#ADADAD',
-  borderColor2:'#234CB029',
-  borderColor3:'rgba(35, 76, 176, 0.3)',
-  borderColor4:'rgba(215, 215, 215, 1)',
-  borderColor5:'rgba(139, 139, 139, 1)',
+  borderColor1: '#ADADAD',
+  borderColor2: '#234CB029',
+  borderColor3: 'rgba(35, 76, 176, 0.3)',
+  borderColor4: 'rgba(215, 215, 215, 1)',
+  borderColor5: 'rgba(139, 139, 139, 1)',
 
   // Shadow Color
   shadowColor1: '#000000',
@@ -148,7 +154,7 @@ export const colors = {
   buttonColor3: '#FFFFFF',
   buttonColor4: 'rgba(193, 193, 193, 0.15)',
   buttonColor5: 'rgba(243, 246, 251, 1)',
-  
+
   buttonColor6: '#E74C3C',
 
   // Button Border
@@ -160,7 +166,7 @@ export const colors = {
   buttonBorder6: 'rgba(239, 9, 9, 1)',
 
   buttonBorder2: 'rgba(197, 197, 197, 1)',
-  
+
 
   //Image Border
   imageBorder: '#C5C5C5',
@@ -168,15 +174,15 @@ export const colors = {
   // Notifications
   notificationColor1: '#F1F1F1',
   notificationColor2: '#FFFFFF',
-  
+
   // Notification Border
   notificationBorder: 'rgba(197, 197, 197, 1)',
 
   // Message Box
   messageBoxColor1: '#A75503',
-  messageBoxColor2:'#F1F1F1',
-  messageBoxBorderColor1:'#C5C5C5',
-  messageInputContainer:'#FFFFFF',
+  messageBoxColor2: '#F1F1F1',
+  messageBoxBorderColor1: '#C5C5C5',
+  messageInputContainer: '#FFFFFF',
 
   // Spacer Color
   spacerColor1: 'rgba(30, 94, 255, 0.28)',

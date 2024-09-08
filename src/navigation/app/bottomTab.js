@@ -57,7 +57,7 @@ const TabIcon = ({ color, iconName, iconType, focused, image, tabBarLabel, custo
     );
 }
 
-export default function BottomTabNavigation() {
+export function BottomTabNavigation() {
     return (
         <BottomTabStack.Navigator
             screenOptions={{
@@ -98,6 +98,100 @@ export default function BottomTabNavigation() {
                             color={color}
                             focused={focused}
                             tabBarLabel='Product'
+                        />
+                    ),
+                }}
+            />
+            <BottomTabStack.Screen
+                name={routes.cart}
+                component={App.Cart}
+                options={{
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <TabIcon
+                            image={appIcons.chats}
+                            customStyle={{ borderRadius: 0 }}
+                            color={color}
+                            focused={focused}
+                            tabBarLabel='Cart'
+                        />
+                    ),
+                }}
+            />
+            <BottomTabStack.Screen
+                name={routes.account}
+                component={App.Account}
+                options={{
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <TabIcon
+                        image={appIcons.profile}
+                        customStyle={{ borderRadius: 0 }}
+                            color={color}
+                            focused={focused}
+                            tabBarLabel='Account'
+                        />
+                    ),
+                }}
+            />
+        </BottomTabStack.Navigator>
+    );
+}
+
+export function BottomLocaleTabNavigation() {
+    return (
+        <BottomTabStack.Navigator
+            screenOptions={{
+                headerShown: false,
+                ...tabs.tabBarOptions,
+                tabBarShowLabel: false,
+
+            }}
+            initialRouteName={routes.localeHome}
+        >
+            <BottomTabStack.Screen
+                name={routes.localeHome}
+                component={App.LocaleHome}
+                options={{
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <TabIcon
+                            // iconName='home' 
+                            // iconType='feather'
+                            image={appIcons.home}
+                            customStyle={{ borderRadius: 0 }}
+                            color={color}
+                            focused={focused}
+                            tabBarLabel='localeHome'
+                        />
+                    ),
+                }}
+            />
+            <BottomTabStack.Screen
+                name={routes.products}
+                component={App.Product}
+                options={{
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <TabIcon
+                            // iconName='globe' 
+                            // iconType='feather' 
+                            image={appIcons.calendar}
+                            customStyle={{ borderRadius: 0 }}
+                            color={color}
+                            focused={focused}
+                            tabBarLabel='Product'
+                        />
+                    ),
+                }}
+            />
+             <BottomTabStack.Screen
+                name={routes.trend}
+                component={App.Trend}
+                options={{
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <TabIcon
+                            image={appIcons.trendUp}
+                            customStyle={{ borderRadius: 0 }}
+                            color={color}
+                            focused={focused}
+                            tabBarLabel='trend'
                         />
                     ),
                 }}

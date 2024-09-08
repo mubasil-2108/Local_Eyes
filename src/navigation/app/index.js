@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { routes, headers, appImages, colors, responsiveHeight, sizes, appIcons, appFonts, fontSizes, responsiveWidth } from '../../services';
-import BottomTab from './bottomTab'
+import { BottomLocaleTabNavigation, BottomTabNavigation } from './bottomTab'
 import { width, height, totalSize } from 'react-native-dimension';
 import * as App from '../../screens/app';
 import { GradientText, Icons, Images, Spacer, StatusBars, Text, Wrapper } from '../../components';
 import { TouchableOpacity } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { navigate } from '../rootNavigation';
 import CommonNavigation from '../common';
 const AppStack = createNativeStackNavigator();
@@ -22,8 +23,8 @@ const menuItems = [
 
 const StackNavigation = () => {
     return (
-        <AppStack.Navigator initialRouteName={routes.bottomTab} screenOptions={{headerShown:false}}>
-            <AppStack.Screen name={routes.bottomTab} component={BottomTab} />
+        <AppStack.Navigator initialRouteName={routes.bottomTab} screenOptions={{ headerShown: false }}>
+            <AppStack.Screen name={routes.bottomTab} component={BottomTabNavigation} />
             <AppStack.Screen name={routes.helpCenter} component={App.HelpCenter} />
             <AppStack.Screen name={routes.faqs} component={App.FAQS} />
             <AppStack.Screen name={routes.contactSupport} component={App.ContactSupport} />
@@ -32,7 +33,7 @@ const StackNavigation = () => {
             <AppStack.Screen name={routes.privacy} component={App.Privacy} />
             <AppStack.Screen name={routes.aboutUs} component={App.AboutUs} />
             <AppStack.Screen name={routes.localPreview} component={App.LocalPreview} />
-            <AppStack.Screen name={routes.chatScreen} component={App.ChatScreen}/>
+            <AppStack.Screen name={routes.chatScreen} component={App.ChatScreen} />
             <AppStack.Screen name={routes.booking} component={App.Booking} />
             <AppStack.Screen name={routes.payment} component={App.Payment} />
             <AppStack.Screen name={routes.cardManagement} component={App.CardManagement} />
@@ -44,7 +45,37 @@ const StackNavigation = () => {
             <AppStack.Screen name={routes.sort} component={App.Sort} />
             <AppStack.Screen name={routes.editProfile} component={App.EditProfile} />
             <AppStack.Screen name={routes.changePassword} component={App.ChangePassword} />
-    
+
+        </AppStack.Navigator>
+    )
+
+}
+
+const StackLocaleNavigation = () => {
+    return (
+        <AppStack.Navigator initialRouteName={routes.bottomLocaleTab} screenOptions={{ headerShown: false }}>
+            <AppStack.Screen name={routes.bottomLocaleTab} component={BottomLocaleTabNavigation} />
+            <AppStack.Screen name={routes.helpCenter} component={App.HelpCenter} />
+            <AppStack.Screen name={routes.faqs} component={App.FAQS} />
+            <AppStack.Screen name={routes.contactSupport} component={App.ContactSupport} />
+            <AppStack.Screen name={routes.common} component={App.GuideLines} />
+            <AppStack.Screen name={routes.terms} component={App.Terms} />
+            <AppStack.Screen name={routes.privacy} component={App.Privacy} />
+            <AppStack.Screen name={routes.aboutUs} component={App.AboutUs} />
+            <AppStack.Screen name={routes.localPreview} component={App.LocalPreview} />
+            <AppStack.Screen name={routes.chatScreen} component={App.ChatScreen} />
+            <AppStack.Screen name={routes.booking} component={App.Booking} />
+            <AppStack.Screen name={routes.payment} component={App.Payment} />
+            <AppStack.Screen name={routes.cardManagement} component={App.CardManagement} />
+            <AppStack.Screen name={routes.tripPlan} component={App.TripPlan} />
+            <AppStack.Screen name={routes.schedule} component={App.Schedule} />
+            <AppStack.Screen name={routes.preference} component={App.Preference} />
+            <AppStack.Screen name={routes.matchingResult} component={App.MatchingResult} />
+            <AppStack.Screen name={routes.filters} component={App.Filters} />
+            <AppStack.Screen name={routes.sort} component={App.Sort} />
+            <AppStack.Screen name={routes.editProfile} component={App.EditProfile} />
+            <AppStack.Screen name={routes.changePassword} component={App.ChangePassword} />
+
         </AppStack.Navigator>
     )
 
@@ -54,7 +85,7 @@ const DrawerDesign = () => {
     return (
         <>
             <Wrapper isMain backgroundColor={colors.appColor1}>
-                <Wrapper  alignItemsCenter >
+                <Wrapper alignItemsCenter >
                     <Images.Simple size={sizes.images.xL} source={appImages.fullLogo} style={{ resizeMode: 'contain' }} />
                 </Wrapper>
                 <Wrapper flex={1} >
@@ -95,13 +126,30 @@ const DrawerDesign = () => {
 }
 
 const AppNavigation = () => {
+    // console.log('Fetching', user);
+    const [userType, setUserType] = useState(null);
+
+    const fetchUserType = async () => {
+        try {
+            const storedUserType = await AsyncStorage.getItem('userType');
+            console.log('Fetched user type:', storedUserType); // Add this line
+            setUserType(storedUserType);
+        } catch (error) {
+            console.error('Error fetching user type:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserType(); // Fetch userType when Splash Screen mounts
+    }, []);
+    
     return (
         <Drawer.Navigator
             drawerContent={(props) => <DrawerDesign {...props} />}
             screenOptions={{
                 drawerStyle: {
                     width: responsiveWidth(69),
-                    marginTop:sizes.statusBarHeight,
+                    marginTop: sizes.statusBarHeight,
                     borderTopRightRadius: totalSize(2),
                     borderBottomRightRadius: totalSize(2),
                     overflow: 'hidden', // Ensure content doesn't overflow the border radius
@@ -109,10 +157,15 @@ const AppNavigation = () => {
 
                 headerShown: false,
             }}
-            initialRouteName={routes.bottomTab}
+            // initialRouteName={routes.stackNavigation}
 
         >
-            <Drawer.Screen name={routes.stackNavigation} component={StackNavigation} />
+            {
+                userType === 'locale' ?
+                    <Drawer.Screen name={routes.stackNavigation} component={StackLocaleNavigation} />
+                    :
+                    <Drawer.Screen name={routes.stackNavigation} component={StackNavigation} />
+            }
         </Drawer.Navigator>
     )
 }

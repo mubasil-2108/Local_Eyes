@@ -13,7 +13,21 @@ import CommonNavigation from './common';
 const MainStack = createNativeStackNavigator();
 
 export default function Navigation() {
+    // const [userType, setUserType] = useState(null);
     const [loading, setLoading] = useState(true)
+    // const fetchUserType = async () => {
+    //     try {
+    //         const storedUserType = await AsyncStorage.getItem('userType');
+    //         console.log('Fetched user type:', storedUserType); // Add this line
+    //         setUserType(storedUserType);
+    //     } catch (error) {
+    //         console.error('Error fetching user type:', error);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     fetchUserType(); // Fetch userType when Splash Screen mounts
+    // }, []);
 
     useEffect(() => {
         setTimeout(() => {
@@ -26,7 +40,7 @@ export default function Navigation() {
     else
         return (
             <NavigationContainer
-            ref={navigationRef}
+                ref={navigationRef}
             >
                 <MainStack.Navigator
                     screenOptions={{ headerShown: false }}
@@ -35,11 +49,14 @@ export default function Navigation() {
                     <MainStack.Screen
                         name={routes.auth}
                         component={AuthNavigation}
+
                     />
-                    <MainStack.Screen
-                        name={routes.app}
-                        component={AppNavigation}
-                    />
+                   <MainStack.Screen 
+                   name={routes.app}
+                   component={AppNavigation}
+                   />
+                        {/* {(props) => <AppNavigation {...props} user={userType} />} */}
+                    {/* </MainStack.Screen> */}
                     <MainStack.Screen
                         name={routes.common}
                         component={CommonNavigation}

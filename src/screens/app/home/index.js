@@ -12,6 +12,8 @@ import storage from '@react-native-firebase/storage';
 import { DrawerActions } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import { View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function Home(props) {
 
@@ -24,6 +26,7 @@ export default function Home(props) {
     seconds: 10,
   });
   const { days, hours, minutes, seconds } = timeRemaining;
+  
   // Countdown timer logic
   useEffect(() => {
     let timer;

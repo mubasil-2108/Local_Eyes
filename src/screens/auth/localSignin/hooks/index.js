@@ -3,6 +3,8 @@ import { routes } from "../../../../services"
 import { useState, useEffect } from 'react';
 import { BackHandler } from 'react-native';
 import { Signin } from '../../../../services/utilities/firebaseUtil/firebaseAuth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export function useHooks() {
 
     // const handleLogin = (email, password) => {
@@ -29,6 +31,23 @@ export function useHooks() {
         setIsChecked(!isChecked);
     };
 
+    const storeUserType = async (userType) => {
+        try {
+          await AsyncStorage.setItem('userType', userType);
+          console.log('User type stored:', userType);
+        } catch (error) {
+          console.error('Error storing user type:', error);
+        }
+      };
+
+      const handleSignIn = async () => {
+        // Your sign-in logic, e.g., API call
+        // const signInSuccessful = await Signin(email, password); // Uncomment this and implement proper sign-in logic
+        // if (signInSuccessful) {
+          await storeUserType('locale'); // Store 'locale' in AsyncStorage
+          navigate(routes.app); // Navigate to the main app
+        // }
+      };
     // const handleBackButtonPress = () => {
     //     if (modalVisible) {
     //         modalVisibility(); // Close the modal if it's visible
@@ -59,6 +78,7 @@ export function useHooks() {
         isChecked,
         modalVisible,
         modalVisibility,
-        Signin
+        Signin,
+        handleSignIn
     }
 }

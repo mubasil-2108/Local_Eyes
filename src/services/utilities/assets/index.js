@@ -134,6 +134,7 @@ const appIcons = {
     indonesia: require('../../../assets/icons/indonesia.png'),
     dummyFlag: require('../../../assets/icons/dummyFlag.png'),
     close: require('../../../assets/icons/close.png'),
+    trendUp: require('../../../assets/icons/trendUp.png'),
     // add:require('../../../assets/icons/add.png'),
 
     security: require('../../../assets/icons/security.png'),

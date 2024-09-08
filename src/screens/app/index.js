@@ -26,8 +26,11 @@ import MatchingResult from './matchingResults'
 import Filters from './filters'
 import Sort from './sort'
 import ChangePassword from './changePassword'
+import Trend from './trend'
+import LocaleHome from './localHome'
 
 export {
+    Trend,
     Home,
     Notificatons,
     EditProfile,
@@ -55,5 +58,6 @@ export {
     MatchingResult,
     Filters,
     Sort,
-    ChangePassword
+    ChangePassword,
+    LocaleHome
 }

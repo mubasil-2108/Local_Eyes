@@ -13,7 +13,7 @@ export default function Index(props) {
   const { navigate } = props.navigation
 
 
-  const { Signin, email, setEmail, password, setPassword, togglePasswordVisibility, showPassword } = useHooks()
+  const { Signin, handleSignIn, email, setEmail, password, setPassword, togglePasswordVisibility, showPassword } = useHooks()
   return (
     // <Text>{t('welcome')}</Text>
     <Wrapper isMain backgroundColor={colors.appBgColor2} >
@@ -118,7 +118,8 @@ export default function Index(props) {
             <Buttons.Colored
               onPress={() => 
                 // Signin(email, password)
-                navigate(routes.app)
+                // navigate(routes.app)
+                handleSignIn()
               }
               buttonStyle={{ marginHorizontal: 0 }}
               iconSize={totalSize(2)}

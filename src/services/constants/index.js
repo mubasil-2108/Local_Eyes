@@ -31,6 +31,7 @@ export const routes = {
 
     //app
     bottomTab: 'bottomTab',
+    bottomLocaleTab: 'bottomLocaleTab',
     helpCenter: 'helpCenter',
     faqs: 'faqs',
     stackNavigation: 'stackNavigation',
@@ -54,6 +55,9 @@ export const routes = {
     editProfile: 'editProfile',
     changePassword: 'changePassword',
 
+    // Locale Screens
+    localeHome: 'localeHome',
+
     dummyScreen: 'DummyScreen',
     homeStackScreen: 'HomeStackScreen',
     allCategory: 'allCategory',
@@ -62,6 +66,7 @@ export const routes = {
     notifications: 'notifications',
     account: 'account',
     cart: 'cart',
+    trend: 'trend',
     products: 'products',
 
     //common
