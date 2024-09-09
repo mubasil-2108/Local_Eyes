@@ -75,6 +75,7 @@ const StackLocaleNavigation = () => {
             <AppStack.Screen name={routes.sort} component={App.Sort} />
             <AppStack.Screen name={routes.editProfile} component={App.EditProfile} />
             <AppStack.Screen name={routes.changePassword} component={App.ChangePassword} />
+            <AppStack.Screen name={routes.travelerProfile} component={App.TravelerProfile} />
 
         </AppStack.Navigator>
     )
@@ -127,13 +128,21 @@ const DrawerDesign = () => {
 
 const AppNavigation = () => {
     // console.log('Fetching', user);
-    const [userType, setUserType] = useState(null);
+    const [userType, setUserType] = useState(routes.stackNavigation);
+    const [stack, setStack] = useState(() => StackNavigation);
 
     const fetchUserType = async () => {
         try {
             const storedUserType = await AsyncStorage.getItem('userType');
             console.log('Fetched user type:', storedUserType); // Add this line
-            setUserType(storedUserType);
+            if (storedUserType === 'locale') {
+                setUserType(routes.stackLocaleNavigation);
+                setStack(() => StackLocaleNavigation);
+            }
+            else {
+                setUserType(routes.stackNavigation);
+                setStack(() => StackNavigation);
+            }
         } catch (error) {
             console.error('Error fetching user type:', error);
         }
@@ -142,7 +151,7 @@ const AppNavigation = () => {
     useEffect(() => {
         fetchUserType(); // Fetch userType when Splash Screen mounts
     }, []);
-    
+
     return (
         <Drawer.Navigator
             drawerContent={(props) => <DrawerDesign {...props} />}
@@ -157,15 +166,11 @@ const AppNavigation = () => {
 
                 headerShown: false,
             }}
-            // initialRouteName={routes.stackNavigation}
+        // initialRouteName={routes.stackNavigation}
 
         >
-            {
-                userType === 'locale' ?
-                    <Drawer.Screen name={routes.stackNavigation} component={StackLocaleNavigation} />
-                    :
-                    <Drawer.Screen name={routes.stackNavigation} component={StackNavigation} />
-            }
+
+            <Drawer.Screen name={userType} component={stack} />
         </Drawer.Navigator>
     )
 }

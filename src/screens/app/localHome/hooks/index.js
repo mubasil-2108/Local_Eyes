@@ -82,6 +82,35 @@ export function useHooks() {
         },
         // Add more entries as needed
     ];
+    const requestData = [
+        {
+            id: 1,
+            name: "John Doe",
+            profileImage: appImages.profile1,
+            status: "Pending",
+            rating: 5.0,
+            price: 13,
+            location: "Bali, Indonesia",
+            guests: "5 guests",
+            stayInfo: "Feb 17-20 | 4 Days | 4 hours",
+            total: 74.63,
+            description: "Lorem ipsum dolor sit amet. Vel facilis sint aut sunt voluptatem."
+        },
+        {
+            id: 2,
+            name: "John Doe",
+            profileImage: appImages.profile2,
+            status: "Pending",
+            rating: 5.0,
+            price: 13,
+            location: "Bali, Indonesia",
+            guests: "5 guests",
+            stayInfo: "Feb 17-20 | 4 Days | 4 hours",
+            total: 74.63,
+            description: "Lorem ipsum dolor sit amet. Vel facilis sint aut sunt voluptatem."
+        },
+        // Add more entries as needed
+    ];
 
     const handleBackPress = () => {
         navigate(routes.auth);
@@ -104,6 +133,7 @@ export function useHooks() {
         selectedTab,
         setName,
         name,
-        historyData
+        historyData,
+        requestData,
     }
 }

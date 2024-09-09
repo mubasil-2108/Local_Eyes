@@ -28,6 +28,7 @@ import Sort from './sort'
 import ChangePassword from './changePassword'
 import Trend from './trend'
 import LocaleHome from './localHome'
+import TravelerProfile from './travelerProfile'
 
 export {
     Trend,
@@ -59,5 +60,6 @@ export {
     Filters,
     Sort,
     ChangePassword,
-    LocaleHome
+    LocaleHome,
+    TravelerProfile
 }

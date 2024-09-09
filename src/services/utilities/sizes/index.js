@@ -108,6 +108,7 @@ export const fontSizes = {
   h5_small: responsiveFontSize(22),
   h6: responsiveFontSize(20),
   input: responsiveFontSize(1.6),
+  large1: responsiveFontSize(18.96),
   large: responsiveFontSize(18),
   mediumSmall: responsiveFontSize(15),
   medium: responsiveFontSize(16),

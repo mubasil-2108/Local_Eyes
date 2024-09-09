@@ -89,80 +89,179 @@ export default function Home(props) {
         statusBarVisible,
         DrawerActions,
         historyData,
+        requestData,
         clickedProductItems
     } = useHooks() || {};
 
+    const renderRequest = ({ item }) => {
+        return (
+            <>
+                <TouchableOpacity key={item.id}  onPress={()=> navigate(routes.travelerProfile)}>
+                    <Wrapper marginHorizontalBase>
+                        <Wrapper isBorderedWrapper marginHorizontalZero paddingHorizontalSmall>
+                            <Wrapper justifyContentSpaceBetween flexDirectionRow>
+                                <Wrapper >
+                                    <Images.SqareRound style={{ borderRadius: 10, height: sizes.images.logoHeight, width: sizes.images.logoHeight }} source={item.profileImage} />
+                                </Wrapper>
+                                <Spacer isSmall horizontal />
+                                <Wrapper flex={1}>
+                                    <Wrapper flex={1} justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
+                                        <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor1, fontSize: fontSizes.mediumSmall }}>{item.name}</Text>
+                                        <Wrapper marginHorizontalZero paddingHorizontalSmall paddingVerticalTiny isBorderedWrapper backgroundColor={colors.appColor13} style={{ borderColor: colors.appColor14 }}>
+                                            <Text style={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor1, fontSize: fontSizes.small }}>{item.status}</Text>
+                                        </Wrapper>
+                                    </Wrapper>
+                                    <Wrapper flex={1} alignItemsCenter flexDirectionRow>
+                                        <Icons.Custom icon={appIcons.star} size={sizes.icons.small} />
+                                        <Spacer width={width(1)} />
+                                        <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor6, fontSize: fontSizes.regular }}>{item.rating}</Text>
+                                    </Wrapper>
+                                    <Wrapper flex={1} justifyContentCenter >
+                                        <Text style={{ fontFamily: appFonts.baloo2_ExtraBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}>${item.price}{' '}
+                                            <Text style={{ fontFamily: appFonts.baloo2_Medium, color: colors.appTextColor7, fontSize: fontSizes.regular }}>/hour</Text></Text>
+                                    </Wrapper>
+
+                                    <Wrapper justifyContentFlexend>
+                                        <Wrapper flexDirectionRow style={{ flexWrap: 'wrap' }}>
+                                            <Text style={{ fontFamily: appFonts.appTextRegular, textAlign: 'justify', color: colors.appTextColor3, fontSize: 14 }}>{item.description}</Text>
+                                        </Wrapper>
+                                    </Wrapper>
+                                </Wrapper>
+                            </Wrapper>
+                            <Spacer isSmall />
+                            <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
+                            <Spacer isSmall />
+                            <Wrapper style={{ marginRight: width(20) }}>
+                                <Wrapper justifyContentSpaceBetween flexDirectionRow>
+                                    <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
+                                        <Icons.Custom icon={appIcons.location_2} color={colors.iconColor6} size={sizes.icons.small} />
+                                        <Spacer horizontal isSmall />
+                                        <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>{item.location}</Text>
+                                    </Wrapper>
+                                    <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
+                                        <Icons.Custom icon={appIcons.adults} color={colors.iconColor6} size={sizes.icons.small} />
+                                        <Spacer horizontal isSmall />
+                                        <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>{item.guests}</Text>
+                                    </Wrapper>
+                                </Wrapper>
+                                <Spacer isTiny />
+                                <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
+                                    <Icons.Custom icon={appIcons.calendar} color={colors.iconColor6} size={sizes.icons.small} />
+                                    <Spacer horizontal isSmall />
+                                    <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>{item.stayInfo}</Text>
+                                </Wrapper>
+                            </Wrapper>
+                            <Spacer isSmall />
+                            <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
+                            <Spacer isSmall />
+                            <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
+                                <Wrapper >
+                                    <Text style={{ fontFamily: appFonts.appTextLight, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>Total USD</Text>
+                                </Wrapper>
+                                <Wrapper alignItemsFlexStart>
+                                    <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>${item.total}</Text>
+                                </Wrapper>
+                            </Wrapper>
+                            <Spacer isSmall />
+                            <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
+                            <Spacer isSmall />
+                            <Wrapper justifyContentSpaceBetween flexDirectionRow marginVerticalSmall>
+                                <Buttons.Bordered
+                                    // onPress={() => handleResetPassword()}
+                                    buttonStyle={{ width: width(40), paddingHorizontal: width(3), justifyContent: 'center', alignItems: 'center', borderColor: colors.appTextColor27, marginHorizontal: 0 }}
+                                    text={'Cancel'}
+                                    iconContainer={{ left: width(34) }}
+                                    textStyle={{
+                                        color: colors.appTextColor27,
+                                        fontFamily: appFonts.interMedium,
+                                        fontSize: fontSizes.medium,
+                                    }} />
+                                <Buttons.ColoredSmall
+                                    // onPress={() => navigate(routes.booking)}
+                                    gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                    textStyle={{ textAlign: 'justify', fontFamily: appFonts.interSemiBold, color: colors.appTextColor5, fontSize: fontSizes.regular }}
+                                    buttonStyle={{ width: width(40), paddingHorizontal: width(3), paddingVertical: height(1.6), justifyContent: 'center', alignItems: 'center' }}
+                                    text={'Accept'} />
+                            </Wrapper>
+                        </Wrapper>
+                    </Wrapper>
+                </TouchableOpacity>
+                <Spacer isSmall />
+            </>
+        )
+    }
     const renderHistory = ({ item }) => {
         return (
             <>
-            <Wrapper marginHorizontalBase>
-                <Wrapper isBorderedWrapper marginHorizontalZero paddingHorizontalSmall>
-                    <Wrapper justifyContentSpaceBetween flexDirectionRow>
-                        <Wrapper >
-                            <Images.SqareRound style={{ borderRadius: 10, height: sizes.images.logoHeight, width: sizes.images.logoHeight }} source={item.profileImage} />
-                        </Wrapper>
-                        <Spacer isSmall horizontal />
-                        <Wrapper flex={1}>
-                            <Wrapper flex={1} justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
-                                <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor1, fontSize: fontSizes.mediumSmall }}>{item.name}</Text>
-                                <Wrapper marginHorizontalZero paddingHorizontalSmall paddingVerticalTiny isBorderedWrapper backgroundColor={ item.status === 'Completed' ? colors.appColor15 : colors.appColor17} style={{ borderColor: item.status === 'Completed' ? colors.appColor16: colors.appColor18 }}>
-                                    <Text style={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor1, fontSize: fontSizes.small }}>{item.status}</Text>
-                                </Wrapper>
-                            </Wrapper>
-                            <Wrapper flex={1} alignItemsCenter flexDirectionRow>
-                                <Icons.Custom icon={appIcons.star} size={sizes.icons.small} />
-                                <Spacer width={width(1)} />
-                                <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor6, fontSize: fontSizes.regular }}>{item.rating}</Text>
-                            </Wrapper>
-                            <Wrapper flex={1} justifyContentCenter >
-                                <Text style={{ fontFamily: appFonts.baloo2_ExtraBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}>${item.price}{' '}
-                                    <Text style={{ fontFamily: appFonts.baloo2_Medium, color: colors.appTextColor7, fontSize: fontSizes.regular }}>/hour</Text></Text>
-                            </Wrapper>
-
-                            <Wrapper justifyContentFlexend>
-                                <Wrapper flexDirectionRow style={{ flexWrap: 'wrap' }}>
-                                    <Text style={{ fontFamily: appFonts.appTextRegular, textAlign: 'justify', color: colors.appTextColor3, fontSize: 14 }}>{item.description}</Text>
-                                </Wrapper>
-                            </Wrapper>
-                        </Wrapper>
-                    </Wrapper>
-                    <Spacer isSmall />
-                    <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
-                    <Spacer isSmall />
-                    <Wrapper style={{ marginRight: width(20) }}>
+                <Wrapper marginHorizontalBase>
+                    <Wrapper isBorderedWrapper marginHorizontalZero paddingHorizontalSmall>
                         <Wrapper justifyContentSpaceBetween flexDirectionRow>
-                            <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
-                                <Icons.Custom icon={appIcons.location_2} color={colors.iconColor6} size={sizes.icons.small} />
-                                <Spacer horizontal isSmall />
-                                <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>{item.location}</Text>
+                            <Wrapper >
+                                <Images.SqareRound style={{ borderRadius: 10, height: sizes.images.logoHeight, width: sizes.images.logoHeight }} source={item.profileImage} />
                             </Wrapper>
-                            <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
-                                <Icons.Custom icon={appIcons.adults} color={colors.iconColor6} size={sizes.icons.small} />
-                                <Spacer horizontal isSmall />
-                                <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>{item.guests}</Text>
+                            <Spacer isSmall horizontal />
+                            <Wrapper flex={1}>
+                                <Wrapper flex={1} justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
+                                    <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor1, fontSize: fontSizes.mediumSmall }}>{item.name}</Text>
+                                    <Wrapper marginHorizontalZero paddingHorizontalSmall paddingVerticalTiny isBorderedWrapper backgroundColor={item.status === 'Completed' ? colors.appColor15 : colors.appColor17} style={{ borderColor: item.status === 'Completed' ? colors.appColor16 : colors.appColor18 }}>
+                                        <Text style={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor1, fontSize: fontSizes.small }}>{item.status}</Text>
+                                    </Wrapper>
+                                </Wrapper>
+                                <Wrapper flex={1} alignItemsCenter flexDirectionRow>
+                                    <Icons.Custom icon={appIcons.star} size={sizes.icons.small} />
+                                    <Spacer width={width(1)} />
+                                    <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor6, fontSize: fontSizes.regular }}>{item.rating}</Text>
+                                </Wrapper>
+                                <Wrapper flex={1} justifyContentCenter >
+                                    <Text style={{ fontFamily: appFonts.baloo2_ExtraBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}>${item.price}{' '}
+                                        <Text style={{ fontFamily: appFonts.baloo2_Medium, color: colors.appTextColor7, fontSize: fontSizes.regular }}>/hour</Text></Text>
+                                </Wrapper>
+
+                                <Wrapper justifyContentFlexend>
+                                    <Wrapper flexDirectionRow style={{ flexWrap: 'wrap' }}>
+                                        <Text style={{ fontFamily: appFonts.appTextRegular, textAlign: 'justify', color: colors.appTextColor3, fontSize: 14 }}>{item.description}</Text>
+                                    </Wrapper>
+                                </Wrapper>
                             </Wrapper>
                         </Wrapper>
-                        <Spacer isTiny />
-                        <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
-                            <Icons.Custom icon={appIcons.calendar} color={colors.iconColor6} size={sizes.icons.small} />
-                            <Spacer horizontal isSmall />
-                            <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>{item.stayInfo}</Text>
+                        <Spacer isSmall />
+                        <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
+                        <Spacer isSmall />
+                        <Wrapper style={{ marginRight: width(20) }}>
+                            <Wrapper justifyContentSpaceBetween flexDirectionRow>
+                                <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
+                                    <Icons.Custom icon={appIcons.location_2} color={colors.iconColor6} size={sizes.icons.small} />
+                                    <Spacer horizontal isSmall />
+                                    <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>{item.location}</Text>
+                                </Wrapper>
+                                <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
+                                    <Icons.Custom icon={appIcons.adults} color={colors.iconColor6} size={sizes.icons.small} />
+                                    <Spacer horizontal isSmall />
+                                    <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>{item.guests}</Text>
+                                </Wrapper>
+                            </Wrapper>
+                            <Spacer isTiny />
+                            <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
+                                <Icons.Custom icon={appIcons.calendar} color={colors.iconColor6} size={sizes.icons.small} />
+                                <Spacer horizontal isSmall />
+                                <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>{item.stayInfo}</Text>
+                            </Wrapper>
                         </Wrapper>
-                    </Wrapper>
-                    <Spacer isSmall />
-                    <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
-                    <Spacer isSmall />
-                    <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
-                        <Wrapper >
-                            <Text style={{ fontFamily: appFonts.appTextLight, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>Total USD</Text>
+                        <Spacer isSmall />
+                        <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
+                        <Spacer isSmall />
+                        <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
+                            <Wrapper >
+                                <Text style={{ fontFamily: appFonts.appTextLight, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>Total USD</Text>
+                            </Wrapper>
+                            <Wrapper alignItemsFlexStart>
+                                <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>${item.total}</Text>
+                            </Wrapper>
                         </Wrapper>
-                        <Wrapper alignItemsFlexStart>
-                            <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>${item.total}</Text>
-                        </Wrapper>
+
                     </Wrapper>
                 </Wrapper>
-            </Wrapper>
-            <Spacer isSmall/>
+                <Spacer isSmall />
             </>
         )
     }
@@ -436,94 +535,12 @@ export default function Home(props) {
                             </Wrapper>
                             :
                             name === 'Requests' ?
-                                <Wrapper marginHorizontalBase>
-                                    <Wrapper isBorderedWrapper marginHorizontalZero paddingHorizontalSmall>
-                                        <Wrapper justifyContentSpaceBetween flexDirectionRow>
-                                            <Wrapper >
-                                                <Images.SqareRound style={{ borderRadius: 10, height: sizes.images.logoHeight, width: sizes.images.logoHeight }} source={appImages.profile1} />
-                                            </Wrapper>
-                                            <Spacer isSmall horizontal />
-                                            <Wrapper flex={1}>
-                                                <Wrapper flex={1} justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
-                                                    <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor1, fontSize: fontSizes.mediumSmall }}>John Doe</Text>
-                                                    <Wrapper marginHorizontalZero paddingHorizontalSmall paddingVerticalTiny isBorderedWrapper backgroundColor={colors.appColor13} style={{ borderColor: colors.appColor14 }}>
-                                                        <Text style={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor1, fontSize: fontSizes.small }}>Pending</Text>
-                                                    </Wrapper>
-                                                </Wrapper>
-                                                <Wrapper flex={1} alignItemsCenter flexDirectionRow>
-                                                    <Icons.Custom icon={appIcons.star} size={sizes.icons.small} />
-                                                    <Spacer width={width(1)} />
-                                                    <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor6, fontSize: fontSizes.regular }}>5.0</Text>
-                                                </Wrapper>
-                                                <Wrapper flex={1} justifyContentCenter >
-                                                    <Text style={{ fontFamily: appFonts.baloo2_ExtraBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}>$13{' '}
-                                                        <Text style={{ fontFamily: appFonts.baloo2_Medium, color: colors.appTextColor7, fontSize: fontSizes.regular }}>/hour</Text></Text>
-                                                </Wrapper>
-
-                                                <Wrapper justifyContentFlexend>
-                                                    <Wrapper flexDirectionRow style={{ flexWrap: 'wrap' }}>
-                                                        <Text style={{ fontFamily: appFonts.appTextRegular, textAlign: 'justify', color: colors.appTextColor3, fontSize: 14 }}>Lorem ipsum dolor sit amet. Vel facilis sint aut sunt voluptatem.</Text>
-                                                    </Wrapper>
-                                                </Wrapper>
-                                            </Wrapper>
-                                        </Wrapper>
-                                        <Spacer isSmall />
-                                        <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
-                                        <Spacer isSmall />
-                                        <Wrapper style={{ marginRight: width(20) }}>
-                                            <Wrapper justifyContentSpaceBetween flexDirectionRow>
-                                                <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
-                                                    <Icons.Custom icon={appIcons.location_2} color={colors.iconColor6} size={sizes.icons.small} />
-                                                    <Spacer horizontal isSmall />
-                                                    <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>Bali, Indonesia</Text>
-                                                </Wrapper>
-                                                <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
-                                                    <Icons.Custom icon={appIcons.adults} color={colors.iconColor6} size={sizes.icons.small} />
-                                                    <Spacer horizontal isSmall />
-                                                    <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>5 guests</Text>
-                                                </Wrapper>
-                                            </Wrapper>
-                                            <Spacer isTiny />
-                                            <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
-                                                <Icons.Custom icon={appIcons.calendar} color={colors.iconColor6} size={sizes.icons.small} />
-                                                <Spacer horizontal isSmall />
-                                                <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>Feb 17-20 | 4 Days | 4 hours</Text>
-                                            </Wrapper>
-                                        </Wrapper>
-                                        <Spacer isSmall />
-                                        <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
-                                        <Spacer isSmall />
-                                        <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
-                                            <Wrapper >
-                                                <Text style={{ fontFamily: appFonts.appTextLight, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>Total USD</Text>
-                                            </Wrapper>
-                                            <Wrapper alignItemsFlexStart>
-                                                <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>$74.63</Text>
-                                            </Wrapper>
-                                        </Wrapper>
-                                        <Spacer isSmall />
-                                        <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
-                                        <Spacer isSmall />
-                                        <Wrapper justifyContentSpaceBetween flexDirectionRow marginVerticalSmall>
-                                            <Buttons.Bordered
-                                                // onPress={() => handleResetPassword()}
-                                                buttonStyle={{ width: width(40), paddingHorizontal: width(3), justifyContent: 'center', alignItems: 'center', borderColor: colors.appTextColor27, marginHorizontal: 0 }}
-                                                text={'Cancel'}
-                                                iconContainer={{ left: width(34) }}
-                                                textStyle={{
-                                                    color: colors.appTextColor27,
-                                                    fontFamily: appFonts.interMedium,
-                                                    fontSize: fontSizes.medium,
-                                                }} />
-                                            <Buttons.ColoredSmall
-                                                // onPress={() => navigate(routes.booking)}
-                                                gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
-                                                textStyle={{ textAlign: 'justify', fontFamily: appFonts.interSemiBold, color: colors.appTextColor5, fontSize: fontSizes.regular }}
-                                                buttonStyle={{ width: width(40), paddingHorizontal: width(3), paddingVertical: height(1.6), justifyContent: 'center', alignItems: 'center' }}
-                                                text={'Accept'} />
-                                        </Wrapper>
-                                    </Wrapper>
-                                </Wrapper>
+                                <FlatList
+                                    data={requestData}
+                                    keyExtractor={item => item.id.toString()}
+                                    renderItem={renderRequest}
+                                    showsVerticalScrollIndicator={false}
+                                />
                                 :
                                 name === 'Scheduled' ?
                                     <Wrapper marginHorizontalBase>
@@ -603,189 +620,189 @@ export default function Home(props) {
                                         />
                                         :
                                         <Wrapper marginHorizontalBase>
-                                <Wrapper alignItemsCenter>
-                                    <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.h4_small, color: colors.appTextColor2 }}>TIME REMAINING</Text>
-                                </Wrapper>
-                                <Spacer isSmall />
-                                <Wrapper justifyContentSpaceBetween paddingHorizontalSmall backgroundColor={colors.appColor5} paddingVerticalSmall alignItemsCenter style={{ borderRadius: sizes.cardRadius }} flexDirectionRow>
-                                    <Wrapper style={{ width: width(19), }} >
-                                        <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexEnd flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                        </Wrapper>
-                                        <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexStart flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                        </Wrapper>
-                                        <Wrapper alignItemsCenter justifyContentCenter style={{
-                                            ...StyleSheet.absoluteFillObject,
-                                        }}>
-                                            <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor26, fontSize: fontSizes.xL }}>{days}</Text>
-                                            <Wrapper backgroundColor={colors.appColor5} style={{ ...StyleSheet.absoluteFillObject, left: width(0.9), top: height(3.9), height: height(0.2), width: width(18.5), }} />
-                                        </Wrapper>
-                                    </Wrapper>
-                                    <Wrapper>
-                                        <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
-                                        <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
-                                    </Wrapper>
-                                    <Wrapper style={{ width: width(19), }} >
-                                        <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexEnd flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                        </Wrapper>
-                                        <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexStart flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                        </Wrapper>
-                                        <Wrapper alignItemsCenter justifyContentCenter style={{
-                                            ...StyleSheet.absoluteFillObject,
-                                        }}>
-                                            <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor26, fontSize: fontSizes.xL }}>{hours}</Text>
-                                            <Wrapper backgroundColor={colors.appColor5} style={{ ...StyleSheet.absoluteFillObject, left: width(0.9), top: height(3.9), height: height(0.2), width: width(18.5), }} />
-                                        </Wrapper>
-                                    </Wrapper>
-                                    <Wrapper>
-                                        <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
-                                        <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
-                                    </Wrapper>
-                                    <Wrapper style={{ width: width(19), }} >
-                                        <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexEnd flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                        </Wrapper>
-                                        <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexStart flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                        </Wrapper>
-                                        <Wrapper alignItemsCenter justifyContentCenter style={{
-                                            ...StyleSheet.absoluteFillObject,
-                                        }}>
-                                            <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor26, fontSize: fontSizes.xL }}>{minutes}</Text>
-                                            <Wrapper backgroundColor={colors.appColor5} style={{ ...StyleSheet.absoluteFillObject, left: width(0.9), top: height(3.9), height: height(0.2), width: width(18.5), }} />
-                                        </Wrapper>
-                                    </Wrapper>
-                                    <Wrapper>
-                                        <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
-                                        <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
-                                    </Wrapper>
-                                    <Wrapper style={{ width: width(19), }} >
-                                        <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexEnd flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                        </Wrapper>
-                                        <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexStart flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                            <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
-                                        </Wrapper>
-                                        <Wrapper alignItemsCenter justifyContentCenter style={{
-                                            ...StyleSheet.absoluteFillObject,
-                                        }}>
-                                            <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor26, fontSize: fontSizes.xL }}>{seconds}</Text>
-                                            <Wrapper backgroundColor={colors.appColor5} style={{ ...StyleSheet.absoluteFillObject, left: width(0.9), top: height(3.9), height: height(0.2), width: width(18.5), }} />
-                                        </Wrapper>
-                                    </Wrapper>
-                                </Wrapper>
-                                <Spacer isSmall />
-                                <Wrapper marginHorizontalSmall justifyContentSpaceBetween flexDirectionRow>
-                                    <Wrapper alignItemsCenter style={{ width: width(19), }} >
-                                        <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.medium, color: colors.appTextColor2 }}>Days</Text>
-                                    </Wrapper>
-                                    <Wrapper alignItemsCenter style={{ width: width(19), }} >
-                                        <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.medium, color: colors.appTextColor2 }}>Hours</Text>
-                                    </Wrapper>
-                                    <Wrapper alignItemsCenter style={{ width: width(19), }}>
-                                        <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.medium, color: colors.appTextColor2 }}>Mins</Text>
-                                    </Wrapper>
-                                    <Wrapper alignItemsCenter style={{ width: width(19), }} >
-                                        <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.medium, color: colors.appTextColor2 }}>Secs</Text>
-                                    </Wrapper>
-                                </Wrapper>
-                                <Spacer />
-                                <Wrapper isBorderedWrapper marginHorizontalZero paddingHorizontalSmall>
-                                    <Wrapper justifyContentSpaceBetween flexDirectionRow>
-                                        <Wrapper >
-                                            <Images.SqareRound style={{ borderRadius: 10, height: sizes.images.logoHeight, width: sizes.images.logoHeight }} source={appImages.profile1} />
-                                        </Wrapper>
-                                        <Spacer isSmall horizontal />
-                                        <Wrapper flex={1}>
-                                            <Wrapper flex={1} justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
-                                                <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor1, fontSize: fontSizes.mediumSmall }}>John Doe</Text>
-                                                <Wrapper marginHorizontalZero paddingHorizontalSmall paddingVerticalTiny isBorderedWrapper backgroundColor={colors.appColor11} style={{ borderColor: colors.appColor10 }}>
-                                                    <Text style={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor1, fontSize: fontSizes.small }}>Active</Text>
+                                            <Wrapper alignItemsCenter>
+                                                <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.h4_small, color: colors.appTextColor2 }}>TIME REMAINING</Text>
+                                            </Wrapper>
+                                            <Spacer isSmall />
+                                            <Wrapper justifyContentSpaceBetween paddingHorizontalSmall backgroundColor={colors.appColor5} paddingVerticalSmall alignItemsCenter style={{ borderRadius: sizes.cardRadius }} flexDirectionRow>
+                                                <Wrapper style={{ width: width(19), }} >
+                                                    <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexEnd flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                    </Wrapper>
+                                                    <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexStart flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                    </Wrapper>
+                                                    <Wrapper alignItemsCenter justifyContentCenter style={{
+                                                        ...StyleSheet.absoluteFillObject,
+                                                    }}>
+                                                        <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor26, fontSize: fontSizes.xL }}>{days}</Text>
+                                                        <Wrapper backgroundColor={colors.appColor5} style={{ ...StyleSheet.absoluteFillObject, left: width(0.9), top: height(3.9), height: height(0.2), width: width(18.5), }} />
+                                                    </Wrapper>
+                                                </Wrapper>
+                                                <Wrapper>
+                                                    <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
+                                                    <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
+                                                </Wrapper>
+                                                <Wrapper style={{ width: width(19), }} >
+                                                    <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexEnd flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                    </Wrapper>
+                                                    <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexStart flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                    </Wrapper>
+                                                    <Wrapper alignItemsCenter justifyContentCenter style={{
+                                                        ...StyleSheet.absoluteFillObject,
+                                                    }}>
+                                                        <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor26, fontSize: fontSizes.xL }}>{hours}</Text>
+                                                        <Wrapper backgroundColor={colors.appColor5} style={{ ...StyleSheet.absoluteFillObject, left: width(0.9), top: height(3.9), height: height(0.2), width: width(18.5), }} />
+                                                    </Wrapper>
+                                                </Wrapper>
+                                                <Wrapper>
+                                                    <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
+                                                    <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
+                                                </Wrapper>
+                                                <Wrapper style={{ width: width(19), }} >
+                                                    <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexEnd flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                    </Wrapper>
+                                                    <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexStart flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                    </Wrapper>
+                                                    <Wrapper alignItemsCenter justifyContentCenter style={{
+                                                        ...StyleSheet.absoluteFillObject,
+                                                    }}>
+                                                        <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor26, fontSize: fontSizes.xL }}>{minutes}</Text>
+                                                        <Wrapper backgroundColor={colors.appColor5} style={{ ...StyleSheet.absoluteFillObject, left: width(0.9), top: height(3.9), height: height(0.2), width: width(18.5), }} />
+                                                    </Wrapper>
+                                                </Wrapper>
+                                                <Wrapper>
+                                                    <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
+                                                    <Wrapper marginVerticalTiny style={{ borderWidth: width(0.6), borderColor: colors.appColor1, borderRadius: sizes.cardRadius }} />
+                                                </Wrapper>
+                                                <Wrapper style={{ width: width(19), }} >
+                                                    <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexEnd flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                    </Wrapper>
+                                                    <Wrapper backgroundColor={colors.appColor9} justifyContentSpaceBetween paddingVerticalTiny paddingHorizontalTiny alignItemsFlexStart flexDirectionRow style={{ height: height(4), borderRadius: totalSize(0.8) }}>
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                        <Wrapper style={{ borderWidth: width(0.3), borderColor: colors.appColor5, borderRadius: sizes.cardRadius }} />
+                                                    </Wrapper>
+                                                    <Wrapper alignItemsCenter justifyContentCenter style={{
+                                                        ...StyleSheet.absoluteFillObject,
+                                                    }}>
+                                                        <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor26, fontSize: fontSizes.xL }}>{seconds}</Text>
+                                                        <Wrapper backgroundColor={colors.appColor5} style={{ ...StyleSheet.absoluteFillObject, left: width(0.9), top: height(3.9), height: height(0.2), width: width(18.5), }} />
+                                                    </Wrapper>
                                                 </Wrapper>
                                             </Wrapper>
-                                            <Wrapper flex={1} alignItemsCenter flexDirectionRow>
-                                                <Icons.Custom icon={appIcons.star} size={sizes.icons.small} />
-                                                <Spacer width={width(1)} />
-                                                <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor6, fontSize: fontSizes.regular }}>5.0</Text>
+                                            <Spacer isSmall />
+                                            <Wrapper marginHorizontalSmall justifyContentSpaceBetween flexDirectionRow>
+                                                <Wrapper alignItemsCenter style={{ width: width(19), }} >
+                                                    <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.medium, color: colors.appTextColor2 }}>Days</Text>
+                                                </Wrapper>
+                                                <Wrapper alignItemsCenter style={{ width: width(19), }} >
+                                                    <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.medium, color: colors.appTextColor2 }}>Hours</Text>
+                                                </Wrapper>
+                                                <Wrapper alignItemsCenter style={{ width: width(19), }}>
+                                                    <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.medium, color: colors.appTextColor2 }}>Mins</Text>
+                                                </Wrapper>
+                                                <Wrapper alignItemsCenter style={{ width: width(19), }} >
+                                                    <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.medium, color: colors.appTextColor2 }}>Secs</Text>
+                                                </Wrapper>
                                             </Wrapper>
-                                            <Wrapper flex={1} justifyContentCenter >
-                                                <Text style={{ fontFamily: appFonts.baloo2_ExtraBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}>$13{' '}
-                                                    <Text style={{ fontFamily: appFonts.baloo2_Medium, color: colors.appTextColor7, fontSize: fontSizes.regular }}>/hour</Text></Text>
-                                            </Wrapper>
+                                            <Spacer />
+                                            <Wrapper isBorderedWrapper marginHorizontalZero paddingHorizontalSmall>
+                                                <Wrapper justifyContentSpaceBetween flexDirectionRow>
+                                                    <Wrapper >
+                                                        <Images.SqareRound style={{ borderRadius: 10, height: sizes.images.logoHeight, width: sizes.images.logoHeight }} source={appImages.profile1} />
+                                                    </Wrapper>
+                                                    <Spacer isSmall horizontal />
+                                                    <Wrapper flex={1}>
+                                                        <Wrapper flex={1} justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
+                                                            <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor1, fontSize: fontSizes.mediumSmall }}>John Doe</Text>
+                                                            <Wrapper marginHorizontalZero paddingHorizontalSmall paddingVerticalTiny isBorderedWrapper backgroundColor={colors.appColor11} style={{ borderColor: colors.appColor10 }}>
+                                                                <Text style={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor1, fontSize: fontSizes.small }}>Active</Text>
+                                                            </Wrapper>
+                                                        </Wrapper>
+                                                        <Wrapper flex={1} alignItemsCenter flexDirectionRow>
+                                                            <Icons.Custom icon={appIcons.star} size={sizes.icons.small} />
+                                                            <Spacer width={width(1)} />
+                                                            <Text style={{ fontFamily: appFonts.appTextBold, color: colors.appTextColor6, fontSize: fontSizes.regular }}>5.0</Text>
+                                                        </Wrapper>
+                                                        <Wrapper flex={1} justifyContentCenter >
+                                                            <Text style={{ fontFamily: appFonts.baloo2_ExtraBold, color: colors.appTextColor2, fontSize: fontSizes.regular }}>$13{' '}
+                                                                <Text style={{ fontFamily: appFonts.baloo2_Medium, color: colors.appTextColor7, fontSize: fontSizes.regular }}>/hour</Text></Text>
+                                                        </Wrapper>
 
-                                            <Wrapper justifyContentFlexend>
-                                                <Wrapper flexDirectionRow style={{ flexWrap: 'wrap' }}>
-                                                    <Text style={{ fontFamily: appFonts.appTextRegular, textAlign: 'justify', color: colors.appTextColor3, fontSize: 14 }}>Lorem ipsum dolor sit amet. Vel facilis sint aut sunt voluptatem.</Text>
+                                                        <Wrapper justifyContentFlexend>
+                                                            <Wrapper flexDirectionRow style={{ flexWrap: 'wrap' }}>
+                                                                <Text style={{ fontFamily: appFonts.appTextRegular, textAlign: 'justify', color: colors.appTextColor3, fontSize: 14 }}>Lorem ipsum dolor sit amet. Vel facilis sint aut sunt voluptatem.</Text>
+                                                            </Wrapper>
+                                                        </Wrapper>
+                                                    </Wrapper>
+                                                </Wrapper>
+                                                <Spacer isSmall />
+                                                <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
+                                                <Spacer isSmall />
+                                                <Wrapper style={{ marginRight: width(20) }}>
+                                                    <Wrapper justifyContentSpaceBetween flexDirectionRow>
+                                                        <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
+                                                            <Icons.Custom icon={appIcons.location_2} color={colors.iconColor6} size={sizes.icons.small} />
+                                                            <Spacer horizontal isSmall />
+                                                            <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>Bali, Indonesia</Text>
+                                                        </Wrapper>
+                                                        <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
+                                                            <Icons.Custom icon={appIcons.adults} color={colors.iconColor6} size={sizes.icons.small} />
+                                                            <Spacer horizontal isSmall />
+                                                            <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>5 guests</Text>
+                                                        </Wrapper>
+                                                    </Wrapper>
+                                                    <Spacer isTiny />
+                                                    <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
+                                                        <Icons.Custom icon={appIcons.calendar} color={colors.iconColor6} size={sizes.icons.small} />
+                                                        <Spacer horizontal isSmall />
+                                                        <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>Feb 17-20 | 4 Days | 4 hours</Text>
+                                                    </Wrapper>
+                                                </Wrapper>
+                                                <Spacer isSmall />
+                                                <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
+                                                <Spacer isSmall />
+                                                <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
+                                                    <Wrapper >
+                                                        <Text style={{ fontFamily: appFonts.appTextLight, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>Total USD</Text>
+                                                    </Wrapper>
+                                                    <Wrapper alignItemsFlexStart>
+                                                        <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>$74.63</Text>
+                                                    </Wrapper>
                                                 </Wrapper>
                                             </Wrapper>
-                                        </Wrapper>
-                                    </Wrapper>
-                                    <Spacer isSmall />
-                                    <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
-                                    <Spacer isSmall />
-                                    <Wrapper style={{ marginRight: width(20) }}>
-                                        <Wrapper justifyContentSpaceBetween flexDirectionRow>
-                                            <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
-                                                <Icons.Custom icon={appIcons.location_2} color={colors.iconColor6} size={sizes.icons.small} />
-                                                <Spacer horizontal isSmall />
-                                                <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>Bali, Indonesia</Text>
+                                            <Spacer isSmall />
+                                            <Wrapper justifyContentSpaceBetween paddingHorizontalSmall flexDirectionRow marginVerticalSmall>
+                                                <Buttons.Bordered
+                                                    // onPress={() => handleResetPassword()}
+                                                    buttonStyle={{ width: width(40), paddingHorizontal: width(3), justifyContent: 'center', alignItems: 'center', borderColor: colors.appTextColor27, marginHorizontal: 0 }}
+                                                    text={'Cancel'}
+                                                    iconContainer={{ left: width(34) }}
+                                                    textStyle={{
+                                                        color: colors.appTextColor27,
+                                                        fontFamily: appFonts.interMedium,
+                                                        fontSize: fontSizes.medium,
+                                                    }} />
+                                                <Buttons.ColoredSmall
+                                                    // onPress={() => navigate(routes.booking)}
+                                                    gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                                    textStyle={{ textAlign: 'justify', fontFamily: appFonts.interSemiBold, color: colors.appTextColor5, fontSize: fontSizes.regular }}
+                                                    buttonStyle={{ width: width(40), paddingHorizontal: width(3), paddingVertical: height(1.6), justifyContent: 'center', alignItems: 'center' }}
+                                                    text={'Mark Done'} />
                                             </Wrapper>
-                                            <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
-                                                <Icons.Custom icon={appIcons.adults} color={colors.iconColor6} size={sizes.icons.small} />
-                                                <Spacer horizontal isSmall />
-                                                <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>5 guests</Text>
-                                            </Wrapper>
                                         </Wrapper>
-                                        <Spacer isTiny />
-                                        <Wrapper marginVerticalTiny flexDirectionRow alignItemsCenter>
-                                            <Icons.Custom icon={appIcons.calendar} color={colors.iconColor6} size={sizes.icons.small} />
-                                            <Spacer horizontal isSmall />
-                                            <Text style={{ fontFamily: appFonts.appTextRegular, color: colors.appTextColor3, fontSize: fontSizes.regular }}>Feb 17-20 | 4 Days | 4 hours</Text>
-                                        </Wrapper>
-                                    </Wrapper>
-                                    <Spacer isSmall />
-                                    <Wrapper style={{ borderWidth: width(0.1), borderColor: colors.spacerColor3 }} />
-                                    <Spacer isSmall />
-                                    <Wrapper alignItemsCenter justifyContentSpaceBetween flexDirectionRow>
-                                        <Wrapper >
-                                            <Text style={{ fontFamily: appFonts.appTextLight, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>Total USD</Text>
-                                        </Wrapper>
-                                        <Wrapper alignItemsFlexStart>
-                                            <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>$74.63</Text>
-                                        </Wrapper>
-                                    </Wrapper>
-                                </Wrapper>
-                                <Spacer isSmall />
-                                <Wrapper justifyContentSpaceBetween paddingHorizontalSmall flexDirectionRow marginVerticalSmall>
-                                    <Buttons.Bordered
-                                        // onPress={() => handleResetPassword()}
-                                        buttonStyle={{ width: width(40), paddingHorizontal: width(3), justifyContent: 'center', alignItems: 'center', borderColor: colors.appTextColor27, marginHorizontal: 0 }}
-                                        text={'Cancel'}
-                                        iconContainer={{ left: width(34) }}
-                                        textStyle={{
-                                            color: colors.appTextColor27,
-                                            fontFamily: appFonts.interMedium,
-                                            fontSize: fontSizes.medium,
-                                        }} />
-                                    <Buttons.ColoredSmall
-                                        // onPress={() => navigate(routes.booking)}
-                                        gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
-                                        textStyle={{ textAlign: 'justify', fontFamily: appFonts.interSemiBold, color: colors.appTextColor5, fontSize: fontSizes.regular }}
-                                        buttonStyle={{ width: width(40), paddingHorizontal: width(3), paddingVertical: height(1.6), justifyContent: 'center', alignItems: 'center' }}
-                                        text={'Mark Done'} />
-                                </Wrapper>
-                            </Wrapper>
                     }
 
 
