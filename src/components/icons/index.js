@@ -202,7 +202,7 @@ export const Custom = ({ icon, size, gradiantColors, start, end, isGradient, ani
                 <Image
                     source={icon}
                     resizeMode="contain"
-                    style={{ height: size ? size : defaulSize, width: size ? size : defaulSize, tintColor: color, resizeMode: 'contain', backgroundColor: imageBGColor }}
+                    style={{ height: size ? size : defaulSize, width: size ? size : defaulSize, tintColor: color, resizeMode: 'contain', backgroundColor: imageBGColor, }}
                 />
             </TouchableOpacity>
         </Wrapper>

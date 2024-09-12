@@ -118,7 +118,7 @@ export const Colored = ({
                         }
 
                         {customIconRight &&
-                            <Wrapper isGradient={iconGradient} gradiantColors={iconGradientColors} start={iconStart} end={iconEnd} justifyContentCenter alignItemsCenter backgroundColor={colors.appColor1} style={{ ...iconContainer, height: totalSize(4.5), width: totalSize(4.5), borderRadius: width(10), justifyContent: iconGradient ? 'center': 'center', alignItems: iconGradient ? 'center': 'center' }}>
+                            <Wrapper isGradient={iconGradient} gradiantColors={iconGradientColors} start={iconStart} end={iconEnd} justifyContentCenter alignItemsCenter backgroundColor={colors.appColor1} style={{ ...iconContainer, height: totalSize(4.5), width: totalSize(4.5), borderRadius: width(10), justifyContent: iconGradient ? 'center' : 'center', alignItems: iconGradient ? 'center' : 'center' }}>
                                 <Icons.Custom
                                     icon={customIconRight}
                                     size={iconSize ? iconSize : totalSize(3)}
@@ -145,38 +145,58 @@ export const Colored = ({
     );
 }
 
-export const ColoredSmall = ({ text, onPress,gradientColors, isLoading, onPressIn, onPressOut, buttonColor, buttonStyle, disabled, customIcon, direction, textStyle, iconName, iconType, iconSize, iconColor, iconStyle }) => {
+export const ColoredSmall = ({ text,customIconRight,iconStyleRight,  iconTypeRight, iconNameRight, iconColorRight, iconSizeRight, onPress, gradientColors, isLoading, onPressIn, onPressOut, buttonColor, buttonStyle, disabled, customIcon, direction, textStyle, iconName, iconType, iconSize, iconColor, iconStyle }) => {
     return (
         <TouchableOpacity onPress={onPress} onPressIn={onPressIn} onPressOut={onPressOut} disabled={isLoading ? true : disabled} >
-           <LinearGradient
-                    start={{ x: 0, y: 0 }}  // start position of gradient
-                    end={{ x: 1, y: 0 }}    // End position of gradient
-                    colors={gradientColors} // Default gradient colors
-                    style={[ { marginHorizontal:0, borderRadius: sizes.buttonRadius, paddingHorizontal: width(5), paddingVertical: height(1), backgroundColor: disabled ? colors.appColor2 + '80' : buttonColor ? buttonColor : colors.appColor2 }, buttonStyle]}
-                    // style={[{ borderRadius: 50, paddingHorizontal: width(5), paddingVertical: height(1), backgroundColor: colors.appColor1 }, buttonStyle]}
-                >
-            <Wrapper style={{ flexDirection: direction ? direction : 'row', alignItems: 'center' }}>
-                {
-                    customIcon ?
-                        <Icons.Custom
-                            icon={customIcon}
-                            size={iconSize ? iconSize : totalSize(2)}
-                            color={iconColor ? iconColor : null}
-                        />
-                        :
-                        iconName ?
-                            <Icon
-                                name={iconName ? iconName : "email-outline"}
-                                type={iconType ? iconType : "material-community"}
+            <LinearGradient
+                start={{ x: 0, y: 0 }}  // start position of gradient
+                end={{ x: 1, y: 0 }}    // End position of gradient
+                colors={gradientColors} // Default gradient colors
+                style={[{ marginHorizontal: 0, borderRadius: sizes.buttonRadius, paddingHorizontal: width(5), paddingVertical: height(1), backgroundColor: disabled ? colors.appColor2 + '80' : buttonColor ? buttonColor : colors.appColor2 }, buttonStyle]}
+            // style={[{ borderRadius: 50, paddingHorizontal: width(5), paddingVertical: height(1), backgroundColor: colors.appColor1 }, buttonStyle]}
+            >
+                <Wrapper style={{ flexDirection: direction ? direction : 'row', alignItems: 'center' }}>
+                    {
+                        customIcon ?
+                            <Icons.Custom
+                                icon={customIcon}
                                 size={iconSize ? iconSize : totalSize(2)}
-                                color={iconColor ? iconColor : colors.appTextColor6}
-                                iconStyle={[{}, iconStyle]}
+                                color={iconColor ? iconColor : null}
                             />
                             :
-                            null
-                }
-                <Text isButtonRegular style={[{ color: colors.appTextColor6, }, textStyle]}>  {text}  </Text>
-            </Wrapper>
+                            iconName ?
+                                <Icon
+                                    name={iconName ? iconName : "email-outline"}
+                                    type={iconType ? iconType : "material-community"}
+                                    size={iconSize ? iconSize : totalSize(2)}
+                                    color={iconColor ? iconColor : colors.appTextColor6}
+                                    iconStyle={[{}, iconStyle]}
+                                />
+                                :
+                                null
+                    }
+                    <Text isButtonRegular style={[{ color: colors.appTextColor6, }, textStyle]}>  {text}  </Text>
+                    {
+                        customIconRight ?
+                            <Icons.Custom
+                                icon={customIconRight}
+                                size={iconSizeRight ? iconSizeRight : totalSize(2)}
+                                color={iconColorRight ? iconColorRight : null}
+                                containerStyle={iconStyleRight}
+                            />
+                            :
+                            iconNameRight ?
+                                <Icon
+                                    name={iconNameRight ? iconNameRight : "email-outline"}
+                                    type={iconTypeRight ? iconTypeRight : "material-community"}
+                                    size={iconSizeRight ? iconSizeRight : totalSize(2)}
+                                    color={iconColorRight ? iconColorRight : colors.appTextColor6}
+                                    iconStyle={[{}, iconStyleRight]}
+                                />
+                                :
+                                null
+                    }
+                </Wrapper>
             </LinearGradient>
         </TouchableOpacity>
     );
@@ -213,7 +233,7 @@ export const Bordered = ({ text, onPress, buttonStyle, textStyle, iconName, cust
     );
 }
 
-export const BorderedSmall = ({ customIconRight,gradientColors, iconBackground, text, onPress, buttonStyle, rowReverse, textStyle, iconContainer, iconName, iconType, iconSize, iconColor, iconStyle, tintColor }) => {
+export const BorderedSmall = ({ customIconRight, gradientColors, iconBackground, text, onPress, buttonStyle, rowReverse, textStyle, iconContainer, iconName, iconType, iconSize, iconColor, iconStyle, tintColor }) => {
     return (
         <TouchableOpacity onPress={onPress} style={[{ borderRadius: 50, paddingHorizontal: width(5), paddingVertical: height(0.5), borderColor: tintColor ? tintColor : colors.appColor1, borderWidth: 1 }, buttonStyle]}>
             <Wrapper style={{ flexDirection: rowReverse ? 'row-reverse' : 'row', alignItems: 'center' }}>
@@ -224,7 +244,7 @@ export const BorderedSmall = ({ customIconRight,gradientColors, iconBackground, 
                         colors={gradientColors} // Default gradient colors
                         style={[{
                             ...iconContainer,
-                            
+
                             borderRadius: sizes.buttonRadius,
                         }]}
                     >

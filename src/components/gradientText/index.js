@@ -6,14 +6,16 @@ import Text from '../text';
 import { colors } from '../../services';
 
 
-const GradientText = ({ text, color, style, textStyle }) => {
+const GradientText = ({ text, start, end, color, style, textStyle }) => {
   return (
     <Wrapper alignItemsCenter justifyContentCenter>
-      <MaskedView maskElement={<Text style={[textStyle, {backgroundColor:colors.transparent}]}>{text}</Text>}>
+      <MaskedView maskElement={<Text style={[textStyle, { backgroundColor: colors.transparent }]}>{text}</Text>}>
         <LinearGradient
-        colors={color}
+          start={start}
+          end={end}
+          colors={color}
         >
-            <Text style={[textStyle, {opacity:0}]}>{text}</Text>
+          <Text style={[textStyle, { opacity: 0 }]}>{text}</Text>
         </LinearGradient>
       </MaskedView>
     </Wrapper>

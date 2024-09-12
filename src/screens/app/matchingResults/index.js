@@ -46,8 +46,6 @@ export default function Home(props) {
             onBackPress={() => goBack()}
             showBackArrow
             rightIconSource={appIcons.chevron_left}
-            // allowText
-            // iconColor={colors.iconColor1}
             rightIconOnPress={()=>navigate(routes.filters)}
             rightIconOnPress2={()=>navigate(routes.sort)}
             rightIcon
@@ -55,7 +53,6 @@ export default function Home(props) {
             leftButtonStyle={{ marginRight:width(9), borderColor: colors.transparent }}
             leftIconSource={appIcons.equalizer}
             leftIconSource2={appIcons.sort}
-            
             leftButtonStyle2={{ borderColor: colors.transparent }}
             title={'Matching Result'}
             titleStyle={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor6, fontSize: fontSizes.medium }}

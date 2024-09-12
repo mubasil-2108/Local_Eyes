@@ -55,6 +55,7 @@ const StackLocaleNavigation = () => {
     return (
         <AppStack.Navigator initialRouteName={routes.bottomLocaleTab} screenOptions={{ headerShown: false }}>
             <AppStack.Screen name={routes.bottomLocaleTab} component={BottomLocaleTabNavigation} />
+            <AppStack.Screen name={routes.withDraw} component={App.WithDraw} />
             <AppStack.Screen name={routes.helpCenter} component={App.HelpCenter} />
             <AppStack.Screen name={routes.faqs} component={App.FAQS} />
             <AppStack.Screen name={routes.contactSupport} component={App.ContactSupport} />
@@ -62,18 +63,6 @@ const StackLocaleNavigation = () => {
             <AppStack.Screen name={routes.terms} component={App.Terms} />
             <AppStack.Screen name={routes.privacy} component={App.Privacy} />
             <AppStack.Screen name={routes.aboutUs} component={App.AboutUs} />
-            <AppStack.Screen name={routes.localPreview} component={App.LocalPreview} />
-            <AppStack.Screen name={routes.chatScreen} component={App.ChatScreen} />
-            <AppStack.Screen name={routes.booking} component={App.Booking} />
-            <AppStack.Screen name={routes.payment} component={App.Payment} />
-            <AppStack.Screen name={routes.cardManagement} component={App.CardManagement} />
-            <AppStack.Screen name={routes.tripPlan} component={App.TripPlan} />
-            <AppStack.Screen name={routes.schedule} component={App.Schedule} />
-            <AppStack.Screen name={routes.preference} component={App.Preference} />
-            <AppStack.Screen name={routes.matchingResult} component={App.MatchingResult} />
-            <AppStack.Screen name={routes.filters} component={App.Filters} />
-            <AppStack.Screen name={routes.sort} component={App.Sort} />
-            <AppStack.Screen name={routes.editProfile} component={App.EditProfile} />
             <AppStack.Screen name={routes.changePassword} component={App.ChangePassword} />
             <AppStack.Screen name={routes.travelerProfile} component={App.TravelerProfile} />
 

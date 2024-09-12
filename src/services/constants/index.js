@@ -59,6 +59,8 @@ export const routes = {
     localeHome: 'localeHome',
     travelerProfile: 'travelerProfile',
     stackLocaleNavigation: 'stackLocaleNavigation',
+    withDraw: 'withDraw',
+    availability: 'availability',
 
     dummyScreen: 'DummyScreen',
     homeStackScreen: 'HomeStackScreen',

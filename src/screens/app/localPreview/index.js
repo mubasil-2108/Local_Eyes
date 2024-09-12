@@ -49,8 +49,6 @@ export default function Index(props) {
             onBackPress={() => goBack()}
             showBackArrow
             rightIconSource={appIcons.chevron_left}
-            // allowText
-            // iconColor={colors.iconColor1}
             title={'Local Profile'}
             titleStyle={{ fontFamily: appFonts.appTextMedium, color: colors.appTextColor6, fontSize: fontSizes.medium }}
             iconContainer={{ flexDirection: 'row' }}

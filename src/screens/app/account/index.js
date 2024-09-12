@@ -186,7 +186,7 @@ export default function Home(props) {
                   <Text style={{ fontFamily: appFonts.appTextRegular, opacity: 0.6, fontSize: fontSizes.medium, color: colors.appTextColor23 }}>Notifications</Text>
                 </Wrapper>
                 <Wrapper >
-                  <Switches.Custom value={notificationsEnabled} onPress={handleToggleNotifications} />
+                  <Switches.Custom value={notificationsEnabled} gradiantColors={[colors.appColor2,colors.appColor2,colors.appColor3]} onPress={handleToggleNotifications} />
                 </Wrapper>
               </Wrapper>
               <Spacer />
@@ -195,7 +195,7 @@ export default function Home(props) {
                   <Text style={{ fontFamily: appFonts.appTextRegular, opacity: 0.6, fontSize: fontSizes.medium, color: colors.appTextColor23 }}>Privacy Policy</Text>
                 </Wrapper>
                 <Wrapper >
-                  <Switches.Custom value={privacyPolicyEnabled} onPress={handleTogglePrivacyPolicy} />
+                  <Switches.Custom value={privacyPolicyEnabled} gradiantColors={[colors.appColor2,colors.appColor2,colors.appColor3]} onPress={handleTogglePrivacyPolicy} />
                 </Wrapper>
               </Wrapper>
             </Wrapper>

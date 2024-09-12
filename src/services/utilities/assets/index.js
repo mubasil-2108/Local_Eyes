@@ -26,6 +26,7 @@ const appImages = {
     review: require('../../../assets/images/review.png'),
     liscense: require('../../../assets/images/liscense.png'),
     paymentCard: require('../../../assets/images/paymentCard.png'),
+    withDraw: require('../../../assets/images/withDraw.png'),
 
     logo: require('../../../assets/images/Logo.png'),
     confirm: require('../../../assets/images/confirm.png'),
@@ -135,6 +136,10 @@ const appIcons = {
     dummyFlag: require('../../../assets/icons/dummyFlag.png'),
     close: require('../../../assets/icons/close.png'),
     trendUp: require('../../../assets/icons/trendUp.png'),
+    currency: require('../../../assets/icons/currency.png'),
+    states: require('../../../assets/icons/states.png'),
+    smallUp:require('../../../assets/icons/smallUp.png'),
+
     // add:require('../../../assets/icons/add.png'),
 
     security: require('../../../assets/icons/security.png'),
@@ -185,6 +190,8 @@ const appFonts = {
     avenirNextLTPro_Regular: 'AvenirNextLTPro-Regular',
     avenirNextLTPro_Medium: 'AvenirNextLTPro-Medium',
     avenirNextLTPro_Bold: 'AvenirNextLTPro-Bold',
+
+    AmiriQuran_Regular: 'AmiriQuran-Regular'
 }
 
 export { appImages, appIcons, appSvgs, appFonts }

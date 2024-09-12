@@ -49,6 +49,7 @@ export const sizes = {
   headerHeight:headerHeight+statusBarHeight,
   tabBarHeight:tabBarHeight,
   icons: {
+    xTiny: responsiveFontSize(11),
     tiny: responsiveFontSize(14),
     xSmall:responsiveFontSize(16),
     small: responsiveFontSize(18),
@@ -110,6 +111,7 @@ export const fontSizes = {
   input: responsiveFontSize(1.6),
   large1: responsiveFontSize(18.96),
   large: responsiveFontSize(18),
+  mediumSmall2: responsiveFontSize(15.51),
   mediumSmall: responsiveFontSize(15),
   medium: responsiveFontSize(16),
   regularLarge: responsiveFontSize(17),
@@ -118,5 +120,6 @@ export const fontSizes = {
   small: responsiveFontSize(12),
   tiny: responsiveFontSize(10),
   xTiny: responsiveFontSize(9),
+  xTiny1: responsiveFontSize(7.75),
   xxTiny: responsiveFontSize(4)
 }

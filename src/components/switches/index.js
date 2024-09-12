@@ -91,20 +91,20 @@ export const Secondary = ({ value, onPress }) => {
     )
 }
 
-export const Custom = ({ value,leftText, rightText, onPress, tintColor }) => {
+export const Custom = ({ value,leftText, gradiantColors, switchTouchable,switchStyle, circleStyle, rightText, onPress, tintColor }) => {
     const defaultTintColor = tintColor || value ? colors.appColor1 : colors.appBgColor5;
 
     return (
         <Wrapper style={{}} isCenter>
             <TouchableOpacity
                 activeOpacity={1}
-                style={{
+                style={[{
                     flexDirection: 'row',
                     // alignItems: 'center',
                     justifyContent:'flex-end',
                     // justifyContent: 'space-between',
                     width: totalSize(10),
-                }}
+                }, switchTouchable]}
                 onPress={onPress ? () => {
                     handleAnimation();
                     onPress();
@@ -116,7 +116,7 @@ export const Custom = ({ value,leftText, rightText, onPress, tintColor }) => {
                         :
                         null
                 }
-                <Wrapper style={{
+                <Wrapper style={[{
                     width: totalSize(6.5),
                     // height: totalSize(2.5),
                     borderRadius: totalSize(1.25),
@@ -128,19 +128,19 @@ export const Custom = ({ value,leftText, rightText, onPress, tintColor }) => {
                     borderRadius: width(16),
                     backgroundColor: colors.switchColor,
                     
-                }}>
+                }, switchStyle]}>
                     <Wrapper paddingVerticalTiny paddingHorizontalTiny style={{
                         flex: 1,
                         flexDirection: 'row',
                         justifyContent: value ? 'flex-end' : 'flex-start',
                     }}>
-                        <Wrapper isGradient start={{x:0,y:0}} end={{x:1,y:0}} gradiantColors={[colors.appColor2,colors.appColor2,colors.appColor3]} style={{
+                        <Wrapper isGradient start={{x:0,y:0}} end={{x:1,y:0}} gradiantColors={gradiantColors} style={[{
                             flex:0,
                             width: totalSize(3),
                             height: totalSize(3),
                             borderRadius: totalSize(10),
                             backgroundColor: defaultTintColor,
-                        }} />
+                        }, circleStyle]} />
                     </Wrapper>
                 </Wrapper>
                 {

@@ -165,8 +165,8 @@ export function BottomLocaleTabNavigation() {
                 }}
             />
             <BottomTabStack.Screen
-                name={routes.products}
-                component={App.Product}
+                name={routes.availability}
+                component={App.Availability}
                 options={{
                     tabBarIcon: ({ color, size, focused }) => (
                         <TabIcon
@@ -176,7 +176,7 @@ export function BottomLocaleTabNavigation() {
                             customStyle={{ borderRadius: 0 }}
                             color={color}
                             focused={focused}
-                            tabBarLabel='Product'
+                            tabBarLabel='Availability'
                         />
                     ),
                 }}
