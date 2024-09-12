@@ -80,7 +80,7 @@ export default function Home(props) {
                 fontFamily: appFonts.appTextRegular,
                 color: colors.appTextColor1
               }}
-              onPressIconRight={()=>navigate(routes.editProfile)}
+              onPressIconRight={() => navigate(routes.editProfile)}
               iconColorLeft={colors.iconColor1}
               customIconRight={appIcons.calendarRight}
               iconColorRight={colors.iconColor1}
@@ -104,7 +104,7 @@ export default function Home(props) {
                 fontFamily: appFonts.appTextRegular,
                 color: colors.appTextColor1
               }}
-              onPressIconRight={()=> navigate(routes.changePassword)}
+              onPressIconRight={() => navigate(routes.changePassword)}
               iconColorLeft={colors.iconColor1}
               customIconRight={appIcons.calendarRight}
               iconColorRight={colors.iconColor1}
@@ -128,7 +128,7 @@ export default function Home(props) {
                 fontFamily: appFonts.appTextRegular,
                 color: colors.appTextColor1
               }}
-              onPressIconRight={()=> navigate(routes.payment, { payment: 'payment' })}
+              onPressIconRight={() => navigate(routes.payment, { payment: 'payment' })}
               iconColorLeft={colors.iconColor1}
               customIconRight={appIcons.calendarRight}
               iconColorRight={colors.iconColor1}
@@ -186,7 +186,7 @@ export default function Home(props) {
                   <Text style={{ fontFamily: appFonts.appTextRegular, opacity: 0.6, fontSize: fontSizes.medium, color: colors.appTextColor23 }}>Notifications</Text>
                 </Wrapper>
                 <Wrapper >
-                  <Switches.Custom value={notificationsEnabled} gradiantColors={[colors.appColor2,colors.appColor2,colors.appColor3]} onPress={handleToggleNotifications} />
+                  <Switches.Custom value={notificationsEnabled} gradiantColors={[colors.appColor2, colors.appColor2, colors.appColor3]} onPress={handleToggleNotifications} />
                 </Wrapper>
               </Wrapper>
               <Spacer />
@@ -195,7 +195,7 @@ export default function Home(props) {
                   <Text style={{ fontFamily: appFonts.appTextRegular, opacity: 0.6, fontSize: fontSizes.medium, color: colors.appTextColor23 }}>Privacy Policy</Text>
                 </Wrapper>
                 <Wrapper >
-                  <Switches.Custom value={privacyPolicyEnabled} gradiantColors={[colors.appColor2,colors.appColor2,colors.appColor3]} onPress={handleTogglePrivacyPolicy} />
+                  <Switches.Custom value={privacyPolicyEnabled} gradiantColors={[colors.appColor2, colors.appColor2, colors.appColor3]} onPress={handleTogglePrivacyPolicy} />
                 </Wrapper>
               </Wrapper>
             </Wrapper>
@@ -212,21 +212,21 @@ export default function Home(props) {
                 }}
               >
                 <Buttons.Colored
-                  onPressIn={() =>{
+                  onPressIn={() => {
                     setPressed(true);
                     // navigate(routes.)
                   }}
                   iconGradient
-                  iconGradientColors={[colors.appColor2,colors.appColor2,colors.appColor3]}
-                  onPressOut={()=> setPressed(false)}
+                  iconGradientColors={[colors.appColor2, colors.appColor2, colors.appColor3]}
+                  onPressOut={() => setPressed(false)}
                   buttonStyle={{ marginHorizontal: 0 }}
                   iconSize={totalSize(2)}
                   customIconRight={appIcons.arrow_forward}
-                  iconStart={{x:0,y:0}}
-                  iconEnd={{x:1,y:0}}
+                  iconStart={{ x: 0, y: 0 }}
+                  iconEnd={{ x: 1, y: 0 }}
                   tintColor={colors.iconColor3}
                   text={'Switch to Local'}
-                  iconContainer={{flex:0, left: width(26) }}
+                  iconContainer={{ flex: 0, left: width(26) }}
                   gradientColors={[colors.buttonColor3, colors.buttonColor3, colors.buttonColor3]}
                   textStyle={{
                     color: colors.appTextColor1,
