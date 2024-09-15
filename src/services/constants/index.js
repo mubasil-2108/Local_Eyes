@@ -61,6 +61,7 @@ export const routes = {
     stackLocaleNavigation: 'stackLocaleNavigation',
     withDraw: 'withDraw',
     availability: 'availability',
+    weekDays: 'weekDays',
 
     dummyScreen: 'DummyScreen',
     homeStackScreen: 'HomeStackScreen',

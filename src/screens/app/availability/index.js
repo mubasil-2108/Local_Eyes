@@ -23,8 +23,80 @@ export default function Home(props) {
         privacyPolicyEnabled,
         handleTogglePrivacyPolicy,
         DrawerActions,
+        data
     } = useHooks() || {};
 
+    const renderItem = ({ item }) => (
+        <>
+            <TouchableOpacity key={item.id} onPress={()=> navigate(routes.weekDays)}>
+                <Wrapper isBorderedWrapper marginHorizontalZero style={{ borderColor: colors.borderColor4 }}>
+                    <Wrapper justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
+                        <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.medium, color: colors.appTextColor23, opacity: 0.6 }}>
+                            {item.day}
+                        </Text>
+                        <Wrapper>
+                            <Switches.Custom
+                                switchStyle={{ width: totalSize(4.5), backgroundColor: privacyPolicyEnabled[item.id] ? colors.switchColor : colors.appColor21 }}
+                                gradiantColors={privacyPolicyEnabled[item.id] ? [colors.appColor2, colors.appColor2, colors.appColor3] : [colors.appColor20, colors.appColor20]}
+                                circleStyle={{ width: totalSize(1.8), height: totalSize(1.8) }}
+                                value={privacyPolicyEnabled[item.id] || false}
+                                onPress={() => handleTogglePrivacyPolicy(item.id)}
+                            />
+                        </Wrapper>
+                    </Wrapper>
+                    <Spacer isSmall />
+                    <Wrapper justifyContentSpaceBetween flexDirectionRow>
+                        <LinearGradient
+                            colors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                            style={{
+                                borderRadius: 28,
+                                padding: 1,
+                                marginBottom: height(1),
+                            }}
+                        >
+                            <Wrapper justifyContentCenter paddingVerticalTiny style={{ borderRadius: sizes.cardRadius, paddingHorizontal: width(4.5) }} backgroundColor={colors.appColor1}>
+                                <GradientText start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} text={item.time} color={[colors.appTextColor2, colors.appTextColor2, colors.appTextColor30]} textStyle={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.small }} />
+                            </Wrapper>
+                        </LinearGradient>
+                        <LinearGradient
+                            colors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                            style={{
+                                borderRadius: 28,
+                                padding: 1,
+                                marginBottom: height(1),
+                            }}
+                        >
+                            <Wrapper justifyContentCenter paddingVerticalTiny style={{ borderRadius: sizes.cardRadius, paddingHorizontal: width(4.5) }} backgroundColor={colors.appColor1}>
+                                <GradientText start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} text={item.time} color={[colors.appTextColor2, colors.appTextColor2, colors.appTextColor30]} textStyle={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.small }} />
+                            </Wrapper>
+                        </LinearGradient>
+                    </Wrapper>
+                    <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.small, color: colors.appTextColor23, opacity: 0.6 }}>{item.timezone}</Text>
+                    <Spacer isTiny />
+                    <Wrapper flexDirectionRow>
+                        <Wrapper>
+                            <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>
+                                {item.rate}{' '}
+                                <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.regular, color: colors.appTextColor7 }}>/hour</Text>
+                            </Text>
+                        </Wrapper>
+                        <Spacer horizontal />
+                        <Wrapper>
+                            <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.regular, color: colors.appTextColor2 }}>
+                                {item.transport}{' '}
+                                <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.regular, color: colors.appTextColor7 }}>/transport charges</Text>
+                            </Text>
+                        </Wrapper>
+                    </Wrapper>
+                </Wrapper>
+            </TouchableOpacity>
+            <Spacer isSmall />
+        </>
+    );
     return (
         <>
             <StatusBars.Dark backgroundColor={colors.appColor1} />
@@ -51,11 +123,11 @@ export default function Home(props) {
                         <Text style={{ fontFamily: appFonts.appTextBold, fontSize: fontSizes.medium, color: colors.appTextColor6 }}>Week Days</Text>
                         <Spacer isSmall />
                         <Spacer isTiny />
-                        <Wrapper isBorderedWrapper marginHorizontalZero style={{ borderColor: colors.borderColor4 }}>
+                        {/* <Wrapper isBorderedWrapper marginHorizontalZero style={{ borderColor: colors.borderColor4 }}>
                             <Wrapper justifyContentSpaceBetween alignItemsCenter flexDirectionRow>
                                 <Text style={{ fontFamily: appFonts.appTextRegular, fontSize: fontSizes.medium, color: colors.appTextColor23, opacity: 0.6 }}>Monday</Text>
                                 <Wrapper >
-                                    <Switches.Custom switchStyle={{ width: totalSize(6) ,  backgroundColor: privacyPolicyEnabled ? colors.switchColor : colors.appColor21 }} gradiantColors={privacyPolicyEnabled ? [colors.appColor2,colors.appColor2,colors.appColor3]: [colors.appColor20, colors.appColor20]} circleStyle={{ width: totalSize(2.5), height: totalSize(2.5)  }} value={privacyPolicyEnabled} onPress={handleTogglePrivacyPolicy} />
+                                    <Switches.Custom switchStyle={{ width: totalSize(4.5) ,  backgroundColor: privacyPolicyEnabled ? colors.switchColor : colors.appColor21 }} gradiantColors={privacyPolicyEnabled ? [colors.appColor2,colors.appColor2,colors.appColor3]: [colors.appColor20, colors.appColor20]} circleStyle={{ width: totalSize(1.8), height: totalSize(1.8)  }} value={privacyPolicyEnabled} onPress={handleTogglePrivacyPolicy} />
                                 </Wrapper>
                             </Wrapper>
                             <Spacer isSmall />
@@ -117,7 +189,12 @@ export default function Home(props) {
                                 </Wrapper>
                             </Wrapper>
 
-                        </Wrapper>
+                        </Wrapper> */}
+                        <FlatList
+                            data={data}
+                            keyExtractor={item => item.id}
+                            renderItem={renderItem}
+                        />
                     </Wrapper>
                 </ScrollViews.KeyboardAvoiding>
             </Wrapper>

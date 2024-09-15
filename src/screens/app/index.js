@@ -31,6 +31,7 @@ import LocaleHome from './localHome'
 import TravelerProfile from './travelerProfile'
 import WithDraw from './withDraw'
 import Availability from './availability'
+import WeekDays from './weekDays'
 
 export {
     Trend,
@@ -65,5 +66,6 @@ export {
     LocaleHome,
     TravelerProfile,
     WithDraw,
-    Availability
+    Availability,
+    WeekDays,
 }

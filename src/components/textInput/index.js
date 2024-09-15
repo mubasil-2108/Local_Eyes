@@ -348,7 +348,7 @@ export const Phone = ({
     );
 }
 export const DropDown = ({
-    onPress, titleStyle, placeholder, containerStyles, onChange,
+    onPress, titleStyle, placeholder, containerStyles, placeholderStyle, onChange,
     inputContainerStyle, inputStyle, error, data, title, customIconLeft, iconSizeLeft,
     iconColorLeft, iconNameLeft, iconTypeLeft,itemText, iconStyleLeft, onPressIconLeft, left, values
 }) => {
@@ -399,7 +399,7 @@ export const DropDown = ({
                         data={data}
                         labelField="label"
                         valueField="value"
-                        placeholderStyle={{ color: colors.placeHolderColor, fontFamily: appFonts.satoshiRegular, fontSize: fontSizes.regular }}
+                        placeholderStyle={[{ color: colors.placeHolderColor, fontFamily: appFonts.satoshiRegular, fontSize: fontSizes.regular }, placeholderStyle]}
                         placeholder={!isFocus ? placeholder : '...'}
                         value={value}
                         onFocus={() => setIsFocus(true)}

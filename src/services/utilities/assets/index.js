@@ -99,6 +99,7 @@ const appIcons = {
     messages: require('../../../assets/icons/messages.png'),
     book: require('../../../assets/icons/book.png'),
     car: require('../../../assets/icons/car.png'),
+    car2: require('../../../assets/icons/car2.png'),
     people: require('../../../assets/icons/people.png'),
     experience: require('../../../assets/icons/experience.png'),
     user: require('../../../assets/icons/user.png'),
@@ -139,6 +140,7 @@ const appIcons = {
     currency: require('../../../assets/icons/currency.png'),
     states: require('../../../assets/icons/states.png'),
     smallUp:require('../../../assets/icons/smallUp.png'),
+    clock:require('../../../assets/icons/clock.png'),
 
     // add:require('../../../assets/icons/add.png'),
 

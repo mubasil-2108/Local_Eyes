@@ -6,6 +6,7 @@ import * as Icons from '../icons'
 import Text from '../text'
 import { colors, handleAnimation, HelpingMethods, sizes } from '../../services'
 import { TouchableOpacity } from 'react-native'
+import { id } from 'date-fns/locale'
 
 
 export const Primary = ({ value, onPress, tintColor }) => {
@@ -91,12 +92,13 @@ export const Secondary = ({ value, onPress }) => {
     )
 }
 
-export const Custom = ({ value,leftText, gradiantColors, switchTouchable,switchStyle, circleStyle, rightText, onPress, tintColor }) => {
+export const Custom = ({ value,leftText, id, gradiantColors, switchTouchable,switchStyle, circleStyle, rightText, onPress, tintColor }) => {
     const defaultTintColor = tintColor || value ? colors.appColor1 : colors.appBgColor5;
 
     return (
         <Wrapper style={{}} isCenter>
             <TouchableOpacity
+                key={id}
                 activeOpacity={1}
                 style={[{
                     flexDirection: 'row',

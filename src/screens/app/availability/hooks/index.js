@@ -9,15 +9,46 @@ import { DrawerActions } from '@react-navigation/native';
 
 export function useHooks() {
     const [search, setSearch] = useState('');
-    const [privacyPolicyEnabled, setPrivacyPolicyEnabled] = useState(true);
+    const [privacyPolicyEnabled, setPrivacyPolicyEnabled] = useState({});
 
-    const handleTogglePrivacyPolicy = () => {
-        setPrivacyPolicyEnabled((prev) => !prev);
+    const handleTogglePrivacyPolicy = (id) => {
+        setPrivacyPolicyEnabled(prevStates => ({
+            ...prevStates,
+            [id]: !prevStates[id] // Toggle the state for this switch
+        }));
       };
 
     const handleSelect = (option) => {
         setSelected(option);
     };
+
+    const data = [
+        {
+          id: '1',
+          day: 'Monday',
+          time: '09:00 am - 11:00 pm',
+          rate: '$13',
+          transport: '$5',
+          timezone: 'Eastern Time - US & Canada',
+        },
+        {
+            id: '2',
+            day: 'Monday',
+            time: '09:00 am - 11:00 pm',
+            rate: '$13',
+            transport: '$5',
+            timezone: 'Eastern Time - US & Canada',
+          },
+          {
+            id: '3',
+            day: 'Monday',
+            time: '09:00 am - 11:00 pm',
+            rate: '$13',
+            transport: '$5',
+            timezone: 'Eastern Time - US & Canada',
+          },
+        // Add more data as needed
+      ];
 
     useEffect(() => {
         const backHandler = BackHandler.addEventListener('hardwareBackPress', handleBackPress);
@@ -40,6 +71,7 @@ export function useHooks() {
         DrawerActions,
         handleSelect,
         handleTogglePrivacyPolicy,
-        privacyPolicyEnabled
+        privacyPolicyEnabled,
+        data
     }
 }

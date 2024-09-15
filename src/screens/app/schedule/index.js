@@ -49,8 +49,6 @@ export default function Index(props) {
     };
     const CustomArrow = (direction) => {
         const icon = direction === 'left' ? appIcons.calendarLeft : appIcons.calendarRight;
-        // const previous = subtractMonth => subtractMonth();
-        // const month = direction === 'left' ? previous : null;
         return (
             <Icons.Button
                 customIcon={icon}
