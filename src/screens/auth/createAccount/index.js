@@ -15,7 +15,7 @@ export default function Index(props) {
                 <StatusBars.Dark backgroundColor={colors.statusBarColor1} />
                 <Wrapper marginHorizontalBase style={{ marginTop: width(5) }}>
                     <Wrapper justifyContentCenter style={{ marginTop: responsiveHeight(6) }}>
-                        <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.interSemiBold, fontSize: fontSizes.h3 }} >Create your new{'\n'}account</Text>
+                        <Text style={{ color: colors.appTextColor6, fontFamily: appFonts.appTextMedium, fontSize: fontSizes.h3 }} >Create your new{'\n'}account</Text>
                     </Wrapper>
                     <Wrapper marginVerticalBase>
                         <TextInputs.Colored
@@ -140,7 +140,7 @@ export default function Index(props) {
                     </Wrapper>
                     <Wrapper flexDirectionRow marginVerticalZero marginHorizontalTiny>
                         <CheckBoxes.Primary onPress={toggleCheckbox} checked={isChecked} checkIconsize={sizes.icons.xSmall} customCheckIcon={appIcons.checked} customUnCheckIcon={appIcons.blankCheck} />
-                        <Text style={{ fontSize: fontSizes.medium, color: colors.appTextColor6, fontFamily: appFonts.appTextMedium }}>I Agree with{' '}
+                        <Text style={{ fontSize: fontSizes.regular, color: colors.appTextColor6, fontFamily: appFonts.appTextMedium }}>I Agree with{' '}
                             <Text style={{textAlign:'justify', color: colors.appTextColor4 }}>Terms of Service</Text> and{' '}
                             <Text style={{ color: colors.appTextColor4 }}>Privacy Policy</Text>
                         </Text>
