@@ -78,6 +78,7 @@ export const sizes = {
     largeXSmall: 35,
     largeXLarge: 88,
     xLSmall: 100,
+    xL2:140,
     xL: 170,
     logo: 80,
     logoHeight: responsiveHeight(15),

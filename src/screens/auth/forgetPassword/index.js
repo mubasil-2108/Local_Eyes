@@ -106,6 +106,7 @@ export default function Index(props) {
                             shadowRadius: 20,
                             elevation: 4,
                         }} 
+                        hideContent2
                         />
                 </Wrapper>
             </ScrollViews.KeyboardAvoiding>

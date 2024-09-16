@@ -5,6 +5,7 @@ const appImages = {
     chip: require('../../../assets/images/chip.png'),
     dummyProfile: require('../../../assets/images/dummyPic.png'),
     success: require('../../../assets/images/success.png'),
+    oops: require('../../../assets/images/oops.png'),
     fullLogo: require('../../../assets/images/fullLogo.png'),
     helpCenter: require('../../../assets/images/helpCenter.png'),
     mainLogo: require('../../../assets/images/mainLogo.png'),

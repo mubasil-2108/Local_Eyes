@@ -171,6 +171,29 @@ export const Swipable = ({
                                 </Wrapper>
                             </ScrollViews.KeyboardAvoiding>
                         )}
+                        {!hideContent2 && (
+                            <Wrapper marginHorizontalMedium>
+                                <Wrapper justifyContentCenter marginVerticalSmall alignItemsCenter>
+                                    <Images.MainLogo size={sizes.images.xL2} source={appImages.oops} style={{ resizeMode: 'contain' }} />
+                                </Wrapper>
+                                <Wrapper justifyContentCenter marginVerticalSmall alignItemsCenter >
+                                    <Text style={{textAlign: 'center', fontFamily: appFonts.interMedium, fontSize: fontSizes.regular, color: colors.appTextColor7 }}>We’re sorry, but we only accept locals who have{'\n'}lived in their city for over 2 years.{'\n'}Please come back in _ year!</Text>
+                                </Wrapper>
+                                <Wrapper marginVerticalSmall >
+                                    <Buttons.Colored
+                                        onPress={onPress}
+                                        buttonStyle={{ marginHorizontal: 0 }}
+                                        text={'Continue'}
+                                        // iconContainer={{ left: width(34) }}
+                                        gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                        textStyle={{
+                                            color: colors.appTextColor5,
+                                            fontFamily: appFonts.interSemiBold,
+                                            fontSize: fontSizes.regular,
+                                        }} />
+                                </Wrapper>
+                            </Wrapper>
+                        )}
                         {/* {!hideContent3 && (
                             <>
                                 <Wrapper isCenter paddingHorizontalLarge paddingVerticalSmall>
@@ -216,7 +239,7 @@ export const PopupPrimary = ({
     // New prop
 }) => {
 
-    const {  selectedDate, pressed, setPressed, togglePressed, buttonData, handleDateChange, onDatePress, setSelectedDate } = useHooks();
+    const { selectedDate, pressed, setPressed, togglePressed, buttonData, handleDateChange, onDatePress, setSelectedDate } = useHooks();
     // manage keyboard
     const keyboardVisible = useKeyboardStatus()
 
@@ -557,7 +580,7 @@ export const PopupPrimary = ({
                     {
                         language ?
                             <Wrapper marginHorizontalBase>
-                                <Spacer isSmall/>
+                                <Spacer isSmall />
                                 <Wrapper marginHorizontalBase alignItemsCenter flexDirectionRow>
                                     <Icons.Button onPress={() => handleLanguageSelection(1)} iconName={selectedLanguages.includes(1) ? 'radio-btn-active' : 'radio-btn-passive'} isRound buttonColor={colors.transparent} iconColor={colors.iconColor6} buttonSize={sizes.icons.medium} iconSize={sizes.icons.small} iconType={'fontisto'} />
                                     <Spacer horizontal isTiny />
@@ -589,7 +612,7 @@ export const PopupPrimary = ({
                                     <Spacer horizontal isSmall />
                                     <Text style={{ fontFamily: appFonts.appTextMedium, fontSize: fontSizes.regular, color: colors.appTextColor3 }}>Chinese  </Text>
                                 </Wrapper>
-                                <Spacer isMedium/>
+                                <Spacer isMedium />
                                 <Wrapper>
                                     <Buttons.Colored
                                         onPress={toggle}
