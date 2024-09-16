@@ -57,6 +57,8 @@ const StackLocaleNavigation = () => {
             <AppStack.Screen name={routes.bottomLocaleTab} component={BottomLocaleTabNavigation} />
             <AppStack.Screen name={routes.withDraw} component={App.WithDraw} />
             <AppStack.Screen name={routes.weekDays} component={App.WeekDays} />
+            <AppStack.Screen name={routes.chatScreen} component={App.ChatScreen} />
+            <AppStack.Screen name={routes.customizeOffer} component={App.CustomizeOffer} />
             <AppStack.Screen name={routes.helpCenter} component={App.HelpCenter} />
             <AppStack.Screen name={routes.faqs} component={App.FAQS} />
             <AppStack.Screen name={routes.contactSupport} component={App.ContactSupport} />

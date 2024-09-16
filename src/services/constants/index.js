@@ -62,6 +62,10 @@ export const routes = {
     withDraw: 'withDraw',
     availability: 'availability',
     weekDays: 'weekDays',
+    chatLocale: 'chatLocale',
+    chatScreenLocale: 'chatScreenLocale',
+    customizeOffer:'customizeOffer',
+    accountLocale:'accountLocale',
 
     dummyScreen: 'DummyScreen',
     homeStackScreen: 'HomeStackScreen',

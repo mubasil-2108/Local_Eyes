@@ -2,13 +2,15 @@ import { FlatList, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { totalSize, width, height } from 'react-native-dimension';
 import { Images, ScrollViews, Spacer, StatusBars, Text, Wrapper } from '../../../components'
-import { appFonts, appImages, colors, fontSizes, sizes } from '../../../services'
+import { appFonts, appImages, colors, fontSizes, routes, sizes } from '../../../services'
 import { useHooks } from './hooks';
 
 export default function Cart(props) {
   const { chatData } = useHooks();
+  const { navigate, goBack } = props.navigation
+
   const renderItem = ({ item }) => (
-    <TouchableOpacity>
+    <TouchableOpacity key={item.id} onPress={()=> navigate(routes.chatScreen)}>
       <Wrapper paddingVerticalBase marginHorizontalBase>
         <Wrapper flexDirectionRow>
           <Images.SqareRound source={item.image} size={sizes.images.large1} style={{ borderRadius: 10 }} />

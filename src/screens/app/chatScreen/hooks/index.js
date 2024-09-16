@@ -1,5 +1,10 @@
+import { useRoute } from "@react-navigation/native";
 
 export function useHooks() {
-
-    return {}
+    const route = useRoute();
+    const { locale, offerSend } = route.params || {};
+    return {
+        locale,
+        offerSend
+    }
 }

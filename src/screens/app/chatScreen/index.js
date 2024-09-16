@@ -10,10 +10,10 @@ import { GiftedChat } from 'react-native-gifted-chat';
 
 export default function Index(props) {
     const { navigate, goBack } = props.navigation
-    const { } = useHooks()
+    const { locale, offerSend } = useHooks() || {};
 
     return (
-        <Wrapper isMain backgroundColor={colors.appBgColor2} style={[{}]}>
+        <Wrapper isMain backgroundColor={colors.appColor1} style={[{}]}>
             <StatusBars.Dark backgroundColor={colors.statusBarColor1} />
             <Wrapper marginHorizontalSmall style={{ marginTop: width(5) }}>
                 <Spacer isSmall />
@@ -31,7 +31,31 @@ export default function Index(props) {
                     containerStyle={{ backgroundColor: colors.appColor1 }} />
 
             </Wrapper>
-            <Chats.Chat booking={()=> navigate(routes.booking)}/>
+            {
+                locale === 'locale' ?
+                    (
+                        <>
+                            <Wrapper flex={0} style={{ top: -7 }} marginHorizontalLarge paddingHorizontalLarge >
+                                <Buttons.Colored
+                                    onPress={() => navigate(routes.customizeOffer)}
+                                    buttonStyle={{ marginHorizontal: 0 }}
+                                    text={'Send Customize Offer'}
+                                    iconContainer={{ left: width(34) }}
+                                    gradientColors={[colors.buttonColor1, colors.buttonColor1, colors.buttonColor2]}
+                                    textStyle={{
+                                        color: colors.appTextColor5,
+                                        fontFamily: appFonts.appTextMedium,
+                                        fontSize: fontSizes.regular,
+                                    }} />
+                            </Wrapper>
+                            <Spacer isTiny />
+                        </>
+                    )
+                    :
+                    null
+            }
+
+            <Chats.Chat userType={locale} offerSend={offerSend} booking={locale ? () => navigate(routes.booking) : null} />
         </Wrapper>
     );
 }

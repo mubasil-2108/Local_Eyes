@@ -32,6 +32,9 @@ import TravelerProfile from './travelerProfile'
 import WithDraw from './withDraw'
 import Availability from './availability'
 import WeekDays from './weekDays'
+import ChatLocale from './chatLocale'
+import CustomizeOffer from './customizeOffer'
+import AccountLocale from './accountLocale'
 
 export {
     Trend,
@@ -68,4 +71,7 @@ export {
     WithDraw,
     Availability,
     WeekDays,
+    ChatLocale,
+    CustomizeOffer,
+    AccountLocale
 }

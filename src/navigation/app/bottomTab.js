@@ -197,8 +197,8 @@ export function BottomLocaleTabNavigation() {
                 }}
             />
             <BottomTabStack.Screen
-                name={routes.cart}
-                component={App.Cart}
+                name={routes.chatLocale}
+                component={App.ChatLocale}
                 options={{
                     tabBarIcon: ({ color, size, focused }) => (
                         <TabIcon
@@ -206,14 +206,14 @@ export function BottomLocaleTabNavigation() {
                             customStyle={{ borderRadius: 0 }}
                             color={color}
                             focused={focused}
-                            tabBarLabel='Cart'
+                            tabBarLabel='chatLocale'
                         />
                     ),
                 }}
             />
             <BottomTabStack.Screen
-                name={routes.account}
-                component={App.Account}
+                name={routes.accountLocale}
+                component={App.AccountLocale}
                 options={{
                     tabBarIcon: ({ color, size, focused }) => (
                         <TabIcon
@@ -221,7 +221,7 @@ export function BottomLocaleTabNavigation() {
                         customStyle={{ borderRadius: 0 }}
                             color={color}
                             focused={focused}
-                            tabBarLabel='Account'
+                            tabBarLabel='accountLocale'
                         />
                     ),
                 }}
